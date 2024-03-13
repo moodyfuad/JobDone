@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj": {}
+    "C:\\Users\\mohof\\Desktop\\testRepo\\JobDone\\JobDone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj": {
+    "C:\\Users\\mohof\\Desktop\\testRepo\\JobDone\\JobDone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj",
+        "projectUniqueName": "C:\\Users\\mohof\\Desktop\\testRepo\\JobDone\\JobDone.csproj",
         "projectName": "JobDone",
-        "projectPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj",
+        "projectPath": "C:\\Users\\mohof\\Desktop\\testRepo\\JobDone\\JobDone.csproj",
         "packagesPath": "C:\\Users\\mohof\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\obj\\",
+        "outputPath": "C:\\Users\\mohof\\Desktop\\testRepo\\JobDone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -68,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
