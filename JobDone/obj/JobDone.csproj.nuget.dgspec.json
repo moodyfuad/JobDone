@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\Store project\\the project\\JobDone\\JobDone\\JobDone.csproj": {}
+    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\Store project\\the project\\JobDone\\JobDone\\JobDone.csproj": {
+    "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\Store project\\the project\\JobDone\\JobDone\\JobDone.csproj",
+        "projectUniqueName": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj",
         "projectName": "JobDone",
-        "projectPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\Store project\\the project\\JobDone\\JobDone\\JobDone.csproj",
+        "projectPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\JobDone.csproj",
         "packagesPath": "C:\\Users\\mohof\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\Store project\\the project\\JobDone\\JobDone\\obj\\",
+        "outputPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design & Development\\lab\\JobDone project\\the project\\JobDone\\JobDone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -47,8 +47,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
