@@ -1,7 +1,13 @@
+using JobDone.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<JobDoneContext>(options =>
+    options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
 
 var app = builder.Build();
 
