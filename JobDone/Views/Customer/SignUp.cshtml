@@ -1,119 +1,79 @@
-﻿<link rel="stylesheet" href="~/SignUp/css/style.css">
-<link rel="stylesheet" href="SignUp/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+﻿<link rel="stylesheet" href="~/SignUp/css/style.css" />
 
 
+<section class="container">
+    <header>Registration Form</header>
+    <form action="#" class="form" method="post">
+        <div class="input-box">
 
-<div class="wrapper">
-	<form action="" id="wizard">
-		<!-- SECTION 1 -->
-		<h2></h2>
-		<section>
-			<div class="inner">
-				<div class="image-holder">
-					<img src="~/SignUp/images/واجهة الزبون 2.png" height="500 px" alt="">
-				</div>
-				<div class="form-content">
-					<div class="form-header">
-						<h3>Registration</h3>
-					</div>
-					<p>Please fill with your details</p>
-					<div class="form-row">
-						<div class="form-holder">
-							<input type="text" placeholder="First Name" class="form-control">
-						</div>
-						<div class="form-holder">
-							<input type="text" placeholder="Last Name" class="form-control">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-holder">
-							Your Photo<input type="file" class="form-control">
-						</div>
-						<div class="form-holder">
-							<br /><input type="text" placeholder="Phone Number" class="form-control">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-holder">
-							Date of birth<input type="date" placeholder="Date of birth" class="form-control">
-						</div>
-						<div class="form-holder" style="padding-top:20px">
-							<div class="checkbox-tick">
-								<label class="male">
-									<input type="radio" name="gender" value="male" checked> Male<br>
-									<span class="checkmark"></span>
-								</label>
-								<label class="female">
-									<input type="radio" name="gender" value="female"> Female<br>
-									<span class="checkmark"></span>
-								</label>
-							</div>
-						</div>
-					</div>
+            <div></div>
+        </div>
+        <div class="column">
+            <div class="input-box">
+                <label>First Name</label>
+                <input type="text" placeholder="Enter First name" required />
+            </div>
+            <div class="input-box">
+                <label>Last Name</label>
+                <input type="text" placeholder="Enter Last name" required />
+            </div>
+        </div>
 
-				</div>
-			</div>
-		</section>
+        <div class="input-box">
+            <label>Email Address</label>
+            <input type="text" placeholder="Enter email address" required />
+        </div>
 
-		<!-- SECTION 2 -->
-		<h2></h2>
-		<section>
-			<div class="inner">
-				<div class="image-holder">
-					<img src="~/SignUp/images/واجهة الزبون 3.png" alt="" style="padding-top:55%">
-				</div>
-				<div class="form-content">
-					<div class="form-header">
-						<h3>Registration</h3>
-					</div>
-					<p>Please fill with additional info</p>
-					<div class="form-row">
-						<div class="form-holder w-50">
-							<input type="text" placeholder="Email" class="form-control">
-						</div>
-						<div class="form-holder w-50">
-							<input type="text" placeholder="User Name" class="form-control">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-holder">
-							<input type="text" placeholder="Password" class="form-control">
-						</div>
-						<div class="form-holder">
-							<input type="text" placeholder="Confirm password" class="form-control">
-						</div>
-					</div>
-
-					<div class="form-row">
-						<div class="select">
-							<div class="form-holder">
-								<div class="select-control">Security question</div>
-								<i class="zmdi zmdi-caret-down"></i>
-							</div>
-							<ul class="dropdown">
-								<li rel="United States">United States</li>
-								<li rel="United Kingdom">United Kingdom</li>
-								<li rel="Viet Nam">Viet Nam</li>
-							</ul>
-						</div>
-						<div class="form-holder">
-							<input type="text" placeholder="Answer" class="form-control">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-holder">
-							<label>
-								<input type="checkbox" checked>Please accept <a href="#">Policy Privacy</a>
-								<span class="checkmark"></span>
-							</label>
-						</div>
-						
-						<div class="form-holder">
-							<br /><br /><br /><br /><a href="#">Sign up as Service Provider</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</form><br /><br />
-</div>
+        <div class="column">
+            <div class="input-box">
+                <label>Phone Number</label>
+                <input type="number" placeholder="Enter phone number" required />
+            </div>
+            <div class="input-box">
+                <label>Birth Date</label>
+                <input type="date" placeholder="Enter birth date" required />
+            </div>
+        </div>
+        <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+                <div class="gender">
+                    <input type="radio" id="check-male" name="gender" checked />
+                    <label for="check-male">male</label>
+                </div>
+                <div class="gender">
+                    <input type="radio" id="check-female" name="gender" />
+                    <label for="check-female">Female</label>
+                </div>
+                <div class="gender">
+                    <input type="radio" id="check-other" name="gender" />
+                    <label for="check-other">prefer not to say</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-box">
+            <label>User name</label>
+            <input type="text" placeholder="Enter User name" required />
+        </div>
+        <div class="input-box">
+            <label>Password</label>
+            <input type="text" placeholder="Enter your Password" required />
+            <label>Confirom</label>
+            <input type="text" placeholder="Confirom the password" required />
+            
+            <div class="column">
+                <div class="select-box">
+                    <select>
+                        <option hidden>Security question</option>
+                        <option>Who are you</option>
+                        <option>What school....</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Answer" required />
+            </div>
+        </div>
+        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
+        <br /><br />
+        <input type="checkbox" name="name" value="" style="margin-left:32%;" />Accept <a href="#">Privacy Policy</a>
+    </form>
+</section>
