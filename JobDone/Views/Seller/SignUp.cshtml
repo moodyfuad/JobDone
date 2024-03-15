@@ -1,5 +1,155 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<link rel="stylesheet" href="~/SignUp/css/style.css">
+<link rel="stylesheet" href="SignUp/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+
+
+<div class="wrapper">
+	<form action="" id="wizard">
+		<!-- SECTION 1 -->
+		<h2></h2>
+		<section>
+			<div class="inner">
+				<div class="image-holder">
+					<img src="~/SignUp/images/الواجهة 1.png" height="500 px" alt="">
+				</div>
+				<div class="form-content">
+					<div class="form-header">
+						<h3>Registration</h3>
+					</div>
+					<p>Please fill with your details</p>
+					<div class="form-row">
+						<div class="form-holder">
+							<input type="text" placeholder="First Name" class="form-control">
+						</div>
+						<div class="form-holder">
+							<input type="text" placeholder="Last Name" class="form-control">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-holder">
+							Your Photo<input type="file" class="form-control">
+						</div>
+						<div class="form-holder">
+							<br /><input type="text" placeholder="Phone Number" class="form-control">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-holder">
+							Date of birth<input type="date" placeholder="Date of birth" class="form-control">
+						</div>
+						<div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
+							<div class="checkbox-tick">
+								<label class="male">
+									<input type="radio" name="gender" value="male" checked> Male<br>
+									<span class="checkmark"></span>
+								</label>
+								<label class="female">
+									<input type="radio" name="gender" value="female"> Female<br>
+									<span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 2 -->
+		<h2></h2>
+		<section>
+			<div class="inner">
+				<div class="image-holder">
+					<img src="~/SignUp/images/الواجهة 3.png" alt="" style="padding-top:62%">
+				</div>
+				<div class="form-content">
+					<div class="form-header">
+						<h3>Registration</h3>
+					</div>
+					<p>Please fill with additional info</p>
+					<div class="form-row">
+						<div class="form-holder w-50">
+							<input type="text" placeholder="Email" class="form-control">
+						</div>
+						<div class="form-holder w-50">
+							<input type="text" placeholder="User Name" class="form-control">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-holder">
+							<input type="text" placeholder="Password" class="form-control">
+						</div>
+						<div class="form-holder">
+							<input type="text" placeholder="Confirm password" class="form-control">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="select">
+							<div class="form-holder">
+								<div class="select-control">Security question</div>
+								<i class="zmdi zmdi-caret-down"></i>
+							</div>
+							<ul class="dropdown">
+								<li rel="United States">United States</li>
+								<li rel="United Kingdom">United Kingdom</li>
+								<li rel="Viet Nam">Viet Nam</li>
+							</ul>
+						</div>
+						<div class="form-holder">
+							<input type="text" placeholder="Answer" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 3 -->
+		<h2></h2>
+		<section>
+			<div class="inner">
+				<div class="image-holder">
+					<img src="~/SignUp/images/الواجهة 2.png" alt="" style="padding-top:58%">
+				</div>
+				<div class="form-content">
+					<div class="form-header">
+						<h3>Registration</h3>
+					</div>
+					<p>Send an optional message</p>
+					<div class="form-row">
+						<div class="select">
+							<div>
+								<div class="select-control">Category</div>
+								<i class="zmdi zmdi-caret-down"></i>
+							</div>
+							<ul class="dropdown">
+								<li rel="Programmer">United States</li>
+								<li rel="Designer">United Kingdom</li>
+							</ul>
+						</div>
+						<div class="form-holder">
+							<input type="text" placeholder="Services" class="form-control">
+						</div>
+					</div>
+
+					<div class="form-row">
+
+						<textarea name="" id="" placeholder="Your messagere here!" class="form-control" style="height: 99px; width: 100%"></textarea>
+
+					</div>
+					<div class="form-row">
+
+						<input type="button" name="" value="Add" style="margin-top:20px height: 20px; width: 80px; background-color:#6d7f52; color:white; border:hidden;" />
+					</div>
+					<div class="form-row">
+						<div class="checkbox-circle mt-24">
+							<label>
+								<input type="checkbox" checked> <h6> ```Please accept <a href="#">Policy Privacy</a></h6>
+								<span class="checkmark"></span>
+							</label>
+						</div>
+					</div>
+		</section>
+
+	</form>
+</div>
