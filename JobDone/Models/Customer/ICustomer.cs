@@ -4,5 +4,6 @@
     {
         void SignUp(CustomerModel customer) ;
         bool UsernameExist(CustomerModel customer) ;
+        bool UsernameAndPasswordExists(CustomerModel customer);
     }
 }

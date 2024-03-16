@@ -1,5 +1,9 @@
 using JobDone.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore.Metadata;
+using JobDone.Models.Customer;
+using JobDone.Models.SecurityQuestions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<JobDoneContext>(options =>
     options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
+
+builder.Services.AddScoped<ICustomer, CustomerImplementation>();
+builder.Services.AddScoped<ISecurityQuestion, SecurityQuestionsImplementation>();
 
 var app = builder.Build();
 

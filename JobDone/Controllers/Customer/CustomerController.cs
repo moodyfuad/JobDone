@@ -3,6 +3,10 @@ using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace JobDone.Controllers.Customer
 {
@@ -22,8 +26,35 @@ namespace JobDone.Controllers.Customer
             _questions = questions;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
+            ClaimsPrincipal claims = HttpContext.User;
+            if (claims.Identity.IsAuthenticated)
+                RedirectToAction("Home", "Customer");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(CustomerModel customer)
+        {
+            if (_customer.UsernameAndPasswordExists(customer))
+            {
+                List<Claim> claims = new List<Claim>() 
+                {
+                    new Claim(ClaimTypes.NameIdentifier, customer.Username)
+                };
+
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                AuthenticationProperties properties = new AuthenticationProperties()
+                {
+                    AllowRefresh = true,
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+                return RedirectToAction("Home", "Customer");
+            }
+            ViewData["ValidateMessgae"] = "Invalid username/password";
             return View();
         }
 
@@ -65,7 +96,13 @@ namespace JobDone.Controllers.Customer
         {
             return View();
         }
-       
+
+        public async Task<IActionResult>Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
+
     }
 }
 
