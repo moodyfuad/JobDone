@@ -1,9 +1,12 @@
-﻿<link rel="stylesheet" href="~/SignUp/css/style.css" />
+﻿@model SignUpCustomerViewModel;
 
+
+
+<link rel="stylesheet" href="~/SignUp/css/style.css" />
 
 <section class="container">
     <header>Registration Form</header>
-    <form action="#" class="form" method="post">
+    <form class="form" method="post">
         <div class="input-box">
 
             <div></div>
@@ -11,65 +14,69 @@
         <div class="column">
             <div class="input-box">
                 <label>First Name</label>
-                <input type="text" placeholder="Enter First name" required />
+                <input asp-for="Customer.FirstName" placeholder="Enter First name" required />
             </div>
             <div class="input-box">
                 <label>Last Name</label>
-                <input type="text" placeholder="Enter Last name" required />
+                <input asp-for="@Model.Customer.LastName" placeholder="Enter Last name" required />
             </div>
         </div>
 
         <div class="input-box">
             <label>Email Address</label>
-            <input type="text" placeholder="Enter email address" required />
+            <input asp-for="@Model.Customer.Email" placeholder="Enter email address" required />
         </div>
 
         <div class="column">
             <div class="input-box">
                 <label>Phone Number</label>
-                <input type="number" placeholder="Enter phone number" required />
+                <input asp-for="@Model.Customer.PhoneNumber" placeholder="Enter phone number" required />
             </div>
             <div class="input-box">
                 <label>Birth Date</label>
-                <input type="date" placeholder="Enter birth date" required />
+                <input asp-for="@Model.Customer.BirthDate" placeholder="Enter birth date" required />
             </div>
         </div>
         <div class="gender-box">
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    <input type="radio" id="check-male" name="gender" checked />
+                    @Html.RadioButtonFor(m => m.Customer.Gender,"Male")
                     <label for="check-male">male</label>
                 </div>
                 <div class="gender">
-                    <input type="radio" id="check-female" name="gender" />
+                    @Html.RadioButtonFor(m => m.Customer.Gender, "Female")
                     <label for="check-female">Female</label>
                 </div>
                 <div class="gender">
-                    <input type="radio" id="check-other" name="gender" />
+                    @Html.RadioButtonFor(m => m.Customer.Gender, "Not Specified")
                     <label for="check-other">prefer not to say</label>
                 </div>
             </div>
         </div>
         <div class="input-box">
             <label>User name</label>
-            <input type="text" placeholder="Enter User name" required />
+            <input asp-for="@Model.Customer.Username" placeholder="Enter User name" required />
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input type="text" placeholder="Enter your Password" required />
+            <input asp-for="@Model.Customer.Password" placeholder="Enter your Password" required />
             <label>Confirom</label>
             <input type="text" placeholder="Confirom the password" required />
             
             <div class="column">
                 <div class="select-box">
-                    <select>
+                    <select asp-for="@Model.Customer.SecurityQuestionIdFk">
                         <option hidden>Security question</option>
-                        <option>Who are you</option>
-                        <option>What school....</option>
+                        
+                        @foreach (var q in Model.SecurityQuestions)
+                        {
+                            <option value="@q.Id">@q.SecurityQuestion</option>
+                        }
                     </select>
                 </div>
-                <input type="text" placeholder="Answer" required />
+                <input asp-for="@Model.Customer.SecurityQuestionAnswer" placeholder="Answer" required />
+                <input type="hidden" asp-for="@Model.Customer.ProfilePicture" />
             </div>
         </div>
         <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />

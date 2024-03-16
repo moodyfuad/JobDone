@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using JobDone.Models;
+using JobDone.Models.Admin;
+using JobDone.Models.Customer;
+using JobDone.Models.SecurityQuestions;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Data;
 
 public partial class JobDoneContext : DbContext
 {
-    public JobDoneContext()
-    {
-    }
+
 
     public JobDoneContext(DbContextOptions<JobDoneContext> options)
         : base(options)

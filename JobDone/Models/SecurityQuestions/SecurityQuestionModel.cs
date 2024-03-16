@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobDone.Models.Customer;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobDone.Models;
+namespace JobDone.Models.SecurityQuestions;
 
 [Table("SecurityQuestionModel")]
 public partial class SecurityQuestionModel
