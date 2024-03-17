@@ -1,9 +1,11 @@
-﻿<link rel="stylesheet" href="~/SignUp/css/style.css" />
-
+﻿@using Azure.Core
+@using System.IO
+<link rel="stylesheet" href="~/SignUp/css/style.css" />
+@model SignUpSellerCatgoreViewModel
 
 <section class="container">
     <header>Registration Form</header>
-    <form action="#" class="form" method="post">
+    <form action="#" class="form" method="post" enctype="multipart/form-data">
         <div class="input-box">
            
             <div></div>
@@ -11,86 +13,100 @@
         <div class="column">
             <div class="input-box">
                <label>First Name</label>
-               <input type="text" placeholder="Enter First name" required />
+               <input asp-for="@Model.Seller.FirstName" type="text" placeholder="Enter First name" required />
             </div>
             <div class="input-box">
                 <label>Last Name</label>
-                <input type="text" placeholder="Enter Last name" required />
+                <input asp-for="@Model.Seller.LastName" type="text" placeholder="Enter Last name" required />
             </div>
         </div>
 
         <div class="input-box">
             <label>Email Address</label>
-            <input type="text" placeholder="Enter email address" required />
+            <input asp-for="@Model.Seller.Email" type="text" placeholder="Enter email address" required />
         </div>
 
         <div class="column">
             <div class="input-box">
                 <label>Phone Number</label>
-                <input type="number" placeholder="Enter phone number" required />
+                <input asp-for="@Model.Seller.PhoneNumber" type="number" placeholder="Enter phone number" required />
             </div>
             <div class="input-box">
                 <label>Birth Date</label>
-                <input type="date" placeholder="Enter birth date" required />
+                <input asp-for="@Model.Seller.BirthDate" type="date" placeholder="Enter birth date" required />
             </div>
         </div>
         <div class="gender-box">
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    <input type="radio" id="check-male" name="gender" checked />
+                    @Html.RadioButtonFor(m => m.Seller.Gender, "Male" ).
                     <label for="check-male">male</label>
                 </div>
                 <div class="gender">
-                    <input type="radio" id="check-female" name="gender" />
+                    @Html.RadioButtonFor(m => m.Seller.Gender, "Female")
                     <label for="check-female">Female</label>
                 </div>
                 <div class="gender">
-                    <input type="radio" id="check-other" name="gender" />
+                    @Html.RadioButtonFor(m => m.Seller.Gender, "Other")
                     <label for="check-other">prefer not to say</label>
                 </div>
             </div>
         </div>
         <div class="input-box">
             <label>User name</label>
-            <input type="text" placeholder="Enter User name" required />
+            <input asp-for="@Model.Seller.Username" type="text" placeholder="Enter User name" required />
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input type="text" placeholder="Enter your Password" required />
-            <label>Confirom</label>
-            <input type="text" placeholder="Confirom the password" required />
+            <input asp-for="@Model.Seller.Password" type="text" value="aa" placeholder="Enter your Password" required />
+            <label>Confirom</label>           
+            <input type="text" name="CoinformPassword" placeholder="Confirom the password" required />
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
             <label>Upload your ID</label>
-            <input type="file" value="Upload your ID" required/>
+            <input asp-for="@Model.PersonalId" type="file" required/>
+        
             <div class="column">
                 <div class="select-box">
-                    <select>
+                    <select asp-for="@Model.Seller.CategoryIdFk">
+
                         <option hidden>Category</option>
-                        <option>Programmer</option>
-                        <option>Designer</option>
-                        <option>Editor</option>
+                        @foreach (var c in Model.Category)
+                        {
+                            <option value="@c.Id">@c.Name</option>
+                        }
                     </select>
                 </div>
-                <input type="text" placeholder="Services" required />
+                <input  asp-for="@Model.Seller.OrderModels" type="text" placeholder="Services" required />
             </div>
             <br />
             <textarea class="form-control" placeholder="Description" style="height:70px;"></textarea>
             <label>Upload your Photo</label>
-            <input type="file" value="" />
+            <input asp-for="@Model.PrfilePicture" type="file" required />
 
             <div class="column">
                 <div class="select-box">
-                    <select>
-                        <option hidden>Security question</option>
-                        <option>Who are you</option>
-                        <option>What school....</option>
+                    <select asp-for="@Model.Seller.SecurityQuestionIdFk" required>
+                        <option hidden>Choes Security Question</option>
+                        @foreach (var q in Model.SecurityQuestions)
+                        {
+                            <option value="@q.Id">@q.SecurityQuestion</option>
+                        }
                     </select>
                 </div>
-                <input type="text" placeholder="Answer" required />
+                <input asp-for="@Model.Seller.SecurityQuestionAnswer" type="text" placeholder="Answer" required />
             </div>
         </div>
-        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
         <br /><br />
-        <input type="checkbox" name="name" value="" style="margin-left:32%;" />Accept <a href="#">Privacy Policy</a>
+        <input type="checkbox" name="name" value="" style="margin-left:32%;" required/>Accept <a href="#">Privacy Policy</a>
+        <br /><br />
+        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
+        
+        
     </form>
 </section>

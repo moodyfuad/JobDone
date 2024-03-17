@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobDone.Models.Category;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,19 +32,19 @@ public partial class SellerModel
     public string PhoneNumber { get; set; } = null!;
 
     [StringLength(10)]
-    public string Gender { get; set; } = null!;
+    public string Gender { get; set; }
 
     [Column(TypeName = "money")]
     public decimal Wallet { get; set; }
 
     public DateOnly BirthDate { get; set; }
 
-    public byte[] ProfilePicture { get; set; } = null!;
+    public byte[] ProfilePicture { get; set; }
 
     [StringLength(100)]
-    public string SecurityQuestionAnswer { get; set; } = null!;
+    public string SecurityQuestionAnswer { get; set; } 
 
-    public byte[] PersonalPictureId { get; set; } = null!;
+    public byte[] PersonalPictureId { get; set; }
 
     public int Rate { get; set; }
 

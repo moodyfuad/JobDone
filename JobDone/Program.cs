@@ -1,13 +1,18 @@
 using JobDone.Data;
+using JobDone.Models.Category;
+using JobDone.Models.SecurityQuestions;
+using JobDone.Models.Seller;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<JobDoneContext>(options =>
+    options.UseSqlServer("Server=DESKTOP-K50E369;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<JobDoneContext>(options =>
-    options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
+builder.Services.AddTransient<ISeller,SellerImplemntation>();
+builder.Services.AddTransient<ICategory,CatgegoryImplementation>();
+builder.Services.AddTransient<ISecurityQuestion,SecurityQuestionsImplementation>();
 
 var app = builder.Build();
 
