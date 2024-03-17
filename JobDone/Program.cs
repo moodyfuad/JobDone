@@ -9,6 +9,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using JobDone.Models.Category;
+using JobDone.Models.Seller;
 
 
 var builder = WebApplication.CreateBuilder(args);
