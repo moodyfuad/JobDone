@@ -1,8 +1,15 @@
 using JobDone.Data;
-using JobDone.Models.Category;
+using JobDone.Models.Admin;
+using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
-using JobDone.Models.Seller;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore.Metadata;
+using JobDone.Models.Customer;
+using JobDone.Models.SecurityQuestions;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using JobDone.Models.Category;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<JobDoneContext>(options =>
@@ -10,9 +17,25 @@ builder.Services.AddDbContext<JobDoneContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<ISeller,SellerImplemntation>();
-builder.Services.AddTransient<ICategory,CatgegoryImplementation>();
-builder.Services.AddTransient<ISecurityQuestion,SecurityQuestionsImplementation>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+{
+    option.LoginPath = "/Customer/Login";
+    option.ExpireTimeSpan = TimeSpan.Zero;
+});
+
+builder.Services.AddDbContext<JobDoneContext>(options =>
+    options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
+
+
+
+//interface regestration
+builder.Services.AddTransient<IAdmin, AdminImplementation>();
+builder.Services.AddTransient<ICustomer, CustomerImplementation>();
+builder.Services.AddTransient<ISecurityQuestion, SecurityQuestionsImplementation>();
+builder.Services.AddTransient<ISeller, SellerImplemntation>();
+builder.Services.AddTransient<ICategory, CatgegoryImplementation>();
+
 
 var app = builder.Build();
 
@@ -25,10 +48,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Customer}/{action=SignUp}/{id?}");
 
 app.Run();

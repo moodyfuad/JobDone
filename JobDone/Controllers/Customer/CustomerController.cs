@@ -3,15 +3,16 @@ using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
 
 namespace JobDone.Controllers.Customer
 {
     public class CustomerController : Controller
     {
-        byte[] samplePhotoBytes = new byte[]
-            {
-                0xFF, 0xD8, 0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x01, 0x00, 0x48,0x00, 0x48, 0x00, 0x00, 0xFF, 0xDB, 0x00, 0x43, 0x00, 0x08, 0x06, 0x06, 0x07, 0x06, 0x05, 0x08, 0x07,0x07, 0x07, 0x09, 0x09, 0x08, 0x0A, 0x0C, 0x14, 0x0D, 0x0C, 0x0B, 0x0B, 0x0C, 0x19, 0x12, 0x13, 0x0F,0x14, 0x1D, 0x1A, 0x1F, 0x1E, 0x1D, 0x1A, 0x1C, 0x1C, 0x20, 0x24, 0x2E, 0x27, 0x20, 0x22, 0x2C, 0x23,0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C,0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C, 0x9C,0xFF, 0xC4, 0x00, 0x1F, 0x01, 0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B,0xFE, 0x00, 0x3B, 0x43, 0x52, 0x45, 0x41, 0x54, 0x4F, 0x52, 0x3A, 0x20, 0x20, 0x4F, 0x70, 0x65,0x6E,0x41, 0x49, 0x20, 0x47, 0x65, 0x6E, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x20, 0x42, 0x79, 0x20,0x4F,0x70,0x65, 0x6E, 0x41, 0x49, 0x2E, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20
-            };
 
         private readonly ICustomer _customer;
         private readonly ISecurityQuestion _questions;
@@ -22,8 +23,35 @@ namespace JobDone.Controllers.Customer
             _questions = questions;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
+            ClaimsPrincipal claims = HttpContext.User;
+            if (claims.Identity.IsAuthenticated)
+                RedirectToAction("Home", "Customer");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(CustomerModel customer)
+        {
+            if (_customer.UsernameAndPasswordExists(customer))
+            {
+                List<Claim> claims = new List<Claim>() 
+                {
+                    new Claim(ClaimTypes.NameIdentifier, customer.Username)
+                };
+
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                AuthenticationProperties properties = new AuthenticationProperties()
+                {
+                    AllowRefresh = true,
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+                return RedirectToAction("Home", "Customer");
+            }
+            ViewData["ValidateMessgae"] = "Invalid username/password";
             return View();
         }
 
@@ -31,25 +59,30 @@ namespace JobDone.Controllers.Customer
         {
             SignUpCustomerViewModel viewModel = new SignUpCustomerViewModel()
             {
+                SecurityQuestions = _questions.GetQuestions(),
                 Customer = new()
-                {
-                   ProfilePicture = samplePhotoBytes
-                },
-                SecurityQuestions = _questions.GetQuestions()
+                
             };
             return View(viewModel);
         }
         [HttpPost]
         public IActionResult SignUp(SignUpCustomerViewModel viewModel)
         {
-            if(viewModel.Customer != null && !_customer.UsernameExist(viewModel.Customer))
+            viewModel.Customer.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePicture);
+            
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            
+            ModelState.Remove("Customer.SecurityQuestionIdFkNavigation");
+            ModelState.Remove("Customer.ProfilePicture");
+            if (ModelState.IsValid)
             {
-                _customer.SignUp(viewModel.Customer);
-                return View("Login");
-
+                if (viewModel.Customer != null && !_customer.UsernameExist(viewModel.Customer))
+                {
+                    _customer.SignUp(viewModel.Customer);
+                    return View("Login");
+                }
             }
-
-                return View();
+                return View(viewModel);
         }
 
         public IActionResult Home()
@@ -65,7 +98,13 @@ namespace JobDone.Controllers.Customer
         {
             return View();
         }
-       
+
+        public async Task<IActionResult>Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
+
     }
 }
 
