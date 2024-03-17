@@ -45,8 +45,19 @@ namespace JobDone.Models.Customer
                 return true;
             }
             else { return false; }
-                
         }
+
+        public bool UsernameAndPasswordExists(CustomerModel customer)
+        {
+            var cu = _customer.FirstOrDefault(c => c.Username == customer.Username && c.Password == customer.Password);
+            if (cu != null)
+            {
+                return true;
+            }
+            else { return false; }
+
+        }
+
         public void SignUp(CustomerModel customer)
         {
                SaveCustomerInDB(customer);

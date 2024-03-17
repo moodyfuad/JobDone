@@ -917,12 +917,212 @@
       "PackagePath": "staticwebassets\\Seller\\assets\\vendor\\waypoints\\noframework.waypoints.js"
     },
     {
-      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\forms\\Readme.txt",
-      "PackagePath": "staticwebassets\\Seller\\forms\\Readme.txt"
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap-theme.css"
     },
     {
-      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\forms\\contact.php",
-      "PackagePath": "staticwebassets\\Seller\\forms\\contact.php"
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\datepicker.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\datepicker.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\fontAwesome.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\fontAwesome.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\fonts\\flexslider-icon.eot",
+      "PackagePath": "staticwebassets\\Seller\\css\\fonts\\flexslider-icon.eot"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\fonts\\flexslider-icon.svg",
+      "PackagePath": "staticwebassets\\Seller\\css\\fonts\\flexslider-icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\fonts\\flexslider-icon.ttf",
+      "PackagePath": "staticwebassets\\Seller\\css\\fonts\\flexslider-icon.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\fonts\\flexslider-icon.woff",
+      "PackagePath": "staticwebassets\\Seller\\css\\fonts\\flexslider-icon.woff"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\hero-slider.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\hero-slider.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\owl-carousel.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\owl-carousel.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\css\\templatemo-style.css",
+      "PackagePath": "staticwebassets\\Seller\\css\\templatemo-style.css"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\Seller\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\_notes\\logo.png.mno",
+      "PackagePath": "staticwebassets\\Seller\\img\\_notes\\logo.png.mno"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\close.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\close.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\featured_item_1.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\featured_item_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\featured_item_2.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\featured_item_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\featured_item_3.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\featured_item_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\footer_logo.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\footer_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\loading.gif",
+      "PackagePath": "staticwebassets\\Seller\\img\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\logo.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\main_banner.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\main_banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\next.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\next.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\popular_item_1.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\popular_item_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\popular_item_2.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\popular_item_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\popular_item_3.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\popular_item_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\popular_item_4.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\popular_item_4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\popular_item_5.jpg",
+      "PackagePath": "staticwebassets\\Seller\\img\\popular_item_5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\prev.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\prev.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\service_icon_1.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\service_icon_1.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\service_icon_2.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\service_icon_2.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\img\\service_icon_3.png",
+      "PackagePath": "staticwebassets\\Seller\\img\\service_icon_3.png"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\datepicker.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\datepicker.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\main.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\plugins.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\vendor\\bootstrap.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\vendor\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\vendor\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\vendor\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\vendor\\jquery-1.11.2.min.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\vendor\\jquery-1.11.2.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\vendor\\modernizr-2.8.3-respond-1.4.2.min.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\vendor\\modernizr-2.8.3-respond-1.4.2.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Seller\\js\\vendor\\npm.js",
+      "PackagePath": "staticwebassets\\Seller\\js\\vendor\\npm.js"
     },
     {
       "Id": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\SignUp\\css\\style.css",

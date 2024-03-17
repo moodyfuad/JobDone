@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\editoldwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\editoldwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\seller\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\controllers\\customer\\customerrequestworkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,8 +43,16 @@
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerorder\\orderlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerorder\\orderlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\seller\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\requestwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -43,6 +63,14 @@
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\requestedlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customer\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customer\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerorder\\orderlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerorder\\orderlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -51,28 +79,12 @@
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\editoldwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\editoldwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\seller\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\seller\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\customerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerprofile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\jobdone.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -95,16 +107,8 @@
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\wwwroot\\signup\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\wwwroot\\signup\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\seller\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\seller\\order.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -153,10 +157,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\models\\adminmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\models\\adminmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\models\\categorymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -247,10 +247,6 @@
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerorder\\order.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\views\\sellerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerprofile\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\aomar\\source\\repos\\itg-g3-bamatraf\\jobdone\\controllers\\customer\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -286,7 +282,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 142,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -317,343 +313,25 @@
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_CustomerLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAD8AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-16T12:48:06.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T20:40:35.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAABwAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:57:26.865Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CustomerRequestWorkController.cs",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T22:54:24.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Home.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Home.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\Home.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Home.cshtml*",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\Home.cshtml*",
-              "ViewState": "AQIAALcAAAAAAAAAAAAAAMIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T20:43:41.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Login.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\Login.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Login.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\Login.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T20:41:21.094Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SignUp.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\SignUp.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\SignUp.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\SignUp.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\SignUp.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T20:42:57.685Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RequestedList.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestedList.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestedList.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestedList.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestedList.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T20:54:34.107Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RequestWork.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T20:53:35.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Chat.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:00:58.643Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderList.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:00:26.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-11T23:28:01.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SignUp.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\SignUp.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\SignUp.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\SignUp.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\SignUp.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:11:07.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EditOldWork.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:26:35.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 1,
               "Title": "Profile.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Profile.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\Profile.cshtml",
               "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Profile.cshtml",
               "RelativeToolTip": "JobDone\\Views\\SellerProfile\\Profile.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "ViewState": "AQIAALMBAAAAAAAAAAAAAMIBAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-13T23:16:13.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Edit.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerProfile\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Edit.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerProfile\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T21:25:48.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Login.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\Login.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAACwAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:12:17.322Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Profile.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Profile.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerProfile\\Profile.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Profile.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerProfile\\Profile.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T21:24:54.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PrivacyPolicy.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:11:53.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Order.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Order.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Order.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Order.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\Order.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:14:12.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "contact.php",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\contact.php",
-              "RelativeDocumentMoniker": "JobDone\\wwwroot\\Customer\\forms\\contact.php",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\contact.php",
-              "RelativeToolTip": "JobDone\\wwwroot\\Customer\\forms\\contact.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2024-03-15T23:33:21.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "JobDone",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
-              "RelativeDocumentMoniker": "JobDone\\JobDone.csproj",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
-              "RelativeToolTip": "JobDone\\JobDone.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-16T11:04:07.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Readme.txt",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
-              "RelativeDocumentMoniker": "JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
-              "RelativeToolTip": "JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-03-15T23:33:33.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "RequestedWrok.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\RequestedWrok.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\RequestedWrok.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\RequestedWrok.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\RequestedWrok.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:14:46.127Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\_ViewStart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-15T22:08:30.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "style.css",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\SignUp\\css\\style.css",
-              "RelativeDocumentMoniker": "JobDone\\wwwroot\\SignUp\\css\\style.css",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\SignUp\\css\\style.css",
-              "RelativeToolTip": "JobDone\\wwwroot\\SignUp\\css\\style.css",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAUwHIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-15T20:56:50.637Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 6,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\_ViewImports.cshtml",
@@ -665,19 +343,333 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 2,
+              "Title": "_CustomerLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Shared\\_CustomerLayout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-16T12:48:06.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditOldWork.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\SellerProfile\\EditOldWork.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:26:35.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Edit.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Edit.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\SellerProfile\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:16:55.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Profile.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerProfile\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Profile.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerProfile\\Profile.cshtml",
+              "ViewState": "AQIAALcAAAAAAAAAAAAAALIAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T21:24:54.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Home.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\Home.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Home.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\Home.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T20:43:41.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Home.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Home.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Home.cshtml",
               "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Home.cshtml",
               "RelativeToolTip": "JobDone\\Views\\Seller\\Home.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-13T23:12:45.997Z"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomerRequestWorkController.cs",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T22:54:24.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAIAywBgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T20:40:35.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:57:26.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Login.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:12:17.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Login.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\Login.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Login.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\Login.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAADUAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T20:41:21.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RequestWork.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T20:53:35.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RequestedList.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestedList.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestedList.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestedList.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestedList.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T20:54:34.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SignUp.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\SignUp.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\SignUp.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\SignUp.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\SignUp.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T20:42:57.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Chat.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:00:58.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrderList.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:00:26.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-11T23:28:01.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SignUp.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\SignUp.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\SignUp.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\SignUp.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\SignUp.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:11:07.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Edit.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerProfile\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerProfile\\Edit.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerProfile\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T21:25:48.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "PrivacyPolicy.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:11:53.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Order.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Order.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Order.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Order.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\Order.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:14:12.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "contact.php",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\contact.php",
+              "RelativeDocumentMoniker": "JobDone\\wwwroot\\Customer\\forms\\contact.php",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\contact.php",
+              "RelativeToolTip": "JobDone\\wwwroot\\Customer\\forms\\contact.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
+              "WhenOpened": "2024-03-15T23:33:21.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "JobDone.csproj",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
+              "RelativeDocumentMoniker": "JobDone\\JobDone.csproj",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
+              "RelativeToolTip": "JobDone\\JobDone.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-16T11:04:07.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Readme.txt",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
+              "RelativeDocumentMoniker": "JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
+              "RelativeToolTip": "JobDone\\wwwroot\\Customer\\forms\\Readme.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-03-15T23:33:33.116Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 28,
+              "Title": "RequestedWrok.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\RequestedWrok.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\RequestedWrok.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\RequestedWrok.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\RequestedWrok.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:14:46.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\_ViewStart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-15T22:08:30.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\SignUp\\css\\style.css",
+              "RelativeDocumentMoniker": "JobDone\\wwwroot\\SignUp\\css\\style.css",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\SignUp\\css\\style.css",
+              "RelativeToolTip": "JobDone\\wwwroot\\SignUp\\css\\style.css",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAUwHIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-03-15T20:56:50.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "PrivacyPolicy.html",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\PrivacyPolicy.html",
               "RelativeDocumentMoniker": "JobDone\\wwwroot\\PrivacyPolicy.html",
@@ -689,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Seller.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\Seller.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\Seller.cshtml",
@@ -701,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "AddAdminAccount.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Admin\\AddAdminAccount.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\Admin\\AddAdminAccount.cshtml",
@@ -713,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\wwwroot\\favicon.ico",
               "RelativeDocumentMoniker": "JobDone\\wwwroot\\favicon.ico",
@@ -725,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Program.cs",
               "RelativeDocumentMoniker": "JobDone\\Program.cs",
@@ -737,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "AddOldWork.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\AddOldWork.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\AddOldWork.cshtml",
@@ -749,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\Home\\Index.cshtml",
@@ -761,7 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "JobDone\\Controllers\\HomeController.cs",
@@ -773,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Admin\\AdminController.cs",
               "RelativeDocumentMoniker": "JobDone\\Controllers\\Admin\\AdminController.cs",
@@ -785,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "SellerCRUD.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\AdminManageSellers\\SellerCRUD.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\AdminManageSellers\\SellerCRUD.cshtml",
@@ -794,18 +786,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-13T23:51:45.732Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "AdminModel.cs",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Models\\AdminModel.cs",
-              "RelativeDocumentMoniker": "JobDone\\Models\\AdminModel.cs",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Models\\AdminModel.cs",
-              "RelativeToolTip": "JobDone\\Models\\AdminModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-14T15:55:12.534Z"
             },
             {
               "$type": "Document",
@@ -1049,18 +1029,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Edit.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\SellerProfile\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\SellerProfile\\Edit.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\SellerProfile\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:16:55.83Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 56,
               "Title": "SellerProfileController.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Seller\\SellerProfileController.cs",
@@ -1085,7 +1053,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 61,
               "Title": "CustomerOrderController.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
               "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
@@ -1097,7 +1065,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 63,
               "Title": "RequestedList.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerRequestWork\\RequestedList.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\CustomerRequestWork\\RequestedList.cshtml",
@@ -1109,7 +1077,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 62,
               "Title": "EditRequest.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerRequestWork\\EditRequest.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\CustomerRequestWork\\EditRequest.cshtml",
@@ -1121,7 +1089,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 64,
               "Title": "RequestWork.cshtml",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
               "RelativeDocumentMoniker": "JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
@@ -1133,7 +1101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 67,
               "Title": "JobDoneContext.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Data\\JobDoneContext.cs",
               "RelativeDocumentMoniker": "JobDone\\Data\\JobDoneContext.cs",
@@ -1145,7 +1113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 65,
               "Title": "CustomerProfileController.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
               "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
@@ -1157,7 +1125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 66,
               "Title": "OrderByCustomerModel.cs",
               "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Models\\OrderByCustomerModel.cs",
               "RelativeDocumentMoniker": "JobDone\\Models\\OrderByCustomerModel.cs",
