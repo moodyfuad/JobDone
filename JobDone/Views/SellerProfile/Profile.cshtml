@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <!-- saved from url=(0082)file:///C:/Users/Computer%20Repair2023/Downloads/profile_with_data_and_skills.html -->
 <html lang="en">
 <head>
@@ -203,8 +204,11 @@
                                          <div class="popup-content">
                                             <span onclick="closePopup3()" style="float:right;">&times;</span>
 
-                                            <img src="~/Seller/img/popular_item_3.jpg" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
-                                                                           
+                                            <img src="~/Seller/img/popular_item_3.jpg" id="myImage3" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
+                                            <div>
+                                                <input onchange="showButton3()" type="file" id="imageInput3" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton3" onclick="hideButton3(),replaceImage3()" style="background-color:cornflowerblue;color:white; margin-left:40%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <br /><br /><br /><br />
                                             <div class="row">
                                                 <div class="col-sm-3">
@@ -573,10 +577,10 @@
                     <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="~/Seller/img/default.jfif" alt="صورة افتراضية" width="100%" height="300px">
                     <div>
                         <input onchange="showButton2()" type="file" id="imageInput2" accept="image/*">
-                        <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                        <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                     </div>
                     <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="Add" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
+                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="Add" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
 
                 </div>
             </div>
@@ -634,6 +638,27 @@
         function replaceImage2() {
             const input = document.getElementById('imageInput2');
             const image = document.getElementById('myImage2');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+
+            }
+        }
+        function hideButton3() {
+            const button = document.getElementById("myButton3");
+            button.style.display = "none";
+        }
+        function showButton3() {
+            const button = document.getElementById("myButton3");
+            button.style.display = "block";
+        }
+        function replaceImage3() {
+            const input = document.getElementById('imageInput3');
+            const image = document.getElementById('myImage3');
 
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
