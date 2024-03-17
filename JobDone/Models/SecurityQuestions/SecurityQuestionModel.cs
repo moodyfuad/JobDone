@@ -13,7 +13,8 @@ public partial class SecurityQuestionModel
     [Key]
     public int Id { get; set; }
 
-    public string SecurityQuestion { get; set; } = null!;
+/*    [Required(ErrorMessage ="Please select security question")]
+*/    public string SecurityQuestion { get; set; } = null!;
 
     [InverseProperty("SecurityQuestionIdFkNavigation")]
     public virtual ICollection<CustomerModel> CustomerModels { get; set; } = new List<CustomerModel>();

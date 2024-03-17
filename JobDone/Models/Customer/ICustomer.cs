@@ -4,5 +4,6 @@
     {
         void SignUp(CustomerModel customer) ;
         bool UsernameExist(CustomerModel customer) ;
+        public byte[] ConvertToByteArray(IFormFile image);
     }
 }
