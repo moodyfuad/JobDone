@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
+using JobDone.Data;
 
 namespace JobDone.Controllers.Seller
 {
@@ -41,7 +42,7 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword,string[] textarea1)
+        public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword,string[] textarea, string[] serviecs)
         {   
             viewModel.SecurityQuestions = _questions.GetQuestions();
             viewModel.Category = _category.GetCategories();
@@ -49,7 +50,7 @@ namespace JobDone.Controllers.Seller
             viewModel.Seller.ProfilePicture =  _seller.ConvertToByte(viewModel.PrfilePicture);
             viewModel.Seller.PersonalPictureId = _seller.ConvertToByte(viewModel.PersonalId);
             
-            viewModel.Service.SellerIdFk = viewModel.Seller.Id;
+            
             if (viewModel.Seller.Password == CoinformPassword)
             {
                 if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 && 
@@ -57,7 +58,16 @@ namespace JobDone.Controllers.Seller
                 {
 
                      _seller.SignUp(viewModel.Seller);
-                     _servise.AddServies(viewModel.Service);
+                     
+                    for (int i = 1; i < serviecs.Length; i++)
+                    {
+                        
+                        viewModel.Service.Name = serviecs[i];
+                        viewModel.Service.Description = textarea[i];
+                        viewModel.Service.SellerIdFk = _servise.GetSellerID();
+                        _servise.AddServies(viewModel.Service);
+                    }
+                    
                       return View("Login");
                 }
                 else { TempData["null"] = "Some fields are empty!!"; }

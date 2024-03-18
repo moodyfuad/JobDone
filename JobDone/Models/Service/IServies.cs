@@ -4,5 +4,6 @@
     {
         void SaveServiesINDB(ServiceModel service);
         void AddServies(ServiceModel service);
+        int GetSellerID();
     }
 }
