@@ -7,6 +7,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using JobDone.Roles;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace JobDone.Controllers.Customer
@@ -37,15 +39,17 @@ namespace JobDone.Controllers.Customer
         {
             if (_customer.UsernameAndPasswordExists(customer))
             {
-                List<Claim> claims = new List<Claim>() 
+                List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, customer.Username)
+                    new Claim(ClaimTypes.NameIdentifier, customer.Username),
+                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 AuthenticationProperties properties = new AuthenticationProperties()
                 {
                     AllowRefresh = true,
+                    
                 };
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
@@ -97,34 +101,45 @@ namespace JobDone.Controllers.Customer
                 return View(viewModel);
         }
 
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Home()
         {
-            try
-            {
-                string? SessionInfo = HttpContext.Session.GetString("username");
-                if (SessionInfo != null &&
-                    _customer.UsernameExist(SessionInfo))
-                {
-                    ViewBag.username = SessionInfo;
-                    return View();
-                }
-                return RedirectToAction("Login");
-            }
-            catch
-            {
-                return RedirectToAction("Login");
-            }
-        }
+            return View();
+        } 
+
+        //Previoues Code by (Mohammed Bamtrf)
+        //public IActionResult Home()
+        //{
+        //    try
+        //    {
+        //        string? SessionInfo = HttpContext.Session.GetString("username");
+        //        if (SessionInfo != null &&
+        //            _customer.UsernameExist(SessionInfo))
+        //        {
+        //            ViewBag.username = SessionInfo;
+        //            return View();
+        //        }
+        //        return RedirectToAction("Login");
+        //    }
+        //    catch
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
+
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Order()
         {
             return View();
         }
-       
+
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Seller()
         {
             return View();
         }
 
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult>Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

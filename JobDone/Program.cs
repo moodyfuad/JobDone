@@ -18,21 +18,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
-{
-    option.LoginPath = "/Customer/Login";
-    option.ExpireTimeSpan = TimeSpan.Zero;
-});
-
 string connectionString = builder.Configuration.GetConnectionString("con");
 builder.Services.AddDbContext<JobDoneContext>(options =>
     options.UseSqlServer(connectionString));
 
-
-//rejester the session for authentication
-builder.Services.AddSession(x => x.IdleTimeout = TimeSpan.FromDays(1));
-
-
+//Cookie Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 //interface regestration
 builder.Services.AddTransient<IAdmin, AdminImplementation>();
@@ -54,9 +45,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
-app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
