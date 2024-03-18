@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj": {}
+    "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj": {
+    "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
+        "projectUniqueName": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
         "projectName": "JobDone",
-        "projectPath": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
-        "packagesPath": "C:\\Users\\aomar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\obj\\",
+        "projectPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
+        "packagesPath": "C:\\Users\\ديل\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aomar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ديل\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,10 +45,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.3, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -88,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

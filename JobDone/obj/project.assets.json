@@ -9044,7 +9044,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Microsoft.EntityFrameworkCore >= 8.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.3",
       "Microsoft.EntityFrameworkCore.Sqlite.Design >= 2.0.0-preview1-final",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.3",
@@ -9052,19 +9051,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aomar\\.nuget\\packages\\": {}
+    "C:\\Users\\ديل\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aomar\\Source\\Repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
+      "projectUniqueName": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
       "projectName": "JobDone",
-      "projectPath": "C:\\Users\\aomar\\Source\\Repos\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
-      "packagesPath": "C:\\Users\\aomar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aomar\\Source\\Repos\\ITG-G3-Bamatraf\\JobDone\\obj\\",
+      "projectPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
+      "packagesPath": "C:\\Users\\ديل\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aomar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ديل\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9072,7 +9071,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9096,10 +9094,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.3, )"
-          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[8.0.3, )"
@@ -9138,8 +9132,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Microsoft.Extensions.Primitives 2.0.0-preview1-final depends on System.Runtime.CompilerServices.Unsafe (>= 4.4.0-preview1-25219-04) but System.Runtime.CompilerServices.Unsafe 4.4.0-preview1-25219-04 was not found. An approximate best match of System.Runtime.CompilerServices.Unsafe 4.4.0-preview1-25305-02 was resolved.",
+      "libraryId": "System.Runtime.CompilerServices.Unsafe",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

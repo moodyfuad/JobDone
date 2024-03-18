@@ -6,12 +6,19 @@
 <section class="container">
     <header>Registration Form</header>
     <form action="#" class="form" method="post" enctype="multipart/form-data">
+        @if (TempData["null"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["null"]
+            </div>
+        }
         <div class="input-box">
            
             <div></div>
         </div>
         <div class="column">
             <div class="input-box">
+                
                <label>First Name</label>
                <input asp-for="@Model.Seller.FirstName" type="text" placeholder="Enter First name" required />
             </div>
@@ -40,7 +47,7 @@
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Seller.Gender, "Male" ).
+                    @Html.RadioButtonFor(m => m.Seller.Gender, "Male")
                     <label for="check-male">male</label>
                 </div>
                 <div class="gender">
@@ -59,9 +66,9 @@
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input asp-for="@Model.Seller.Password" type="text" value="aa" placeholder="Enter your Password" required />
+            <input asp-for="@Model.Seller.Password" type="password" placeholder="Enter your Password" required />
             <label>Confirom</label>           
-            <input type="text" name="CoinformPassword" placeholder="Confirom the password" required />
+            <input type="password" name="CoinformPassword" placeholder="Confirom the password" required />
             @if (TempData["SuccessMessage"] != null)
             {
                 <div class="alert alert-danger">
@@ -70,10 +77,11 @@
             }
             <label>Upload your ID</label>
             <input asp-for="@Model.PersonalId" type="file" required/>
-        
+            <label>Choose your specialty</label>
             <div class="column">
+
                 <div class="select-box">
-                    <select asp-for="@Model.Seller.CategoryIdFk">
+                    <select asp-for="@Model.Seller.CategoryIdFk" required>
 
                         <option hidden>Category</option>
                         @foreach (var c in Model.Category)
@@ -82,13 +90,71 @@
                         }
                     </select>
                 </div>
-                <input  asp-for="@Model.Seller.OrderModels" type="text" placeholder="Services" required />
             </div>
             <br />
-            <textarea class="form-control" placeholder="Description" style="height:70px;"></textarea>
+            <div>
+                <label>your Services</label>
+                <div class="select-box">
+                    <select id="mySelect" onchange="createInputs()">
+                        <option hidden>How many services do you want to enter?</option>
+                        @{
+                             int  slected = 0;
+                        }
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    
+
+                    <script>
+                        function createInputs() {
+                            var selectElement = document.getElementById("mySelect");
+                            var selectedValue = selectElement.value;
+                            var inputContainer = document.getElementById("inputContainer");
+
+                            if (selectedValue !== null) {
+                                inputContainer.innerHTML = ""; 
+
+                                for (var i = 0; i < selectedValue; i++) {
+                                    
+
+                                    var inputServices = document.createElement("input");
+                                    inputServices.name = "serviecs";
+                                    inputServices.type = "text";
+                                    inputServices.placeholder = "Services Name";
+                                    
+                                    var textarea = document.createElement("textarea"); 
+                                    textarea.name = "textarea";
+                                    textarea.placeholder = "Description";
+                                    textarea.rows = 4; 
+                                    textarea.cols = 72;
+                                    
+                                    inputContainer.appendChild(inputServices);
+                                    inputContainer.appendChild(textarea);
+                                }
+                            } else {
+                                inputContainer.innerHTML = ""; 
+                            }
+                        }
+                    </script>
+
+
+                </div>  
+            </div>
+            <div id="inputContainer"></div>
+            @* @for (int j = 1; j <= slected; j++)
+            {
+                <input asp-for="@Model.Seller.OrderModels" type="text" placeholder="Services" required />
+                <textarea class="form-control" placeholder="Description" style="height:70px;" required></textarea>
+            } *@
+            
+            <br />
             <label>Upload your Photo</label>
             <input asp-for="@Model.PrfilePicture" type="file" required />
+            <br />
 
+            <label>Security question</label>
             <div class="column">
                 <div class="select-box">
                     <select asp-for="@Model.Seller.SecurityQuestionIdFk" required>
@@ -103,7 +169,7 @@
             </div>
         </div>
         <br /><br />
-        <input type="checkbox" name="name" value="" style="margin-left:32%;" required/>Accept <a href="#">Privacy Policy</a>
+        <input type="checkbox" name="name" value="" style="margin-left:32%;" required />Accept <a asp-controller="Seller" asp-action="PrivacyPolicy">Privacy Policy</a>
         <br /><br />
         <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
         

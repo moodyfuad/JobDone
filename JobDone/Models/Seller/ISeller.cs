@@ -8,7 +8,7 @@ namespace JobDone.Models.Seller
     {
         void SignUp(SellerModel seller);
         bool UsernameExist(SellerModel seller);
-
+        bool CheckUsernameAndPasswordExists(SellerModel seller);
         byte[] ConvertToByte(IFormFile image);
     }
 }
