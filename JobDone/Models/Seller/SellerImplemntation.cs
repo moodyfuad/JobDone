@@ -49,6 +49,18 @@ namespace JobDone.Models.Seller
             SaveSellerInDB(seller);
         }
 
+        public bool CheckUsernameAndPasswordExists(SellerModel seller)
+        {
+            var sel = _seller.FirstOrDefault(c => c.Username == seller.Username && c.Password == seller.Password);
 
+            if (sel != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
