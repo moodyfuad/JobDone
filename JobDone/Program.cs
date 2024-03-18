@@ -9,11 +9,11 @@ using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using JobDone.Models.Category;
+using JobDone.Models.Seller;
+using JobDone.Models.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<JobDoneContext>(options =>
-    options.UseSqlServer("Server=DESKTOP-K50E369;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,7 +25,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 });
 
 builder.Services.AddDbContext<JobDoneContext>(options =>
-    options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
+    options.UseSqlServer("Server=DESKTOP-K50E369;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
 
 
 
@@ -35,7 +35,7 @@ builder.Services.AddTransient<ICustomer, CustomerImplementation>();
 builder.Services.AddTransient<ISecurityQuestion, SecurityQuestionsImplementation>();
 builder.Services.AddTransient<ISeller, SellerImplemntation>();
 builder.Services.AddTransient<ICategory, CatgegoryImplementation>();
-
+builder.Services.AddTransient<IServies, ServiesImplemntation>();
 
 var app = builder.Build();
 

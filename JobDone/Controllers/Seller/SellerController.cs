@@ -2,9 +2,11 @@
 using JobDone.Models.SecurityQuestions;
 using JobDone.Models.Seller;
 using JobDone.Models.Category;
+using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
+using Microsoft.AspNetCore.Hosting.Server;
 
 namespace JobDone.Controllers.Seller
 {
@@ -13,19 +15,18 @@ namespace JobDone.Controllers.Seller
         private readonly ISeller _seller;
         private readonly ISecurityQuestion _questions;
         private readonly ICategory _category;
+        private readonly IServies _servise;
         private readonly SignUpSellerCatgoreViewModel _SUSCViewModel;
-        
-
-        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category)
+        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies)
         {
             _seller = seller;
             _questions = questions;
             _category = category;
+            _servise = servies;
         }
 
         [HttpGet]
         public IActionResult SignUp()
-        
         {
             SignUpSellerCatgoreViewModel viewModel = new SignUpSellerCatgoreViewModel()
             {
@@ -35,21 +36,26 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword)
+        public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword,string[] textarea1)
         {   
             viewModel.SecurityQuestions = _questions.GetQuestions();
             viewModel.Category = _category.GetCategories();
 
             viewModel.Seller.ProfilePicture =  _seller.ConvertToByte(viewModel.PrfilePicture);
             viewModel.Seller.PersonalPictureId = _seller.ConvertToByte(viewModel.PersonalId);
-
+            
+            viewModel.Service.SellerIdFk = viewModel.Seller.Id;
             if (viewModel.Seller.Password == CoinformPassword)
             {
-                if (ModelState.IsValid && viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
+                if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 && 
+                    viewModel.Seller.Gender !=null&& viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
                 {
+
                      _seller.SignUp(viewModel.Seller);
+                     _servise.AddServies(viewModel.Service);
                       return View("Login");
                 }
+                else { TempData["null"] = "Some fields are empty!!"; }
             }
             else { TempData["SuccessMessage"] = "The password does not match"; }
             return View(viewModel);
