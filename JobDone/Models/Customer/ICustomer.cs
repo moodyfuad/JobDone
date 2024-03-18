@@ -3,7 +3,7 @@
     public interface ICustomer
     {
         void SignUp(CustomerModel customer) ;
-        bool UsernameExist(CustomerModel customer) ;
+        bool UsernameExist(string customer) ;
         bool UsernameAndPasswordExists(CustomerModel customer);
         public byte[] ConvertToByteArray(IFormFile image);
     }

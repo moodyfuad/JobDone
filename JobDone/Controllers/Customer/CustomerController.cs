@@ -60,7 +60,6 @@ namespace JobDone.Controllers.Customer
             SignUpCustomerViewModel viewModel = new SignUpCustomerViewModel()
             {
                 SecurityQuestions = _questions.GetQuestions(),
-                Customer = new()
                 
             };
             return View(viewModel);
@@ -68,18 +67,31 @@ namespace JobDone.Controllers.Customer
         [HttpPost]
         public IActionResult SignUp(SignUpCustomerViewModel viewModel)
         {
-            viewModel.Customer.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePicture);
+            viewModel.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePictureAsFile);
             
             viewModel.SecurityQuestions = _questions.GetQuestions();
-            
-            ModelState.Remove("Customer.SecurityQuestionIdFkNavigation");
-            ModelState.Remove("Customer.ProfilePicture");
+
             if (ModelState.IsValid)
             {
-                if (viewModel.Customer != null && !_customer.UsernameExist(viewModel.Customer))
+                CustomerModel customer = new CustomerModel()
                 {
-                    _customer.SignUp(viewModel.Customer);
-                    return View("Login");
+                    FirstName = viewModel.FirstName,
+                    LastName = viewModel.LastName,
+                    Username = viewModel.Username,
+                    Email = viewModel.Email,
+                    ProfilePicture = viewModel.ProfilePicture,
+                    Gender = viewModel.Gender,
+                    Password = viewModel.Password,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    BirthDate = viewModel.BirthDate,
+                    SecurityQuestionAnswer = viewModel.SecurityQuestionAnswer,
+                    SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk
+                };
+                if (!_customer.UsernameExist(customer.Username))
+                {
+                    _customer.SignUp(customer);
+                    HttpContext.Session.SetString("username", customer.Username);
+                    return RedirectToAction("Home","Customer");
                 }
             }
                 return View(viewModel);
@@ -87,7 +99,21 @@ namespace JobDone.Controllers.Customer
 
         public IActionResult Home()
         {
-            return View();
+            try
+            {
+                string? SessionInfo = HttpContext.Session.GetString("username");
+                if (SessionInfo != null &&
+                    _customer.UsernameExist(SessionInfo))
+                {
+                    ViewBag.username = SessionInfo;
+                    return View();
+                }
+                return RedirectToAction("Login");
+            }
+            catch
+            {
+                return RedirectToAction("Login");
+            }
         }
         public IActionResult Order()
         {

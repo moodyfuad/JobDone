@@ -14,35 +14,35 @@
         <div class="column">
             <div class="input-box">
                 <label>First Name</label>
-                <input asp-for="Customer.FirstName" placeholder="Enter First name" required/>
-                <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+                <input asp-for="FirstName" placeholder="Enter First name" required/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="input-box">
                 <label>Last Name</label>
-                <input asp-for="@Model.Customer.LastName" placeholder="Enter Last name" required />
-                <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+                <input asp-for="@Model.LastName" placeholder="Enter Last name" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
 
             </div>
         </div>
 
         <div class="input-box">
             <label>Email Address</label>
-            <input asp-for="@Model.Customer.Email" placeholder="Enter email address" required />
-            <span asp-validation-for="Customer.Email" class="text-danger"></span>
+            <input asp-for="@Model.Email" placeholder="Enter email address" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
 
         </div>
 
         <div class="column">
             <div class="input-box">
                 <label>Phone Number</label>
-                <input asp-for="@Model.Customer.PhoneNumber" placeholder="Enter phone number" required />
-                <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+                <input asp-for="@Model.PhoneNumber" placeholder="Enter phone number" required />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
             </div>
             <div class="input-box">
                 <label>Birth Date</label>
-                <input asp-for="@Model.Customer.BirthDate" type="date" placeholder="Enter birth date" required />
-                <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+                <input asp-for="@Model.BirthDate" type="date" placeholder="Enter birth date" required />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
 
             </div>
         </div>
@@ -50,31 +50,31 @@
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Customer.Gender,"Male")
+                    @Html.RadioButtonFor(m => m.Gender,"Male")
                     <label for="check-male">male</label>
                 </div>
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Customer.Gender, "Female")
+                    @Html.RadioButtonFor(m => m.Gender, "Female")
                     <label for="check-female">Female</label>
                 </div>
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Customer.Gender, "Not Specified")
+                    @Html.RadioButtonFor(m => m.Gender, "Not Specified")
                     <label for="check-other">prefer not to say</label>
                 </div>
             </div>
-            <span asp-validation-for="Customer.Gender" class="text-danger"></span>
+            <span asp-validation-for="Gender" class="text-danger"></span>
 
         </div>
         <div class="input-box">
             <label>User name</label>
-            <input asp-for="@Model.Customer.Username" placeholder="Enter User name" required />
-            <span asp-validation-for="Customer.Username" class="text-danger"></span>
+            <input asp-for="@Model.Username" placeholder="Enter User name" required />
+            <span asp-validation-for="Username" class="text-danger"></span>
 
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input asp-for="@Model.Customer.Password" placeholder="Enter your Password" required />
-            <span asp-validation-for="Customer.Password" class="text-danger"></span>
+            <input asp-for="@Model.Password" placeholder="Enter your Password" required />
+            <span asp-validation-for="Password" class="text-danger"></span>
 
             <label>Confirom</label>
             <input asp-for="@Model.ConfirmPassword" placeholder="Confirom the password" required />
@@ -83,7 +83,7 @@
             
             <div class="column">
                 <div class="select-box">
-                    <select asp-for="@Model.Customer.SecurityQuestionIdFk">
+                    <select asp-for="@Model.SecurityQuestionIdFk">
                         <option hidden value="">Security question</option>
                         
                         @foreach (var q in Model.SecurityQuestions)
@@ -91,16 +91,16 @@
                             <option value="@q.Id">@q.SecurityQuestion</option>
                         }
                     </select>
-                     @* <span asp-validation-for="Customer.SecurityQuestionIdFk" class="text-danger"></span> *@
+                     <span asp-validation-for="SecurityQuestionIdFk" class="text-danger"></span>
  
                 </div>
-                <input asp-for="@Model.Customer.SecurityQuestionAnswer" placeholder="Answer" required />
-                <span asp-validation-for="Customer.SecurityQuestionAnswer" asp class="text-danger"></span>
+                <input asp-for="@Model.SecurityQuestionAnswer" placeholder="Answer" required />
+                <span asp-validation-for="SecurityQuestionAnswer" asp class="text-danger"></span>
 
             </div>
             <div class="custom-border bxs-file-image">
                     <label class="custome-file-label">Profile Image</label>
-                    <input class="form-control bi-file" asp-for="@Model.profilePicture"/>
+                    <input class="form-control bi-file" asp-for="@Model.profilePictureAsFile"/>
             </div>
         </div>
         <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />

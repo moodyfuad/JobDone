@@ -37,10 +37,10 @@ namespace JobDone.Models.Customer
             _Db.SaveChanges();
         }
 
-        public bool UsernameExist(CustomerModel customer)
+        public bool UsernameExist(string username)
         {
-            var cu = _customer.Where(c => c.Username == customer.Username);
-            if (cu == null)
+            var cu = _customer.Where(c => c.Username == username);
+            if (cu.Count() != 0)
             {
                 return true;
             }

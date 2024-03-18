@@ -25,8 +25,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     option.ExpireTimeSpan = TimeSpan.Zero;
 });
 
+string connectionString = builder.Configuration.GetConnectionString("con");
 builder.Services.AddDbContext<JobDoneContext>(options =>
-    options.UseSqlServer("Server=HP-LAB\\MSSQLSERVER02;initial catalog=JobDone; database=JobDone; trusted_connection=True; TrustServerCertificate=True"));
+    options.UseSqlServer(connectionString));
+
+
+//rejester the session for authentication
+builder.Services.AddSession(x => x.IdleTimeout = TimeSpan.FromDays(1));
 
 
 
@@ -52,6 +57,7 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

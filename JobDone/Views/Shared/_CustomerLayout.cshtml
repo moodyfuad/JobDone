@@ -38,6 +38,12 @@
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
                 <span style="color:white;margin-left:10px;">5000</span>
+                @{
+                    if(ViewBag.username != null)
+                    {
+                        <h5 style="color:white;margin-left:70px">Hello : @ViewBag.username </h5>
+                    }
+                }
                 <h5 style="color:white;margin-left:70px">Logo</h5>
 
 
