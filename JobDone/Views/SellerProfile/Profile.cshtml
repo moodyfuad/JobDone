@@ -96,9 +96,11 @@
             position: fixed;
             z-index: 1;
             padding-top: 100px;
+            border:900px;
+            margin-left:350px;
             left: 0;
             top: 0;
-            width: 100%;
+            width: 50%;
             height: 100%;
             overflow: auto;
             background-color: rgb(0,0,0);
@@ -113,19 +115,16 @@
             width: 80%;
         }
 
+        .hidden-button {
+            display: none;
+        }
     </style>
 </head>
 <body style="">
     <div class="container">
         <div class="main-body">
 
-            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="file:///C:/Users/Computer%20Repair2023/Downloads/index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
-            </nav>
+            
 
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
@@ -198,7 +197,88 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" href="#">Edit</a>
+                                    <button class="btn btn-info" onclick="openPopup3()">Edit</button>
+                                     <div id="myPopup3" class="popup">
+                                        
+                                         
+                                         <div class="popup-content">
+                                            <span onclick="closePopup3()" style="float:right;">&times;</span>
+
+                                            <img src="~/Seller/img/popular_item_3.jpg" id="myImage3" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
+                                            <div>
+                                                <input onchange="showButton3()" type="file" id="imageInput3" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton3" onclick="hideButton3(),replaceImage3()" style="background-color:cornflowerblue;color:white; margin-left:40%; margin-top:20px;">Sure</button>
+                                            </div>
+                                            <br /><br /><br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Username</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="text" name="name" value="" placeholder="Enter your Username"/>
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Full Name</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                   <input type="text" name="name" value="" placeholder="Enter your name" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Email</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="email" name="name" value="" placeholder="Enter your Email" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Phone</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="text" name="name" value="" placeholder="Enter your phone number" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Password</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="password" name="name" value="" placeholder="Enter your password" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Category</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="text" name="name" value="" placeholder="Enter your category" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">Services</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="text" name="name" value="" placeholder="Enter your services" />
+                                                </div>
+                                            </div>
+                                            <br /><br />
+                                           
+                                            
+                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +296,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
 
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -227,7 +307,42 @@
                                     <div id="myPopup" class="popup">
                                         <div class="popup-content">
                                             <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                            
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                                            </div>
+                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
+                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
+
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <div id="myPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span onclick="closePopup()" style="float:right;">&times;</span>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
                                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
@@ -241,7 +356,7 @@
                 </div>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
 
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -252,109 +367,12 @@
                                     <div id="myPopup" class="popup">
                                         <div class="popup-content">
                                             <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <div id="myPopup" class="popup">
-                                        <div class="popup-content">
-                                            <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <div id="myPopup" class="popup">
-                                        <div class="popup-content">
-                                            <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
-
-                                        </div>
-                                  
-                                    </div>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <div id="myPopup" class="popup">
-                                        <div class="popup-content">
-                                            <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <small class="text-muted">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <div id="myPopup" class="popup">
-                                        <div class="popup-content">
-                                            <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
                                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
@@ -369,7 +387,7 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
 
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -380,7 +398,12 @@
                                     <div id="myPopup" class="popup">
                                         <div class="popup-content">
                                             <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
                                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
@@ -394,7 +417,7 @@
                 </div>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
 
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -405,7 +428,12 @@
                                     <div id="myPopup" class="popup">
                                         <div class="popup-content">
                                             <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
                                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
@@ -419,7 +447,7 @@
                 </div>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
 
                         <div class="card-body">
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -430,7 +458,104 @@
                                     <div id="myPopup" class="popup">
                                         <div class="popup-content">
                                             <span onclick="closePopup()" style="float:right;">&times;</span>
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
+                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
+                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
+
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <div id="myPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span onclick="closePopup()" style="float:right;">&times;</span>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
+                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
+                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
+
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <div id="myPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span onclick="closePopup()" style="float:right;">&times;</span>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
+                                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
+                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="225">
+
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <div id="myPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span onclick="closePopup()" style="float:right;">&times;</span>
+
+                                            <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                            
+                                            <div>
+                                                <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:50%; margin-top:20px;">Sure</button>
+                                            </div>
                                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
                                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
 
@@ -443,14 +568,19 @@
                     </div>
                 </div>
             </div>
-            <input class="btn btn-gradient-primary btn-rounded btn-fw" onclick="openPopup()" type="submit" name="name" value="Add new work" style="margin-top:70px;margin-left:90%; background-color:cornflowerblue;" />
+            <input class="btn btn-gradient-primary btn-rounded btn-fw" onclick="openPopup2()" type="submit" name="name" value="Add new work" style="margin-top:70px;margin-left:90%; background-color:cornflowerblue;" />
+            
             <div id="myPopup2" class="popup">
                 <div class="popup-content">
-                    <span onclick="closePopup()" style="float:right;">&times;</span>
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                    <input type="file" name="name" value="" style="width:100px;height:100px;" />
+                    <span onclick="closePopup2()" style="float:right;">&times;</span>
+
+                    <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="~/Seller/img/default.jfif" alt="صورة افتراضية" width="100%" height="300px">
+                    <div>
+                        <input onchange="showButton2()" type="file" id="imageInput2" accept="image/*">
+                        <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                    </div>
                     <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
-                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="button" name="name" value="Add" style="margin-left:43%;width:200px; background-color:cornflowerblue;" />
+                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="Add" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
 
                 </div>
             </div>
@@ -466,14 +596,99 @@
         // فتح النافذة المنبثقة
         function openPopup() {
             document.getElementById("myPopup").style.display = "block";
-            document.getElementById("myPopup2").style.display = "block";
+            
         }
 
         // إغلاق النافذة المنبثقة
         function closePopup() {
             document.getElementById("myPopup").style.display = "none";
+            
+
+        }
+        function openPopup2() {
+            
+            document.getElementById("myPopup2").style.display = "block";
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closePopup2() {
+            
             document.getElementById("myPopup2").style.display = "none";
 
+        }
+        function openPopup3() {
+            document.getElementById("myPopup3").style.display = "block";
+
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closePopup3() {
+            document.getElementById("myPopup3").style.display = "none";
+
+
+        }
+        function hideButton2() {
+            const button = document.getElementById("myButton2");
+            button.style.display = "none";
+        }
+        function showButton2() {
+            const button = document.getElementById("myButton2");
+            button.style.display = "block";
+        }
+        function replaceImage2() {
+            const input = document.getElementById('imageInput2');
+            const image = document.getElementById('myImage2');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+
+            }
+        }
+        function hideButton3() {
+            const button = document.getElementById("myButton3");
+            button.style.display = "none";
+        }
+        function showButton3() {
+            const button = document.getElementById("myButton3");
+            button.style.display = "block";
+        }
+        function replaceImage3() {
+            const input = document.getElementById('imageInput3');
+            const image = document.getElementById('myImage3');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+
+            }
+        }
+        function hideButton() {
+            const button = document.getElementById("myButton");
+            button.style.display = "none";
+        }
+        function showButton() {
+            const button = document.getElementById("myButton");
+            button.style.display = "block";
+        }
+        function replaceImage() {
+            const input = document.getElementById('imageInput');
+            const image = document.getElementById('myImage');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    image.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+
+            }
         }
     </script>
     <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

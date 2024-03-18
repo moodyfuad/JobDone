@@ -1,11 +1,16 @@
 ﻿using JobDone.Models.Customer;
 using JobDone.Models.SecurityQuestions;
 using JobDone.Models.Seller;
+using JobDone.Models;
 using JobDone.Models.Category;
 using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 
 namespace JobDone.Controllers.Seller
@@ -61,16 +66,49 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            // Check if the user is logged in
+            ClaimsPrincipal claimuser = HttpContext.User;
+            if (claimuser.Identity.IsAuthenticated)
+            {
+                RedirectToAction("SignUp", "Seller");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(SellerModel seller)
+        {
+            var sel = _seller.CheckUsernameAndPasswordExists(seller);
+
+            if (sel)
+            {
+                List<Claim> claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.NameIdentifier, seller.Username)
+                };
+
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                AuthenticationProperties properties = new AuthenticationProperties()
+                {
+                    AllowRefresh = true,
+                };
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+                return RedirectToAction("Home", "Seller");
+            }
+            ViewData["ErrorMessage"] = "Invalid: User Not Found";
+
+            return View();
+        }
         public IActionResult PrivacyPolicy()
         {
             return View();
         }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         public IActionResult Home()
         {
             return View();
