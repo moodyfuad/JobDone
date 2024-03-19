@@ -56,18 +56,14 @@ namespace JobDone.Controllers.Seller
                 if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 && 
                     viewModel.Seller.Gender !=null&& viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
                 {
-
                      _seller.SignUp(viewModel.Seller);
-                     
-                    for (int i = 1; i < serviecs.Length; i++)
-                    {
-                        
+                    for (int i = 0; i < serviecs.Length - 1; i++)
+                    {                        
                         viewModel.Service.Name = serviecs[i];
                         viewModel.Service.Description = textarea[i];
                         viewModel.Service.SellerIdFk = _servise.GetSellerID();
                         _servise.AddServies(viewModel.Service);
                     }
-                    
                       return View("Login");
                 }
                 else { TempData["null"] = "Some fields are empty!!"; }
