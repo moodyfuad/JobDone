@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
 
+
 namespace JobDone.Controllers.Seller
 {
     public class SellerController : Controller
@@ -37,7 +38,9 @@ namespace JobDone.Controllers.Seller
             SignUpSellerCatgoreViewModel viewModel = new SignUpSellerCatgoreViewModel()
             {
                 SecurityQuestions = _questions.GetQuestions(),
-                Category = _category.GetCategories()
+                Category = _category.GetCategories(),
+                Service = new(),
+                Seller = new()
             };
             return View(viewModel);
         }
@@ -58,11 +61,14 @@ namespace JobDone.Controllers.Seller
                 {
                      _seller.SignUp(viewModel.Seller);
                     for (int i = 0; i < serviecs.Length - 1; i++)
-                    {                        
-                        viewModel.Service.Name = serviecs[i];
-                        viewModel.Service.Description = textarea[i];
-                        viewModel.Service.SellerIdFk = _servise.GetSellerID();
-                        _servise.AddServies(viewModel.Service);
+                    {
+                        ServiceModel service = new ServiceModel
+                        {
+                            Name = serviecs[i],
+                            Description = textarea[i],
+                            SellerIdFk = _servise.GetSellerID()
+                        };
+                        _servise.AddServies(service);
                     }
                       return View("Login");
                 }
