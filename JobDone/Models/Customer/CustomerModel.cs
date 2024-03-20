@@ -23,6 +23,11 @@ public partial class CustomerModel
     [Required]
     public string LastName { get; set; } = null!;
 
+    public string FullName()
+    {
+        return FirstName + " " + LastName;
+    }
+
     [StringLength(50)]
     [Required]
     [MinLength(3, ErrorMessage ="Username Can Not Be Less Than 3 Characters")]
