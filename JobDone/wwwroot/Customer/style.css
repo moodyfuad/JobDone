@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    /* Background gradient styles */
+    /* ... (see the original source for full code) ... */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15rem 0;
+}
+.card {
+    /* Card styles */
+    /* ... (see the original source for full code) ... */
+}
+.lock-icon {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+p {
+    font-size: 12px;
+}
+.passInput {
+    margin-top: 15px;
+    width: 80%;
+    background: transparent;
+}

@@ -125,7 +125,12 @@ namespace JobDone.Controllers.Seller
         {
             return View();
         }
-        
+
+        public IActionResult Order()
+        {
+            return View();
+        }
+
         public IActionResult RequestedWrok()
         {
             return View();
