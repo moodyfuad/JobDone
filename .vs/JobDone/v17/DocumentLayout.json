@@ -1,28 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\controllers\\customer\\customerprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\data\\jobdonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\data\\jobdonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\views\\customerrequestwork\\requestwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerrequestwork\\requestwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\viewmodels\\requestedworkviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\viewmodels\\requestedworkviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\controllers\\customer\\customerrequestworkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerrequestworkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\\u062F\u064A\u0644\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,49 +9,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 142,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CustomerRequestWorkController.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAACUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T03:10:47.636Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RequestedWorkViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "RelativeDocumentMoniker": "JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "RelativeToolTip": "JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T03:16:20.609Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RequestWork.cshtml",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T03:54:41.946Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -100,37 +49,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CustomerProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T06:28:54.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "JobDoneContext.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Data\\JobDoneContext.cs",
-              "RelativeDocumentMoniker": "JobDone\\Data\\JobDoneContext.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Data\\JobDoneContext.cs",
-              "RelativeToolTip": "JobDone\\Data\\JobDoneContext.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAC8AAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T06:22:24.775Z",
-              "EditorCaption": ""
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         },
