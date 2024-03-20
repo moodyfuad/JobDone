@@ -1,4 +1,5 @@
-﻿
+﻿@model JobDone.Models.Customer.CustomerModel;
+
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
@@ -131,10 +132,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="~/Seller/img/popular_item_3.jpg" alt="Admin" class="rounded-circle" width="150">
+                            @{
+                                string base64Image = Convert.ToBase64String(Model.ProfilePicture);
+                            }
+                            <img src="data:image/jpeg;base64,@base64Image" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                    
-                                     <h2>John Doe</h2>
+                                     <h2>@Model.Username</h2>
                                     
 
                                   
@@ -157,7 +161,7 @@
                                     <h6 class="mb-0">Full Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Kenneth Valdez
+                                @Model.FullName()
                                 </div>
                             </div>
                             <hr>
@@ -166,7 +170,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfb9b6af9fb5aab4b2aab7f1beb3">[email&nbsp;protected]</a>
+                                    @Model.Email
                                 </div>
                             </div>
                             <hr>
@@ -175,7 +179,7 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    (239) 816-9029
+                                    @Model.PhoneNumber
                                 </div>
                             </div>
                             <hr>
@@ -184,7 +188,7 @@
                                     <h6 class="mb-0">Password</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    ************
+                                    @Model.Password
                                 </div>
                             </div>
                             <hr>

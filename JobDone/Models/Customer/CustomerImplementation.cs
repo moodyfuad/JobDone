@@ -23,6 +23,7 @@ namespace JobDone.Models.Customer
     0x41, 0x49, 0x20, 0x47, 0x65, 0x6E, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x20, 0x42, 0x79, 0x20, 0x4F,
     0x70, 0x65, 0x6E, 0x41, 0x49, 0x2E, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
 
+        public CustomerModel Customer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public CustomerImplementation(JobDoneContext context, IHostingEnvironment hostingEnvironment) 
         {
@@ -37,6 +38,12 @@ namespace JobDone.Models.Customer
             _Db.SaveChanges();
         }
 
+        public CustomerModel getAllInfo(short id)
+        {
+            var customer = _customer.FirstOrDefault(x => x.Id == id);
+            return customer;
+        }
+
         public bool UsernameExist(string username)
         {
             var cu = _customer.Where(c => c.Username == username);
@@ -45,6 +52,12 @@ namespace JobDone.Models.Customer
                 return true;
             }
             else { return false; }
+        }
+
+        public short getId(string username, string password)
+        {
+            var cu = _customer.FirstOrDefault(info => info.Username == username && info.Password == password);
+            return (short)cu.Id;
         }
 
         public bool UsernameAndPasswordExists(CustomerModel customer)
