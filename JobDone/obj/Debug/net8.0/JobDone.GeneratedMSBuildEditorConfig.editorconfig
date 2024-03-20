@@ -17,203 +17,203 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JobDone
 build_property.RootNamespace = JobDone
-build_property.ProjectDir = F:\aspproject\JobDone\
+build_property.ProjectDir = C:\Users\mohof\Desktop\Files\IT\level 3\Second Term\Software Design & Development\lab\JobDone project\The Project\JobDone\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\aspproject\JobDone
+build_property.MSBuildProjectDirectory = C:\Users\mohof\Desktop\Files\IT\level 3\Second Term\Software Design & Development\lab\JobDone project\The Project\JobDone
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/aspproject/JobDone/Views/AdminManageCustomer/CustomerCRUD.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageCustomer/CustomerCRUD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VDdXN0b21lclxDdXN0b21lckNSVUQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageCustomer/CustomerServices.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageCustomer/CustomerServices.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VDdXN0b21lclxDdXN0b21lclNlcnZpY2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageCustomer/DepositMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageCustomer/DepositMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VDdXN0b21lclxEZXBvc2l0TW9uZXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageCustomer/TakeMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageCustomer/TakeMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VDdXN0b21lclxUYWtlTW9uZXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageCustomer/TransferMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageCustomer/TransferMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VDdXN0b21lclxUcmFuc2Zlck1vbmV5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageSellers/DepositMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageSellers/DepositMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VTZWxsZXJzXERlcG9zaXRNb25leS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageSellers/PostCRUD.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageSellers/PostCRUD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VTZWxsZXJzXFBvc3RDUlVELmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageSellers/SellerCRUD.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageSellers/SellerCRUD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VTZWxsZXJzXFNlbGxlckNSVUQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageSellers/TakeMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageSellers/TakeMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VTZWxsZXJzXFRha2VNb25leS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageSellers/TransferMoney.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageSellers/TransferMoney.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VTZWxsZXJzXFRyYW5zZmVyTW9uZXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/AdminManageWithdraw/WithdrawRecords.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/AdminManageWithdraw/WithdrawRecords.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYW5hZ2VXaXRoZHJhd1xXaXRoZHJhd1JlY29yZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Admin/AddAdminAccount.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Admin/AddAdminAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQWRtaW5BY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Admin/AddNewCategory.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Admin/AddNewCategory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkTmV3Q2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Admin/EditBanners.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Admin/EditBanners.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJhbm5lcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Admin/Home.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Admin/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerOrder/Chat.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerOrder/Chat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJPcmRlclxDaGF0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerOrder/OrderList.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerOrder/OrderList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJPcmRlclxPcmRlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerProfile/Edit.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerProfile/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9maWxlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerProfile/Profile.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerProfile/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJQcm9maWxlXFByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerRequestWork/EditRequest.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerRequestWork/EditRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJSZXF1ZXN0V29ya1xFZGl0UmVxdWVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerRequestWork/RequestedList.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerRequestWork/RequestedList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJSZXF1ZXN0V29ya1xSZXF1ZXN0ZWRMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/CustomerRequestWork/RequestWork.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/CustomerRequestWork/RequestWork.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJSZXF1ZXN0V29ya1xSZXF1ZXN0V29yay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/Home.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSG9tZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/Login.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/RequestedList.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/RequestedList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVxdWVzdGVkTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/RequestWork.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/RequestWork.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcUmVxdWVzdFdvcmsuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/Seller.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/Seller.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcU2VsbGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Customer/SignUp.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Customer/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Home/Index.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Home/Privacy.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerOrder/Chat.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerOrder/Chat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyT3JkZXJcQ2hhdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerOrder/Order.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerOrder/Order.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyT3JkZXJcT3JkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerProfile/AddOldWork.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerProfile/AddOldWork.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyUHJvZmlsZVxBZGRPbGRXb3JrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerProfile/Edit.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerProfile/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyUHJvZmlsZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerProfile/EditOldWork.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerProfile/EditOldWork.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyUHJvZmlsZVxFZGl0T2xkV29yay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/SellerProfile/Profile.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/SellerProfile/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyUHJvZmlsZVxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/Home.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXEhvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/Login.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/Order.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/Order.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXE9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/PrivacyPolicy.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/PrivacyPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXFByaXZhY3lQb2xpY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/RequestedWrok.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/RequestedWrok.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXFJlcXVlc3RlZFdyb2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Seller/SignUp.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Seller/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsbGVyXFNpZ25VcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Shared/Error.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Shared/_CustomerLayout.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Shared/_CustomerLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DdXN0b21lckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/_ViewImports.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/_ViewStart.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/aspproject/JobDone/Views/Shared/_Layout.cshtml]
+[C:/Users/mohof/Desktop/Files/IT/level 3/Second Term/Software Design & Development/lab/JobDone project/The Project/JobDone/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-n6k48bvvrh
