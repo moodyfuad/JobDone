@@ -1,8 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    
 }
-
-
+@model RequestedWorkViewModel;
+@if (User.Identity.IsAuthenticated && @User.FindFirst("username").Value != null)
+{
+    Model.username = User.Claims.Where(c => c.Type == "username").First().Value;
+}
 <link rel="stylesheet" href="Customerrequest/assets/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="Customerrequest/assets/vendors/css/vendor.bundle.base.css">
 <!-- endinject -->
@@ -31,10 +35,13 @@
                   <div class="card-body">
                     <h4 class="card-title">Basic form elements</h4>
                     <p class="card-description"> Basic form elements </p>
-                    <form class="forms-sample">
+                    <form class="forms-sample" asp-controller="CustomerRequestWork" asp-action="RequestWork">
+                        <input asp-for=username hidden />
                       <div class="form-group">
-                        <label for="exampleInputName1">Project name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                        <label >Project name</label>
+                        <input asp-for="OrderName" class="form-control" id="exampleInputName1" placeholder="Name">
+                            <span asp-validation-for="OrderName" class="text-danger"></span>
+                        
                       </div>
                        <br />
                         <div class="row">
@@ -42,7 +49,9 @@
                                 <div class="form-group row">
                                     <label>Order date</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control">
+                                        <input asp-for="OrderDate" type="date" value="" class="form-control">
+                                        <span asp-validation-for="OrderDate" class="text-danger"></span>
+
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +59,8 @@
                                 <div class="form-group row">
                                     <label>Delivery date</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control">
+                                        <input asp-for="DeliverDate" type="date" value="" class="form-control">
+                                        <span asp-validation-for="DeliverDate" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
@@ -58,32 +68,31 @@
                         <br />
                         <div class="form-group">
                             <label for="exampleSelectGender">Category</label>
-                            <select class="form-control" id="exampleSelectGender">
-                                <option>Programmer</option>
-                                <option>Designer</option>
+                            <select asp-for=CategoryIdKf class="form-control" id="exampleSelectGender">
+                                <option value="" hidden>Select</option>
+                                @foreach(CategoryModel category in Model.Categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
                             </select>
+                            <span asp-validation-for="CategoryIdKf" class="text-danger"></span>
                         </div>
                         <br />
                         <div class="form-group">
                             <label for="exampleTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                            <textarea asp-for=Description class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+
                         </div>
+
                         <br />
-                        <h4>Price range</h4>
+                        <h4>Price</h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label >From</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" style="width:60%;" placeholder="Enter minimum amount">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label >To</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" style="width:60%;" placeholder="Enter maximum amount">
+                                        <input asp-for=Price type="number" value="" class="form-control" style="width:60%;" placeholder="Enter Price here">
+                                        <span asp-validation-for="Price" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
