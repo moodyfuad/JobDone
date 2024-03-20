@@ -6,7 +6,7 @@ using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobDone.Models;
+namespace JobDone.Models.OrderByCustomer;
 
 [Table("OrderByCustomerModel")]
 public partial class OrderByCustomerModel

@@ -39,8 +39,10 @@ namespace JobDone.Controllers.Customer
         {
             if (_customer.UsernameAndPasswordExists(customer))
             {
+                short Id = _customer.getId(customer.Username, customer.Password);
                 List<Claim> claims = new List<Claim>()
                 {
+                    new Claim("username", customer.Username),
                     new Claim(ClaimTypes.NameIdentifier, customer.Username),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
                 };

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,11 @@ public partial class CustomerModel
     [StringLength(50)]
     [Required]
     public string LastName { get; set; } = null!;
+
+    public string FullName()
+    {
+        return FirstName + " " + LastName;
+    }
 
     [StringLength(50)]
     [Required]

@@ -5,12 +5,10 @@ using JobDone.Models.SecurityQuestions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.Metadata;
-using JobDone.Models.Customer;
-using JobDone.Models.SecurityQuestions;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using JobDone.Models.Category;
 using JobDone.Models.Seller;
 using JobDone.Models.Service;
+using JobDone.Models.OrderByCustomer;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +30,7 @@ builder.Services.AddTransient<ISecurityQuestion, SecurityQuestionsImplementation
 builder.Services.AddTransient<ISeller, SellerImplemntation>();
 builder.Services.AddTransient<ICategory, CatgegoryImplementation>();
 builder.Services.AddTransient<IServies, ServiesImplemntation>();
+builder.Services.AddTransient<IOrderByCustomer, OrderByCustomerImplementation>();
 
 var app = builder.Build();
 
@@ -49,6 +48,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Customer}/{action=SignUp}/{id?}");
+    pattern: "{controller=CustomerRequestWork}/{action=RequestedList}/{id?}");
 
 app.Run();

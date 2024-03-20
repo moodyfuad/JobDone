@@ -6,5 +6,9 @@
         bool UsernameExist(string customer) ;
         bool UsernameAndPasswordExists(CustomerModel customer);
         public byte[] ConvertToByteArray(IFormFile image);
+
+        CustomerModel getAllInfo(short id);
+
+        short getId(string username, string password);
     }
 }
