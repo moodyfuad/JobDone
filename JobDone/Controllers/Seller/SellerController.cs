@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
+using JobDone.Roles;
 
 
 namespace JobDone.Controllers.Seller
@@ -84,23 +85,22 @@ namespace JobDone.Controllers.Seller
             // Check if the user is logged in
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
-            {
-                RedirectToAction("SignUp", "Seller");
-            }
-
+                RedirectToAction("Home", "Seller");
+  
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(SellerModel seller)
-        {
-            var sel = _seller.CheckUsernameAndPasswordExists(seller);
-
-            if (sel)
+        {            
+            if (_seller.CheckUsernameAndPasswordExists(seller))
             {
+                short Id = _seller.getId(seller.Username, seller.Password);
                 List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, seller.Username)
+                    new Claim("username",seller.Username),
+                    new Claim(ClaimTypes.NameIdentifier,Id.ToString()),
+                    new Claim(ClaimTypes.Role,TypesOfUsers.Seller)
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -109,7 +109,7 @@ namespace JobDone.Controllers.Seller
                 {
                     AllowRefresh = true,
                 };
-
+                
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                 return RedirectToAction("Home", "Seller");
             }

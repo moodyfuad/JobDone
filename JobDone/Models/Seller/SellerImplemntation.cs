@@ -62,5 +62,11 @@ namespace JobDone.Models.Seller
                 return false;
             }
         }
+
+        public short getId(string username, string password)
+        {
+            var sl = _seller.FirstOrDefault(info => info.Username == username && info.Password == password);
+            return (short)sl.Id;
+        }
     }
 }
