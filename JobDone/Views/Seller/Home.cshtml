@@ -28,6 +28,25 @@
 
     <!-- Template Stylesheet -->
     <link href="seller/css/style.css" rel="stylesheet">
+
+
+
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="seller/liib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="seller/liib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="sellercss/booootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="seller/css/sstyle.css" rel="stylesheet">
+
+
+
+
+
 </head>
 
 <body>
@@ -42,7 +61,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="img/carousel-3.jpg" class="img-fluid" alt="Image">
+                    <img src="~/Seller/img/banner1.jpg" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3">
@@ -56,7 +75,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/carousel-2.jpg" class="img-fluid" alt="Image" style=width:"100%;">
+                    <img src="~/Seller/img/banner2.jpg" class="img-fluid" alt="Image" >
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 3px;">
@@ -70,7 +89,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/carousel-1.jpg" class="img-fluid" alt="Image">
+                    <img src="~/Seller/img/banner3.jpg" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 3px;">
@@ -95,178 +114,122 @@
         </div>
     </div>  </div>
 
-    <div class="container-fluid services py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5" style="max-width: 800px;">
-                <p class="fs-4 text-uppercase text-center text-primary">Our Service</p>
-                <h1 class="display-3">Spa & Beauty Services</h1>
+    <!-- Sale & Revenue Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-line fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Sale</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-1.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Sale</p>
+                        <h6 class="mb-0">$1234</h6>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-2.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-area fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-3.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="seller/img/c#.jpg" class="img-fluid rounded" alt="">
-                                </div>
-
-                            </div>
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-5.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-6.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-3.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                    <img src="img/services-1.jpg" class="img-fluid rounded" alt="">
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="services-content text-end">
-                                    <h3>Nife Bahbarah</h3>
-                                    <h5>c# project</h5>
-                                    <p>I want to make a c# project to my store  that calculate tge recipts  </p>
-                                    <p style="color:green">price : 100$  time alowed :1 month </p>
-                                    <a ="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 </div>
             </div>
         </div>
+        <br />
+        <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-line fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Sale</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Sale</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-area fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Today Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Total Revenue</p>
+                        <h6 class="mb-0">$1234</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sale & Revenue End -->
+    <!-- Sales Chart Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Worldwide Sales</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <canvas id="worldwide-sales"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Salse & Revenue</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <canvas id="salse-revenue"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sales Chart End -->
+
+
+
+
+
+
+
+
+
+
+
     </div>
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -280,6 +243,21 @@
 
     <!-- Template Javascript -->
     <script src="seller/js/maain.js"></script>
+
+
+    <script src="seller/liib/chart/chart.min.js"></script>
+    <script src="seller/liib/easing/easing.min.js"></script>
+    <script src="seller/liib/waypoints/waypoints.min.js"></script>
+    <script src="seller/liib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="seller/liib/tempusdominus/js/moment.min.js"></script>
+    <script src="seller/liib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="seller/liib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="seller/js/maain.js"></script>
+
+
+
 </body>
 
 </html>

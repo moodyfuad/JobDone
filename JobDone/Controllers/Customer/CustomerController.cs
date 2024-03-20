@@ -43,7 +43,7 @@ namespace JobDone.Controllers.Customer
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim("username", customer.Username),
-                    new Claim(ClaimTypes.NameIdentifier, customer.Username),
+                    new Claim(ClaimTypes.NameIdentifier, Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
                 };
 
