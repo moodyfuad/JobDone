@@ -1,5 +1,102 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .slideshow-container {
+            
+            position: relative;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+          
+        }
+
+        .active {
+            display: block;
+        }
+        @@keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .block {
+            width: 30%;
+            height: 200px;
+            margin: 10px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        .block:hover {
+            background-color: #ccc;
+            transform: scale(1.1);
+        }
+        .icon {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <div class="slide active">
+        <img src="/Customer/Panners/Panner1.jpg"  alt="Image 1"  style="width: 140%;height: 700px;">
+    </div>
+    <div class="slide">
+        <img src="/Customer/Panners/panner2.jpg"  alt="Image 2"  style="width: 140%;height: 700px;">
+    </div>
+    <div class="slide">
+        <img src="/Customer/Panners/panner3.jpg"  alt="Image 3"  style="width: 140%;height: 700px;">
+    </div>
+    <!-- يمكنك إضافة المزيد من الشرائح هنا -->
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div id="container" class="container">
+    <div class="block"><span class="icon"><img src="../panner4.jpg" alt="" style="width: 200px;;"></span><br>Block 1: تفاصيل 1</div>
+    <div class="block"><span class="icon">📊</span><br>Block 2: تفاصيل 2</div>
+    <div class="block"><span class="icon">📆</span><br>Block 3: تفاصيل 3</div>
+    <div class="block"><span class="icon">📇</span><br>Block 4: تفاصيل 4</div>
+    <div class="block"><span class="icon">🔒</span><br>Block 5: تفاصيل 5</div>
+    <div class="block"><span class="icon">⚙️</span><br>Block 6: تفاصيل 6</div>
+</div>
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(showSlides, 2000); // تغيير الشرائح كل 2 ثانية
+    }
+</script>
+
+</body>
+</html>
+
