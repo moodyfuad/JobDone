@@ -41,9 +41,14 @@ namespace JobDone.Controllers.Customer
             if (_customer.UsernameAndPasswordExists(customer))
             {
                 short Id = _customer.getId(customer.Username, customer.Password);
+                decimal walletAmount = await _customer.GetWalletAmount(Id);
+                string profilePicture = await _customer.GetPictureAsString(Id);
+
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim("username", customer.Username),
+                    new Claim("WalletAmount", walletAmount.ToString()),
+                    new Claim("ProfilePicture", profilePicture),
                     new Claim(ClaimTypes.NameIdentifier, Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
                 };

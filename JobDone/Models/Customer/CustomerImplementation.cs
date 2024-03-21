@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using System.Security.Claims;
 namespace JobDone.Models.Customer
 {
     public class CustomerImplementation: ICustomer
@@ -124,6 +125,22 @@ namespace JobDone.Models.Customer
                 customer.BirthDate = vmCustomer.BirthDate;
             }
 
+        }
+
+        public async Task<decimal> GetWalletAmount(short id)
+        {
+            var customer = await _customer.FirstOrDefaultAsync(w => w.Id == id);
+            return customer.Wallet;
+        }
+
+        public async Task<string> GetPictureAsString(short id)
+        {
+            var customer = await _customer.FirstOrDefaultAsync(c => c.Id == id);
+            byte[] pictureData = customer.ProfilePicture;
+
+            string ProfilePic = Convert.ToBase64String(pictureData);
+
+            return ProfilePic;
         }
     }
 }

@@ -1,6 +1,13 @@
 ﻿@using System.Security.Claims
 @using JobDone.Models.Customer
-@model CustomerImplementation
+@model CustomerModel
+
+@{
+    string username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
+    string WalletAmount = User.Claims.FirstOrDefault(c => c.Type == "WalletAmount").Value;
+    string ProfilePicture = User.Claims.FirstOrDefault(c => c.Type == "ProfilePicture").Value;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +23,14 @@
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
     </environment>
-    @{
-        ViewBag.username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
-    }
 </head>
 <body>
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" style="margin-right:0" asp-controller="CustomerProfile" asp-action="Profile"><img class="rounded-circle" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" style="width:50px; height:50px;" />
+                <a class="navbar-brand" style="margin-right:0" asp-controller="CustomerProfile" asp-action="Profile">
+                    <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />
                     </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,13 +39,8 @@
                 <div class="collapse navbar-collapse"  id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            @{
-                                if (ViewBag.username != null)
-                                {
-                                    <a class="nav-link text-light pl-0" asp-area="" asp-controller="CustomerProfile" asp-action="Profile">
-                                    <h5 style="color:gray; margin:0;padding-left:0">@@@ViewBag.username</h5></a>
-                                }
-                            }
+                            <a class="nav-link text-light pl-0" asp-area="" asp-controller="CustomerProfile" asp-action="Profile">
+                            <h5 style="color:gray; margin:0;padding-left:0">@username</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="Home"><h5>Home</h5></a>
@@ -59,20 +59,7 @@
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
                 <span style="color:white;margin-left:10px;">
-                    @{
-                        if (ViewBag.Wallet == null)
-                        {
-                            <span>$0</span>
-
-                        }
-                        else
-                        {
-                            <span>$@ViewBag.Wallet</span>
-                            
-                        }
-                    }
-                    
-                    
+                    @WalletAmount
                 </span>
                 
                 <h5 style="color:white;margin-left:70px">Logo</h5>
