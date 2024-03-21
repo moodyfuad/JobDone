@@ -69,6 +69,8 @@
             <label>User name</label>
             <input asp-for="@Model.Username" placeholder="Enter User name" required />
             <span asp-validation-for="Username" class="text-danger"></span>
+            @if(TempData["exist"] != null) {
+                <span class="text-danger">@TempData["exist"]</span> }
 
         </div>
         <div class="input-box">

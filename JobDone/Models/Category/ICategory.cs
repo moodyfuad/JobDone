@@ -3,5 +3,6 @@
     public interface ICategory
     {
         List<CategoryModel> GetCategories();
+        string GetCategoryById(int id);
     }
 }

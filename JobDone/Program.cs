@@ -9,6 +9,8 @@ using JobDone.Models.Category;
 using JobDone.Models.Seller;
 using JobDone.Models.Service;
 using JobDone.Models.OrderByCustomer;
+using Microsoft.AspNetCore.Mvc;
+using JobDone.Models.Order;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +23,13 @@ builder.Services.AddDbContext<JobDoneContext>(options =>
     options.UseSqlServer(connectionString));
 
 //Cookie Authentication
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+     o => {
+         o.ExpireTimeSpan = TimeSpan.FromDays(364);
+         o.LoginPath = "/Customer/LogIn";
+         o.Cookie.Name = "JobDoneLogin";
+        });
+     
 //interface regestration
 builder.Services.AddTransient<IAdmin, AdminImplementation>();
 builder.Services.AddTransient<ICustomer, CustomerImplementation>();
@@ -31,6 +38,7 @@ builder.Services.AddTransient<ISeller, SellerImplemntation>();
 builder.Services.AddTransient<ICategory, CatgegoryImplementation>();
 builder.Services.AddTransient<IServies, ServiesImplemntation>();
 builder.Services.AddTransient<IOrderByCustomer, OrderByCustomerImplementation>();
+builder.Services.AddTransient<IOrder, OrderImplementation>();
 
 var app = builder.Build();
 
@@ -48,6 +56,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=CustomerRequestWork}/{action=RequestedList}/{id?}");
+    pattern: "{controller=CustomerOrder}/{action=OrderList}/{id?}");
 
 app.Run();

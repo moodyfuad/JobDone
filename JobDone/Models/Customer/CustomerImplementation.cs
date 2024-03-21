@@ -2,6 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using JobDone.Roles;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 namespace JobDone.Models.Customer
 {
     public class CustomerImplementation: ICustomer
@@ -92,5 +96,6 @@ namespace JobDone.Models.Customer
             }
             
         }
+
     }
 }

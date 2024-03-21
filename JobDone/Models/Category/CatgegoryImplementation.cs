@@ -17,5 +17,10 @@ namespace JobDone.Models.Category
         {
             return _category.ToList();
         }
+
+        public string GetCategoryById(int id)
+        {
+            return _category.FirstOrDefault(c => c.Id == id).Name ?? "Category Not Specified";
+        }
     }
 }

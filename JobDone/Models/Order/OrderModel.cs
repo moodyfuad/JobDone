@@ -6,7 +6,7 @@ using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobDone.Models;
+namespace JobDone.Models.Order;
 
 [Table("OrderModel")]
 [Index("Id", Name = "IX_OrderModel")]

@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
+@model List<CustomerOrdersViewModel>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +75,7 @@
             display: inline-block;
             position: relative;
             width: 1.1em;
+            color: gold;
         }
 
         .rating > span:hover:before,
@@ -90,162 +92,67 @@
     <div class="container" style="margin-top:120px;">
         <div class="row">
             <div class="col-xl-8">
-                <div class="card border shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="~/Customer/Picture/صوره.jpg" alt class="avatar-lg rounded">
-                            </div>
-                            <div class="flex-grow-1 align-self-center overflow-hidden">
-                                <div>
-                                    
-                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">Salmeen Awad </a></h2>
-                                    <div class="rating" style="margin-right:590px;">
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                    </div>
-                                    <br />
-                                    <h5 class="mb-0 mt-1">Order description : <span class="fw-medium">blablablabla</span></h5>
-                                    <br />
-                                </div>
-                            </div>
+                @{
+                    if (Model.Count != 0)
+                    {
+                        foreach (var order in Model)
+                        {
+                            <div class="card border shadow-none">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start border-bottom pb-3">
+                                        <div class="me-4">
+                                            <img src="data:image/jpeg;base64,@order.SellerPicture" alt="Image" class="avatar-lg rounded">
+                                        </div>
+                                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                                            <div>
+                                                <div style ="display:flex; flex-direction:row; justify-content:center; align-items:start">
+                                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">@order.SellerName</a></h2>
+                                                    <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : <span class="fw-medium">@order.ProjectName</span></h5>
 
-                            
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Payment amount</p>
-                                        <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>$450</h5>
+                                                </div>
+                                                <h2 class="text-truncate font-size-18"><a href="#" style="color:gray">@@@order.Username</a></h2>
+                                                <div class="rating" style="margin-right:590px; margin-left:70px; display:flex; gap:4px">
+                                                    @for(int i = 0; i < @order.Rate;i++){
+                                                                <span>&#9733;</span>
+                                                    }
+                                                </div>
+                                                <h5 class="mb-0 mt-1">Order description : <h6  class="fw-medium">@order.OrderDescription</h6></h5>
+                                                <br />
+                                            </div>
+                                        </div>
+
+
                                     </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="mt-3" style="margin-left:40px;">
-                                        <p class="text-muted mb-2">Order date</p>
-                                        <div class="d-inline-flex">
-                                             <h5>1/1/2024</h5>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mt-3">
+                                                    <p class="text-muted mb-2">Payment amount</p>
+                                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>$@order.Price</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="mt-3" style="margin-left:40px;">
+                                                    <p class="text-muted mb-2">Order date</p>
+                                                    <div class="d-inline-flex">
+                                                        <h5>@order.OrderDate</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mt-3">
+                                                    <p class="text-muted mb-2">Delivery date</p>
+                                                    <h5>@order.DeliverDate</h5>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Delivery date</p>
-                                        <h5>30/1/2024</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="~/Customer/Picture/صوره.jpg" alt class="avatar-lg rounded">
-                            </div>
-                            <div class="flex-grow-1 align-self-center overflow-hidden">
-                                <div>
-
-                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">Salmeen Awad </a></h2>
-                                    <div class="rating" style="margin-right:590px;">
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                    </div>
-                                    <br />
-                                    <h5 class="mb-0 mt-1">Order description : <span class="fw-medium">blablablabla</span></h5>
-                                    <br />
-                                </div>
                             </div>
 
-
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Payment amount</p>
-                                        <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>$450</h5>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="mt-3" style="margin-left:40px;">
-                                        <p class="text-muted mb-2">Order date</p>
-                                        <div class="d-inline-flex">
-                                            <h5>1/1/2024</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Delivery date</p>
-                                        <h5>30/1/2024</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card border shadow-none">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start border-bottom pb-3">
-                            <div class="me-4">
-                                <img src="~/Customer/Picture/صوره.jpg" alt class="avatar-lg rounded">
-                            </div>
-                            <div class="flex-grow-1 align-self-center overflow-hidden">
-                                <div>
-
-                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">Salmeen Awad </a></h2>
-                                    <div class="rating" style="margin-right:590px;">
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                        <span>&#9733;</span>
-                                    </div>
-                                    <br />
-                                    <h5 class="mb-0 mt-1">Order description : <span class="fw-medium">blablablabla</span></h5>
-                                    <br />
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Payment amount</p>
-                                        <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>$450</h5>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="mt-3" style="margin-left:40px;">
-                                        <p class="text-muted mb-2">Order date</p>
-                                        <div class="d-inline-flex">
-                                            <h5>1/1/2024</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Delivery date</p>
-                                        <h5>30/1/2024</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                        }
+                    }
+                }
                 <div class="row my-4">
                     <div class="col-sm-6">
                         <a asp-controller="Customer" asp-action="Home" class="btn btn-link text-muted">
@@ -267,18 +174,18 @@
                                     <tbody>
                                         <tr>
                                             <td>Total cost for services</td>
-                                            <td class="text-end">$ 780</td>
+                                            <td class="text-end">$@ViewBag.TotalServicePrice</td>
                                         </tr>
                                         <tr>
                                             <td>Total website taxes </td>
-                                            <td class="text-end">$ 120</td>
+                                            <td class="text-end">$@ViewBag.TotalTaxesPrice</td>
                                         </tr>
                                        
                                         <tr class="bg-light">
                                             <th>Total payment :</th>
                                             <td class="text-end">
                                                 <span class="fw-bold">
-                                                    $ 900
+                                                    $@ViewBag.TotalPayment
                                                 </span>
                                             </td>
                                         </tr>
@@ -290,7 +197,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </>
 
     </div>
 

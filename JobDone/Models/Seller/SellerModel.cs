@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using JobDone.Models.Category;
+using JobDone.Models.Order;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.EntityFrameworkCore;
 

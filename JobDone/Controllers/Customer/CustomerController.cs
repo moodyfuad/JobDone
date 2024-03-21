@@ -96,38 +96,19 @@ namespace JobDone.Controllers.Customer
                 if (!_customer.UsernameExist(customer.Username))
                 {
                     _customer.SignUp(customer);
-                    HttpContext.Session.SetString("username", customer.Username);
+                    SignInCustomerAuthCookie(customer);
                     return RedirectToAction("Home","Customer");
                 }
             }
-                return View(viewModel);
+            TempData["exist"] = $"Username '@{viewModel.Username}' already exist";
+            return View(viewModel);
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Home()
         {
             return View();
-        } 
-
-        //Previoues Code by (Mohammed Bamtrf)
-        //public IActionResult Home()
-        //{
-        //    try
-        //    {
-        //        string? SessionInfo = HttpContext.Session.GetString("username");
-        //        if (SessionInfo != null &&
-        //            _customer.UsernameExist(SessionInfo))
-        //        {
-        //            ViewBag.username = SessionInfo;
-        //            return View();
-        //        }
-        //        return RedirectToAction("Login");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("Login");
-        //    }
-        //}
+        }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Order()
@@ -146,6 +127,25 @@ namespace JobDone.Controllers.Customer
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
+        }
+
+        private async void SignInCustomerAuthCookie(CustomerModel model)
+        {
+            List<Claim> claims = new List<Claim>()
+                {
+                    new Claim("username", model.Username),
+                    new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
+                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
+                };
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+
+            };
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
         }
 
     }

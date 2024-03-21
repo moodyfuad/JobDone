@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Controllers.Customer
 {
+    [Authorize(Roles = TypesOfUsers.Customer)]
     public class CustomerRequestWorkController : Controller
     {
         private readonly ICategory _categories;
