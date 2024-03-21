@@ -79,32 +79,95 @@
               "Name": "ST:141:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RequestWork.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestWork.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-18T12:41:00.967Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PrivacyPolicy.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:11:53.809Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Login.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Seller\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:12:17.322Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_SellerLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_SellerLayout.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_SellerLayout.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_SellerLayout.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Shared\\_SellerLayout.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAB4AAAB4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-20T18:11:13.875Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAgwBwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:57:26.865Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OrderList.cshtml",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
+              "ViewState": "AQIAAAgBAAAAAAAAAAAgwCoBAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-13T23:00:26.258Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAEwGIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T20:40:35.513Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
