@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
 using JobDone.Roles;
+using JobDone.Models.Order;
 
 
 namespace JobDone.Controllers.Seller
@@ -138,6 +139,13 @@ namespace JobDone.Controllers.Seller
 
         public IActionResult Order()
         {
+            ViewBag.OrderCount = _seller.OrderCount(SellerID());
+
+
+            List<OrderModel> orders = _seller.orderModels(SellerID());
+                
+            ViewData["data"] = orders.ToList();
+
             return View();
         }
 
