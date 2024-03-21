@@ -13,5 +13,8 @@ namespace JobDone.Models.Seller
         public IFormFile ConvertToImage(byte[] byteImage);
 
         SellerModel GetSellerById(int id);
+        short getId(string username, string password);
+        decimal GetWallet(int id);
+        int GetRemainingWork(int id);
     }
 }
