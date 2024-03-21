@@ -184,99 +184,104 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Password</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Model.Password
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="row">
                                 <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <button class="btn btn-info" onclick="openPopup()">Edit</button>
                                         <div id="myPopup" class="popup">
-
-
                                             <div class="popup-content">
-                                                <span onclick="closePopup()" style="float:right;">&times;</span>
+                                                <form method="post" asp-action="Edit" enctype="multipart/form-data">
+                                                    <span onclick="closePopup()" style="float:right;">×</span>
+                                                    <img src="data:image/jpeg;base64,@base64Image" id="myImage" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
+                                                    <div>
+                                                        @{
+                                                            IFormFile? profilePictureAsFile = null;
+                                                        }
+                                                        <input onchange="handleFileUpload(event)" name="profilePictureAsFile" type="file" id="imageInput" accept="image/*">
+                                                    </div>
+                                                    <br /><br /><br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Username</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" name="Username" asp-for="Username" value="@Model.Username" placeholder="Enter your Username" />
+                                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">First Name</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" name="FirstName" asp-for="FirstName" value="@Model.FirstName" placeholder="Enter your first name" />
+                                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Last Name</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" name="LastName" asp-for="LastName" value="@Model.LastName" placeholder="Enter your last name" />
+                                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Email</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="email" name="Email" asp-for="Email" value="@Model.Email" placeholder="Enter your Email" />
+                                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Phone</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="text" name="PhoneNumber" asp-for="PhoneNumber" value="@Model.PhoneNumber" placeholder="Enter your phone number" />
+                                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">OldPassword</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="password" name="Password" asp-for="Password" value="" placeholder="Enter your password" />
+                                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">NewPassword</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            @{string NewPassword = null;}
+                                                            <input type="password" name="NewPassword"  value="" placeholder="Enter your password" />
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Birthdate</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-secondary">
+                                                            <input type="date" name="BirthDate" asp-for="BirthDate" value="@Model.BirthDate.ToString("yyyy-MM-dd")" placeholder="Enter your Birthdate" />
+                                                        </div>
+                                                    </div>
+                                                    <br /><br />
 
-                                                <img src="~/Seller/img/popular_item_3.jpg" id="myImage" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
-                                                <div>
-                                                    <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
-                                                    <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:40%; margin-top:20px;">Sure</button>
-                                                </div>
-                                                <br /><br /><br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Username</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="name" value="" placeholder="Enter your Username" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Full Name</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="name" value="" placeholder="Enter your name" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Email</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="email" name="name" value="" placeholder="Enter your Email" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Phone</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="name" value="" placeholder="Enter your phone number" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Password</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="password" name="name" value="" placeholder="Enter your password" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Category</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="name" value="" placeholder="Enter your category" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Services</h6>
-                                                    </div>
-                                                    <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="name" value="" placeholder="Enter your services" />
-                                                    </div>
-                                                </div>
-                                                <br /><br />
-
-
-                                                <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
-
+                                                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -315,18 +320,13 @@
         const button = document.getElementById("myButton");
         button.style.display = "block";
     }
-    function replaceImage() {
-        const input = document.getElementById('imageInput');
-        const image = document.getElementById('myImage');
-
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                image.src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]);
-
-        }
+    function handleFileUpload(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('myImage').src = e.target.result; // Update the preview image with the selected file
+        };
+        reader.readAsDataURL(file);
     }
 </script>
 

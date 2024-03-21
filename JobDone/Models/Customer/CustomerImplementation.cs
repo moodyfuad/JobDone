@@ -92,5 +92,37 @@ namespace JobDone.Models.Customer
             }
             
         }
+        public void ApplyChangesToCustomer(ref CustomerModel customer, CustomerModel vmCustomer)
+        {
+            if (customer.Username != vmCustomer.Username)
+            {
+                customer.Username = vmCustomer.Username;
+            }
+
+            if (customer.FirstName != vmCustomer.FirstName)
+            {
+                customer.FirstName = vmCustomer.FirstName;
+            }
+
+            if (customer.LastName != vmCustomer.LastName)
+            {
+                customer.LastName = vmCustomer.LastName;
+            }
+
+            if (customer.Email != vmCustomer.Email)
+            {
+                customer.Email = vmCustomer.Email;
+            }
+
+            if (customer.PhoneNumber != vmCustomer.PhoneNumber)
+            {
+                customer.PhoneNumber = vmCustomer.PhoneNumber;
+            }
+
+            if (customer.BirthDate != vmCustomer.BirthDate)
+            {
+                customer.BirthDate = vmCustomer.BirthDate;
+            }
+        }
     }
 }
