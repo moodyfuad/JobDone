@@ -4,6 +4,7 @@ using JobDone.Models;
 using JobDone.Models.Admin;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
+using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SecurityQuestions;
 using Microsoft.EntityFrameworkCore;
