@@ -1,5 +1,6 @@
 ﻿using JobDone.Data;
 using JobDone.Models.Customer;
+using JobDone.Models.Order;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace JobDone.Models.Seller
     public class SellerImplemntation : ISeller
     {
         private readonly DbSet<SellerModel> _seller;
+        private readonly DbSet<OrderModel> _order;
         private readonly JobDoneContext _Db;
         
         public SellerImplemntation(JobDoneContext context)
         {
             _seller = context.SellerModels;
+            _order = context.OrderModels;
             _Db = context;
         }
 
@@ -102,6 +105,18 @@ namespace JobDone.Models.Seller
                 FormFile image = new FormFile(memoryStream, 0, memoryStream.Length, "picture.jpj", "image/jpeg");
                 return image;
             }
+        }
+
+        public int AveilabelRReqest(int sellerId)
+        {
+            SellerModel seller = _seller.FirstOrDefault(s => s.Id==sellerId);
+            int categoryfk = seller.CategoryIdFk; 
+           return _Db.OrderByCustomerModels.Where(x => x.CategoryIdKf == categoryfk).Count();
+        }
+
+        public Decimal Totalgains(int sellerId)
+        {
+            return _order.Where(x => x.SellerIdFk == sellerId).Sum(x => x.Price) ;
         }
     }
 }

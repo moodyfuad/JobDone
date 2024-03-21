@@ -124,17 +124,15 @@ namespace JobDone.Controllers.Seller
         [HttpGet]
         public IActionResult Home()
         {
-            int sellerId;
-            bool isParsed = int.TryParse(ClaimTypes.NameIdentifier, out sellerId);
+            var x = _seller.GetRemainingWork(SellerID()); ;
+                ViewBag.xxx = x.ToString();
 
-            if (isParsed)
-            {
-                var x = _seller.GetRemainingWork(sellerId);
-            }
-            
-            //var x = _seller.GetRemainingWork(Convert.ToInt32(ClaimTypes.NameIdentifier));
-            // ViewBag.ReminingWork = x.ToString();
-            //decimal Palnse = _seller.GetWallet(Convert.ToInt32(ClaimTypes.NameIdentifier));
+            var aveilabelReqest = _seller.AveilabelRReqest(SellerID());
+            ViewBag.aveilabelReqest = aveilabelReqest;
+
+            var Totalgains = _seller.Totalgains(SellerID());
+            ViewBag.Totalgains = Totalgains;
+
             return View();
         }
 
@@ -146,6 +144,11 @@ namespace JobDone.Controllers.Seller
         public IActionResult RequestedWrok()
         {
             return View();
+        }
+
+        private int SellerID()
+        {
+            return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
 
     }
