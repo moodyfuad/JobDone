@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
+@model JobDone.ViewModels.HomeViewModel
 
 <!-- Custom styles for this template -->
 <link href="~/Customer/cus.css" rel="stylesheet">
@@ -41,43 +42,28 @@
     
 <main>
 
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-           <img class="bd-placeholder-img" src="~/Customer/Panners/Panner1.jpg" alt="Alternate Text" width="100%" height="100%" />
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
+            {
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@banner.index" @(banner.index == 0 ? "class=active" : "") aria-current="true" aria-label="Slide @(banner.index + 1)"></button>
+            }
         </div>
-      </div>
-      <div class="carousel-item">
-                    <img class="bd-placeholder-img" src="~/Customer/Panners/panner2.jpg" alt="Alternate Text" width="100%" height="100%" />
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
+        <div class="carousel-inner">
+            @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
+            {
+                <div class="carousel-item @(banner.index == 0 ? "active" : "")">
+                    <img class="bd-placeholder-img" src="data:image/jpeg;base64,@(Convert.ToBase64String(banner.banner.Picture))" alt="Alternate Text" width="100%" height="100%" />
+                    <div class="container">
+                        <div class="carousel-caption @(banner.index == 2 ? "text-end" : "text-start")">
+                            <h1>As</h1>
+                            <p>SS</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">@(banner.index == 0 ? "Sign up today" : (banner.index == 1 ? "Learn more" : "Browse gallery"))</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-      </div>
-      <div class="carousel-item">
-                    <img class="bd-placeholder-img" src="~/Customer/Panners/panner3.jpg" alt="Alternate Text" width="100%" height="100%" />
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,92 +91,35 @@
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-      <div class="col-lg-4">
-                  <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
-        <div class="rating">
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-            <span>&#9733;</span>
-        </div>
-        <h2>Ahmed Saeed</h2>
-        <h5>Programmer</h5>
-        <p>C#,Python,JS</p>
-        <p><a class="btn btn-secondary" href="#">Visit</a></p>
-
-     </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
-            <div class="rating">
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <h2>Ahmed Saeed</h2>
-            </div>
-                <h5>Programmer</h5>
-                <p>C#,Python,JS</p>
-                <p><a class="btn btn-secondary" href="#">Visit</a></p>
-            </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
-            <div class="rating">
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-            </div>
-                <h2>Ahmed Saeed</h2>
-                <h5>Programmer</h5>
-                <p>C#,Python,JS</p>
-                <p><a class="btn btn-secondary" href="#">Visit</a></p>
-            </div><!-- /.col-lg-4 -->
+            @foreach (var seller in Model.Sellers)
+            {
                 <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
+                    @{
+                        string base64Image = Convert.ToBase64String(seller.ProfilePicture);
+                    }
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="data:image/png;base64,@base64Image" alt="Profile image" />
                     <div class="rating">
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
+                        @for(short i = 0; i < seller.Rate; i++)
+                        {
+                            <span>&#9733;</span>
+                        }
                     </div>
-                    <h2>Ahmed Saeed</h2>
-                    <h5>Programmer</h5>
-                    <p>C#,Python,JS</p>
+                    @{
+                        string FullName = seller.FirstName + " " + seller.LastName;
+                    }
+                    <h2>@FullName</h2>
+                    <h5>@seller.CategoryIdFkNavigation.Name</h5>
+                    @foreach (var service in Model.Services.Where(s => s.Id == seller.Id))
+                    {
+                        <p>@service.Name @if (!service.Equals(Model.Services.Last(s => s.Id == seller.Id)))
+                            {
+                                <text>,</text>
+                            }</p>
+                    }
                     <p><a class="btn btn-secondary" href="#">Visit</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
-                    <div class="rating">
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                    </div>
-                    <h2>Ahmed Saeed</h2>
-                    <h5>Programmer</h5>
-                    <p>C#,Python,JS</p>
-                    <p><a class="btn btn-secondary" href="#">Visit</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" />
-                    <div class="rating">
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                        <span>&#9733;</span>
-                    </div>
-                    <h2>Ahmed Saeed</h2>
-                    <h5>Programmer</h5>
-                    <p>C#,Python,JS</p>
-                    <p><a class="btn btn-secondary" href="#">Visit</a></p>
-                </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+                </div>
+            }
+    </div>
 
 </div>
     

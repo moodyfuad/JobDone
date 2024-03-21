@@ -11,6 +11,8 @@ using JobDone.Models.Service;
 using JobDone.Models.OrderByCustomer;
 using Microsoft.AspNetCore.Mvc;
 using JobDone.Models.Order;
+using JobDone.ViewModels;
+using JobDone.Models.Banners;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +33,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         });
      
 //interface regestration
+builder.Services.AddTransient<IBanner, BannerImplementation>();
 builder.Services.AddTransient<IAdmin, AdminImplementation>();
 builder.Services.AddTransient<ICustomer, CustomerImplementation>();
 builder.Services.AddTransient<ISecurityQuestion, SecurityQuestionsImplementation>();

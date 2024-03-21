@@ -118,5 +118,10 @@ namespace JobDone.Models.Seller
         {
             return _order.Where(x => x.SellerIdFk == sellerId).Sum(x => x.Price) ;
         }
+
+        public async Task<IEnumerable<SellerModel>> getAllTheSeller()
+        {
+            return await _seller.Include("CategoryIdFkNavigation").ToListAsync();
+        }
     }
 }

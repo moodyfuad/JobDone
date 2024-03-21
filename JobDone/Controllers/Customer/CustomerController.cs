@@ -10,6 +10,12 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using JobDone.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json.Linq;
+using JobDone.Models.Seller;
+using JobDone.Models.Category;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using JobDone.Models.Service;
+using JobDone.Models.Admin;
+using JobDone.Models.Banners;
 
 
 namespace JobDone.Controllers.Customer
@@ -19,11 +25,17 @@ namespace JobDone.Controllers.Customer
 
         private readonly ICustomer _customer;
         private readonly ISecurityQuestion _questions;
+        private readonly ISeller _seller;
+        private readonly IServies _services;
+        private readonly IBanner _banner;
 
-        public CustomerController(ICustomer customer, ISecurityQuestion questions)
+        public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner)
         {
             _customer = customer;
             _questions = questions;
+            _seller = seller;
+            _services = services;
+            _banner = banner;
         }
 
         [HttpGet]
@@ -110,11 +122,21 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
 
-        [Authorize(Roles = TypesOfUsers.Customer)]
-        public IActionResult Home()
+        public async Task<IActionResult> Home()
         {
-            return View();
+            IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
+            IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
+            IEnumerable<BannerModel> listOfBanners = await _banner.getAllBanners();
+            HomeViewModel viewModel = new HomeViewModel()
+            {
+                Sellers = listOfSellers,
+                Services = listOfServices,
+                Bans = listOfBanners
+            };
+
+            return View(viewModel);
         }
+
 
         [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Order()

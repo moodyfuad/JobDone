@@ -18,5 +18,7 @@ namespace JobDone.Models.Seller
         int GetRemainingWork(int id);
         int AveilabelRReqest(int sellerId);
         Decimal Totalgains(int sellerId);
+
+        public Task<IEnumerable<SellerModel>> getAllTheSeller();
     }
 }

@@ -37,5 +37,7 @@ namespace JobDone.Models.Service
         {
             SaveServiesINDB(service);
         }
+
+        public async Task<IEnumerable<ServiceModel>> getAllServices() => await _services.ToListAsync();
     }
 }
