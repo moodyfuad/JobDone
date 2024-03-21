@@ -1,166 +1,195 @@
-﻿
-<html>
- <body>
-
-  <div class="row">
-    <div class="col-xl-8 col-sm-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body px-0 overflow-auto">
-                <h2 style="align-self" class="card-title pl-4">Accepted Orders </h2>
-                <div class="table-responsive"  >
-                    <table  class="table" style="width:100%" >
-                        <thead class="bg-light" >
-                            <tr>
-                                <th>Customer</th>
-                                <th>Order Name</th>
-                                <th>deleiver date</th>
-                                <th>order date</th>
-                                <th>order state</th>
-                                <th>service price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                            <img  src= "~/Seller/img/face2.jpg" alt="image" style="border-radius: 50%" width="50" height="50" />
-                                            <br />
-                                        <div class="table-user-name ml-3">
-                                            <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                           
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>c# project</td>
-                                <td>11/11/2024</td>
-                                <td>11/10/2024</td>
-                                <td>progress</td>
-
-                                
-                                    <div class="badge badge-inverse-success"> Completed </div>
-                                </td>
-                                <td>$ 77.99</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="~/Seller/img/face2.jpg" alt="image" style="border-radius: 50%" width="50" height="50" />
-                                            <br />
-                                            <div class="table-user-name ml-3">
-                                                <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>c# project</td>
-                                    <td>11/11/2024</td>
-                                    <td>11/10/2024</td>
-                                    <td>progress</td>
+﻿@{
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
 
 
-                                    <div class="badge badge-inverse-success"> Completed </div>
-                                    </td>
-                                    <td>$ 77.99</td>
-                                </tr>
-                            <tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="~/Seller/img/face2.jpg" alt="image" style="border-radius: 50%" width="50" height="50" />
-                                            <br />
-                                            <div class="table-user-name ml-3">
-                                                <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
 
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>c# project</td>
-                                    <td>11/11/2024</td>
-                                    <td>11/10/2024</td>
-                                    <td>progress</td>
-
-
-                                    <div class="badge badge-inverse-success"> Completed </div>
-                                    </td>
-                                    <td>$ 77.99</td>
-                                </tr>
-                            <tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="~/Seller/img/face2.jpg" alt="image" style="border-radius: 50%" width="50" height="50" />
-                                            <br />
-                                            <div class="table-user-name ml-3">
-                                                <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>c# project</td>
-                                    <td>11/11/2024</td>
-                                    <td>11/10/2024</td>
-                                    <td>progress</td>
-
-
-                                    <div class="badge badge-inverse-success"> Completed </div>
-                                    </td>
-                                    <td>$ 77.99</td>
-                                </tr>
-                            <tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="~/Seller/img/face2.jpg" alt="image" style="border-radius: 50%" width="50" height="50" />
-                                            <br />
-                                            <div class="table-user-name ml-3">
-                                                <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>c# project</td>
-                                    <td>11/11/2024</td>
-                                    <td>11/10/2024</td>
-                                    <td>progress</td>
-
-
-                                    <div class="badge badge-inverse-success"> Completed </div>
-                                    </td>
-                                    <td>$ 77.99</td>
-                                </tr>
-                        </tbody>
-                    </table>
+<div class="container-fluid services py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center mb-5" style="max-width: 800px;">
+            <h1 class="display-3">Orders</h1>
+            <p class="fs-4  text-center text-primary">Accept Our Client Orders </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a class="text-black mt-3 d-block pl-4" href="#">
-                    <span class="font-weight-medium h6">View all order history</span>
-                    <i class="mdi mdi-chevron-right"></i>
-                </a>
             </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+
+                        </div>
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                <img src="~/Seller/img/pesonal.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="services-content text-end">
+                                <h2>c# project</h2>
+                                <h5>Nife Bahbarah</h5>
+                                <p>Order Date : 11/10/2024</p>
+                                <p>I want to make a c# project to my store  that calculate tge recipts  </p>
+                                <p style="color:green">price : 100$  time alowed :1 month </p>
+                                <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
+                                <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-        <script src="seller/aassets/vendors/chart.js/Chart.min.js"></script>
-        <script src="seller/aassets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.resize.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.categories.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.fillbetween.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.stack.js"></script>
-        <script src="seller/aassets/vendors/flot/jquery.flot.pie.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-        <script src="seller/aassets/js/off-canvas.js"></script>
-        <script src="seller/aassets/js/hoverable-collapse.js"></script>
-        <script src="seller/aassets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-        <script src="seller/aassets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
-
- </body>    
-</html>
+</div>
+    </div>

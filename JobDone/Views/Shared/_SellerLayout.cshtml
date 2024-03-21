@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - JobDone</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/JobDone.styles.css" asp-append-version="true" />
+
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="SellerProfile" asp-action="Profile"><img class="rounded-circle" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" style="width:50px; height:50px;" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="Home"><h5>Home</h5></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="Order"><h5>Order</h5></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="RequestedWrok"><h5>Request Services</h5></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
+                <span style="color:white;margin-left:10px;">5000</span>
+                @{
+                    if (ViewBag.username != null)
+                    {
+                        <h5 style="color:white;margin-left:70px">Hello : @ViewBag.username </h5>
+                    }
+                }
+                <h5 style="color:white;margin-left:70px">Logo</h5>
+
+
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container-fluid" style="margin-top:29px;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+
+    <!-- FOOTER -->
+    <footer class="container-fluid">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>Copyright to Jabdone <a href="~/PrivacyPolicy.html">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+</body>
+</html>

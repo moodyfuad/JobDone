@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+}
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -51,7 +59,7 @@
 
 <body>
 
-
+    <br /><br />
     <div class="container-fluid carousel-header px-0">
         <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
@@ -61,7 +69,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="~/Seller/img/banner1.jpg" class="img-fluid" alt="Image">
+                    <img src="~/Seller/img/banner1.jpg" style="width:100%;" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3">
@@ -75,7 +83,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="~/Seller/img/banner2.jpg" class="img-fluid" alt="Image" >
+                    <img src="~/Seller/img/banner2.jpg" style="width:100%;" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 3px;">
@@ -88,8 +96,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="carousel-item">
-                    <img src="~/Seller/img/banner3.jpg" class="img-fluid" alt="Image">
+                    <img src="~/Seller/img/banner3.jpg" style="width:100%;" class="img-fluid" alt="Image">
                     <div class="carousel-caption">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 3px;">
@@ -130,8 +139,8 @@
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fa fa-chart-bar fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Total Sale</p>
-                        <h6 class="mb-0">$1234</h6>
+                        <p class="mb-2">ReminingWork</p>
+                        <h6 class="mb-0">@ViewBag.ReminingWork</h6>
                     </div>
                 </div>
             </div>
@@ -139,7 +148,7 @@
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                     <i class="fa fa-chart-area fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Today Revenue</p>
+                        <p class="mb-2">Available services</p>
                         <h6 class="mb-0">$1234</h6>
                     </div>
                 </div>
@@ -155,46 +164,9 @@
             </div>
         </div>
         <br />
-        <div class="row g-4">
-            <div class="col-sm-6 col-xl-3">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-line fa-3x text-primary"></i>
-                    <div class="ms-3">
-                        <p class="mb-2">Today Sale</p>
-                        <h6 class="mb-0">$1234</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                    <div class="ms-3">
-                        <p class="mb-2">Total Sale</p>
-                        <h6 class="mb-0">$1234</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-area fa-3x text-primary"></i>
-                    <div class="ms-3">
-                        <p class="mb-2">Today Revenue</p>
-                        <h6 class="mb-0">$1234</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                    <div class="ms-3">
-                        <p class="mb-2">Total Revenue</p>
-                        <h6 class="mb-0">$1234</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Sale & Revenue End -->
+
+
     <!-- Sales Chart Start -->
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">

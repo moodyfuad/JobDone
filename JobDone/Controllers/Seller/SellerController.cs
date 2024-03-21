@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
+using JobDone.Roles;
+
 
 namespace JobDone.Controllers.Seller
 {
@@ -37,7 +39,9 @@ namespace JobDone.Controllers.Seller
             SignUpSellerCatgoreViewModel viewModel = new SignUpSellerCatgoreViewModel()
             {
                 SecurityQuestions = _questions.GetQuestions(),
-                Category = _category.GetCategories()
+                Category = _category.GetCategories(),
+                Service = new(),
+                Seller = new()
             };
             return View(viewModel);
         }
@@ -58,11 +62,14 @@ namespace JobDone.Controllers.Seller
                 {
                      _seller.SignUp(viewModel.Seller);
                     for (int i = 0; i < serviecs.Length - 1; i++)
-                    {                        
-                        viewModel.Service.Name = serviecs[i];
-                        viewModel.Service.Description = textarea[i];
-                        viewModel.Service.SellerIdFk = _servise.GetSellerID();
-                        _servise.AddServies(viewModel.Service);
+                    {
+                        ServiceModel service = new ServiceModel
+                        {
+                            Name = serviecs[i],
+                            Description = textarea[i],
+                            SellerIdFk = _servise.GetSellerID()
+                        };
+                        _servise.AddServies(service);
                     }
                       return View("Login");
                 }
@@ -78,23 +85,22 @@ namespace JobDone.Controllers.Seller
             // Check if the user is logged in
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
-            {
-                RedirectToAction("SignUp", "Seller");
-            }
-
+                RedirectToAction("Home", "Seller");
+  
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(SellerModel seller)
-        {
-            var sel = _seller.CheckUsernameAndPasswordExists(seller);
-
-            if (sel)
+        {            
+            if (_seller.CheckUsernameAndPasswordExists(seller))
             {
+                short Id = _seller.getId(seller.Username, seller.Password);
                 List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, seller.Username)
+                    new Claim("username",seller.Username),
+                    new Claim(ClaimTypes.NameIdentifier,Id.ToString()),
+                    new Claim(ClaimTypes.Role,TypesOfUsers.Seller)
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -103,7 +109,7 @@ namespace JobDone.Controllers.Seller
                 {
                     AllowRefresh = true,
                 };
-
+                
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                 return RedirectToAction("Home", "Seller");
             }
@@ -115,8 +121,20 @@ namespace JobDone.Controllers.Seller
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Home()
         {
+            int sellerId;
+            bool isParsed = int.TryParse(ClaimTypes.NameIdentifier, out sellerId);
+
+            if (isParsed)
+            {
+                var x = _seller.GetRemainingWork(sellerId);
+            }
+            
+            //var x = _seller.GetRemainingWork(Convert.ToInt32(ClaimTypes.NameIdentifier));
+            // ViewBag.ReminingWork = x.ToString();
+            //decimal Palnse = _seller.GetWallet(Convert.ToInt32(ClaimTypes.NameIdentifier));
             return View();
         }
 

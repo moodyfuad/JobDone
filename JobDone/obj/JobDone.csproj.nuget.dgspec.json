@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj": {}
+    "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj": {
+    "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
+        "projectUniqueName": "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
         "projectName": "JobDone",
-        "projectPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
+        "projectPath": "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
         "packagesPath": "C:\\Users\\ديل\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\obj\\",
+        "outputPath": "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ديل\\AppData\\Roaming\\NuGet\\NuGet.Config",

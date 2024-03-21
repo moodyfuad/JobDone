@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Yqaq/wJ8dL3Y/j75vywwpLRPTDslRvyDjBmzRxlQWGNXxgdiNlhDlzJ0QkiCblUu5RBqSnrivAHQI6Y7zAGEJw==",
+  "dgSpecHash": "xXGQfspnOUAIaPCQ0U80X568VKChkEvTg4KZsVosZNNThPoGp0T5QWr9QRXImEDCX+nhqY0L46OljG412jaHhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ديل\\Desktop\\ProJobDone\\JobDone\\JobDone.csproj",
+  "projectFilePath": "C:\\Users\\ديل\\Desktop\\projJobDone\\ITG-G3-Bamatraf\\JobDone\\JobDone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ديل\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ديل\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
