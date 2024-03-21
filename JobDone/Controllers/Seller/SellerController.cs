@@ -121,8 +121,20 @@ namespace JobDone.Controllers.Seller
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Home()
         {
+            int sellerId;
+            bool isParsed = int.TryParse(ClaimTypes.NameIdentifier, out sellerId);
+
+            if (isParsed)
+            {
+                var x = _seller.GetRemainingWork(sellerId);
+            }
+            
+            //var x = _seller.GetRemainingWork(Convert.ToInt32(ClaimTypes.NameIdentifier));
+            // ViewBag.ReminingWork = x.ToString();
+            //decimal Palnse = _seller.GetWallet(Convert.ToInt32(ClaimTypes.NameIdentifier));
             return View();
         }
 

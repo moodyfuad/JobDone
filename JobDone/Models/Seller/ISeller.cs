@@ -11,5 +11,7 @@ namespace JobDone.Models.Seller
         bool CheckUsernameAndPasswordExists(SellerModel seller);
         byte[] ConvertToByte(IFormFile image);
         short getId(string username, string password);
+        decimal GetWallet(int id);
+        int GetRemainingWork(int id);
     }
 }

@@ -2,6 +2,7 @@
 using JobDone.Models.Customer;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace JobDone.Models.Seller
@@ -67,6 +68,24 @@ namespace JobDone.Models.Seller
         {
             var sl = _seller.FirstOrDefault(info => info.Username == username && info.Password == password);
             return (short)sl.Id;
+        }
+
+        public decimal GetWallet(int id)
+        {
+            return Convert.ToDecimal(_Db.SellerModels.SingleOrDefault(x => x.Wallet == id));
+        }
+
+        //public decimal GetTodaySale(int id)
+        //{
+        //   var todayMoney = _Db.SellerModels.SingleOrDefault(x => x.Id==id);
+        //    todayMoney.Wallet
+
+        //}
+
+        public int GetRemainingWork(int id)
+        {
+            var remainingWork = _Db.ServiceModels.Count(x => x.SellerIdFk == id);
+            return remainingWork;
         }
     }
 }
