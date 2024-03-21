@@ -35,13 +35,13 @@
         <div class="column">
             <div class="input-box">
                 <label>Phone Number</label>
-                <input asp-for="@Model.PhoneNumber" placeholder="Enter phone number" required />
+                <input asp-for="@Model.PhoneNumber" type="number" placeholder="Enter phone number" required />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
             </div>
             <div class="input-box">
                 <label>Birth Date</label>
-                <input asp-for="@Model.BirthDate" type="date" placeholder="Enter birth date" required />
+                <input asp-for="@Model.BirthDate" type="date" value="@Model.BirthDate" required />
                 <span asp-validation-for="BirthDate" class="text-danger"></span>
 
             </div>
@@ -69,37 +69,43 @@
             <label>User name</label>
             <input asp-for="@Model.Username" placeholder="Enter User name" required />
             <span asp-validation-for="Username" class="text-danger"></span>
-            @if(TempData["exist"] != null) {
-                <span class="text-danger">@TempData["exist"]</span> }
+            @* @if(TempData["exist"] != null) {
+                <span class="text-danger">@TempData["exist"]</span> } *@
 
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input asp-for="@Model.Password" placeholder="Enter your Password" required />
+            <input asp-for="@Model.Password" type="password" placeholder="Enter your Password" required />
             <span asp-validation-for="Password" class="text-danger"></span>
-
+            <br />
             <label>Confirom</label>
-            <input asp-for="@Model.ConfirmPassword" placeholder="Confirom the password" required />
+            <input asp-for="@Model.ConfirmPassword" type="password" placeholder="Confirom the password" required />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 
             
             <div class="column">
-                <div class="select-box">
-                    <select asp-for="@Model.SecurityQuestionIdFk">
-                        <option hidden value="">Security question</option>
-                        
-                        @foreach (var q in Model.SecurityQuestions)
-                        {
-                            <option value="@q.Id">@q.SecurityQuestion</option>
-                        }
-                    </select>
-                     <span asp-validation-for="SecurityQuestionIdFk" class="text-danger"></span>
- 
+                <div>
+                    <div class="select-box">
+                        <select asp-for="@Model.SecurityQuestionIdFk">
+                            <option hidden value=0>Security question</option>
+
+                            @foreach (var q in Model.SecurityQuestions)
+                            {
+                                <option value="@q.Id">@q.SecurityQuestion</option>
+                            }
+                        </select>
+                    </div>
+                    <span asp-validation-for="SecurityQuestionIdFk" class="text-danger"></span>
                 </div>
-                <input asp-for="@Model.SecurityQuestionAnswer" placeholder="Answer" required />
-                <span asp-validation-for="SecurityQuestionAnswer" asp class="text-danger"></span>
+                   
+                <div>
+                    <input asp-for="@Model.SecurityQuestionAnswer" placeholder="Answer" />
+                    <span asp-validation-for="SecurityQuestionAnswer" asp class="text-danger"></span>
+
+                </div>
 
             </div>
+            <br />
             <div class="custom-border bxs-file-image">
                     <label class="custome-file-label">Profile Image</label>
                     <input class="form-control bi-file" asp-for="@Model.profilePictureAsFile"/>

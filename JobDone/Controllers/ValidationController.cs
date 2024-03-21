@@ -1,0 +1,41 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace JobDone.Controllers
+{
+    public class ValidationController : Controller
+    {
+
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> IsPasswordOk(string Password)
+        {
+            if (Password == null || Password.ToString().Length <= 8)
+            {
+                return Json("The password Must Be More Than 8 Chars");
+            }
+            else if (!Password.ToString().Any(char.IsUpper))
+            {
+                return Json("The password Must have an Uppercase Character");
+            }
+            return Json(true);
+        }
+        
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> ValidateFirstName(string FirstName)
+        {
+            FirstName = FirstName.ToString();
+            if (FirstName.ToString().Any(n => !char.IsAsciiLetter(n)))
+            {
+                return Json($"This Field Can Not Contain Numbers or Special Chars");
+            }
+            else if ( FirstName == null || FirstName.ToString().Length < 3)
+            {
+                return Json($"This Field Can Not Be Empty or Less Than 3 Chars");
+            }
+            return Json(true);
+        }
+        public async Task<IActionResult> ValidateLastName(string LastName)
+        {
+            return await Task.Run(() => {return ValidateFirstName(LastName); });
+        }
+    }
+}

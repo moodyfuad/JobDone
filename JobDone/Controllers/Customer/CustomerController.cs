@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using JobDone.Roles;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json.Linq;
 
 
 namespace JobDone.Controllers.Customer
@@ -100,7 +101,7 @@ namespace JobDone.Controllers.Customer
                     return RedirectToAction("Home","Customer");
                 }
             }
-            TempData["exist"] = $"Username '@{viewModel.Username}' already exist";
+            /*TempData["exist"] = $"Username '@{viewModel.Username}' already exist";*/
             return View(viewModel);
         }
 
@@ -147,7 +148,14 @@ namespace JobDone.Controllers.Customer
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
         }
-
+        [HttpPost]
+        [HttpGet]
+        public async Task<IActionResult> IsUsernameExist(string username)
+        {
+            bool IsExist = (_customer.UsernameExist(username));
+            if (!IsExist) { return Json(true); }
+            return Json($"Username @{username} Already Exist");
+        } 
     }
 }
 
