@@ -87,5 +87,21 @@ namespace JobDone.Models.Seller
             var remainingWork = _Db.ServiceModels.Count(x => x.SellerIdFk == id);
             return remainingWork;
         }
+
+        public SellerModel GetSellerById(int id)
+        {
+            return _seller.FirstOrDefault(s => s.Id == id);
+        }
+
+
+        public IFormFile ConvertToImage(byte[] byteImage)
+        {
+            using(var memoryStream = new MemoryStream(byteImage))
+            {
+                memoryStream.Position = 0;
+                FormFile image = new FormFile(memoryStream, 0, memoryStream.Length, "picture.jpj", "image/jpeg");
+                return image;
+            }
+        }
     }
 }
