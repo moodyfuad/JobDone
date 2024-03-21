@@ -2,10 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-using JobDone.Roles;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
 namespace JobDone.Models.Customer
 {
     public class CustomerImplementation: ICustomer
@@ -96,6 +92,38 @@ namespace JobDone.Models.Customer
             }
             
         }
+        public void ApplyChangesToCustomer(ref CustomerModel customer, CustomerModel vmCustomer)
+        {
+            if (customer.Username != vmCustomer.Username)
+            {
+                customer.Username = vmCustomer.Username;
+            }
 
+            if (customer.FirstName != vmCustomer.FirstName)
+            {
+                customer.FirstName = vmCustomer.FirstName;
+            }
+
+            if (customer.LastName != vmCustomer.LastName)
+            {
+                customer.LastName = vmCustomer.LastName;
+            }
+
+            if (customer.Email != vmCustomer.Email)
+            {
+                customer.Email = vmCustomer.Email;
+            }
+
+            if (customer.PhoneNumber != vmCustomer.PhoneNumber)
+            {
+                customer.PhoneNumber = vmCustomer.PhoneNumber;
+            }
+
+            if (customer.BirthDate != vmCustomer.BirthDate)
+            {
+                customer.BirthDate = vmCustomer.BirthDate;
+            }
+
+        }
     }
 }
