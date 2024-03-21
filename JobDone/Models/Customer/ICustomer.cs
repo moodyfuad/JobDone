@@ -11,5 +11,6 @@
 
         short getId(string username, string password);
         public void ApplyChangesToCustomer(ref CustomerModel Customer, CustomerModel vmCustomer);
+
     }
 }

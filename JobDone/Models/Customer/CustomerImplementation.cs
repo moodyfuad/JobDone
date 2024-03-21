@@ -123,6 +123,7 @@ namespace JobDone.Models.Customer
             {
                 customer.BirthDate = vmCustomer.BirthDate;
             }
+
         }
     }
 }

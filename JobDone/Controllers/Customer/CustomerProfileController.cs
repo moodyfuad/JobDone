@@ -99,5 +99,6 @@ namespace JobDone.Controllers.Customer
             return Regex.IsMatch(email, emailRegexPattern);
         }
 
+
     }
 }
