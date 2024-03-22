@@ -87,7 +87,7 @@ namespace JobDone.Models.Seller
 
         public int GetRemainingWork(int id)
         {
-            var remainingWork = _Db.ServiceModels.Count(x => x.SellerIdFk == id);
+            var remainingWork = _Db.OrderModels.Count(x => x.SellerIdFk == id);
             return remainingWork;
         }
 
@@ -122,6 +122,23 @@ namespace JobDone.Models.Seller
         public async Task<IEnumerable<SellerModel>> getAllTheSeller()
         {
             return await _seller.Include("CategoryIdFkNavigation").ToListAsync();
+        }
+
+        public int OrderCount(int sellerId)
+        {
+            return _order.Where(x=>x.SellerIdFk==sellerId).Count();
+        }
+        public string OrderName(int sellerId)
+        {
+            //OrderModel order = _order.FirstOrDefault(x=>x.SellerIdFk==sellerId);
+            //string orderName = order.OrderName;
+            return "orderName";
+        }
+
+        public List<OrderModel> orderModels(int sellerId)
+        {
+           List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
+            return order;
         }
     }
 }

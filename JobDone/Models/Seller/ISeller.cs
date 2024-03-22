@@ -1,4 +1,5 @@
 ﻿using JobDone.Models.Customer;
+using JobDone.Models.Order;
 using JobDone.ViewModels;
 using System.Drawing;
 
@@ -18,6 +19,9 @@ namespace JobDone.Models.Seller
         int GetRemainingWork(int id);
         int AveilabelRReqest(int sellerId);
         Decimal Totalgains(int sellerId);
+        string OrderName(int sellerId);
+        int OrderCount(int sellerId);
+        List<OrderModel> orderModels(int sellerId);
 
         public Task<IEnumerable<SellerModel>> getAllTheSeller();
     }
