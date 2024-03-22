@@ -137,16 +137,16 @@ namespace JobDone.Controllers.Seller
             return View();
         }
 
-        public IActionResult Order()
+        public IActionResult Order(SignUpSellerCatgoreViewModel viewModel)
         {
+
             ViewBag.OrderCount = _seller.OrderCount(SellerID());
 
+            viewModel.Order = _seller.orderModels(SellerID());
 
-            List<OrderModel> orders = _seller.orderModels(SellerID());
-                
-            ViewData["data"] = orders.ToList();
+            _seller.customerID(viewModel.Order[0].Id);
 
-            return View();
+            return View(viewModel);
         }
 
         public IActionResult RequestedWrok()

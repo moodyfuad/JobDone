@@ -12,6 +12,7 @@ namespace JobDone.Models.Seller
     {
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<OrderModel> _order;
+        private readonly DbSet<CustomerModel> _customer;
         private readonly JobDoneContext _Db;
         
         public SellerImplemntation(JobDoneContext context)
@@ -140,5 +141,22 @@ namespace JobDone.Models.Seller
            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
             return order;
         }
+        
+        public int customerID( int ordrId)
+        {
+            var cuId = _order.Where(x => x.Id == ordrId).Select(x=>x.CustomerIdFk).ToList();
+            return cuId[0];
+        }
+        //public List<CustomerModel> GetCustomerName(int CustomerId)
+        //{
+            
+        //        var cuName = _customer.Where(x => x.Id == ).ToList();  
+           
+        //    //foreach (var c in cuID)
+        //    //{
+        //    //    return cuNAme[0].FirstName + " " + cuNAme[0].LastName;
+        //    //}
+        //    return cuName; 
+        //}
     }
 }
