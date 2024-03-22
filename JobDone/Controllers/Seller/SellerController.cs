@@ -144,8 +144,8 @@ namespace JobDone.Controllers.Seller
 
             viewModel.Order = _seller.orderModels(SellerID());
 
-            _seller.customerID(viewModel.Order[0].Id);
-
+            viewModel.CustomerUsrname = _seller.GetCustomerusername(SellerID());
+            
             return View(viewModel);
         }
 

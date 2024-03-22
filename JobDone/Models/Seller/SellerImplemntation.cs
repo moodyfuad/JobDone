@@ -3,6 +3,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -19,6 +20,7 @@ namespace JobDone.Models.Seller
         {
             _seller = context.SellerModels;
             _order = context.OrderModels;
+            _customer = context.CustomerModels;
             _Db = context;
         }
 
@@ -141,23 +143,23 @@ namespace JobDone.Models.Seller
            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
             return order;
         }
-        
-        public int customerID( int ordrId)
-        {
-            var cuId = _order.Where(x => x.Id == ordrId).Select(x=>x.CustomerIdFk).ToList();
-            return cuId[0];
-        }
-        //public List<CustomerModel> GetCustomerName(int CustomerId)
+
+        //public List<int> custemrname(int sellerId)
         //{
-            
-        //        var cuName = _customer.Where(x => x.Id == ).ToList();  
-           
-        //    //foreach (var c in cuID)
-        //    //{
-        //    //    return cuNAme[0].FirstName + " " + cuNAme[0].LastName;
-        //    //}
-        //    return cuName; 
+        //    var x = orderModels(sellerId).include().CustomerIdFk;
+        //   return x;
         //}
+
+        public List<CustomerModel> GetCustomerusername(int sellerId)
+        {
+            var result = _order
+                .Where(o => o.SellerIdFk == sellerId)
+                .Select(o => o.CustomerIdFkNavigation)
+                .ToList();
+
+            return result;
+        }
+               
         public List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId)
         {
             List<SellerModel> sellers = new List<SellerModel>();
