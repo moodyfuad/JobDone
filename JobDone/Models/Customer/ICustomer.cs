@@ -12,5 +12,9 @@
         short getId(string username, string password);
         public void ApplyChangesToCustomer(ref CustomerModel Customer, CustomerModel vmCustomer);
 
+        public Task<decimal> GetWalletAmount(short id);
+
+        public Task<string> GetPictureAsString(short id);
+
     }
 }

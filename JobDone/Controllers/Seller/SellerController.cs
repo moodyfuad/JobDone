@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
 using JobDone.Roles;
+using JobDone.Models.Order;
 
 
 namespace JobDone.Controllers.Seller
@@ -124,28 +125,38 @@ namespace JobDone.Controllers.Seller
         [HttpGet]
         public IActionResult Home()
         {
-            int sellerId;
-            bool isParsed = int.TryParse(ClaimTypes.NameIdentifier, out sellerId);
+            var x = _seller.GetRemainingWork(SellerID()); ;
+                ViewBag.xxx = x.ToString();
 
-            if (isParsed)
-            {
-                var x = _seller.GetRemainingWork(sellerId);
-            }
-            
-            //var x = _seller.GetRemainingWork(Convert.ToInt32(ClaimTypes.NameIdentifier));
-            // ViewBag.ReminingWork = x.ToString();
-            //decimal Palnse = _seller.GetWallet(Convert.ToInt32(ClaimTypes.NameIdentifier));
+            var aveilabelReqest = _seller.AveilabelRReqest(SellerID());
+            ViewBag.aveilabelReqest = aveilabelReqest;
+
+            var Totalgains = _seller.Totalgains(SellerID());
+            ViewBag.Totalgains = Totalgains;
+
             return View();
         }
 
         public IActionResult Order()
         {
+            ViewBag.OrderCount = _seller.OrderCount(SellerID());
+
+
+            List<OrderModel> orders = _seller.orderModels(SellerID());
+                
+            ViewData["data"] = orders.ToList();
+
             return View();
         }
 
         public IActionResult RequestedWrok()
         {
             return View();
+        }
+
+        private int SellerID()
+        {
+            return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
 
     }

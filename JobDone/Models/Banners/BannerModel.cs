@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobDone.Models;
+namespace JobDone.Models.Banners;
 
 [Table("BannerModel")]
 public partial class BannerModel

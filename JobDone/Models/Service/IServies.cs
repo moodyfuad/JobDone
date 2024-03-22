@@ -5,5 +5,6 @@
         void SaveServiesINDB(ServiceModel service);
         void AddServies(ServiceModel service);
         int GetSellerID();
+        public Task<IEnumerable<ServiceModel>> getAllServices();
     }
 }
