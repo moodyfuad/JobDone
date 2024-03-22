@@ -142,7 +142,7 @@ width: 1.1em;
 
     <div class="container pb-5 mt-n2 mt-md-n3">
 <div class="row" >
-    <div class="col-xl-9 col-md-8" >
+    <div @* class="col-xl-9 col-md-8" *@ >
         <br /><br /><br />
         <div class="h6 d-flex flex-wrap justify-content-between align-items-center px-4 py-3 bg-secondary">
             <h3>Category</h3>
@@ -180,7 +180,7 @@ width: 1.1em;
 
                                         <div class="media d-block d-sm-flex text-center text-sm-left">
                                             <a class="cart-item-thumb mx-auto mr-sm-4" href="#">
-                                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" alt="Product">
+                                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Product">
                                                     </a>
                                             <div class="media-body pt-3">
                                                 <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
