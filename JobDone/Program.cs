@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using JobDone.Models.Order;
 using JobDone.ViewModels;
 using JobDone.Models.Banners;
+using JobDone.Models.SellerAcceptRequest;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +43,7 @@ builder.Services.AddTransient<ICategory, CatgegoryImplementation>();
 builder.Services.AddTransient<IServies, ServiesImplemntation>();
 builder.Services.AddTransient<IOrderByCustomer, OrderByCustomerImplementation>();
 builder.Services.AddTransient<IOrder, OrderImplementation>();
+builder.Services.AddTransient<ISellerAcceptRequest, SellerAcceptRequestImp>();
 
 var app = builder.Build();
 
@@ -59,6 +61,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Customer}/{action=SignUp}/{id?}");
+    pattern: "{controller=CustomerRequestWork}/{action=RequestedList}/{id?}");
 
 app.Run();

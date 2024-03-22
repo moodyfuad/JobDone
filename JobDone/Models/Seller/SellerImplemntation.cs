@@ -158,5 +158,14 @@ namespace JobDone.Models.Seller
         //    //}
         //    return cuName; 
         //}
+        public List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId)
+        {
+            List<SellerModel> sellers = new List<SellerModel>();
+            foreach (int id in sellersId)
+            {
+                sellers.Add(GetSellerById(id));
+            }
+            return sellers;
+        }
     }
 }

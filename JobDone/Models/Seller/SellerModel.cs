@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using JobDone.Models.Category;
 using JobDone.Models.Order;
 using JobDone.Models.SecurityQuestions;
+using JobDone.Models.SellerAcceptRequest;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Models;

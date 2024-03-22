@@ -22,5 +22,12 @@ namespace JobDone.Models.Category
         {
             return _category.FirstOrDefault(c => c.Id == id).Name ?? "Category Not Specified";
         }
+        public async Task< CategoryModel > GetCategoryByIdAsync(int categoryId)
+        {
+            CategoryModel category = await _category.FirstOrDefaultAsync
+                (c => c.Id == categoryId);
+
+            return category;
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using JobDone.Data;
+using JobDone.Models.Category;
 using JobDone.Models.Customer;
+using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
 namespace JobDone.Models.OrderByCustomer
@@ -30,6 +32,13 @@ namespace JobDone.Models.OrderByCustomer
         {
             _context.Add(request);
             _context.SaveChanges();
+        }
+
+        public async Task<List<OrderByCustomerModel>?> GetOrdersByCustomerId(int CustomerId)
+        {
+            List<OrderByCustomerModel> orders = await _context.OrderByCustomerModels.Where(order =>
+                    order.CustomerIdFk == CustomerId).ToListAsync();
+            return orders;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace JobDone.Models.Seller
         short getId(string username, string password);
         decimal GetWallet(int id);
         int GetRemainingWork(int id);
+        List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId);
         int AveilabelRReqest(int sellerId);
         Decimal Totalgains(int sellerId);
         string OrderName(int sellerId);
