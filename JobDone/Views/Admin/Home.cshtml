@@ -34,10 +34,10 @@
             justify-content: space-around;
         }
         .block {
-            width: 30%;
-            height: 200px;
-            margin: 10px;
-            background-color: #ddd;
+            width: 300px ;
+            height: 300px;
+            margin: 20px;
+            background-color:cornflowerblue;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -49,6 +49,7 @@
         .block:hover {
             background-color: #ccc;
             transform: scale(1.1);
+
         }
         .icon {
             font-size: 50px;
@@ -56,29 +57,30 @@
     </style>
 </head>
 <body>
-
-<div class="slideshow-container">
-    <div class="slide active">
-        <img src="/Customer/Panners/Panner1.jpg"  alt="Image 1"  style="width: 140%;height: 700px;">
+    <div class="container-fluid">
+    <div class="slideshow-container" >
+        <div class="slide active" >
+            <img src="/Adminn/Panners/b1.jpg" alt="Image 1" style="width:134%;height: 500px;">
     </div>
     <div class="slide">
-        <img src="/Customer/Panners/panner2.jpg"  alt="Image 2"  style="width: 140%;height: 700px;">
+            <img src="/Adminn/Panners/b2.jpg" alt="Image 2" style="width: 134%;height: 500px;">
     </div>
     <div class="slide">
-        <img src="/Customer/Panners/panner3.jpg"  alt="Image 3"  style="width: 140%;height: 700px;">
+            <img src="/Adminn/Panners/b3.jpg" alt="Image 3" style="width: 134%;height: 500px;">
     </div>
+        </div>
     <!-- يمكنك إضافة المزيد من الشرائح هنا -->
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 <div id="container" class="container">
-    <div class="block"><span class="icon"><img src="../panner4.jpg" alt="" style="width: 200px;;"></span><br>Block 1: تفاصيل 1</div>
-    <div class="block"><span class="icon">📊</span><br>Block 2: تفاصيل 2</div>
-    <div class="block"><span class="icon">📆</span><br>Block 3: تفاصيل 3</div>
-    <div class="block"><span class="icon">📇</span><br>Block 4: تفاصيل 4</div>
-    <div class="block"><span class="icon">🔒</span><br>Block 5: تفاصيل 5</div>
-    <div class="block"><span class="icon">⚙️</span><br>Block 6: تفاصيل 6</div>
+        <a asp-controller="Admin" asp-action="EditBanners"><div class="block"><span class="icon"><img src="/Adminn/img/111.png" alt="" style="width: 200px;"></span><br></div></a>
+        <a asp-controller="Admin" asp-action="AddNewCategory"><div class="block"><span><img src="/adminn/img/222.png" alt="" style="width: 200px;"></span><br /></div></a>
+
+        <a asp-controller="Admin" asp-action="AddAdminAccount"><div class="block"><span class="icon"><img src="/adminn/img/333.png" alt="" style="width: 200px;"></span><br></div></a>
+        <a asp-controller="AdminManageWithdraw" asp-action="WithdrawRecords"><div class="block"><span class="icon"><img src="/adminn/img/444.png" alt="" style="width: 200px;"></span><br></div></a>
+        <a asp-controller="AdminManageSellers" asp-action="SellerCRUD"><div class="block"><span class="icon"><img src="/adminn/img/555.png" alt="" style="width: 200px;"></span><br></div></a>
+        <a asp-controller="AdminManageCustomer" asp-action="CustomerCRUD"><div class="block"><span class="icon"><img src="/adminn/img/666.png" alt="" style="width: 200px;"></span><br></div></a>
 </div>
 <script>
     var slideIndex = 0;
