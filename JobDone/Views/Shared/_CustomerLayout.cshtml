@@ -1,6 +1,5 @@
 ﻿@using System.Security.Claims
 @using JobDone.Models.Customer
-@model CustomerImplementation
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +15,9 @@
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
     </environment>
-    @{
+   @*  @{
         ViewBag.username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
-    }
+    } *@
 </head>
 <body>
 

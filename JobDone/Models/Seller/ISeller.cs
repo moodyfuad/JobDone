@@ -16,5 +16,6 @@ namespace JobDone.Models.Seller
         short getId(string username, string password);
         decimal GetWallet(int id);
         int GetRemainingWork(int id);
+        List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId);
     }
 }

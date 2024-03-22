@@ -67,6 +67,7 @@ namespace JobDone.Controllers.Customer
                     ordersViewModels.Add(ordersViewModel);
                 }
                 TotalPayment = TotalServicePrice + TotalTaxesPrice;
+                
                 ViewBag.TotalServicePrice = TotalServicePrice.ToString("0.00");
                 ViewBag.TotalTaxesPrice = TotalTaxesPrice.ToString("0.00");
                 ViewBag.TotalPayment = TotalPayment.ToString("0.00");

@@ -7,6 +7,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SecurityQuestions;
+using JobDone.Models.SellerAcceptRequest;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Data;

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using JobDone.Models.OrderByCustomer;
 using Microsoft.EntityFrameworkCore;
 
-namespace JobDone.Models;
+namespace JobDone.Models.SellerAcceptRequest;
 
 [Table("SellerAcceptRequestModel")]
 public partial class SellerAcceptRequestModel

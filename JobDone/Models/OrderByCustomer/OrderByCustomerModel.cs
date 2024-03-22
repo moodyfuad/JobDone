@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
+using JobDone.Models.SellerAcceptRequest;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Models.OrderByCustomer;
