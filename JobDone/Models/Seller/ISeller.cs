@@ -23,6 +23,7 @@ namespace JobDone.Models.Seller
         string OrderName(int sellerId);
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
+        List<CustomerModel> GetCustomerusername(int sellerId);
 
         public Task<IEnumerable<SellerModel>> getAllTheSeller();
     }
