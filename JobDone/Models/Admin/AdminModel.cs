@@ -32,5 +32,5 @@ public partial class AdminModel
 
     [ForeignKey("WalletIdFk")]
     [InverseProperty("AdminModels")]
-    public virtual AdminWalletModel WalletIdFkNavigation { get; set; } = null!;
+    public virtual AdminWalletModel WalletIdFkNavigation { get; set; } 
 }
