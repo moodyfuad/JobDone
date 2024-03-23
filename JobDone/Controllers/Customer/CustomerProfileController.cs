@@ -3,9 +3,11 @@ using JobDone.Models.Customer;
 using JobDone.Roles;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 
@@ -16,7 +18,8 @@ namespace JobDone.Controllers.Customer
     {
         private readonly JobDoneContext _context;
         private readonly ICustomer _customer;
-        public CustomerProfileController(JobDoneContext context, ICustomer customer)
+
+        public CustomerProfileController(JobDoneContext context, ICustomer customer, UserManager<JobDoneContext> userManager)
         {
             _context = context;
             _customer = customer;
@@ -46,10 +49,17 @@ namespace JobDone.Controllers.Customer
                 }
             }
 
-            if (vmCustomer.Password != customer.Password || NewPassword.Length < 6)
+            else if(NewPassword != null)
             {
-                ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 5 digit, try again.");
-                return View("Profile", customer);
+                if (vmCustomer.Password != customer.Password || NewPassword.Length < 6)
+                {
+                    ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 5 digit, try again.");
+                    return View("Profile", customer);
+                }
+                else
+                {
+                    customer.Password = NewPassword;
+                }
             }
 
             if (string.IsNullOrEmpty(vmCustomer.PhoneNumber) || vmCustomer.PhoneNumber.Length < 9 || !vmCustomer.PhoneNumber.All(char.IsDigit))
@@ -76,8 +86,6 @@ namespace JobDone.Controllers.Customer
                 return View("Profile", customer);
             }
 
-            customer.Password = NewPassword;
-
             if (profilePictureAsFile != null)
                 customer.ProfilePicture = _customer.ConvertToByteArray(profilePictureAsFile);
 
@@ -98,7 +106,6 @@ namespace JobDone.Controllers.Customer
             string emailRegexPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
             return Regex.IsMatch(email, emailRegexPattern);
         }
-
 
     }
 }

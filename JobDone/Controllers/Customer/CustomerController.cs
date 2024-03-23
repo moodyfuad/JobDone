@@ -122,7 +122,25 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
 
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Home()
+        {
+            IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
+            IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
+            IEnumerable<BannerModel> listOfBanners = await _banner.getAllBanners();
+            HomeViewModel viewModel = new HomeViewModel()
+            {
+                Sellers = listOfSellers,
+                Services = listOfServices,
+                Bans = listOfBanners
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = TypesOfUsers.Customer)]
+        public async Task<IActionResult> Home(string inputSearch)
         {
             IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();

@@ -75,12 +75,16 @@
     </button>
   </div>
 
-        <form class="d-flex" method="post">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color:gainsboro; width:40%; align-self:center; margin-left:27%; color:white">
-            <button class="btn btn-outline-success" type="submit" style="background-color:black; color:white">Search</button>
+    <div class="text-center">
+        <h4>Want to search about a specific sellers?</h4>
+        <form method="post" asp-controller="CustomerSearch" asp-action="Search">
+            <button class="btn btn-primary btn-lg btn-long" type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
         </form>
+    </div>
 
-        <br /><br /><br />
+    <br /><br /><br />
 
 
   <!-- Marketing messaging and featurettes
@@ -109,13 +113,14 @@
                     }
                     <h2>@FullName</h2>
                     <h5>@seller.CategoryIdFkNavigation.Name</h5>
-                    @foreach (var service in Model.Services.Where(s => s.Id == seller.Id))
-                    {
-                        <p>@service.Name @if (!service.Equals(Model.Services.Last(s => s.Id == seller.Id)))
-                            {
-                                <text>,</text>
-                            }</p>
+                    @{
+                        List<string> services = Model.Services.Where(x => x.SellerIdFk == seller.Id).Select(x => x.Name).ToList();
                     }
+                    @foreach (var Service in services)
+                    {
+                        <span>@Service, </span>
+                    }
+                    <br />
                     <p><a class="btn btn-secondary" href="#">Visit</a></p>
                 </div>
             }
@@ -129,5 +134,5 @@
 </main>
 
 
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

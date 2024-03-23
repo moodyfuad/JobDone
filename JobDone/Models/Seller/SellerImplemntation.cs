@@ -1,6 +1,9 @@
-﻿using JobDone.Data;
+﻿using Humanizer;
+using JobDone.Data;
+using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.Order;
+using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -85,6 +88,16 @@ namespace JobDone.Models.Seller
 
         //}
 
+        public async Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search)
+        {
+            var sellers = await getAllTheSeller();
+            var filteredSellers = sellers
+                .Where(s => s.Username.StartsWith(search, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            return filteredSellers;
+        }
+
         public int GetRemainingWork(int id)
         {
             var remainingWork = _Db.OrderModels.Count(x => x.SellerIdFk == id);
@@ -122,6 +135,23 @@ namespace JobDone.Models.Seller
         public async Task<IEnumerable<SellerModel>> getAllTheSeller()
         {
             return await _seller.Include("CategoryIdFkNavigation").ToListAsync();
+        }
+
+        public async Task<IEnumerable<SellerModel>> GetAllSellersWithCategory(string search)
+        {
+            var sellers = await getAllTheSeller();
+            var filteredSellers = sellers.Where(s => s.CategoryIdFkNavigation.Name.StartsWith(search, StringComparison.OrdinalIgnoreCase)).ToList();
+            return filteredSellers;
+        }
+
+        public async Task<IEnumerable<ServiceModel>> GetAllSellersWithService(string search)
+        {
+            var sellersWithService = _Db.ServiceModels
+                .Join(_seller, s => s.Id, ss => ss.Id, (s, ss) => s)
+                .Where(s => s.Name.StartsWith(search))
+                .ToList();
+
+            return sellersWithService;
         }
 
         public int OrderCount(int sellerId)
