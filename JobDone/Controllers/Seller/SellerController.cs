@@ -149,15 +149,19 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
 
-        public IActionResult RequestedWrok()
+        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
         {
-            return View();
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()));
+
+            viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
+
+            return View(viewModel);
         }
 
         private int SellerID()
         {
             return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
-
+        
     }
 }

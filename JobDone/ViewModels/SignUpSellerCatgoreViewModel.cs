@@ -6,6 +6,7 @@ using JobDone.Models.Service;
 using System.Drawing;
 using JobDone.Models.Order;
 using JobDone.Models.Customer;
+using JobDone.Models.OrderByCustomer;
 
 namespace JobDone.ViewModels
 {
@@ -19,7 +20,8 @@ namespace JobDone.ViewModels
         public List<CategoryModel>? Category { get; set; }
         public List<OrderModel>? Order { get; set; }
         public List<CustomerModel>? CustomerUsrname { get; set; }
-
+        public List<OrderByCustomerModel>? orderByCustomerModels { get; set; }
+        public List<CustomerModel> customerReqwest {  get; set; }
         internal void CopyTo(MemoryStream memoryStream)
         {
             throw new NotImplementedException();

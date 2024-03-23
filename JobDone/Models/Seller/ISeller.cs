@@ -1,6 +1,7 @@
 ﻿using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.Order;
+using JobDone.Models.OrderByCustomer;
 using JobDone.ViewModels;
 using System.Drawing;
 
@@ -25,6 +26,9 @@ namespace JobDone.Models.Seller
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
         List<CustomerModel> GetCustomerusername(int sellerId);
+        List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId);
+        int SellerCatgoreID(int sellerId);
+        List<CustomerModel> CustomerReqwestWork(int SellerID);
 
         public Task<IEnumerable<SellerModel>> GetAllSellersWithCategory(string search);
         public Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search);

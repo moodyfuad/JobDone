@@ -3,6 +3,7 @@ using JobDone.Data;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.Order;
+using JobDone.Models.OrderByCustomer;
 using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace JobDone.Models.Seller
     {
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<OrderModel> _order;
+        private readonly DbSet<OrderByCustomerModel> _orderByCustomers; 
         private readonly DbSet<CustomerModel> _customer;
         private readonly JobDoneContext _Db;
         
@@ -23,6 +25,7 @@ namespace JobDone.Models.Seller
         {
             _seller = context.SellerModels;
             _order = context.OrderModels;
+            _orderByCustomers = context.OrderByCustomerModels;
             _customer = context.CustomerModels;
             _Db = context;
         }
@@ -189,7 +192,20 @@ namespace JobDone.Models.Seller
 
             return result;
         }
-               
+        public List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId)
+        {
+            var result = _orderByCustomers.Where(x=>x.CategoryIdKf == sellerCatgoreId).ToList();
+            return result;
+        }
+        public int SellerCatgoreID(int sellerId)
+        {
+            return (int)_seller.Where(x => x.Id == sellerId).Select(x=>x.CategoryIdFk).FirstOrDefault();
+        }
+        public List<CustomerModel> CustomerReqwestWork(int sellerID)
+        {
+            return _orderByCustomers.Where(x=>x.CategoryIdKf==SellerCatgoreID(sellerID)).Select(x=>x.CustomerIdFkNavigation).ToList();
+        }
+
         public List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId)
         {
             List<SellerModel> sellers = new List<SellerModel>();
