@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using JobDone.Models;
 using JobDone.Models.Admin;
+using JobDone.Models.Banners;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.Order;
