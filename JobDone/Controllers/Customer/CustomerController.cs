@@ -185,6 +185,7 @@ namespace JobDone.Controllers.Customer
                 };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
             AuthenticationProperties properties = new AuthenticationProperties()
             {
                 AllowRefresh = true,

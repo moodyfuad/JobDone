@@ -22,7 +22,11 @@ namespace JobDone.Controllers
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> ValidateFirstName(string FirstName)
         {
-            FirstName = FirstName.ToString();
+            try
+            {
+                FirstName = FirstName.ToString();
+            }catch (Exception ex) { FirstName = " "; }
+                
             if (FirstName.ToString().Any(n => !char.IsAsciiLetter(n)))
             {
                 return Json($"This Field Can Not Contain Numbers or Special Chars");

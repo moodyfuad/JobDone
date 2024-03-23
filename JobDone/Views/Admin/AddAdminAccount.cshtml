@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@model AdminAddAccountViewModel
 
 
 <style>
@@ -170,24 +171,44 @@ button.social-signin.google {
 
 </style>
 <div id="login-box">
+    @{
+        if(TempData["added"] != null)
+        {
+            <h4 style="color:green">@TempData["added"].ToString()</h4>
+        }
+    }
+        <h1>Create Admin Account</h1>
+    <form asp-action="AddAdminAccount" asp-controller="Admin" method="post">
     <br />
     <div>
-        <h1>Create Admin Account</h1>
     </div>
     <div class="left" style="margin-top:30px;">
+            
         
-        <input type="text" name="first name" placeholder="First name" />
-        <input type="text" name="username" placeholder="Username" />
-        <input type="text" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Password" />
-        <input type="password" name="password2" placeholder="Confirm password" />
+        
+        <input asp-for=FirstName type="text" placeholder="First name" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+        <input asp-for=Username type="text" placeholder="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+
+        <input asp-for=Email type="text"  placeholder="E-mail" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <input asp-for=Password type="password"  placeholder="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <input asp-for=ConfirmPassword type="password"  placeholder="Confirm password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 
         <input type="submit" name="Create account" value="Create" />
     </div>
 
      <div class="right">
          
-        <input type="text" name="Last name" placeholder="Last name" style="margin-top:31px;"/>
+        <input asp-for=LastName type="text" placeholder="Last name" style="margin-top:31px;"/>
+        <span asp-validation-for="LastName" class="text-danger"></span>
     </div>
+        </form>
    
 </div>

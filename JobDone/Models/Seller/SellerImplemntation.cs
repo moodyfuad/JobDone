@@ -6,6 +6,7 @@ using JobDone.Models.Order;
 using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -15,12 +16,14 @@ namespace JobDone.Models.Seller
     {
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<OrderModel> _order;
+        private readonly DbSet<CustomerModel> _customer;
         private readonly JobDoneContext _Db;
         
         public SellerImplemntation(JobDoneContext context)
         {
             _seller = context.SellerModels;
             _order = context.OrderModels;
+            _customer = context.CustomerModels;
             _Db = context;
         }
 
@@ -170,6 +173,23 @@ namespace JobDone.Models.Seller
            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
             return order;
         }
+
+        //public List<int> custemrname(int sellerId)
+        //{
+        //    var x = orderModels(sellerId).include().CustomerIdFk;
+        //   return x;
+        //}
+
+        public List<CustomerModel> GetCustomerusername(int sellerId)
+        {
+            var result = _order
+                .Where(o => o.SellerIdFk == sellerId)
+                .Select(o => o.CustomerIdFkNavigation)
+                .ToList();
+
+            return result;
+        }
+               
         public List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId)
         {
             List<SellerModel> sellers = new List<SellerModel>();

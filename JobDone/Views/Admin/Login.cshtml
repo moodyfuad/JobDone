@@ -1,0 +1,22 @@
+﻿
+
+@model AdminLoginViewModel
+
+<form asp-action="Login" asp-controller="Admin" method="post" style="text-align:center">
+    
+    
+    <label asp-for="Username"></label><br />
+    <input asp-for="Username" value="" /><br />
+    <span asp-validation-for="Username"></span><br />
+
+
+    <label asp-for="Password"></label><br />
+    <input asp-for="Password" type="password" value="" /><br />
+    <br />
+    <button type="submit" name="name" value="">Login</button>
+    <hr />
+
+
+
+</form>
+
