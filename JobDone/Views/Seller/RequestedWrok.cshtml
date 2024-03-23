@@ -2,75 +2,97 @@
     Layout = "~/Views/Shared/_SellerLayout.cshtml";
 }
 @model SignUpSellerCatgoreViewModel;
+@{
+    bool buttonClicked = false;
+}
 
 <div class="container-fluid services py-5">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 800px;">
             <h1 class="display-3">Orders</h1>
-            <p class="fs-4  text-center text-primary">Accept Our Client Orders </p>
+            <p class="fs-4 text-center text-primary">Accept Our Client Orders</p>
         </div>
 
         @foreach (var item in Model.orderByCustomerModels.Select((value, index) => new { Value = value, Index = index }))
-        {            
-            string base64Image = Convert.ToBase64String(item.Value.CustomerIdFkNavigation.ProfilePicture); 
-                                            
-                <div class="row g-4">
+        {
+            string base64Image = Convert.ToBase64String(item.Value.CustomerIdFkNavigation.ProfilePicture);
+
+            <div class="row g-4">
                 <div class="row-lg-6">
-                @if (item.Index % 2 == 0)
-                { 
+                    @if (item.Index % 2 == 0)
+                    {
                         <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                                <div class="row align-items-center" >
-                                    <div class="col-8">
-                                        <div class="services-content text-end">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-end">
                                         <h1 style="font-size: 50px;">@item.Value.OrderName</h1>
                                         <h3 style="font-size: 30px;">@(item.Value.CustomerIdFkNavigation.FirstName.ToString()+" "+item.Value.CustomerIdFkNavigation.LastName.ToString())</h3>
                                         <p style="font-size: 20px;">Order Date : @item.Value.OrderDate</p>
                                         <p style="font-size: 20px;">@item.Value.Description</p>
                                         <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
-                                            <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                            <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                        <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
-                                        </div>
+
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept">Accept</a>
+
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-reject">Reject</a>
+
                                     </div>
                                 </div>
-                        </div>
-                    
-                        <br />
-                }
-                else
-                {     
-                    <div class="row-lg-6">
-                        <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                            <div class="row align-items-center">
                                 <div class="col-4">
                                     <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                            <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
+                                        <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
                                     </div>
                                 </div>
-                                <div class="col-8">
+                            </div>
+                        </div>
+
+                        <br />
+                    }
+                    else
+                    {
+                        <div class="row-lg-6">
+                            <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                                <div class="row align-items-center">
+                                    <div class="col-4">
+                                        <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                            <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
                                         <div class="services-content" style="text-align: left;">
                                             <h2 style="font-size: 50px;">@item.Value.OrderName</h2>
                                             <h5 style="font-size: 30px;">@(item.Value.CustomerIdFkNavigation.FirstName.ToString()+" "+item.Value.CustomerIdFkNavigation.LastName.ToString())</h5>
                                             <p style="font-size: 20px;">Order Date : @item.Value.OrderDate</p>
                                             <p style="font-size: 20px;">@item.Value.Description</p>
-                                            <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price,2)$  delivery date :@item.Value.DeliverDate </p>
-                                        <a = style="border:0" " #" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Accept</a>
-                                        <a = style="border:0; background-color:darkred" "#" class="  btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Reject</a>
+                                            <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
+                                            <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept">Accept</a>
+                                            <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-reject">Reject</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                       <br />
-                }
+                        <br />
+                    }
                 </div>
-                </div>
-        }
-        
+            </div>
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $(".btn-accept").click(function () {
+                        $(this).hide(); 
+                        $(this).next(".btn-reject").hide();
+              
+                    });
+                });
+                        $(document).ready(function () {
+                            $(".btn-reject").click(function () {
+                                $(this).closest(".services-item").hide();
+                            });
+                        });
+            </script>
+            }
     </div>
 </div>
-    </div>
+
