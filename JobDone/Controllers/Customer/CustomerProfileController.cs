@@ -19,7 +19,7 @@ namespace JobDone.Controllers.Customer
         private readonly JobDoneContext _context;
         private readonly ICustomer _customer;
 
-        public CustomerProfileController(JobDoneContext context, ICustomer customer, UserManager<JobDoneContext> userManager)
+        public CustomerProfileController(JobDoneContext context, ICustomer customer)
         {
             _context = context;
             _customer = customer;
@@ -51,9 +51,9 @@ namespace JobDone.Controllers.Customer
 
             else if(NewPassword != null)
             {
-                if (vmCustomer.Password != customer.Password || NewPassword.Length < 6)
+                if (vmCustomer.Password != customer.Password || NewPassword.Length < 9)
                 {
-                    ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 5 digit, try again.");
+                    ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 8 digit, try again.");
                     return View("Profile", customer);
                 }
                 else

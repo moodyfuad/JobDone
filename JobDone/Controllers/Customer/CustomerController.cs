@@ -109,7 +109,8 @@ namespace JobDone.Controllers.Customer
                     PhoneNumber = viewModel.PhoneNumber,
                     BirthDate = viewModel.BirthDate,
                     SecurityQuestionAnswer = viewModel.SecurityQuestionAnswer,
-                    SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk
+                    SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk,
+                    Wallet = 0
                 };
                 if (!_customer.UsernameExist(customer.Username))
                 {
