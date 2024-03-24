@@ -1,11 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_SellerLayout.cshtml";
 }
+@using JobDone.Models.SellerAcceptRequest
 @model SignUpSellerCatgoreViewModel;
 @{
-    bool buttonClicked = false;
-}
 
+}
+<form method="post">
 <div class="container-fluid services py-5">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 800px;">
@@ -31,9 +32,7 @@
                                         <p style="font-size: 20px;">@item.Value.Description</p>
                                         <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
 
-                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept">Accept</a>
-
-                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-reject">Reject</a>
+                                            <input type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="Accept" value="Accept" />
 
                                     </div>
                                 </div>
@@ -64,8 +63,7 @@
                                             <p style="font-size: 20px;">Order Date : @item.Value.OrderDate</p>
                                             <p style="font-size: 20px;">@item.Value.Description</p>
                                             <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
-                                            <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept">Accept</a>
-                                            <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-reject">Reject</a>
+                                                <input type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" value="Accept" />
                                         </div>
                                     </div>
                                 </div>
@@ -77,22 +75,30 @@
             </div>
 
 
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-                $(document).ready(function () {
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
                     $(".btn-accept").click(function () {
-                        $(this).hide(); 
-                        $(this).next(".btn-reject").hide();
-              
+                    $(this).hide();
+     
+                    @(ViewBag.isaccepted = 1)
+@*                                 <input name = "" value = "1" />
+                                <input name="orderByCustomerId" value="@item.Value.Id" > *@
+                    @{
+                        SellerAcceptRequestModel SARVM = new SellerAcceptRequestModel
+                        {
+                            IsAccepted = 1,
+                            SellerIdFk = 1,
+                            OrderByCustomerIdFk = item.Value.Id
+                        };
+                        Model.sellerAcceptRequestModels.Add(SARVM); 
+                    }
+
                     });
                 });
-                        $(document).ready(function () {
-                            $(".btn-reject").click(function () {
-                                $(this).closest(".services-item").hide();
-                            });
-                        });
             </script>
             }
     </div>
 </div>
 
+</form>
