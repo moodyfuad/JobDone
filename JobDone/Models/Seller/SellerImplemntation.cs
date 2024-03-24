@@ -4,6 +4,7 @@ using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
+using JobDone.Models.SellerAcceptRequest;
 using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,8 @@ namespace JobDone.Models.Seller
     {
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<OrderModel> _order;
-        private readonly DbSet<OrderByCustomerModel> _orderByCustomers; 
+        private readonly DbSet<OrderByCustomerModel> _orderByCustomers;
+        private readonly DbSet<SellerAcceptRequestModel> _sellerAcceptRequest; 
         private readonly DbSet<CustomerModel> _customer;
         private readonly JobDoneContext _Db;
         
@@ -26,6 +28,7 @@ namespace JobDone.Models.Seller
             _seller = context.SellerModels;
             _order = context.OrderModels;
             _orderByCustomers = context.OrderByCustomerModels;
+            _sellerAcceptRequest = context.SellerAcceptRequestModels;
             _customer = context.CustomerModels;
             _Db = context;
         }
@@ -204,6 +207,15 @@ namespace JobDone.Models.Seller
         public List<CustomerModel> CustomerReqwestWork(int sellerID)
         {
             return _orderByCustomers.Where(x=>x.CategoryIdKf==SellerCatgoreID(sellerID)).Select(x=>x.CustomerIdFkNavigation).ToList();
+        }
+        public List<SellerAcceptRequestModel> GetSellerAcceptRequestModels()
+        {
+            return _sellerAcceptRequest.ToList();
+        }
+        public void SaveSellerAccept(SellerAcceptRequestModel SAR)
+        {
+            _sellerAcceptRequest.Add(SAR);
+            _Db.SaveChanges();
         }
 
         public List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId)

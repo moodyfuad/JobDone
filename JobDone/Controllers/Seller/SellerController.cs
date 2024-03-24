@@ -15,6 +15,9 @@ using Microsoft.AspNetCore.Hosting.Server;
 using JobDone.Data;
 using JobDone.Roles;
 using JobDone.Models.Order;
+using System.Collections.Generic;
+using JobDone.Models.SellerAcceptRequest;
+using System.Text;
 
 
 namespace JobDone.Controllers.Seller
@@ -42,7 +45,8 @@ namespace JobDone.Controllers.Seller
                 SecurityQuestions = _questions.GetQuestions(),
                 Category = _category.GetCategories(),
                 Service = new(),
-                Seller = new()
+                Seller = new(),
+                sellerAcceptRequestModels = new()
             };
             return View(viewModel);
         }
@@ -155,6 +159,26 @@ namespace JobDone.Controllers.Seller
 
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
 
+            viewModel.sellerAcceptRequestModels = _seller.GetSellerAcceptRequestModels();
+
+
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel,int Accept)
+        {
+            if(Accept != null)
+            {
+                SellerAcceptRequestModel sellerAcceptRequest = new SellerAcceptRequestModel
+                    {
+                        IsAccepted = 1,
+                        SellerIdFk = SellerID(),
+                        OrderByCustomerIdFk = Accept,
+                    };
+
+                    _seller.SaveSellerAccept(sellerAcceptRequest);
+            } 
             return View(viewModel);
         }
 
