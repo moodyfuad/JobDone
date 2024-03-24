@@ -14,6 +14,7 @@ using JobDone.Models.Order;
 using JobDone.ViewModels;
 using JobDone.Models.Banners;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerProfile;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ builder.Services.AddTransient<IServies, ServiesImplemntation>();
 builder.Services.AddTransient<IOrderByCustomer, OrderByCustomerImplementation>();
 builder.Services.AddTransient<IOrder, OrderImplementation>();
 builder.Services.AddTransient<ISellerAcceptRequest, SellerAcceptRequestImp>();
+builder.Services.AddTransient<ISellerProfile, SellerProfileImplemntation>();
 
 var app = builder.Build();
 
