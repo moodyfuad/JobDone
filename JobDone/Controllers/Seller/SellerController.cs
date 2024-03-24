@@ -138,6 +138,9 @@ namespace JobDone.Controllers.Seller
             var Totalgains = _seller.Totalgains(SellerID());
             ViewBag.Totalgains = Totalgains;
 
+            var AllAcceptrdBySeller = _seller.GetSARMForOneSeller(SellerID());
+            ViewBag.AllAcceptrdBySeller = AllAcceptrdBySeller;
+
             return View();
         }
 

@@ -112,7 +112,10 @@ namespace JobDone.Models.Seller
             var remainingWork = _Db.OrderModels.Count(x => x.SellerIdFk == id);
             return remainingWork;
         }
-
+        public int GetSARMForOneSeller(int sellerId)
+        {
+            return _sellerAcceptRequest.Where(x=>x.SellerIdFk == sellerId).Count();
+        }
         public SellerModel GetSellerById(int id)
         {
             return _seller.FirstOrDefault(s => s.Id == id);

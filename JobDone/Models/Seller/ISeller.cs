@@ -31,6 +31,7 @@ namespace JobDone.Models.Seller
         int SellerCatgoreID(int sellerId);
         List<CustomerModel> CustomerReqwestWork(int SellerID);
         void SaveSellerAccept(SellerAcceptRequestModel SAR);
+        int GetSARMForOneSeller(int sellerId);
         List<SellerAcceptRequestModel> GetSellerAcceptRequestModels();
         public Task<IEnumerable<SellerModel>> GetAllSellersWithCategory(string search);
         public Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search);
