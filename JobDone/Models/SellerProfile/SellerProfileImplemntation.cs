@@ -1,5 +1,6 @@
 ﻿using JobDone.Data;
 using JobDone.Models.Customer;
+using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Models.SellerProfile
