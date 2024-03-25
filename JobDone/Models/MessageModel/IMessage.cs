@@ -3,5 +3,6 @@
     public interface IMessage
     {
         public Task<IEnumerable<MessageModel>> GetAllMessages();
+        public Task DeleteAllMessagesBetweenCustomerAndSeller(short customerId, short sellerId);
     }
 }

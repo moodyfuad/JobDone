@@ -1,0 +1,97 @@
+﻿@using System.Security.Claims
+@model CustomerSellersMessagesServicesViewModel
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    string CustomerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        @if (Model.Sellers.Count() == 0)
+        {
+            <h3 style="color:red">Nothing here</h3>
+        }
+        @foreach (var seller in Model.Sellers)
+        {
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.WhoSendMessage == Model.Customer.Id && seller.Id == message.SellerId)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            @{
+                                string base64Image = Convert.ToBase64String(seller.ProfilePicture);
+                            }
+                            <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
+                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="150">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@seller.Username</h5>
+                                <div class="rating">
+                                    @{
+                                        short count = 0;
+                                    }
+                                    @for (short i = 0; i < seller.Rate; i++)
+                                    {
+                                        count++;
+                                        <span class="star">&#9733;</span>
+                                    }
+                                    @for (short i = 0; i < 5 - count; i++)
+                                    {
+                                        <span class="star">&#9734;</span>
+                                    }
+                                </div>
+                                @{
+                                    List<string> services = Model.Services.Where(x => x.SellerIdFk == seller.Id).Select(x => x.Name).ToList();
+                                }
+                                <spna>Services : </spna>
+                                @foreach (var service in services)
+                                {
+                                    <span>@service, </span>
+                                }
+                                <br />
+                                <h5>@seller.CategoryIdFkNavigation.Name</h5>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
+                                            <input type="hidden" name="customerId" value="@CustomerId" />
+                                            <input type="hidden" name="sellerId" value="@seller.Id" />
+                                            <button type="submit" class="btn btn-primary">Message</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-auto">
+                                        <form id="deleteMessagesForm" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get">
+                                            <input type="hidden" name="customerId" value="@CustomerId" />
+                                            <input type="hidden" name="sellerId" value="@seller.Id" />
+                                            <button type="submit" class="btn btn-primary btn-danger" onclick="confirmDeleteMessages(event)">
+                                                <i class="bi bi-trash-fill"></i> Delete Messages
+                                            </button>
+                                        </form>
+
+                                        <script>
+                                            function confirmDeleteMessages(event) {
+                                                event.preventDefault();
+
+                                                var confirmation = confirm("Are you sure you want to delete the messages?");
+
+                                                if (confirmation) {
+                                                    document.getElementById("deleteMessagesForm").submit();
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+                }
+            }
+        }
+    </div>
+</div>
+</div>
