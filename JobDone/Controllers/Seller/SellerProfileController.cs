@@ -24,11 +24,38 @@ namespace JobDone.Controllers.Seller
         public IActionResult Profile(SellerProfileViewModel viewModel)
         {
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
+            viewModel.serviceModels = _sellerProfile.GetServiceModels(SellerID());
+            if(_sellerProfile.IsWithdrawAmountbefore(SellerID()) == false)ViewBag.IsWithdrawAmountbefore = false;
+            else ViewBag.IsWithdrawAmountbefore = true;
 
             return View(viewModel);
         }
         [HttpPost]
-        [ActionName("Profile")]
+        public IActionResult Profile(SellerProfileViewModel viewModel, decimal amuontOfMoney)
+        {
+            viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
+            viewModel.serviceModels = _sellerProfile.GetServiceModels(SellerID());
+
+            if(amuontOfMoney != 0 && viewModel.sellerModels.Wallet>amuontOfMoney)
+            {
+                WithdrawModel withdrawModel = new WithdrawModel
+                {
+                    AmountOfMoney = Convert.ToDecimal(amuontOfMoney),
+                    Status = 1,
+                    SellerIdFk = SellerID()
+                };
+                _sellerProfile.AddWithdrawMoney(withdrawModel);
+            }
+            else
+            {
+                TempData["WarningMessage"] = "Please enter numbers without commas or make sure you have the amount";
+            }
+
+
+            return RedirectToAction("Profile", "SellerProfile");
+        }
+        [HttpPost]
+        
         public async Task<IActionResult> Edit([FromForm] SellerProfileViewModel viewModel, string NewPassword, IFormFile profilePictureAsFile)
         {
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());

@@ -2,13 +2,18 @@
 using JobDone.Models.Customer;
 using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
+using JobDone.Models.Service;
 
 namespace JobDone.Models.SellerProfile
 {
     public class SellerProfileImplemntation : ISellerProfile
     {
+
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<SellerOldWorkModel> _sellerOldWork;
+        private readonly DbSet<ServiceModel> _service;
+        private readonly DbSet<WithdrawModel> _withdrawModels;
+        private readonly JobDoneContext _Db;
         private readonly byte[] DefualtImage = new byte[]
 {
     0xFF, 0xD8, 0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x01, 0x00, 0x48,
@@ -27,10 +32,29 @@ namespace JobDone.Models.SellerProfile
         {
             _seller = context.SellerModels;
             _sellerOldWork = context.SellerOldWorkModels;
+            _service = context.ServiceModels;
+            _withdrawModels = context.WithdrawModels;
+            _Db = context;
         }
         public SellerModel GetSellerProfile(int sellerID)
         {
             return _seller.FirstOrDefault(x=>x.Id == sellerID);
+        }
+        public List<ServiceModel> GetServiceModels(int sellerID)
+        {
+            return _service.Where(x=>x.SellerIdFk == sellerID).ToList();
+        }
+        public bool IsWithdrawAmountbefore(int sellerID)
+        {
+            var result = _withdrawModels.Where(x => x.SellerIdFk == sellerID).FirstOrDefault();
+            if (result == null)
+                return false;
+            else return true;
+        }
+        public void AddWithdrawMoney(WithdrawModel AWDM)
+        {
+            _withdrawModels.Add(AWDM);
+            _Db.SaveChanges();
         }
         public bool UsernameExist(string username)
         {
