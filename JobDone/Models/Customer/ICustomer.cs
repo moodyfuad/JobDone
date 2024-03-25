@@ -15,6 +15,7 @@
         public Task<decimal> GetWalletAmount(short id);
 
         public Task<string> GetPictureAsString(short id);
+        public CustomerModel GetCustomerById(int id);
 
     }
 }

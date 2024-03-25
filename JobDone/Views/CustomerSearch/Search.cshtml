@@ -1,7 +1,9 @@
-﻿@model SellerServicesCategoryViewModel
+﻿@using System.Security.Claims
+@model SellerServicesCategoryViewModel
 
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+    string CustomerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
 
 <div class="container">
@@ -35,46 +37,51 @@
                 {
                     @foreach(var service in Model.Services)
                     {
-                            @if (service.SellerIdFk == Seller.Id)
-                            {
-                                <div class="col-md-4">
-                                    <div class="card mb-4">
-                                        @{
-                                            string base64Image = Convert.ToBase64String(Seller.ProfilePicture);
-                                        }
-                                        <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
-                                            <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="150">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">@Seller.Username</h5>
-                                            <div class="rating">
-                                                @{
-                                                    short count = 0;
-                                                }
-                                                @for (short i = 0; i < Seller.Rate; i++)
-                                                {
-                                                    count++;
-                                                    <span class="star">&#9733;</span>
-                                                }
-                                                @for (short i = 0; i < 5 - count; i++)
-                                                {
-                                                    <span class="star">&#9734;</span>
-                                                }
-                                            </div>
-                                            @{
-                                                List<string> services = Model.Services.Where(x => x.SellerIdFk == Seller.Id).Select(x => x.Name).ToList();
-                                            }
-                                            <spna>Services : </spna>
-                                            @foreach (var Service in services)
-                                            {
-                                                <span>@Service, </span>
-                                            }
-                                            <br />
-                                            <h5>@Seller.CategoryIdFkNavigation.Name</h5>
-                                        </div>
-                                    </div>
+                    @if (service.SellerIdFk == Seller.Id)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                @{
+                                    string base64Image = Convert.ToBase64String(Seller.ProfilePicture);
+                                }
+                                <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
+                                    <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="150">
                                 </div>
-                            }
+                                <div class="card-body">
+                                    <h5 class="card-title">@Seller.Username</h5>
+                                    <div class="rating">
+                                        @{
+                                            short count = 0;
+                                        }
+                                        @for (short i = 0; i < Seller.Rate; i++)
+                                        {
+                                            count++;
+                                            <span class="star">&#9733;</span>
+                                        }
+                                        @for (short i = 0; i < 5 - count; i++)
+                                        {
+                                            <span class="star">&#9734;</span>
+                                        }
+                                    </div>
+                                    @{
+                                        List<string> services = Model.Services.Where(x => x.SellerIdFk == Seller.Id).Select(x => x.Name).ToList();
+                                    }
+                                    <spna>Services : </spna>
+                                    @foreach (var Service in services)
+                                    {
+                                        <span>@Service, </span>
+                                    }
+                                    <br />
+                                    <h5>@Seller.CategoryIdFkNavigation.Name</h5>
+                                    <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
+                                        <input type="hidden" name="customerId" value="@CustomerId" />
+                                        <input type="hidden" name="sellerId" value="@Seller.Id" />
+                                        <button type="submit" class="btn btn-primary">Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     }
                 }
             }
@@ -120,6 +127,11 @@
                                 }
                                 <br />
                                 <h5>@Seller.CategoryIdFkNavigation.Name</h5>
+                            <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
+                                <input type="hidden" name="customerId" value="@CustomerId" />
+                                <input type="hidden" name="sellerId" value="@Seller.Id" />
+                                <button type="submit" class="btn btn-primary">Message</button>
+                            </form>
                             </div>
                         </div>
                     </div>
