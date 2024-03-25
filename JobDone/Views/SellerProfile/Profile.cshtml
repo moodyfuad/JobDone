@@ -368,30 +368,43 @@
                             @{
                                 string base64ImageForOldWork = Convert.ToBase64String(item.Picture);
                             }
-                            <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64,@base64Image" alt="صورة افتراضية" width="100%" height="225">
+                            <img class="bd-placeholder-img card-img-top" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64,@base64ImageForOldWork" alt="صورة افتراضية" width="100%" height="225">
 
                             <div class="card-body">
                                 <p class="card-text">@item.Description</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
+
+
                                         <form action="Delete" method="post">
                                             <button type="submit" class="btn btn-sm btn-outline-secondary" name="oldWorkId" value="@item.Id">Delete</button>
                                         </form>
-                                        <button type="button" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+
+                                       
+                                        <form action="EditOldWork" method="get">
+                                            <button type="submit" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        </form>
                                         <div id="myPopup" class="popup">
                                             <div class="popup-content">
                                                 <span onclick="closePopup()" style="float:right;">&times;</span>
-
-                                                <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="~/Seller/img/popular_item_5.jpg" alt="صورة افتراضية" width="100%" height="300px">
+                                                @{
+                                                    string base64ImageForNewOldWork = null;
+                                                }
+                                                    <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail"  src="data:image/jpeg;base64,@base64ImageForNewOldWork" width="100%" height="300px">
+                                                
                                                 <div>
-                                                    <input onchange="showButton()" type="file" id="imageInput" accept="image/*">
+                                                        <input onchange="showButton()" type="file" id="imageInput" name="NewPhoto" accept="image/*">
                                                     <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                                                 </div>
-                                                <textarea style="width:100%; height:200px;margin-top:50px;">@item.Description</textarea><br /><br />
-                                                <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+
+                                                    <textarea style="width:100%; height:200px;margin-top:50px;" name="NewDscrepsion">@item.Description</textarea><br /><br />
+                                                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="workId" value="@item.Id" placeholder="Edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
 
                                             </div>
-                                        </div>
+                                            </div>
+                                        
+
+
                                     </div>
                                     <small class="text-muted">9 mins</small>
                                 </div>
@@ -412,7 +425,7 @@
 
                             <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="~/Seller/img/default.jfif" alt="صورة افتراضية" width="100%" height="300px">
                             <div>
-                                <input onchange="showButton2()" type="file" id="imageInput2" accept="image/*">
+                                <input onchange="showButton2()" type="file" id="imageInput2" name="" accept="image/*">
                                 <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                             </div>
                             <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />

@@ -2,4 +2,54 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
 }
+@model SellerProfileViewModel
+@{
+    int oldworkId = 0;
+}
+
+<div class="container" style="margin-top:120px;">
+<div class="select-box">
+    <select name="oldworkId" required>
+
+        <option hidden>OldWork</option>
+        @foreach (var work in Model.sellerOldWorkModels)
+        {
+            <option value="@work.Id">@work.Description</option>
+        }
+    </select>
+</div>
+@{
+    if(oldworkId == 0)
+    {
+        <div class="container" style="margin-top:120px;">
+        <h1>Select Work To Edit it</h1>
+        </div>
+    }
+    else
+    {
+        foreach (var item in Model.sellerOldWorkModels)
+        {
+            
+                <div class="popup-content">
+                    @{
+                        string base64ImageForNewOldWork = null;
+                    }
+                    <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64,@base64ImageForNewOldWork" width="100%" height="300px">
+
+                    <div>
+                        <input onchange="showButton()" type="file" id="imageInput" name="NewPhoto" accept="image/*">
+                        <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                    </div>
+
+                    <textarea style="width:100%; height:200px;margin-top:50px;" name="NewDscrepsion"></textarea><br /><br />
+                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit"  value="" placeholder="Edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+
+                </div>
+            
+        }
+    }
+   
+}
+</div>

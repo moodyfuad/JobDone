@@ -119,6 +119,10 @@ namespace JobDone.Controllers.Seller
             await _context.SaveChangesAsync();
 
             return RedirectToAction("SuccessfullyChange", "SellerProfile");
+        } 
+        public IActionResult SuccessfullyChange()
+        {
+            return View();
         }
         [HttpPost]
         public IActionResult Delete(int oldWorkId)
@@ -126,21 +130,25 @@ namespace JobDone.Controllers.Seller
             _sellerProfile.DeleteOldWork(oldWorkId);
             return RedirectToAction("Profile", "SellerProfile");
         }
-        public IActionResult SuccessfullyChange()
+        [HttpGet]
+        public IActionResult EditOldWork(SellerProfileViewModel viewModel)
         {
-            return View();
+            viewModel.sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult EditOldWork(int workId,IFormFile NewPhoto, string NewDscrepsion)
+        {
+
+            return RedirectToAction("Profile", "SellerProfile");
         }
 
+        [HttpPost]
         public IActionResult AddOldWork()
         {
-            return View();
+            return RedirectToAction("Profile", "SellerProfile");
         }
-
-        public IActionResult EditOldWork()
-        {
-            return View();
-        }
-
+        
         private int SellerID()
         {
             return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);

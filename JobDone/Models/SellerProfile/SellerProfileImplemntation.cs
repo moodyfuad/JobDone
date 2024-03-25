@@ -124,5 +124,12 @@ namespace JobDone.Models.SellerProfile
             _sellerOldWork.Remove(result);
             _Db.SaveChanges();
         }
+        public void editOldWork(int oldworkId, IFormFile newphoto, string newdescrepion)
+        {
+            var editwork = _sellerOldWork.Where(x => x.Id == oldworkId).FirstOrDefault();
+            editwork.Picture = ConvertToByteArray(newphoto);
+            editwork.Description = newdescrepion;
+            _Db.SaveChanges();
+        }
     }
 }
