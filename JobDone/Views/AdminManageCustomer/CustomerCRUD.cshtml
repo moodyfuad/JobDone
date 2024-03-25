@@ -1,5 +1,129 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .half {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+            .half:first-child {
+                border-right: 2px solid #000;
+            }
+
+        select {
+            width: 50%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .container {
+            white-space: nowrap;
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .item {
+            display: inline-block;
+            width: 130px;
+            height: 150px;
+            background-color: gainsboro;
+            color: black;
+            text-align: center;
+            margin-right: 10px;
+            overflow: hidden;
+            border: 1px solid;
+            border-radius: 10px;
+        }
+
+            .item img {
+                width: 130px;
+                height: 80px;
+                border: 0 px solid;
+                border-radius: 10px;
+            }
+
+            .item p {
+                /* max-block-size: 20px; */
+                margin: 0;
+                word-wrap: break-word;
+                width: 130px;
+                max-block-size: 70px;
+                overflow-y: auto; /* هنا تمت إضافة خاصية word-wrap */
+                text-wrap: balance;
+                text-align: left;
+            }
+
+
+        #hiddenInput {
+            display: none
+        }
+
+        #hiddenInput2 {
+            display: none
+        }
+    </style>
+    <script>
+
+        function checkSelection() {
+            var selection = document.getElementById("moneyOperation").value;
+            var hiddenInput = document.getElementById("hiddenInput");
+            if (selection === "option3") {
+                hiddenInput.style.display = "block";
+            } else {
+                hiddenInput.style.display = "none";
+            }
+        }
+        function checkSelection2() {
+            var selection = document.getElementById("SellerServices").value;
+            var hiddenInput = document.getElementById("hiddenInput2");
+            if (selection === "option2") {
+                hiddenInput.style.display = "block";
+            } else {
+                hiddenInput.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+</head>
+<body>
+
+    <div class="half" id="firstHalf">
+        <h2>Choose money operation</h2>
+        <select id="moneyOperation" onchange="checkSelection()">
+            <option value="option1" active hidden>Choose</option>
+            <option value="option1">Withdraw</option>
+            <option value="option2">Deposit</option>
+            <option value="option3">Transfer</option>
+        </select>
+        <br><br><br><br><br><br>
+        <input type="text" placeholder="Customer Username"><br>
+        <input type="text" id="hiddenInput" placeholder="Seller Username"><br>
+
+        <input type="text" placeholder="Amount of money">
+        <br><br>
+        <input type="submit" value="submit">
+    </div>
+
+    <div class="half">
+        <h2> Customer accounts</h2>
+        <br><br><br><br><br><br><br><br>
+        <input type="text" placeholder="Username">
+        <br><br>
+        <input type="submit" value="Delete">
+    </div>
+</body>
+</html>
