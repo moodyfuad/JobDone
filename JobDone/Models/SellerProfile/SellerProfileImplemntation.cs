@@ -131,5 +131,9 @@ namespace JobDone.Models.SellerProfile
             editwork.Description = newdescrepion;
             _Db.SaveChanges();
         }
+        public SellerOldWorkModel GetOneSellerOldWorkModel(int oldWorkId) 
+        {
+            return _sellerOldWork.Where(x=>x.Id == oldWorkId).FirstOrDefault();
+        }
     }
 }

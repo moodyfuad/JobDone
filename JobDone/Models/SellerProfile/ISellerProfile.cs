@@ -15,6 +15,7 @@ namespace JobDone.Models.SellerProfile
         List<SellerOldWorkModel> GetSellerOldWorkModels(int sellerID);
         void DeleteOldWork(int oldWorkId);
         void editOldWork(int oldworkId, IFormFile newphoto, string newdescrepion);
+        SellerOldWorkModel GetOneSellerOldWorkModel(int oldWorkId);
 
     }
 }

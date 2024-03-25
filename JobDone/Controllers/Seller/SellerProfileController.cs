@@ -16,6 +16,7 @@ namespace JobDone.Controllers.Seller
     {
         private readonly JobDoneContext _context;
         private readonly ISellerProfile _sellerProfile;
+        static int OldWorkID;
         public SellerProfileController(JobDoneContext context, ISellerProfile sellerProfile)
         {
             _context = context;
@@ -134,11 +135,27 @@ namespace JobDone.Controllers.Seller
         public IActionResult EditOldWork(SellerProfileViewModel viewModel)
         {
             viewModel.sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+            if (OldWorkID != 0) 
+            {
+                viewModel.OneSellerOldWorkModel = _sellerProfile.GetOneSellerOldWorkModel(OldWorkID);
+            }
             return View(viewModel);
         }
+        
         [HttpPost]
-        public IActionResult EditOldWork(int workId,IFormFile NewPhoto, string NewDscrepsion)
+        public IActionResult ChooseWork(SellerProfileViewModel viewModel, int oldworkId)
         {
+
+            viewModel.sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+            
+             OldWorkID = oldworkId;
+            
+            return RedirectToAction("EditOldWork", "SellerProfile");
+        }
+        [HttpPost]
+        public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
+        {
+            _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
 
             return RedirectToAction("Profile", "SellerProfile");
         }
