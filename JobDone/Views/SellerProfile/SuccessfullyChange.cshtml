@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Page</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .success-message {
+            font-size: 24px;
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-message">Successfully changed!</div>
+        @Html.ActionLink("Back to Profile", "Profile", "SellerProfile", null, new { @class = "back-link" })
+    </div>
+</body>
+</html>
