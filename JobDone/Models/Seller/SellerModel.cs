@@ -6,6 +6,7 @@ using JobDone.Models.Category;
 using JobDone.Models.Order;
 using JobDone.Models.SecurityQuestions;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Models;

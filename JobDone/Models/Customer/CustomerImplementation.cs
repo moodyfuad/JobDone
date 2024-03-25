@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using System.Security.Claims;
+using JobDone.Models.Seller;
 namespace JobDone.Models.Customer
 {
     public class CustomerImplementation: ICustomer
@@ -37,6 +38,11 @@ namespace JobDone.Models.Customer
         {
             _customer.Add(customer);
             _Db.SaveChanges();
+        }
+
+        public CustomerModel GetCustomerById(int id)
+        {
+            return _customer.FirstOrDefault(s => s.Id == id);
         }
 
         public CustomerModel getAllInfo(short id)

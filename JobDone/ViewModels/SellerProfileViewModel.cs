@@ -1,4 +1,5 @@
 ﻿using JobDone.Models;
+using JobDone.Models.SellerOldWork;
 
 namespace JobDone.ViewModels
 {

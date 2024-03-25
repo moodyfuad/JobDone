@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using JobDone.Models;
 using JobDone.Models.Admin;
 using JobDone.Models.Banners;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
+using JobDone.Models.MessageModel;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SecurityQuestions;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Data;
@@ -49,5 +52,15 @@ public partial class JobDoneContext : DbContext
     public virtual DbSet<ServiceModel> ServiceModels { get; set; }
 
     public virtual DbSet<WithdrawModel> WithdrawModels { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<MessageModel>()
+            .HasKey(m => m.Id);
+
+        // Other configurations...
+
+        base.OnModelCreating(modelBuilder);
+    }
 
 }
