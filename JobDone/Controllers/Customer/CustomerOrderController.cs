@@ -5,6 +5,7 @@ using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.MessageModel;
 using JobDone.Models.Order;
+using JobDone.Models.OrderByCustomer;
 using JobDone.Models.Seller;
 using JobDone.Roles;
 using JobDone.ViewModels;
@@ -53,9 +54,10 @@ namespace JobDone.Controllers.Customer
             }
             else
             {
-                decimal TotalServicePrice = 0;
-                decimal TotalTaxesPrice = 0;
-                decimal TotalPayment = 0;
+                decimal TotalServicePrice = 0m;
+                decimal TotalTaxesPrice = 0m;
+                decimal TotalPayment = 0m;
+                decimal taxPersentage = 5m / 100m;
                 List<CustomerOrdersViewModel> ordersViewModels = new List<CustomerOrdersViewModel>();
                 foreach (OrderModel order in customerOrders)
                 {
@@ -67,17 +69,19 @@ namespace JobDone.Controllers.Customer
                         Username = seller.Username,
                         Rate = seller.Rate,
                         OrderDescription = order.Description,
-                        Price = order.Price,
+                        Price = order.Price - (taxPersentage * order.Price),
                         DeliverDate = order.DeliverDate,
                         OrderDate = order.OrderDate,
                         ProjectName = order.OrderName,
                         SellerPicture = Convert.ToBase64String(seller.ProfilePicture),
                         CategotyName = _categories.GetCategoryById(seller.CategoryIdFk),
                     };
-                    TotalServicePrice += order.Price;
+
+                    TotalServicePrice += ordersViewModel.Price;
+                    TotalTaxesPrice += taxPersentage * order.Price;
                     ordersViewModels.Add(ordersViewModel);
                 }
-                TotalPayment = TotalServicePrice + TotalTaxesPrice;
+                TotalPayment = TotalServicePrice + TotalTaxesPrice ;
                 
                 ViewBag.TotalServicePrice = TotalServicePrice.ToString("0.00");
                 ViewBag.TotalTaxesPrice = TotalTaxesPrice.ToString("0.00");

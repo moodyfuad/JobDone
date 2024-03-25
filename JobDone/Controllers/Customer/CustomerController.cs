@@ -39,11 +39,13 @@ namespace JobDone.Controllers.Customer
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             ClaimsPrincipal claims = HttpContext.User;
             if (claims.Identity.IsAuthenticated)
-                RedirectToAction("Home", "Customer");
+                return RedirectToAction("Home", "Customer");
+
+            HttpContext.SignOutAsync().Wait();
             return View();
         }
 
@@ -52,31 +54,17 @@ namespace JobDone.Controllers.Customer
         {
             if (_customer.UsernameAndPasswordExists(customer))
             {
-                short Id = _customer.getId(customer.Username, customer.Password);
-                decimal walletAmount = await _customer.GetWalletAmount(Id);
-                string profilePicture = await _customer.GetPictureAsString(Id);
+                customer.Id = (int)_customer.getId(customer.Username, customer.Password);
+                
+                SignInCustomerAuthCookie(customer);
 
-                List<Claim> claims = new List<Claim>()
-                {
-                    new Claim("username", customer.Username),
-                    new Claim("WalletAmount", walletAmount.ToString()),
-                    new Claim("ProfilePicture", profilePicture),
-                    new Claim(ClaimTypes.NameIdentifier, Id.ToString()),
-                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
-                };
-
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                AuthenticationProperties properties = new AuthenticationProperties()
-                {
-                    AllowRefresh = true,
-                    
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                 return RedirectToAction("Home", "Customer");
             }
-            ViewData["ValidateMessgae"] = "Invalid username/password";
-            return View();
+            else
+            {
+                ViewData["ValidateMessgae"] = "Invalid username/password";
+                return View();
+            }
         }
 
         public IActionResult SignUp()
@@ -123,6 +111,7 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
 
+        [HttpGet]
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Home()
         {
@@ -176,24 +165,36 @@ namespace JobDone.Controllers.Customer
             return RedirectToAction("Login");
         }
 
-        private async void SignInCustomerAuthCookie(CustomerModel model)
+        public async Task SignInCustomerAuthCookie(CustomerModel model)
         {
+            if (model.Id != 0)
+            {
+                model = _customer.getAllInfo(short.Parse(model.Id.ToString()));
+            }
             List<Claim> claims = new List<Claim>()
                 {
+                    //
                     new Claim("username", model.Username),
+                    new Claim("WalletAmount", model.Wallet.ToString("0.00")),
+                    new Claim("ProfilePicture", Convert.ToBase64String(model.ProfilePicture)),
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
+                    //
+                    /*new Claim("username", model.Username),
+                    new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
+                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer)*/
                 };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
+            ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
             AuthenticationProperties properties = new AuthenticationProperties()
             {
                 AllowRefresh = true,
-
+                IsPersistent = true,
             };
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
         }
         [HttpPost]
         [HttpGet]

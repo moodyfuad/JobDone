@@ -5,6 +5,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerOldWork;
 using JobDone.Models.Service;
 using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -112,7 +113,10 @@ namespace JobDone.Models.Seller
             var remainingWork = _Db.OrderModels.Count(x => x.SellerIdFk == id);
             return remainingWork;
         }
-
+        public int GetSARMForOneSeller(int sellerId)
+        {
+            return _sellerAcceptRequest.Where(x=>x.SellerIdFk == sellerId).Count();
+        }
         public SellerModel GetSellerById(int id)
         {
             return _seller.FirstOrDefault(s => s.Id == id);
@@ -226,6 +230,54 @@ namespace JobDone.Models.Seller
                 sellers.Add(GetSellerById(id));
             }
             return sellers;
+        }
+
+        public List<SellerModel> GetFirst10()
+        {
+            return _Db.SellerModels.Take(10).ToList();
+        }
+
+        public List<SellerModel> GetFirst10(string username)
+        {
+            List<SellerModel> sellers = _Db.SellerModels.Where(s =>
+                s.Username.ToLower().StartsWith(username.ToLower())|| s.Username.ToLower().EndsWith(username.ToLower())).ToList();
+            if (sellers.Count == 0)
+            {
+                return null;
+            }
+            else if(sellers.Count < 10)
+            {
+                return sellers;
+            }
+            else
+            {
+                return sellers.Take(10).ToList();
+            }
+        }
+        public async Task<bool>DeleteAccount(int sellerId)
+        {
+            try
+            {
+                SellerModel seller = _seller.FirstOrDefaultAsync(s => s.Id == sellerId).Result;
+
+                 List<SellerOldWorkModel> works = _Db.SellerOldWorkModels.Where
+                    (works => works.SellerIdFk == sellerId).ToList();
+
+                List<ServiceModel> services = _Db.ServiceModels.Where
+                    (s => s.SellerIdFk == sellerId).ToList();  
+
+                List<WithdrawModel> withdrawModels = _Db.WithdrawModels.Where
+                    (s => s.SellerIdFk == sellerId).ToList();
+
+                _Db.SellerOldWorkModels.RemoveRange(works);
+                _Db.ServiceModels.RemoveRange(services);
+                _Db.WithdrawModels.RemoveRange(withdrawModels);
+                _Db.SellerModels.Remove(seller);
+                _Db.SaveChanges();
+                return true;
+            }
+            catch { return false; }
+
         }
     }
 }

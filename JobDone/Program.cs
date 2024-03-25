@@ -14,6 +14,8 @@ using JobDone.Models.Order;
 using JobDone.ViewModels;
 using JobDone.Models.Banners;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerProfile;
+using JobDone.Models.SellerOldWork;
 using JobDone.Models.MessageModel;
 
 
@@ -45,7 +47,10 @@ builder.Services.AddTransient<IServies, ServiesImplemntation>();
 builder.Services.AddTransient<IOrderByCustomer, OrderByCustomerImplementation>();
 builder.Services.AddTransient<IOrder, OrderImplementation>();
 builder.Services.AddTransient<ISellerAcceptRequest, SellerAcceptRequestImp>();
+builder.Services.AddTransient<ISellerProfile, SellerProfileImplemntation>();
+builder.Services.AddTransient<ISellerOldWork, SellerOldWorksImp>();
 builder.Services.AddTransient<IMessage, MessageImplementation>();
+
 
 var app = builder.Build();
 
@@ -59,10 +64,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=CustomerRequestWork}/{action=RequestedList}/{id?}");
+    pattern: "{controller=AdminManageSellers}/{action=SellerCRUD}/{id?}/{username?}");
 
 app.Run();
