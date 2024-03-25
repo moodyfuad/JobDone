@@ -1,6 +1,7 @@
 ﻿using JobDone.Data;
 using JobDone.Models;
 using JobDone.Models.Customer;
+using JobDone.Models.SellerOldWork;
 using JobDone.Models.SellerProfile;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,9 @@ namespace JobDone.Controllers.Seller
         {
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
             viewModel.serviceModels = _sellerProfile.GetServiceModels(SellerID());
-            if(_sellerProfile.IsWithdrawAmountbefore(SellerID()) == false)ViewBag.IsWithdrawAmountbefore = false;
+            viewModel.sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+
+            if (_sellerProfile.IsWithdrawAmountbefore(SellerID()) == false) ViewBag.IsWithdrawAmountbefore = false;
             else ViewBag.IsWithdrawAmountbefore = true;
 
             return View(viewModel);
@@ -116,6 +119,12 @@ namespace JobDone.Controllers.Seller
             await _context.SaveChangesAsync();
 
             return RedirectToAction("SuccessfullyChange", "SellerProfile");
+        }
+        [HttpPost]
+        public IActionResult Delete(int oldWorkId)
+        {
+            _sellerProfile.DeleteOldWork(oldWorkId);
+            return RedirectToAction("Profile", "SellerProfile");
         }
         public IActionResult SuccessfullyChange()
         {

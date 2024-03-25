@@ -1,4 +1,5 @@
 ﻿using JobDone.Models.Customer;
+using JobDone.Models.SellerOldWork;
 
 namespace JobDone.Models.SellerProfile
 {
@@ -11,6 +12,8 @@ namespace JobDone.Models.SellerProfile
         bool UsernameExist(string username);
         public byte[] ConvertToByteArray(IFormFile image);
         public void ApplyChangesToCustomer(ref SellerModel Seller, SellerModel ViewModelSeller);
+        List<SellerOldWorkModel> GetSellerOldWorkModels(int sellerID);
+        void DeleteOldWork(int oldWorkId);
 
     }
 }

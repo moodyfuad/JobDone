@@ -114,5 +114,15 @@ namespace JobDone.Models.SellerProfile
             }
 
         }
+        public List<SellerOldWorkModel> GetSellerOldWorkModels(int sellerID) 
+        {
+            return _sellerOldWork.Where(x=>x.SellerIdFk == sellerID).ToList();
+        }
+        public void DeleteOldWork(int oldWorkId)
+        {
+            SellerOldWorkModel result = _sellerOldWork.Where(x => x.Id == oldWorkId).FirstOrDefault();
+            _sellerOldWork.Remove(result);
+            _Db.SaveChanges();
+        }
     }
 }
