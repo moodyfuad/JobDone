@@ -3,6 +3,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.SellerOldWork;
 using JobDone.ViewModels;
 using System.Drawing;
 
@@ -37,5 +38,10 @@ namespace JobDone.Models.Seller
         public Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search);
         public Task<IEnumerable<ServiceModel>> GetAllSellersWithService(string search);
         public Task<IEnumerable<SellerModel>> getAllTheSeller();
+
+
+        List<SellerModel> GetFirst10();
+        List<SellerModel> GetFirst10(string username);
+        Task<bool> DeleteAccount(int sellerId);
     }
 }

@@ -39,11 +39,13 @@ namespace JobDone.Controllers.Customer
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             ClaimsPrincipal claims = HttpContext.User;
             if (claims.Identity.IsAuthenticated)
-                RedirectToAction("Home", "Customer");
+                return RedirectToAction("Home", "Customer");
+
+            HttpContext.SignOutAsync().Wait();
             return View();
         }
 
@@ -163,7 +165,7 @@ namespace JobDone.Controllers.Customer
             return RedirectToAction("Login");
         }
 
-        private async void SignInCustomerAuthCookie(CustomerModel model)
+        public async Task SignInCustomerAuthCookie(CustomerModel model)
         {
             if (model.Id != 0)
             {
@@ -185,13 +187,14 @@ namespace JobDone.Controllers.Customer
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
+            ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
             AuthenticationProperties properties = new AuthenticationProperties()
             {
                 AllowRefresh = true,
-
+                IsPersistent = true,
             };
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
         }
         [HttpPost]
         [HttpGet]

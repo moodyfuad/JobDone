@@ -1,7 +1,8 @@
-﻿@{
+﻿@using JobDone.Models.SellerOldWork
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+@model Admin_SellerServicesViewModel
 
 <!DOCTYPE html>
 <html>
@@ -118,70 +119,76 @@
         <input type="submit" value="submit">
     </div>
 
+        <form action="/" method="post">
     <div class="half">
-        <h2>Seller Services</h2>
-        <select id="SellerServices" onchange="checkSelection2()">
-            <option value="option1" active hidden>Choose</option>
-            <option value="option1">Delete account</option>
-            <option value="option2">Delete post</option>
-        </select>
-        <br><br><br><br><br><br><br><br>
-        <input type="text" placeholder="Username">
-        <br><br>
-        <div id="hiddenInput2" class="container">
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 1">
-                <p>وصفrgre اgeلعنصرلللللللللللللللللللللللللللللزلللللللgefkgkepgkepgkegokegokegrgللللزززززززززززززr8wu0wur90w9riw0wiri0wrio 1</p>
+            <h2>Seller Services</h2>
+            <select id="SellerServices" onchange="checkSelection2()">
+                <option value="option1" active hidden>Choose</option>
+                <option value="option1">Delete account</option>
+                <option value="option2">Delete post</option>
+            </select>
+            <form method="post" style="display:flex" asp-route-username="@Model.CustomerUsername">
+                <input asp-for=CustomerUsername type="text" placeholder="Username">
+                <button asp-action="GetSellers" asp-route-username="@Model.CustomerUsername" type="submit">Search</button>
+                
+            </form>
+            <div style="max-height:180px; max-width:600px;margin-bottom:15px;display:flex; overflow:auto">
+                @{
+                    if (TempData["deleted"] != null) 
+                    {
+                        <h5>
+                            @TempData["deleted"].ToString(); 
+                        </h5>
+                    }
+                    if (Model.Sellers.Count() == 0)
+                    {
+                        <h1>No users were found</h1>
+                    }
+                    else
+                    {
+                        foreach (SellerModel seller in Model.Sellers)
+                        {
+                            <form asp-action="SellerCRUD" asp-route-sellerid="@seller.Id.ToString()" style="">
+                                <input asp-for="@seller.Id" type="hidden" name="name" value="@seller.Id" />
+                                <div style="height:150px; width:200px;margin:8px; margin-bottom:0;  text-align:center">
+                                    <button type="submit" style="margin:15pxmargin-bottom:0;border:none;padding-top:15px; width:inherit ">
+                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" alt="Alternate Text"
+                                             style="border-radius:50%; width:40px;height:40px" />
+                                        <h5>@@@seller.Username</h5>
+                                        <h6>@seller.FirstName @seller.LastName</h6>
+                                    </button>
+                                    <button asp-action="DeleteAccount" style="font-size:small;width:inherit" formmethod="post" asp-route-sellerid="@seller.Id">Delete Account</button>
+                                </div>
+                            </form>
+                        }
+                    }
+                    
+                }
             </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b3.jpg" alt="وصف الصورة 2">
-                <p>وصف العنصر 2</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 3">
-                <p>وصف العنصر 3</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 4">
-                <p>وصف العنصر 4</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 5">
-                <p>وصف العنصر 5</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 6">
-                <p>وصف العنصر 6</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 7">
-                <p>وصف العنصر 7</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 8">
-                <p>وصف العنصر 8</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 9">
-                <p>وصف العنصر 9</p>
-            </div>
-            <div class="item">
-                <input type="checkbox" name="name" value="" />
-                <img src="/Adminn/Panners/b2.jpg" alt="وصف الصورة 10">
-                <p>وصف العنصر 10</p>
-            </div>
-        </div>
-        <br />
-        <input type="submit" value="Delete">
+            <br><br>
+                @{
+                    if(Model.Sellers.Count() == 1)
+                    {
+                        <div id="" class="container">
+                        @foreach(SellerOldWorkModel work in Model.Sellers[0].SellerOldWorkModels.ToList())
+                        {
+                            <div class="item">
+                                <input type="checkbox" name="name" value="" />
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
+                                <p>@work.Description</p>
+                            </div>
+                            
+                        }
+                        </div>
+                        
+                    }
+                }
+                
+                
+            <br />
+            <input type="submit" value="Delete">
     </div>
+        </form>
+        
 </body>
 </html>
