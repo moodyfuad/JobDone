@@ -59,7 +59,7 @@ namespace JobDone.Controllers.Seller
             return RedirectToAction("Profile", "SellerProfile");
         }
         [HttpPost]
-        
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([FromForm] SellerProfileViewModel viewModel, string NewPassword, IFormFile profilePictureAsFile)
         {
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
@@ -161,8 +161,16 @@ namespace JobDone.Controllers.Seller
         }
 
         [HttpPost]
-        public IActionResult AddOldWork()
+        public IActionResult AddOldWork(IFormFile newPhoto, string newDescription)
         {
+            if (newPhoto == null || newDescription == null)
+            {
+                TempData["WarningMessageForNewWork"] = "No new work has been added because some fields are empty";
+            }
+            else
+            {
+                _sellerProfile.AddNewWork(newPhoto, newDescription, SellerID());
+            }
             return RedirectToAction("Profile", "SellerProfile");
         }
         

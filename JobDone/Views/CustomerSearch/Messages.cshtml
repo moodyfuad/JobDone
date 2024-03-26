@@ -38,11 +38,11 @@
                                     @for (short i = 0; i < seller.Rate; i++)
                                     {
                                         count++;
-                                        <span class="star">&#9733;</span>
+                                        <span class="star" style="color:gold">&#9733;</span>
                                     }
                                     @for (short i = 0; i < 5 - count; i++)
                                     {
-                                        <span class="star">&#9734;</span>
+                                        <span class="star" style="color:gold">&#9734;</span>
                                     }
                                 </div>
                                 @{
@@ -55,22 +55,24 @@
                                 }
                                 <br />
                                 <h5>@seller.CategoryIdFkNavigation.Name</h5>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
-                                            <input type="hidden" name="customerId" value="@CustomerId" />
-                                            <input type="hidden" name="sellerId" value="@seller.Id" />
-                                            <button type="submit" class="btn btn-primary">Message</button>
-                                        </form>
-                                    </div>
-                                    <div class="col-auto">
-                                        <form id="deleteMessagesForm" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get">
-                                            <input type="hidden" name="customerId" value="@CustomerId" />
-                                            <input type="hidden" name="sellerId" value="@seller.Id" />
-                                            <button type="submit" class="btn btn-primary btn-danger" onclick="confirmDeleteMessages(event)">
-                                                <i class="bi bi-trash-fill"></i> Delete Messages
-                                            </button>
-                                        </form>
+                                <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents">
+                                        <input type="hidden" name="customerId" value="@CustomerId" />
+                                        <input type="hidden" name="sellerId" value="@seller.Id" />
+                                        <button type="submit" class="btn btn-primary">
+                                            Message
+                                        </button>
+                                    </form>
+                                <form id="deleteMessagesForm" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get" style="display:contents">
+                                        <input type="hidden" name="customerId" value="@CustomerId" />
+                                        <input type="hidden" name="sellerId" value="@seller.Id" />
+                                        <button type="submit" class="btn btn-primary btn-danger" onclick="confirmDeleteMessages(event)">
+                                            <i class="bi bi-trash-fill"></i> Delete Messages
+                                        </button>
+                                </form>
+                                <form asp-controller="CustomerVisitSellerProfile" asp-action="Profile" method="get" style="display:contents">
+                                    <input type="hidden" name="sellerId" value="@seller.Id" />
+                                    <button type="submit" class="btn btn-success">Visit</button>
+                                </form>
 
                                         <script>
                                             function confirmDeleteMessages(event) {
@@ -86,8 +88,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                     break;
                 }
             }

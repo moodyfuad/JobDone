@@ -135,5 +135,16 @@ namespace JobDone.Models.SellerProfile
         {
             return _sellerOldWork.Where(x=>x.Id == oldWorkId).FirstOrDefault();
         }
+        public void AddNewWork(IFormFile imge, string description, int sellerId)
+        {
+            SellerOldWorkModel nweWork = new SellerOldWorkModel
+            {
+                Picture = ConvertToByteArray(imge),
+                Description = description,
+                SellerIdFk = sellerId
+            };
+            _sellerOldWork.Add(nweWork);
+            _Db.SaveChanges();
+        }
     }
 }

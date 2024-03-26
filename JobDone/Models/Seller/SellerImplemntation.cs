@@ -121,8 +121,7 @@ namespace JobDone.Models.Seller
         }
         public SellerModel GetSellerById(int id)
         {
-
-            return _seller.FirstOrDefault(s => s.Id == id);
+            return _seller.Include("CategoryIdFkNavigation").FirstOrDefault(s => s.Id == id);
         }
 
 

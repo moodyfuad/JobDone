@@ -171,7 +171,7 @@ namespace JobDone.Controllers.Seller
         [HttpPost]
         public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel,int Accept)
         {
-            if(Accept != null)
+            if(Accept != 0)
             {
                 SellerAcceptRequestModel sellerAcceptRequest = new SellerAcceptRequestModel
                     {
