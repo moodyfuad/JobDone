@@ -233,7 +233,7 @@
 
 
 
-                                    <form action="Eidt" method="post">
+                                    <form action="Edit" method="post">
                                         <div id="myPopup3" class="popup">
                                             <div class="popup-content">
                                                 <span onclick="closePopup3()" style="float:right;">&times;</span>
@@ -337,7 +337,7 @@
                                             <br /><br />
 
 
-                                            <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit"  value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+                                                <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
 
                                             </div>
                                         </div>
@@ -417,22 +417,32 @@
                     
                 
 
-                <input class="btn btn-gradient-primary btn-rounded btn-fw" onclick="openPopup2()" type="submit" name="name" value="Add new work" style="margin-top:70px;margin-left:90%; background-color:cornflowerblue;" />
-
+                <input class="btn btn-gradient-primary btn-rounded btn-fw" onclick="openPopup2()" type="submit" name="name" value="Add new work" style="margin-top:70px;margin-left:60%; background-color:cornflowerblue;" />
+                <form action="AddOldWork" method="post">
                     <div id="myPopup2" class="popup">
                         <div class="popup-content">
                             <span onclick="closePopup2()" style="float:right;">&times;</span>
 
                             <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="~/Seller/img/default.jfif" alt="صورة افتراضية" width="100%" height="300px">
                             <div>
-                                <input onchange="showButton2()" type="file" id="imageInput2" name="" accept="image/*">
+                                <input onchange="showButton2()" type="file" id="imageInput2" name="newPhoto" accept="image/*">
                                 <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                             </div>
-                            <textarea style="width:100%; height:200px;margin-top:50px;">fdvddfvddvsv</textarea><br /><br />
+                        <textarea style="width:100%; height:200px;margin-top:50px;" name="newDescription">Add description</textarea><br /><br />
                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="Add" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
-
+                            
                         </div>
                     </div>
+                    
+                    
+                    @if (TempData["WarningMessageForNewWork"] != null)
+                    {
+                        <div class="alert alert-warning">
+                            @TempData["WarningMessageForNewWork"]
+                        </div>
+                    }
+                    
+                </form>
         </div>
     </div>
 
