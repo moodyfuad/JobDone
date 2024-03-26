@@ -1,5 +1,5 @@
 ﻿@using System.Security.Claims
-@model SellerServicesCategoryViewModel
+@model SellersServicesCategoriesViewModel
 
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
@@ -56,11 +56,11 @@
                                         @for (short i = 0; i < Seller.Rate; i++)
                                         {
                                             count++;
-                                            <span class="star">&#9733;</span>
+                                            <span class="star" style="color:gold">&#9733;</span>
                                         }
                                         @for (short i = 0; i < 5 - count; i++)
                                         {
-                                            <span class="star">&#9734;</span>
+                                            <span class="star" style="color:gold">&#9734;</span>
                                         }
                                     </div>
                                     @{
@@ -76,7 +76,13 @@
                                     <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
                                         <input type="hidden" name="customerId" value="@CustomerId" />
                                         <input type="hidden" name="sellerId" value="@Seller.Id" />
-                                        <button type="submit" class="btn btn-primary">Message</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            Message
+                                        </button>
+                                    </form>
+                                    <form asp-controller="CustomerVisitSellerProfile" asp-action="Profile" method="get">
+                                        <input type="hidden" name="sellerId" value="@Seller.Id" />
+                                        <button type="submit" class="btn btn-success">Visit</button>
                                     </form>
                                 </div>
                             </div>
@@ -110,11 +116,11 @@
                                     @for (short i = 0; i < Seller.Rate; i++)
                                     {
                                         count++;
-                                        <span class="star">&#9733;</span>
+                                    <span class="star" style="color:gold">&#9733;</span>
                                     }
                                     @for (short i = 0; i < 5 - count; i++)
                                     {
-                                        <span class="star">&#9734;</span>
+                                    <span class="star" style="color:gold">&#9734;</span>
                                     }
                                 </div>
                                 @{
@@ -127,10 +133,14 @@
                                 }
                                 <br />
                                 <h5>@Seller.CategoryIdFkNavigation.Name</h5>
-                            <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
+                            <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents">
                                 <input type="hidden" name="customerId" value="@CustomerId" />
                                 <input type="hidden" name="sellerId" value="@Seller.Id" />
                                 <button type="submit" class="btn btn-primary">Message</button>
+                            </form>
+                            <form asp-controller="CustomerVisitSellerProfile" asp-action="Profile" method="get" style="display:contents">
+                                <input type="hidden" name="sellerId" value="@Seller.Id" />
+                                <button type="submit" class="btn btn-success">Visit</button>
                             </form>
                             </div>
                         </div>

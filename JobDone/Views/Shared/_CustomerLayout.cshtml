@@ -71,10 +71,30 @@
                     </ul>
 
                 </div>
-                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
-                <span style="color:white;margin-left:10px;">
+                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" onclick="toggleWalletAmount()" />
+                <span id="walletAmount" style="color:white;margin-left:10px;">
                     @WalletAmount
                 </span>
+
+                <script>
+                    var originalWalletAmount = "@WalletAmount";
+                    var walletAmountElement = document.getElementById("walletAmount");
+
+                    var storedWalletAmount = localStorage.getItem("walletAmount");
+                    if (storedWalletAmount) {
+                        walletAmountElement.innerHTML = storedWalletAmount;
+                    }
+
+                    function toggleWalletAmount() {
+                        if (walletAmountElement.innerHTML === "****") {
+                            walletAmountElement.innerHTML = originalWalletAmount;
+                            localStorage.setItem("walletAmount", originalWalletAmount);
+                        } else {
+                            walletAmountElement.innerHTML = "****";
+                            localStorage.setItem("walletAmount", "****");
+                        }
+                    }
+                </script>
                 
                 <h5 style="color:white;margin-left:70px">Logo</h5>
 

@@ -153,12 +153,6 @@ namespace JobDone.Controllers.Customer
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
-        public IActionResult Seller()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult>Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

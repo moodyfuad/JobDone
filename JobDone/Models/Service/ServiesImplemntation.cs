@@ -7,7 +7,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace JobDone.Models.Service
 {
-    public class ServiesImplemntation:IServies
+    public class ServiesImplemntation : IServies
     {
         private readonly DbSet<ServiceModel> _services;
         private readonly JobDoneContext _Db;
@@ -39,5 +39,7 @@ namespace JobDone.Models.Service
         }
 
         public async Task<IEnumerable<ServiceModel>> getAllServices() => await _services.ToListAsync();
+
+        public async Task<IEnumerable<ServiceModel>> GetAllServicesBasedOnSellerId(short id) => await _services.Where(i => i.SellerIdFk == id).ToListAsync();
     }
 }

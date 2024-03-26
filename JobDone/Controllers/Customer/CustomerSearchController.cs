@@ -31,7 +31,7 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult> Search()
         {
             
-            SellerServicesCategoryViewModel sellers = new SellerServicesCategoryViewModel()
+            SellersServicesCategoriesViewModel sellers = new SellersServicesCategoriesViewModel()
             {
                 Sellers = await _seller.getAllTheSeller(),
                 Services = await _services.getAllServices()
@@ -63,7 +63,7 @@ namespace JobDone.Controllers.Customer
         [HttpPost]
         public async Task<IActionResult> Search(string search, string option)
         {
-            SellerServicesCategoryViewModel sellers = new SellerServicesCategoryViewModel();
+            SellersServicesCategoriesViewModel sellers = new SellersServicesCategoriesViewModel();
 
             if(!string.IsNullOrEmpty(search))
             {
