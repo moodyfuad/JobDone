@@ -23,7 +23,8 @@ namespace JobDone.Models.Seller
         private readonly DbSet<SellerAcceptRequestModel> _sellerAcceptRequest; 
         private readonly DbSet<CustomerModel> _customer;
         private readonly JobDoneContext _Db;
-        
+        private readonly DbSet<SellerOldWorkModel> _posts;
+
         public SellerImplemntation(JobDoneContext context)
         {
             _seller = context.SellerModels;
@@ -32,6 +33,7 @@ namespace JobDone.Models.Seller
             _sellerAcceptRequest = context.SellerAcceptRequestModels;
             _customer = context.CustomerModels;
             _Db = context;
+            _posts = context.SellerOldWorkModels;
         }
 
         void SaveSellerInDB(SellerModel seller)
@@ -119,6 +121,7 @@ namespace JobDone.Models.Seller
         }
         public SellerModel GetSellerById(int id)
         {
+
             return _seller.FirstOrDefault(s => s.Id == id);
         }
 
@@ -278,6 +281,14 @@ namespace JobDone.Models.Seller
             }
             catch { return false; }
 
+        }
+
+        public async Task<List<SellerModel>>? GetSellerWithPosts(int sellerId)
+        {
+            List < SellerModel > sellers = 
+                _seller.Where(seller=> seller.Id == sellerId).Include(s=>s.SellerOldWorkModels).ToList();
+
+            return sellers;
         }
     }
 }

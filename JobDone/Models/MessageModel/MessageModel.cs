@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JobDone.Models.MessageModel;
 
-[Keyless]
 [Table("MessageModel")]
 public partial class MessageModel
 {

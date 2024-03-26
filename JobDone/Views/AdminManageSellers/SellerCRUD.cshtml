@@ -122,14 +122,11 @@
         <form action="/" method="post">
     <div class="half">
             <h2>Seller Services</h2>
-            <select id="SellerServices" onchange="checkSelection2()">
-                <option value="option1" active hidden>Choose</option>
-                <option value="option1">Delete account</option>
-                <option value="option2">Delete post</option>
-            </select>
-            <form method="post" style="display:flex" asp-route-username="@Model.CustomerUsername">
-                <input asp-for=CustomerUsername type="text" placeholder="Username">
-                <button asp-action="GetSellers" asp-route-username="@Model.CustomerUsername" type="submit">Search</button>
+            <form method="post" style="display:flex" >
+                <div style="display:flex; gap:10px">
+                    <input asp-for=CustomerUsername type="text" placeholder="Username">
+                    <button asp-action="GetSellers"  type="submit">Search</button>
+                </div>
                 
             </form>
             <div style="max-height:180px; max-width:600px;margin-bottom:15px;display:flex; overflow:auto">
@@ -148,14 +145,14 @@
                     {
                         foreach (SellerModel seller in Model.Sellers)
                         {
-                            <form asp-action="SellerCRUD" asp-route-sellerid="@seller.Id.ToString()" style="">
+                            <form asp-action="GetSellerById" asp-route-sellerid="@seller.Id.ToString()" style="">
                                 <input asp-for="@seller.Id" type="hidden" name="name" value="@seller.Id" />
                                 <div style="height:150px; width:200px;margin:8px; margin-bottom:0;  text-align:center">
                                     <button type="submit" style="margin:15pxmargin-bottom:0;border:none;padding-top:15px; width:inherit ">
                                         <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" alt="Alternate Text"
                                              style="border-radius:50%; width:40px;height:40px" />
                                         <h5>@@@seller.Username</h5>
-                                        <h6>@seller.FirstName @seller.LastName</h6>
+                                        <h6>@seller.FirstName  @seller.LastName</h6>
                                     </button>
                                     <button asp-action="DeleteAccount" style="font-size:small;width:inherit" formmethod="post" asp-route-sellerid="@seller.Id">Delete Account</button>
                                 </div>
@@ -167,17 +164,23 @@
             </div>
             <br><br>
                 @{
+                    if (TempData["postStatus"]!= null)
+                    {
+                    <h5>@TempData["postStatus"].ToString()</h5>
+                    
+                    }
                     if(Model.Sellers.Count() == 1)
                     {
-                        <div id="" class="container">
-                        @foreach(SellerOldWorkModel work in Model.Sellers[0].SellerOldWorkModels.ToList())
+                        <div id="" class="container" style="display:flex;">
+                        @foreach(SellerOldWorkModel work in Model.Sellers.First().SellerOldWorkModels.ToList())
                         {
-                            <div class="item">
-                                <input type="checkbox" name="name" value="" />
-                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
-                                <p>@work.Description</p>
-                            </div>
-                            
+                            <form method="post">
+                                <div class="item" style="text-align:center; display:flex;flex-direction:column">
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
+                                    <h6>@work.Description</h6>
+                                    <button asp-action="DeletePost" style="font-size:small;width:inherit;margin-top:auto" formmethod="post" asp-route-postId="@work.Id">Delete Post</button>
+                                </div>
+                            </form>
                         }
                         </div>
                         
@@ -186,7 +189,6 @@
                 
                 
             <br />
-            <input type="submit" value="Delete">
     </div>
         </form>
         

@@ -43,23 +43,23 @@ namespace JobDone.Controllers.Admin
             model.Sellers = _sellers.GetFirst10();
             return View(model);
         }
+        
         [HttpPost]
-        [Route("AdminManageSellers/SellerCRUD/{sellerId?}")]
-        public IActionResult SellerCRUD(string sellerId)
+        public IActionResult GetSellerById(string sellerId)
         {
             int id;
-            int.TryParse(sellerId,out id);
+            int.TryParse(sellerId,out id) ;
             SellerModel seller = _sellers.GetSellerById(id);
             seller.SellerOldWorkModels = _oldWork.GetSellerOldWork(id).Result;
             Admin_SellerServicesViewModel model = new();
-            model.Sellers = new();
-            model.Sellers.Add(seller);
-            return View(model);
+            model.Sellers = new() { seller };
+            return View("SellerCRUD", model) ;
+
         }
 
         [HttpPost]
         [Route("AdminManageSellers/DeleteAccount/{sellerId?}")]
-        public async Task< IActionResult >DeleteAccount(int sellerId)
+        public async Task< IActionResult>DeleteAccount(int sellerId)
         {
             if (_sellers.DeleteAccount(sellerId).Result)
             {
@@ -70,7 +70,7 @@ namespace JobDone.Controllers.Admin
         }
         [HttpPost]
         [ActionName("GetSellers")]
-        public IActionResult GetSellersByUsername(Admin_SellerServicesViewModel username)
+        public async Task<IActionResult> GetSellersByUsername(Admin_SellerServicesViewModel username)
         {
             if (string.IsNullOrEmpty(username.CustomerUsername))
             {
@@ -87,6 +87,26 @@ namespace JobDone.Controllers.Admin
                 CustomerUsername = username.CustomerUsername
             };
             return View("SellerCRUD",viewModel);
+        }
+        [HttpPost]
+        //[Route("AdminManageSellers/DeletePost/{postId?}")]
+        [ActionName("DeletePost")]
+        public async Task<IActionResult> DeletePost(int postId)
+        {
+            SellerOldWorkModel? post = await _oldWork.DeletePost(postId);
+            if (post == null)
+            {
+                TempData["PostStatus"] = "Something Went Wrong! ";
+                return RedirectToAction("SellerCRUD");
+            }
+            SellerModel seller = _sellers.GetSellerById(post.SellerIdFk);
+            Admin_SellerServicesViewModel model = new Admin_SellerServicesViewModel()
+            {
+                Sellers = _sellers.GetSellerWithPosts(post.SellerIdFk).Result,
+                CustomerUsername = seller.Username
+            };
+            TempData["PostStatus"] = $"The Post Deleted Successfully.";
+            return View("SellerCRUD",model);
         }
 
 

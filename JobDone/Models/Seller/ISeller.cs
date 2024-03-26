@@ -43,5 +43,6 @@ namespace JobDone.Models.Seller
         List<SellerModel> GetFirst10();
         List<SellerModel> GetFirst10(string username);
         Task<bool> DeleteAccount(int sellerId);
+        public Task<List<SellerModel>>? GetSellerWithPosts(int sellerId);
     }
 }
