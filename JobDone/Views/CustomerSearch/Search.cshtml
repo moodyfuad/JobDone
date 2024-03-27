@@ -39,7 +39,7 @@
                     {
                     @if (service.SellerIdFk == Seller.Id)
                     {
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="width:25%;">
                             <div class="card mb-4">
                                 @{
                                     string base64Image = Convert.ToBase64String(Seller.ProfilePicture);
@@ -99,7 +99,7 @@
                 }
                 @foreach (var Seller in Model.Sellers)
                 {
-                    <div class="col-md-4">
+                <div class="col-md-4" style="width:25%;">
                         <div class="card mb-4">
                             @{
                                 string base64Image = Convert.ToBase64String(Seller.ProfilePicture);
