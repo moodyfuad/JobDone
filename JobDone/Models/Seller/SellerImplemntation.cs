@@ -205,18 +205,20 @@ namespace JobDone.Models.Seller
         //   return x;
         //}
 
-        public List<CustomerModel> GetCustomerusername(int sellerId)
+        public List<CustomerModel> GetCustomerusername()
         {
-            var result = _order
-                .Where(o => o.SellerIdFk == sellerId)
-                .Select(o => o.CustomerIdFkNavigation)
-                .ToList();
+            var result = _customer.ToList();
 
             return result;
         }
         public List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId)
         {
             var result = _orderByCustomers.Where(x=>x.CategoryIdKf == sellerCatgoreId).ToList();
+            return result;
+        }
+        public List<OrderByCustomerModel> GetOrderByCustomerModelsFiveCustomer(int sellerCatgoreId)
+        {
+            var result = _orderByCustomers.Where(x => x.CategoryIdKf == sellerCatgoreId).Take(5).ToList();
             return result;
         }
         public int SellerCatgoreID(int sellerId)

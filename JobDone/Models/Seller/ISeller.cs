@@ -29,8 +29,9 @@ namespace JobDone.Models.Seller
         void DeleteOrder(int orderID);
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
-        List<CustomerModel> GetCustomerusername(int sellerId);
+        List<CustomerModel> GetCustomerusername();
         List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId);
+        List<OrderByCustomerModel> GetOrderByCustomerModelsFiveCustomer(int sellerCatgoreId);
         int SellerCatgoreID(int sellerId);
         List<CustomerModel> CustomerReqwestWork(int SellerID);
         void SaveSellerAccept(SellerAcceptRequestModel SAR);

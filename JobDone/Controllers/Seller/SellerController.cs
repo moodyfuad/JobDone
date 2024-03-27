@@ -127,7 +127,7 @@ namespace JobDone.Controllers.Seller
             return View();
         }
         [HttpGet]
-        public IActionResult Home()
+        public IActionResult Home(SignUpSellerCatgoreViewModel viewModel)
         {
             var x = _seller.GetRemainingWork(SellerID()); ;
                 ViewBag.xxx = x.ToString();
@@ -141,7 +141,13 @@ namespace JobDone.Controllers.Seller
             var AllAcceptrdBySeller = _seller.GetSARMForOneSeller(SellerID());
             ViewBag.AllAcceptrdBySeller = AllAcceptrdBySeller;
 
-            return View();
+            viewModel.Order = _seller.orderModels(SellerID());
+            //viewModel.CustomerUsrname = _seller.GetCustomerusername(SellerID());
+
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModelsFiveCustomer(_seller.SellerCatgoreID(SellerID()));
+            viewModel.CustomerUsrname = _seller.GetCustomerusername();
+
+            return View(viewModel);
         }
 
         public IActionResult Order(SignUpSellerCatgoreViewModel viewModel)
@@ -151,7 +157,7 @@ namespace JobDone.Controllers.Seller
 
             viewModel.Order = _seller.orderModels(SellerID());
 
-            viewModel.CustomerUsrname = _seller.GetCustomerusername(SellerID());
+            viewModel.CustomerUsrname = _seller.GetCustomerusername();
             
             return View(viewModel);
         }
