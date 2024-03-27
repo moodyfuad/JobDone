@@ -1,4 +1,5 @@
 ﻿using JobDone.Models;
+using JobDone.Models.Category;
 using JobDone.Models.SellerOldWork;
 
 namespace JobDone.ViewModels
@@ -7,6 +8,7 @@ namespace JobDone.ViewModels
     {
         public SellerModel sellerModels {  get; set; }
         public List<SellerOldWorkModel>? sellerOldWorkModels { get; set; }
+        public List<CategoryModel>? Category { get; set; }
         public SellerOldWorkModel OneSellerOldWorkModel { get; set; }
         public List<ServiceModel>? serviceModels { get; set; }
         public WithdrawModel? withdrawModels { get; set; }

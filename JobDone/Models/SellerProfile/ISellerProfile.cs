@@ -1,4 +1,5 @@
-﻿using JobDone.Models.Customer;
+﻿using JobDone.Models.Category;
+using JobDone.Models.Customer;
 using JobDone.Models.SellerOldWork;
 
 namespace JobDone.Models.SellerProfile
@@ -6,6 +7,7 @@ namespace JobDone.Models.SellerProfile
     public interface ISellerProfile
     {
         SellerModel GetSellerProfile(int sellerID);
+        List<CategoryModel> GetCategories();
         List<ServiceModel> GetServiceModels(int sellerID);
         bool IsWithdrawAmountbefore(int sellerID);
         void AddWithdrawMoney(WithdrawModel AWDM);

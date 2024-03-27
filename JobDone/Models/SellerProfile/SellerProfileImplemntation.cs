@@ -3,6 +3,7 @@ using JobDone.Models.Customer;
 using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 using JobDone.Models.Service;
+using JobDone.Models.Category;
 
 namespace JobDone.Models.SellerProfile
 {
@@ -13,6 +14,7 @@ namespace JobDone.Models.SellerProfile
         private readonly DbSet<SellerOldWorkModel> _sellerOldWork;
         private readonly DbSet<ServiceModel> _service;
         private readonly DbSet<WithdrawModel> _withdrawModels;
+        private readonly DbSet<CategoryModel> _category;
         private readonly JobDoneContext _Db;
         private readonly byte[] DefualtImage = new byte[]
 {
@@ -31,6 +33,7 @@ namespace JobDone.Models.SellerProfile
         public SellerProfileImplemntation(JobDoneContext context)
         {
             _seller = context.SellerModels;
+            _category = context.CategoryModels;
             _sellerOldWork = context.SellerOldWorkModels;
             _service = context.ServiceModels;
             _withdrawModels = context.WithdrawModels;
@@ -39,6 +42,10 @@ namespace JobDone.Models.SellerProfile
         public SellerModel GetSellerProfile(int sellerID)
         {
             return _seller.FirstOrDefault(x=>x.Id == sellerID);
+        }
+        public List<CategoryModel> GetCategories()
+        {
+            return _category.ToList();
         }
         public List<ServiceModel> GetServiceModels(int sellerID)
         {
