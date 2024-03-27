@@ -3,12 +3,14 @@ using JobDone.Models;
 using JobDone.Models.Customer;
 using JobDone.Models.SellerOldWork;
 using JobDone.Models.SellerProfile;
+using JobDone.Models.Category;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
+using JobDone.Models.Seller;
 
 namespace JobDone.Controllers.Seller
 {
@@ -28,6 +30,7 @@ namespace JobDone.Controllers.Seller
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
             viewModel.serviceModels = _sellerProfile.GetServiceModels(SellerID());
             viewModel.sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+            viewModel.Category = _sellerProfile.GetCategories();
 
             if (_sellerProfile.IsWithdrawAmountbefore(SellerID()) == false) ViewBag.IsWithdrawAmountbefore = false;
             else ViewBag.IsWithdrawAmountbefore = true;
