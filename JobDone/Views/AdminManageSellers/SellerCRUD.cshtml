@@ -1,12 +1,13 @@
 ﻿@using JobDone.Models.SellerOldWork
-@{
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+
 @model Admin_SellerServicesViewModel
 
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+
     <style>
         .half {
             float: left;
@@ -101,96 +102,41 @@
 
 </head>
 <body>
-    
-    <div class="half" id="firstHalf">
-        <h2>Choose money operation</h2>
-        <select id="moneyOperation" onchange="checkSelection()">
-            <option value="option1" active hidden>Choose</option>
-            <option value="option1">Withdraw</option>
-            <option value="option2">Deposit</option>
-            <option value="option3">Transfer</option>
-        </select>
-        <br><br><br><br><br><br>
-        <input type="text" placeholder="Seller Username"><br>
-        <input type="text" id="hiddenInput"  placeholder="Customer Username"><br>
-
-        <input type="text" placeholder="Amount of money">
-        <br><br>
-        <input type="submit" value="submit">
-    </div>
-
-        <form action="/" method="post">
-    <div class="half">
-            <h2>Seller Services</h2>
-            <form method="post" style="display:flex" >
-                <div style="display:flex; gap:10px">
-                    <input asp-for=CustomerUsername type="text" placeholder="Username">
-                    <button asp-action="GetSellers"  type="submit">Search</button>
-                </div>
-                
-            </form>
-            <div style="max-height:180px; max-width:600px;margin-bottom:15px;display:flex; overflow:auto">
-                @{
-                    if (TempData["deleted"] != null) 
-                    {
-                        <h5>
-                            @TempData["deleted"].ToString(); 
-                        </h5>
-                    }
-                    if (Model.Sellers.Count() == 0)
-                    {
-                        <h1>No users were found</h1>
-                    }
-                    else
-                    {
-                        foreach (SellerModel seller in Model.Sellers)
-                        {
-                            <form asp-action="GetSellerById" asp-route-sellerid="@seller.Id.ToString()" style="">
-                                <input asp-for="@seller.Id" type="hidden" name="name" value="@seller.Id" />
-                                <div style="height:150px; width:200px;margin:8px; margin-bottom:0;  text-align:center">
-                                    <button type="submit" style="margin:15pxmargin-bottom:0;border:none;padding-top:15px; width:inherit ">
-                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" alt="Alternate Text"
-                                             style="border-radius:50%; width:40px;height:40px" />
-                                        <h5>@@@seller.Username</h5>
-                                        <h6>@seller.FirstName  @seller.LastName</h6>
-                                    </button>
-                                    <button asp-action="DeleteAccount" style="font-size:small;width:inherit" formmethod="post" asp-route-sellerid="@seller.Id">Delete Account</button>
-                                </div>
-                            </form>
-                        }
-                    }
+    <script>
+        function updateName() {
+            var username = document.getElementById("inputUsername").value;
+            //alert(username);
+            
+            $.ajax(
+                {
+                    url: "/AdminManageSellers/_GetSellers" ,
+                    type:"GET",
+                    data: { username : username }, 
                     
-                }
-            </div>
-            <br><br>
-                @{
-                    if (TempData["postStatus"]!= null)
-                    {
-                    <h5>@TempData["postStatus"].ToString()</h5>
                     
-                    }
-                    if(Model.Sellers.Count() == 1)
-                    {
-                        <div id="" class="container" style="display:flex;">
-                        @foreach(SellerOldWorkModel work in Model.Sellers.First().SellerOldWorkModels.ToList())
-                        {
-                            <form method="post">
-                                <div class="item" style="text-align:center; display:flex;flex-direction:column">
-                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
-                                    <h6>@work.Description</h6>
-                                    <button asp-action="DeletePost" style="font-size:small;width:inherit;margin-top:auto" formmethod="post" asp-route-postId="@work.Id">Delete Post</button>
-                                </div>
-                            </form>
-                        }
-                        </div>
-                        
+
+                    success: function (result){
+                        console.log("passed");
+                        $(".sellersDiv").html(result);
+
+
+                    },
+                    error: function (result) {
+                        alert("an error accure");
                     }
                 }
-                
-                
-            <br />
+            )
+        };
+
+    </script>
+
+    <div style="text-align:center; margin-top:100px">
+
+        <h2>Search For Seller</h2>
+        <input class="input-group-text;" style="max-width:500px; width:400px; text-align:center" id="inputUsername" type="text" onkeyup="updateName()" placeholder="Username">
     </div>
-        </form>
-        
+    <div class="sellersDiv" style="text-align:center">
+        <h1>Welcome Please  Search  To Display The Details</h1>
+    </div>
 </body>
 </html>

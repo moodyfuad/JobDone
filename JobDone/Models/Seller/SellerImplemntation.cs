@@ -260,6 +260,11 @@ namespace JobDone.Models.Seller
             {
                 return null;
             }
+            else if (sellers.Count == 1)
+            {
+                sellers.First().SellerOldWorkModels = _posts.Where(p=> p.SellerIdFk == sellers.First().Id).ToList();
+                return sellers;
+            }
             else if(sellers.Count < 10)
             {
                 return sellers;
@@ -273,8 +278,15 @@ namespace JobDone.Models.Seller
         {
             try
             {
-                SellerModel seller = _seller.FirstOrDefaultAsync(s => s.Id == sellerId).Result;
-
+                SellerModel? seller = _seller.Include(s=>s.ServiceModels).
+                                              Include(s=>s.SellerOldWorkModels).
+                                              Include(s=>s.OrderModels).
+                                              Include(s=>s.WithdrawModels).
+                                              Include(s=>s.SellerAcceptRequestModels).
+                                              Include(s=>s.SecurityQuestionIdFkNavigation).
+                                              Include(s=>s.CategoryIdFkNavigation).
+                                              FirstOrDefaultAsync(s => s.Id == sellerId).Result;
+/*
                  List<SellerOldWorkModel> works = _Db.SellerOldWorkModels.Where
                     (works => works.SellerIdFk == sellerId).ToList();
 
@@ -284,12 +296,28 @@ namespace JobDone.Models.Seller
                 List<WithdrawModel> withdrawModels = _Db.WithdrawModels.Where
                     (s => s.SellerIdFk == sellerId).ToList();
 
-                _Db.SellerOldWorkModels.RemoveRange(works);
-                _Db.ServiceModels.RemoveRange(services);
-                _Db.WithdrawModels.RemoveRange(withdrawModels);
-                _Db.SellerModels.Remove(seller);
-                _Db.SaveChanges();
-                return true;
+                List<SellerAcceptRequestModel> requests = _Db.SellerAcceptRequestModels.Where(r =>
+                r.SellerIdFk == sellerId).ToList();*/
+
+                // List<OrderModel> orders = _Db.OrderByCustomerModels.Where(r =>
+
+
+
+                /* _Db.SellerOldWorkModels.RemoveRange(works);
+                 _Db.ServiceModels.RemoveRange(services);
+                 _Db.WithdrawModels.RemoveRange(withdrawModels);*/
+                try{
+                    _Db.SellerModels.Remove(seller);
+                    await _Db.SaveChangesAsync();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+/*                _Db.SellerAcceptRequestModels.RemoveRange(requests);
+*/                
+                
             }
             catch { return false; }
 
@@ -302,5 +330,39 @@ namespace JobDone.Models.Seller
 
             return sellers;
         }
+
+
+        public async Task<SellerModel> Withdraw(SellerModel seller, decimal MoneyAmount)
+        {
+            seller.Wallet -= MoneyAmount;
+            try
+            {
+                _seller.Update(seller);
+                _Db.SaveChanges();
+
+                return seller;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        public async Task<SellerModel> Diposit(SellerModel seller, decimal MoneyAmount)
+        {
+            seller.Wallet += MoneyAmount;
+            try
+            {
+                _seller.Update(seller);
+                _Db.SaveChanges();
+
+                return seller;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }

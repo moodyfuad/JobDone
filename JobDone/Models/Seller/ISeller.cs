@@ -46,5 +46,8 @@ namespace JobDone.Models.Seller
         List<SellerModel> GetFirst10(string username);
         Task<bool> DeleteAccount(int sellerId);
         public Task<List<SellerModel>>? GetSellerWithPosts(int sellerId);
+
+        Task<SellerModel> Withdraw(SellerModel seller ,decimal MoneyAmount);
+        Task<SellerModel> Diposit(SellerModel seller ,decimal MoneyAmount);
     }
 }
