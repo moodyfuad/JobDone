@@ -1,0 +1,176 @@
+﻿@model List<SellerModel>?
+
+<script>
+    function showPosts(sellerId) {
+       // var sellerId = document.getElementById("sellerId").value;
+        $.ajax(
+            {
+                url: "/AdminManageSellers/ShowPosts",
+                type: "GET",
+                data: { sellerId: sellerId },
+
+                success: function (result) {
+                    console.log("passed - show posts");
+                    $(".sellersDiv").html(result);
+
+
+                },
+                error: function (result) {
+                    console.log("an error accure at showPosts function");
+                    alert("an error accure please try again");
+                }
+            }
+        )
+    };
+    function DeletePost(postId) {
+       // var postId = document.getElementById("postId").value;
+        $.ajax(
+            {
+                url: "/AdminManageSellers/DeletePost",
+                type: "POST",
+                data: { postId: postId },
+
+                success: function (result) {
+                    console.log("passed");
+                    $(".sellersDiv").html(result);
+
+
+                },
+                error: function (result) {
+                    console.log("an error accure at DeletePost function");
+                    alert("an error accure please try again");
+                }
+            }
+        )
+    };
+
+    function DeleteAccount(sellerId) {
+        $.ajax(
+            {
+                url: "/AdminManageSellers/DeleteAccount",
+                type:"POST",
+                data: {sellerId : sellerId},
+                
+                success: function (result) {
+                    console.log("success");
+                    $(".sellersDiv").html(result);
+                },
+
+                error: function (result) {
+                    console.log("an error accure at DeleteAccount function");
+                    alert("an error accure Please try again");
+                }
+            }
+        )
+    };
+    function MoneyOper(sellerId) {
+        var SeletedOption = document.getElementById("SeletedOption").value;
+        var moneyAmount = document.getElementById("moneyAmount").value;
+        $.ajax(
+            {
+                url: "/AdminManageSellers/MoneyOper",
+                type:"POST",
+                data: { sellerId: sellerId, selectedOption: SeletedOption, moneyAmount: moneyAmount },
+                
+                success: function (result) {
+                    console.log("success");
+                    $(".sellersDiv").html(result);
+                },
+
+                error: function (result) {
+                    console.log("an error accure at DeleteAccount function");
+                    alert("an error accure Please try again");
+                }
+            }
+        )
+    };
+</script>
+
+@{
+    if (TempData["deleted"] != null)
+    {
+        <h5 style="color:red" >
+            @TempData["deleted"].ToString()
+        </h5>
+    }
+    if ( Model == null ||Model.Count == 0)
+    {
+        <h1>No Matching Username</h1>
+    }
+    else
+    {
+        <div style="max-height:200px; max-width:1200px;margin-bottom:15px;display:flex;overflow:auto; text-align:center">
+         
+        @foreach (SellerModel seller in Model)
+        {
+            <div style="text-align:center;margin:8px; margin-bottom:0">
+                    <input asp-for="@seller.Id" type="hidden" name="name" value="@seller.Id" />
+                <div style="height:150px; width:200px;margin:0px; margin-bottom:0;text-align:center; display:flex;flex-direction:column">
+                    <button onclick="showPosts(@seller.Id)" type="button" style="margin:0px;margin-bottom:0;border:none;padding-top:15px; width:inherit ">
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" alt="Alternate Text"
+                             style="border-radius:50%; width:40px;height:40px" />
+                        <h5>@@@seller.Username</h5>
+                        <h6>@seller.FirstName  @seller.LastName</h6>
+                    </button>
+                        <button onclick="DeleteAccount(@seller.Id)" style="font-size:small;width:inherit">Delete Account</button>
+                </div>
+            </div>
+
+                @if(Model.Count == 1)
+                {
+                    <div>
+                        <h5 style="margin:0">Choose money operation</h5>
+                        <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0" onchange="checkSelection()">
+                            <option value="option1" active hidden>Choose</option>
+                            <option value="W">Withdraw</option>
+                            <option value="D">Deposit</option>
+                        </select>
+                        <br>
+                        <input id="moneyAmount" style=" width:90%; padding:3px; margin-bottom:8px" type="number" value="" placeholder="Amount of money">
+                        <br>
+                        <button  style=" width:60%;" type="submit" onclick="MoneyOper(@seller.Id)">Submit</button>
+                    </div>
+                    if (TempData["transaction"] != null)
+                    {
+                        <h5 style=" white-space: pre-line; justify-content:space-around; margin:auto; color:red">
+                            @TempData["transaction"]
+                        </h5>
+                    }
+                }
+
+        }
+        </div>
+
+
+        <div id="postsDiv" style="display:flex; flex-direction:column">
+        @if (TempData["postStatus"] != null)
+        {
+            <h5 style="color:red">@TempData["postStatus"].ToString()</h5>
+        }
+        @if (Model.Count() == 1)
+        {
+            <div id="" class="container" style="display:flex;">
+                @foreach (SellerOldWorkModel work in Model.First().SellerOldWorkModels.ToList())
+                {
+                    <div>
+                        <div class="item" style="text-align:center; display:flex;flex-direction:column">
+                            <input id="postId" asp-for=@work.Id value="@work.Id" type="hidden" />
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
+                            <h6>@work.Description</h6>
+                            <button onclick="DeletePost(@work.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete Post</button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+        </div>
+
+    }
+    
+}
+
+<br>
+<br>
+
+<br />
