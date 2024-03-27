@@ -11,6 +11,7 @@ using JobDone.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace JobDone.Models.Seller
@@ -184,6 +185,18 @@ namespace JobDone.Models.Seller
         {
            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
             return order;
+        }
+        public void ChangeOrderStatus(int orderID)
+        {
+            var status = _order.Where(x=>x.Id == orderID).FirstOrDefault();
+            status.Status = "SellerCompleted";
+            _Db.SaveChanges();
+        }
+        public void DeleteOrder(int orderID)
+        {
+            var result = _order.Where(x => x.Id == orderID).FirstOrDefault();
+            _order.Remove(result);
+            _Db.SaveChanges();
         }
 
         //public List<int> custemrname(int sellerId)

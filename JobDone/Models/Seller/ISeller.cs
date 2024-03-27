@@ -25,6 +25,8 @@ namespace JobDone.Models.Seller
         int AveilabelRReqest(int sellerId);
         Decimal Totalgains(int sellerId);
         string OrderName(int sellerId);
+        void ChangeOrderStatus(int orderID);
+        void DeleteOrder(int orderID);
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
         List<CustomerModel> GetCustomerusername(int sellerId);

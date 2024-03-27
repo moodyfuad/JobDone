@@ -13,7 +13,7 @@ namespace JobDone.Models.SellerProfile
         void AddWithdrawMoney(WithdrawModel AWDM);
         bool UsernameExist(string username);
         public byte[] ConvertToByteArray(IFormFile image);
-        public void ApplyChangesToCustomer(ref SellerModel Seller, SellerModel ViewModelSeller);
+        public void ApplyChangesToSeller(ref SellerModel Seller, SellerModel ViewModelSeller);
         List<SellerOldWorkModel> GetSellerOldWorkModels(int sellerID);
         void DeleteOldWork(int oldWorkId);
         void editOldWork(int oldworkId, IFormFile newphoto, string newdescrepion);

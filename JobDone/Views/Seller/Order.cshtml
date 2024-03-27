@@ -76,6 +76,7 @@
                 display: inline-block;
                 position: relative;
                 width: 1.1em;
+                color: gold;
             }
 
                 .rating > span:hover:before,
@@ -92,85 +93,104 @@
     <div class="container" style="margin-top:120px;">
         <div class="row">
             <div class="col-xl-8">
-              
-                
-                @foreach(var item in Model.Order)
-                {
-
-                    <div class="card border shadow-none">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start border-bottom pb-3">
-                                @{
-                                    string fullName = item.CustomerIdFkNavigation.FirstName+ " " + item.CustomerIdFkNavigation.LastName;
-                                    string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
-                                    }
-                            <div class="me-4">
-                                        <img src="data:image/jpeg;base64,@base64Image" alt class="avatar-lg rounded">
-                            </div>
-
-                            <div class="flex-grow-1 align-self-center overflow-hidden">
-
-                                <div>
-
-                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">@fullName</a></h2>
-
-                                        <h4 class="mb-0 mt-1">Order Name : <span class="fw-medium">@item.OrderName</span></h4>
-                                    <br />
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <div class="mt-3" style="margin-left:230px;">
-                                    <h5 class="text-muted mb-2">Order State</h5>
-                                    <div class="d-inline-flex">
-                                            @if(item.Status == "InWork")
-                                            {
-                                                <h6>Pending...</h6>
+                @{
+                    if (Model.Order.Count != 0)
+                    {
+                        foreach (var item in Model.Order)
+                        {
+                            <div class="card border shadow-none">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start border-bottom pb-3">
+                                        <div class="me-4">
+                                            @{
+                                                string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
                                             }
-                                            @if(item.Status != "InWork")
-                                            {
-                                                <h6>Done.</h6>
-                                            }
-
-
+                                            <img src="data:image/jpeg;base64,@base64Image" alt="Image" class="avatar-lg rounded; rounded-circle">
                                         </div>
+                                        <div class="flex-grow-1 align-self-center overflow-hidden">
+                                            <div>
+                                                <div style="display:flex; flex-direction:row; justify-content:center; align-items:start">
+                                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">@item.CustomerIdFkNavigation.FullName().ToString()</a></h2>
+                                                    <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : <span class="fw-medium">@item.OrderName</span></h5>
+                                                </div>
+                                                <div style="display:flex; flex-direction:row; justify-content:center; align-items:start">
+                                                    <h2 class="text-truncate font-size-18"><a href="#" style="color:gray">@@@item.CustomerIdFkNavigation.Username</a></h2>
+
+                                                    @if (item.Status == "Working")
+                                                    {
+                                                        <h5 style="margin-left:auto; color:black; font-size:large" class="mb-0 mt-1">Work Status : <span class="fw-medium">Pending...</span></h5>
+                                                    }
+                                                    @if (item.Status == "SellerCompleted")
+                                                    {
+                                                        <h5 style="margin-left:auto; color:black; font-size:large" class="mb-0 mt-1"><span class="fw-medium">Witing for the Customer to Agree</span></h5>
+                                                    }
+                                                    @if (item.Status == "Done")
+                                                    {
+                                                        <h5 style="margin-left:auto; color:black; font-size:large" class="mb-0 mt-1">Work Status : <span class="fw-medium">Done.</span></h5>
+                                                    }                                                    
+
+                                                </div>
+                                              
+                                                <h5 class="mb-0 mt-1">Order description : <h6 class="fw-medium">@item.Description</h6></h5>
+                                                @if (item.Status == "Working")
+                                                {
+                                                    <form action="Complet" method="post">
+                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                            <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="orderID" value="@item.Id">Complet</button>
+                                                        </div>
+                                                    </form>
+                                                }
+                                                @if (item.Status == "SellerCompleted")
+                                                {
+                                                    <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: gray" name="Complet" value="" disabled>Complet</button>
+                                                    </div>
+                                                }
+                                                @if (item.Status == "Done")
+                                                {
+                                                    <form action="DeleteOrder" method="post">
+                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                            <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: red" name="orderID" value="@item.Id">Delete</button>
+                                                        </div>
+                                                    </form>
+                                                }
+                                                
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mt-3">
+                                                    <p class="text-muted mb-2">Payment amount</p>
+                                                    <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>$@Math.Round(item.Price,2)</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="mt-3" style="margin-left:40px;">
+                                                    <p class="text-muted mb-2">Order date</p>
+                                                    <div class="d-inline-flex">
+                                                        <h5>@item.OrderDate</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mt-3">
+                                                    <p class="text-muted mb-2">Delivery date</p>
+                                                    <h5>@item.DeliverDate</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Service Price</p>
-                                        <h5 class="mb-0 mt-2"><span class="text-muted me-2"></span>@Math.Round(item.Price,2)$</h5>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="mt-3" style="margin-left:40px;">
-                                        <p class="text-muted mb-2">Order date</p>
-                                        <div class="d-inline-flex">
-                                            <h5>@item.OrderDate</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="mt-3">
-                                        <p class="text-muted mb-2">Delivery date</p>
-                                        <h5>@item.DeliverDate</h5>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    
+                        }
+                    }
                 }
-                   
-                
-                
-
                 <div class="row my-4">
                     <div class="col-sm-6">
                         <a asp-controller="Seller" asp-action="Home" class="btn btn-link text-muted">
@@ -180,40 +200,39 @@
 
                 </div>
             </div>
-
             <div class="col-xl-4">
                 <div class="mt-5 mt-lg-0">
                     <div class="card border shadow-none">
                         <div class="card-header bg-transparent border-bottom py-3 px-4">
-                            <h5 class="font-size-16 mb-0">Orders Summary </h5>
+                            <h5 class="font-size-16 mb-0">Order Summary </h5>
                         </div>
                         <div class="card-body p-4 pt-2">
                             <div class="table-responsive">
-                                @{
-                                    decimal Total;
-                                    decimal Totalwebsitetaxes;
-                                    decimal TotalProfit = 0;
-                                }
-                                @for (int i = 0; i < Model.Order.Count(); i++)
-                                {
-                                     TotalProfit += Model.Order[i].Price ;
-                                }
                                 <table class="table mb-0">
                                     <tbody>
+                                        @{
+                                            decimal TotalPrice = 0;
+                                            for (int i = 0; i < Model.Order.Count ; i++)
+                                            {
+                                                TotalPrice += Model.Order[i].Price;
+                                            }
+                                            decimal TotalPriceAfterTaxes = TotalPrice *Convert.ToDecimal(0.05);
+                                            decimal TotalPayment = TotalPrice - TotalPriceAfterTaxes;
+                                        }
                                         <tr>
-                                            <td>Total Profit</td>
-                                            <td class="text-end">@Math.Round(TotalProfit,2)</td>
+                                            <td>Total cost for services</td>
+                                            <td class="text-end">$@Math.Round(TotalPrice,2)</td>
                                         </tr>
                                         <tr>
                                             <td>Total website taxes </td>
-                                            <td class="text-end">@(Math.Round((Totalwebsitetaxes=TotalProfit*Convert.ToDecimal(0.05)),2))</td>
+                                            <td class="text-end">$@Math.Round(TotalPriceAfterTaxes,2)</td>
                                         </tr>
 
                                         <tr class="bg-light">
-                                            <th>Total :</th>
+                                            <th>Total payment :</th>
                                             <td class="text-end">
                                                 <span class="fw-bold">
-                                                    @Math.Round((Total=TotalProfit-Totalwebsitetaxes),2)
+                                                    $@Math.Round(TotalPayment,2)
                                                 </span>
                                             </td>
                                         </tr>
@@ -225,10 +244,10 @@
                     </div>
                 </div>
             </div>
+            </>
+
         </div>
 
-    </div>
-
-    </script>
+        </script>
 </body>
 </html>

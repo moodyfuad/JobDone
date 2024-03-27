@@ -88,7 +88,7 @@ namespace JobDone.Models.SellerProfile
             }
 
         }
-        public void ApplyChangesToCustomer(ref SellerModel Seller, SellerModel ViewModelSeller)
+        public void ApplyChangesToSeller(ref SellerModel Seller, SellerModel ViewModelSeller)
         {
             if (Seller.Username != ViewModelSeller.Username)
             {

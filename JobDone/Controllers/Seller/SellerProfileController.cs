@@ -118,7 +118,7 @@ namespace JobDone.Controllers.Seller
             if (profilePictureAsFile != null)
                 seller.ProfilePicture = _sellerProfile.ConvertToByteArray(profilePictureAsFile);
 
-            _sellerProfile.ApplyChangesToCustomer(ref seller, viewModel.sellerModels);
+            _sellerProfile.ApplyChangesToSeller(ref seller, viewModel.sellerModels);
             _context.SellerModels.Update(seller);
             await _context.SaveChangesAsync();
 

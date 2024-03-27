@@ -155,6 +155,26 @@ namespace JobDone.Controllers.Seller
             
             return View(viewModel);
         }
+        [HttpPost]
+        public IActionResult Complet(int orderID)
+        {
+            if (orderID != 0)
+            {
+                _seller.ChangeOrderStatus(orderID);
+            }
+
+            return RedirectToAction("Order");
+        }
+        [HttpPost]
+        public IActionResult DeleteOrder(int orderID)
+        {
+            if(orderID != 0)
+            {
+                _seller.DeleteOrder(orderID);
+            }
+            return RedirectToAction("Order");
+        }
+
 
         public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
         {
