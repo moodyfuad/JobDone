@@ -79,9 +79,9 @@ namespace JobDone.Models.SellerAcceptRequest
 
             CustomerModel? customer = _db.CustomerModels.FirstOrDefault(c => c.Id == orderByCustomer.CustomerIdFk);
 
-            SellerModel? seller = await _sellers.FirstOrDefaultAsync(s => s.Id == sellerId);
+            SellerModel? seller = _sellers.FirstOrDefault(s => s.Id == sellerId);
 
-            AdminWalletModel adminWallet = await _adminWallet.FirstAsync();
+            AdminWalletModel adminWallet =  _adminWallet.FirstAsync().Result;
             if (customer.Wallet >= orderByCustomer.Price)
             {
                 // take the order price from the customer

@@ -181,7 +181,14 @@ namespace JobDone.Controllers.Seller
                     };
 
                     _seller.SaveSellerAccept(sellerAcceptRequest);
-            } 
+            }
+            viewModel = new();
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()));
+
+            viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
+
+            viewModel.sellerAcceptRequestModels = _seller.GetSellerAcceptRequestModels();
+
             return View(viewModel);
         }
 
