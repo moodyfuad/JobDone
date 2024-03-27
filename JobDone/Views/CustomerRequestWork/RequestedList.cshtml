@@ -15,7 +15,7 @@
     	body{margin-top:20px;}
 .cart-item-thumb {
     display: block;
-    width: 10rem
+    
 }
 
         
@@ -156,37 +156,37 @@ width: 1.1em;
                 @{
                     foreach (RequestListViewModel item in Model)
                     {
-                    <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" >
+                    <div class="d-sm-flex justify-content-between" >
                             <div class="media d-block d-sm-flex text-center text-sm-left">
-                                <div class="media-body pt-3">
+                                <div class="media-body">
 
-                                    <h3 class="font-size-sm"><span class="text-muted mr-2">Project name :</span>@item.orderByCustomer.OrderName</h3>
-                                    <h5 class="font-size-sm"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h5>
-                                    <h5 class="font-size-sm"><span class="text-muted mr-2">Description :</span>@item.orderByCustomer.Description</h5>
-                                    <h5 class="font-size-sm"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h5>
+                                    <h4 class="font-size-sm"><span class="text-muted mr-2">Project name :</span>@item.orderByCustomer.OrderName</h4>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h6>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Description :</span>@item.orderByCustomer.Description</h6>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h6>
 
                                 </div>
                             </div>
-                                
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" style="height:40px;margin-top:100px;" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" style="height:40px;margin-top:68px;" data-bs-toggle="dropdown" aria-expanded="false">
                                     Show requests
                                 </button>
                             
-                                <ul class="dropdown-menu dropdown-menu-end" style="width:700px;margin-left:100px;">
+                                <ul class="dropdown-menu dropdown-menu-end" style="height:100px;width:700px;margin-left:100px;">
                                     <li>
                             @foreach(SellerModel seller in item.sellers){
-                                        <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" style="margin-right:50px;margin-left:50px">
+                                        <div class="d-sm-flex justify-content-between" style="margin-right:50px;margin-left:15px;height:87px;">
 
                                         <div class="media d-block d-sm-flex text-center text-sm-left">
                                             <a class="cart-item-thumb mx-auto mr-sm-4" href="#">
-                                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Product">
+                                                        <img style="width:70px;" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Product">
                                                     </a>
-                                            <div class="media-body pt-3">
+                                                    <div class="media-body pt-3" style="padding-top: 0rem !important;margin-left:10px;">
                                                 <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
                                                 <div class="font-size-sm"><span class="text-muted mr-2">Services
                                                 </span>@string.Join(", ",(seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser=> ser.Name).ToList()))</div>
-                                                <br />
+                                                
                                                 <div class="rating" style="margin-right:130px; white-space:nowrap; text-align:left">
                                                     @for(int i=0;i < seller.Rate; i++)
                                                     {
@@ -199,7 +199,7 @@ width: 1.1em;
                                         <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
                                                     @using (Html.BeginForm("AcceptSeller", "CustomerRequestWork", FormMethod.Post))
                                                     {
-                                                        <button asp-action="AcceptSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="btn btn-outline-success btn-fw" style="margin-bottom:30px;margin-top:30px; width:120px;" type="submit">
+                                                        <button asp-action="AcceptSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="btn btn-outline-success btn-fw" style="margin-bottom:7px; width:120px;" type="submit">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw mr-1">
                                                             <polyline points="23 4 23 10 17 10"></polyline>
                                                             <polyline points="1 20 1 14 7 14"></polyline>
