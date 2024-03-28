@@ -1,51 +1,56 @@
-﻿<!DOCTYPE html>
+﻿@model CustomerSellerMessageViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/CustomerChat/stylee.css">
     <link rel='stylesheet' href='/CustomerChat/styleee.css'>
     <link rel="stylesheet" href="/CustomerChat/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 </head>
+@{
+    string base64Image = Convert.ToBase64String(Model.Seller.ProfilePicture);
+}
 <body>
     <div class="chat" style="width: 100%;">
-        <div class="contact bar">
-            <div class="pic stark"></div>
-            <div class="name">
-                Tony Stark
-            </div>
-            <div class="seen">
-                Today at 12:56
+        <div class="contact bar" style="margin-left: -40px; margin-top:30px;">
+            <a href="/CustomerSearch/Messages" style="margin-left:-10px;"><i class="fas fa-arrow-left"></i></a>
+            <img src="data:image/jpeg;base64,@base64Image" alt="Admin" class="rounded-circle" width="60">
+            @{string FullName = Model.Seller.FirstName + " " + Model.Seller.LastName;}
+            <div class="name" style="margin-top:10px; margin-left:-10px; margin-bottom:10px;">
+                @FullName
             </div>
         </div>
         <div class="messages" id="chat">
-            <div class="time">
-                Today at 11:41
-            </div>
-            <div class="message parker">
-                Hey, man! What's up, Mr Stark? 👋
-            </div>
-            <div class="message stark">
-                Kid, where'd you come from?
-            </div>
-            <div class="message parker">
-                Field trip! 🤣
-            </div>
-            <div class="message parker">
-                Uh, what is this guy's problem, Mr. Stark? 🤔
-            </div>
-            <div class="message stark">
-                Uh, he's from space, he came here to steal a necklace from a wizard.
-            </div>
-            <div class="message stark">
-                <div class="typing typing-1"></div>
-                <div class="typing typing-2"></div>
-                <div class="typing typing-3"></div>
-            </div>
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.WhoSendMessage == @Model.Customer.Id && message.SellerId == Model.Seller.Id)
+                {
+                    @if (message.WhoSendMessage == Model.Customer.Id)
+                    {
+                        <div class="message parker">
+                            @message.MessageContent
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="message stark">
+                            @message.MessageContent
+                        </div>
+                    }
+                }
+            }
         </div>
-        <div class="input">
-            <i class="fas fa-camera"></i><i class="far fa-laugh-beam"></i><input placeholder="Type your message here!" type="text" /><i class="fas fa-microphone"></i>
-        </div>
+        <form method="post" asp-action="Chat">
+            <div class="input">
+                <input hidden name="customerId" value="@Model.Customer.Id" />
+                <input hidden name="sellerId" value="@Model.Seller.Id" />
+                <input name="content" placeholder="Type your message here!" type="text" />
+                <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
+            </div>
+        </form>
     </div>
     </div>
     <!-- partial -->

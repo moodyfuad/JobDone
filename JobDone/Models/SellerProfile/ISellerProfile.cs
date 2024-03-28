@@ -1,6 +1,7 @@
 ﻿using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Models.SellerOldWork;
+using JobDone.Models.Withdraw;
 
 namespace JobDone.Models.SellerProfile
 {

@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using JobDone.Models.Seller;
+using JobDone.Models.Withdraw;
 
 namespace JobDone.Controllers.Seller
 {
