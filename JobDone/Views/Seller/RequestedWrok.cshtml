@@ -6,7 +6,7 @@
 @{
 
 }
-<form method="post">
+@* <form method="post">
 <div class="container-fluid services py-5">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 800px;">
@@ -84,7 +84,7 @@
                     @(ViewBag.isaccepted = 1)
 @*                                 <input name = "" value = "1" />
                                 <input name="orderByCustomerId" value="@item.Value.Id" > *@
-                    @{
+@*                     @{
                         SellerAcceptRequestModel SARVM = new SellerAcceptRequestModel
                         {
                             IsAccepted = 1,
@@ -101,4 +101,66 @@
     </div>
 </div>
 
-</form>
+</form> *@ 
+
+                     
+
+
+<div class="container" style="margin-top: 100px;">
+    
+    <h1>Search Results</h1>
+
+    <div class="row mb-4">
+        <form class="d-flex" method="post" asp-action="Search">
+            <div class="col-md-7">
+                    <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            &nbsp;
+            <button class="btn btn-outline-primary" type="submit">
+                <h7>
+                    <i class="fas fa-search"></i> Search
+                </h7>
+            </button>
+        </form>
+    </div>
+        <div class="row">
+            
+            
+                @if (Model.orderByCustomerModels.Count() == 0)
+                {
+                    <h3 style="color:red">Nothing here</h3>
+                }
+                @foreach (var item in Model.orderByCustomerModels)
+                {
+                <div class="col-md-4" style="width:25%;">
+                        <div class="card mb-4">
+                            @{
+                                string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
+                            }
+                            <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
+                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="120">
+                            </div>
+                            <div class="card-body">
+                              <h4 class="text-center">@item.OrderName</h4>
+
+                                    <spna style=" font-size: 18px;">description : </spna>
+                                    <p>@item.Description </p>
+                                
+                                    <span>Order Date : @item.OrderDate</span>
+                                    <p>  delivery date :@item.DeliverDate </p>
+
+                                <form action="RequestedWrok" method="post">
+                                    <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2)  <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button></p>
+                                </form>
+                            
+                            </div>
+                        </div>
+                    </div>
+                }
+   
+
+            
+        </div>
+    </div>
+</div>

@@ -22,11 +22,6 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
-                                <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px;">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </button>
-                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="Home"><h5>Home</h5></a>
@@ -48,6 +43,7 @@
 
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
+                
                 <span style="color:white;margin-left:10px;">5000</span>
                 @{
                     if (ViewBag.username != null)
@@ -55,6 +51,11 @@
                         <h5 style="color:white;margin-left:70px">Hello : @ViewBag.username </h5>
                     }
                 }
+                <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
+                    <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; margin-left:60px">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
                 <h5 style="color:white;margin-left:70px">Logo</h5>
 
 

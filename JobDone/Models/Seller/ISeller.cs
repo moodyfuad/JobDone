@@ -30,7 +30,7 @@ namespace JobDone.Models.Seller
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
         List<CustomerModel> GetCustomerusername();
-        List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId);
+        List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId, int sellerId);
         List<OrderByCustomerModel> GetOrderByCustomerModelsFiveCustomer(int sellerCatgoreId);
         int SellerCatgoreID(int sellerId);
         List<CustomerModel> CustomerReqwestWork(int SellerID);

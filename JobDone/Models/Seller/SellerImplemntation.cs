@@ -23,6 +23,7 @@ namespace JobDone.Models.Seller
         private readonly DbSet<OrderByCustomerModel> _orderByCustomers;
         private readonly DbSet<SellerAcceptRequestModel> _sellerAcceptRequest; 
         private readonly DbSet<CustomerModel> _customer;
+        private readonly DbSet<CategoryModel> _category;
         private readonly JobDoneContext _Db;
         private readonly DbSet<SellerOldWorkModel> _posts;
 
@@ -211,8 +212,9 @@ namespace JobDone.Models.Seller
 
             return result;
         }
-        public List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId)
+        public List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId, int sellerId)
         {
+            //var res = _sellerAcceptRequest.Where(x=>x.SellerIdFk != sellerId).Select(x=>x.OrderByCustomerIdFkNavigation).ToList();
             var result = _orderByCustomers.Where(x=>x.CategoryIdKf == sellerCatgoreId).ToList();
             return result;
         }
