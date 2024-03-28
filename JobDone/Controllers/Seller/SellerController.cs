@@ -20,6 +20,7 @@ using JobDone.Models.SellerAcceptRequest;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using JobDone.Models.Banners;
+using JobDone.Models.OrderByCustomer;
 
 
 namespace JobDone.Controllers.Seller
@@ -208,17 +209,9 @@ namespace JobDone.Controllers.Seller
 
             return View(viewModel);
         }
-
-        [Authorize(Roles = TypesOfUsers.Seller)]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Seller");
-        }
-
         [HttpPost]
         [Authorize(Roles = TypesOfUsers.Seller)]
-        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel,int Accept)
+        public IActionResult AcceptRequestedWrok(int Accept)
         {
             if(Accept != 0)
             {
@@ -231,16 +224,30 @@ namespace JobDone.Controllers.Seller
 
                 _seller.SaveSellerAccept(sellerAcceptRequest);
             }
+            return RedirectToAction("RequestedWrok", "Seller"); ;
+        }
+        [HttpPost]
+        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel, string search)
+        {
             viewModel = new();
-            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()),SellerID());
 
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
-
             viewModel.sellerAcceptRequestModels = _seller.GetSellerAcceptRequestModels();
+
+            if (!string.IsNullOrEmpty(search))
+            {                
+                     viewModel.orderByCustomerModels = _seller.getAllOrderByCustomerBasedOnOrdername(search, SellerID());            
+            }        
 
             return View(viewModel);
         }
-
+        [Authorize(Roles = TypesOfUsers.Seller)]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Seller");
+        }
         [Authorize(Roles = TypesOfUsers.Seller)]
         private int SellerID()
         {
