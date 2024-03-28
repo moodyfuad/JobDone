@@ -122,6 +122,10 @@ namespace JobDone.Controllers.Admin
                     return PartialView("_GetSellers");
                 }
             }
+            else
+            {
+                TempData["transaction"] = "Failed Please Select An Operation!";
+            }
             List<SellerModel> sellers = new() { seller };
             return PartialView("_GetSellers",sellers);
         }

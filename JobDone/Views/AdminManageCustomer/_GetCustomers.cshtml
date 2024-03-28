@@ -98,7 +98,7 @@
     }
     else
     {
-        <div style="max-height:200px; max-width:1200px;margin-bottom:15px;display:flex;overflow:auto; text-align:center">
+        <div style="max-height:200px;margin-bottom:15px;justify-content:center; display:flex;overflow:auto; text-align:center">
 
             @foreach (CustomerModel customer in Model)
             {
@@ -129,38 +129,55 @@
                         <br>
                         <button style=" width:60%;" type="submit" onclick="MoneyOper(@customer.Id)">Submit</button>
                     </div>
-                    if (TempData["transaction"] != null)
-                    {
-                        <h4 style="white-space: pre-line; justify-content:space-around; margin:auto; color:red">
-                            @TempData["transaction"].ToString()
-                        </h4>
-                    }
+                    
                 }
 
             }
         </div>
+        if (TempData["transaction"] != null)
+        {
+            <h4 style="white-space: pre-line; justify-content:space-around; margin:auto; color:red">@TempData["transaction"].ToString()
 
+            </h4>
+        }
 
-        <div id="postsDiv" style="display:flex; flex-direction:column">
+        <div id="postsDiv" style="display:flex; flex-direction:column; justify-content:center">
             @if (TempData["postStatus"] != null)
             {
                 <h5 style="color:red">@TempData["postStatus"].ToString()</h5>
             }
-            @if (Model.Count() == 1 && Model.First().OrderByCustomerModels != null && Model.First().OrderByCustomerModels.Count() > 0)
+            
+            
+            @if (Model.Count() == 1)
             {
-                <div id="" class="container" style="display:flex;">
-                    @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
-                    {
-                        <div>
-                            <div class="item" style="text-align:center; display:flex;flex-direction:column">
-                                <input id="postId" asp-for=@order.Id value="@order.Id" type="hidden" />
-                                <h6>@order.OrderName</h6>
-                                <h6>@order.Description</h6>
-                                <button onclick="DeleteOrder(@order.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete order</button>
+                <h1 style=" white-space: pre-line; line-height:1;
+                    justify-content:space-around;align-items:center;
+                     margin:auto; color:black">Posts
+
+                </h1>
+                if(Model.First().OrderByCustomerModels == null || Model.First().OrderByCustomerModels.Count() == 0)
+                {
+                    <h1 style=" white-space: pre-line; justify-content:space-around; margin:auto; color:red">
+                        No Posts To Display
+                    </h1>
+                }
+                else
+                {
+                    <div id="" class="container" style="display:flex; justify-content:center">
+                        @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
+                        {
+                            <div>
+                                <div class="item" style="text-align:center; display:flex;flex-direction:column">
+                                    <input id="postId" asp-for=@order.Id value="@order.Id" type="hidden" />
+                                    <h6>@order.OrderName</h6>
+                                    <h6>@order.Description</h6>
+                                    <button onclick="DeleteOrder(@order.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete order</button>
+                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                }
+                
 
             }
         </div>
