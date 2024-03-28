@@ -64,7 +64,7 @@ namespace JobDone.Controllers.Seller
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([FromForm] SellerProfileViewModel viewModel, string NewPassword, IFormFile profilePictureAsFile)
+        public IActionResult Edit([FromForm] SellerProfileViewModel viewModel, string NewPassword, IFormFile profilePictureAsFile)
         {
             viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
 
@@ -121,10 +121,15 @@ namespace JobDone.Controllers.Seller
 
             _sellerProfile.ApplyChangesToSeller(ref seller, viewModel.sellerModels);
             _context.SellerModels.Update(seller);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
 
             return RedirectToAction("SuccessfullyChange", "SellerProfile");
-        } 
+        }
+        public IActionResult AllWithdrawals(SellerProfileViewModel viewModel)
+        {
+            viewModel.withdrawModelsList = _sellerProfile.GetAllwithdrawForOneSeller(SellerID());
+            return View(viewModel);
+        }
         public IActionResult SuccessfullyChange()
         {
             return View();

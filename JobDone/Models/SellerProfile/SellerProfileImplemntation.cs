@@ -64,6 +64,10 @@ namespace JobDone.Models.SellerProfile
             _withdrawModels.Add(AWDM);
             _Db.SaveChanges();
         }
+        public List<WithdrawModel> GetAllwithdrawForOneSeller(int sellerId)
+        {
+            return _withdrawModels.Where(x=>x.SellerIdFk == sellerId).ToList();
+        }
         public bool UsernameExist(string username)
         {
             var sl = _seller.Where(c => c.Username == username);

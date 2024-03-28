@@ -166,15 +166,19 @@
                     </div>
                     <div class="card mt-3">
                       
-                        <form action="Profile" method="post">
+                        
                         <h4 style="text-align:center;padding-top:20px;padding-bottom:30px;">Withdrow money from balance</h4>
                             @if (ViewBag.IsWithdrawAmountbefore == true)
                             {
                                 <input type="text" name="name" value="" placeholder="Waiting first amount to sent" style="opacity:60%; width:50%;margin-left:25%;padding-top:10px" readonly />
                                 <input class="btn btn-info " type="submit" name="name" value="Pull" style="margin-top:25px;margin-left:37%;margin-bottom:20px; width:100px; background-color:gray" disabled/>
+                                <form action="AllWithdrawals" method="post">
+                                <input class="btn btn-info " type="submit" name="name" value="All withdrawals" style="margin-left:33%; margin-bottom:10px; width:130px; background-color:deepskyblue" />
+                                </form>
                             }
                             else
                             {
+                                <form action="Profile" method="post">
                                 <input type="number" name="amuontOfMoney" value="" placeholder="Enter the amount to pull" style="opacity:30%; width:50%;margin-left:25%;padding-top:10px" />
                                 @if (TempData["WarningMessage"] != null)
                                 {
@@ -182,10 +186,14 @@
                                         @TempData["WarningMessage"]
                                     </div>
                                 }
-                                <input class="btn btn-info " type="submit" name="name" value="Pull" style="margin-top:25px;margin-left:37%;margin-bottom:20px; width:100px; background-color:deepskyblue" />
+                                    <input class="btn btn-info " type="submit" name="name" value="Pull" style="margin-top:25px;margin-left:37%;margin-bottom:20px; width:100px; background-color:deepskyblue" />
+                                </form>
+                                <form action="AllWithdrawals" method="post">
+                                <input class="btn btn-info " type="submit" name="name" value="All Withdrawals" style="margin-left:33%; margin-bottom:10px; width:130px; background-color:deepskyblue" />
+                                </form>
                             }
 
-                        </form>
+                        
                     </div>
                 </div>
                 <div class="col-md-8">
