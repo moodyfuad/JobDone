@@ -1,5 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CustomerSellerMessageViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/CustomerChat/stylee.css">
+    <link rel='stylesheet' href='/CustomerChat/styleee.css'>
+    <link rel="stylesheet" href="/CustomerChat/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
 @{
+    string base64Image = Convert.ToBase64String(Model.Customer.ProfilePicture);
 }
+<body>
+    <div class="chat" style="width: 100%;">
+        <div class="contact bar" style="margin-left: -40px; margin-top:30px;">
+            <a href="/SellerOrder/Messages" style="margin-left:-10px;"><i class="fas fa-arrow-left"></i></a>
+            <img src="data:image/jpeg;base64,@base64Image" alt="Admin" class="rounded-circle" width="60">
+            @{
+                string FullName = Model.Customer.FirstName + " " + Model.Customer.LastName;
+            }
+            <div class="name" style="margin-top:10px; margin-left:-10px; margin-bottom:10px;">
+                @FullName
+            </div>
+        </div>
+        <div class="messages" id="chat">
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.CustomerId == Model.Customer.Id && message.SellerId == Model.Seller.Id)
+                {
+                    @if (message.WhoSendMessage == Model.Seller.Id)
+                    {
+                        <div class="message parker">
+                            @message.MessageContent
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="message stark">
+                            @message.MessageContent
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <form method="post" asp-action="Chat">
+            <div class="input">
+                <input hidden name="customerId" value="@Model.Customer.Id" />
+                <input hidden name="sellerId" value="@Model.Seller.Id" />
+                <input name="content" placeholder="Type your message here!" type="text" />
+                <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
+            </div>
+        </form>
+    </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+</html>

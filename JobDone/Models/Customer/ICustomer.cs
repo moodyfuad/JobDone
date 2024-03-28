@@ -22,5 +22,7 @@
         Task<bool> DeleteAccount(int customerId);
         Task<CustomerModel> Withdraw(CustomerModel customer, decimal MoneyAmount);
         Task<CustomerModel> Diposit(CustomerModel customer, decimal MoneyAmount);
+
+        public Task<IEnumerable<CustomerModel>> GetAllCustomers();
     }
 }

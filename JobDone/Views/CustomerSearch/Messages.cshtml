@@ -19,7 +19,7 @@
         {
             @foreach (var message in Model.Messages)
             {
-                @if (message.WhoSendMessage == Model.Customer.Id && seller.Id == message.SellerId)
+                @if (message.CustomerId == Model.Customer.Id && message.SellerId == seller.Id)
                 {
                     <div class="col-md-4">
                         <div class="card mb-4">
