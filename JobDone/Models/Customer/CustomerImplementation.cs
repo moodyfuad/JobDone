@@ -148,5 +148,90 @@ namespace JobDone.Models.Customer
 
             return ProfilePic;
         }
+        public async Task<List<CustomerModel>>? GetCustomerWithRequests(int customerId)
+        {
+            List<CustomerModel> customers =
+                _customer.Where(c => c.Id == customerId).Include(s => s.OrderByCustomerModels).ToList();
+
+            return customers;
+        }
+        public List<CustomerModel> GetFirst10(string username)
+        {
+            List<CustomerModel> customers = _Db.CustomerModels.Where(s =>
+                s.Username.ToLower().StartsWith(username.ToLower()) || s.Username.ToLower().EndsWith(username.ToLower())).ToList();
+            if (customers.Count == 0)
+            {
+                return null;
+            }
+            else if (customers.Count == 1)
+            {
+                customers.First().OrderByCustomerModels = _Db.OrderByCustomerModels.Where(p => p.CustomerIdFk == customers.First().Id).ToList();
+                return customers;
+            }
+            else if (customers.Count < 10)
+            {
+                return customers;
+            }
+            else
+            {
+                return customers.Take(10).ToList();
+            }
+        }
+
+        public async Task<bool> DeleteAccount(int customerId)
+        {
+            try
+            {
+                CustomerModel? customer = _customer.
+                                              Include(s => s.OrderByCustomerModels).
+                                              Include(s => s.OrderModels).
+                                              Include(s => s.SecurityQuestionIdFkNavigation).                                         FirstOrDefaultAsync(s => s.Id == customerId).Result;
+
+                try
+                {
+                    _Db.CustomerModels.Remove(customer);
+                    await _Db.SaveChangesAsync();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            catch { return false; }
+
+        }
+
+        public async Task<CustomerModel> Withdraw(CustomerModel customer, decimal MoneyAmount)
+        {
+            customer.Wallet -= MoneyAmount;
+            try
+            {
+                _customer.Update(customer);
+                _Db.SaveChanges();
+
+                return customer;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        public async Task<CustomerModel> Diposit(CustomerModel customer, decimal MoneyAmount)
+        {
+            customer.Wallet += MoneyAmount;
+            try
+            {
+                _customer.Update(customer);
+                _Db.SaveChanges();
+
+                return customer;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

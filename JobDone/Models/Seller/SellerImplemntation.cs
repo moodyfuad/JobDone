@@ -288,26 +288,7 @@ namespace JobDone.Models.Seller
                                               Include(s=>s.SecurityQuestionIdFkNavigation).
                                               Include(s=>s.CategoryIdFkNavigation).
                                               FirstOrDefaultAsync(s => s.Id == sellerId).Result;
-/*
-                 List<SellerOldWorkModel> works = _Db.SellerOldWorkModels.Where
-                    (works => works.SellerIdFk == sellerId).ToList();
 
-                List<ServiceModel> services = _Db.ServiceModels.Where
-                    (s => s.SellerIdFk == sellerId).ToList();  
-
-                List<WithdrawModel> withdrawModels = _Db.WithdrawModels.Where
-                    (s => s.SellerIdFk == sellerId).ToList();
-
-                List<SellerAcceptRequestModel> requests = _Db.SellerAcceptRequestModels.Where(r =>
-                r.SellerIdFk == sellerId).ToList();*/
-
-                // List<OrderModel> orders = _Db.OrderByCustomerModels.Where(r =>
-
-
-
-                /* _Db.SellerOldWorkModels.RemoveRange(works);
-                 _Db.ServiceModels.RemoveRange(services);
-                 _Db.WithdrawModels.RemoveRange(withdrawModels);*/
                 try{
                     _Db.SellerModels.Remove(seller);
                     await _Db.SaveChangesAsync();
@@ -316,10 +297,7 @@ namespace JobDone.Models.Seller
                 catch
                 {
                     return false;
-                }
-/*                _Db.SellerAcceptRequestModels.RemoveRange(requests);
-*/                
-                
+                }                
             }
             catch { return false; }
 

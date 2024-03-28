@@ -1,0 +1,175 @@
+﻿@using JobDone.Models.OrderByCustomer
+@model List<CustomerModel>?
+
+<script>
+    function showOrders(customerId) {
+        $.ajax(
+            {
+                url: "/AdminManageCustomer/ShowOrders",
+                type: "GET",
+                data: { customerId: customerId },
+
+                success: function (result) {
+                    console.log("passed - show posts");
+                    $(".customersDiv").html(result);
+
+
+                },
+                error: function (result) {
+                    console.log("an error accure at showPosts function");
+                    alert("an error accure please try again");
+                }
+            }
+        )
+    };
+    function DeleteOrder(orderId) {
+        $.ajax(
+            {
+                url: "/AdminManageCustomer/DeleteOrder",
+                type: "POST",
+                data: { orderId: orderId },
+
+                success: function (result) {
+                    console.log("passed");
+                    $(".customersDiv").html(result);
+
+
+                },
+                error: function (result) {
+                    console.log("an error accure at DeletePost function");
+                    alert("an error accure please try again");
+                }
+            }
+        )
+    };
+
+    function DeleteAccount(customerId) {
+        $.ajax(
+            {
+                url: "/AdminManageCustomer/DeleteAccount",
+                type: "POST",
+                data: { customerId: customerId },
+
+                success: function (result) {
+                    console.log("success");
+                    $(".customersDiv").html(result);
+                },
+
+                error: function (result) {
+                    console.log("an error accure at DeleteAccount function");
+                    alert("an error accure Please try again");
+                }
+            }
+        )
+    };
+    function MoneyOper(customerId) {
+        var SeletedOption = document.getElementById("SeletedOption").value;
+        var moneyAmount = document.getElementById("moneyAmount").value;
+        $.ajax(
+            {
+                url: "/AdminManageCustomer/MoneyOper",
+                type: "POST",
+                data: { customerId: customerId, selectedOption: SeletedOption, moneyAmount: moneyAmount },
+
+                success: function (result) {
+                    console.log("success");
+                    $(".customersDiv").html(result);
+                },
+
+                error: function (result) {
+                    console.log("an error accure at DeleteAccount function");
+                    alert("an error accure Please try again");
+                }
+            }
+        )
+    };
+</script>
+
+@{
+    if (TempData["deleted"] != null)
+    {
+        <h5 style="color:red">
+            @TempData["deleted"].ToString()
+        </h5>
+    }
+    if (Model == null || Model.Count == 0)
+    {
+        <h1>No Matching Username</h1>
+    }
+    else
+    {
+        <div style="max-height:200px; max-width:1200px;margin-bottom:15px;display:flex;overflow:auto; text-align:center">
+
+            @foreach (CustomerModel customer in Model)
+            {
+                <div style="text-align:center;margin:8px; margin-bottom:0">
+                    <input asp-for="@customer.Id" type="hidden" name="name" value="@customer.Id" />
+                    <div style="height:150px; width:200px;margin:0px; margin-bottom:0;text-align:center; display:flex;flex-direction:column">
+                        <button onclick="showOrders(@customer.Id)" type="button" style="margin:0px;margin-bottom:0;border:none;padding-top:15px; width:inherit ">
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(customer.ProfilePicture)" alt="Alternate Text"
+                                 style="border-radius:50%; width:40px;height:40px" />
+                            <h5>@@@customer.Username</h5>
+                            <h6>@customer.FirstName  @customer.LastName</h6>
+                        </button>
+                        <button onclick="DeleteAccount(@customer.Id)" style="font-size:small;width:inherit">Delete Account</button>
+                    </div>
+                </div>
+
+                @if (Model.Count == 1)
+                {
+                    <div>
+                        <h5 style="margin:0">Choose money operation</h5>
+                        <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0">
+                            <option value="option1" active hidden>Choose</option>
+                            <option value="W">Withdraw</option>
+                            <option value="D">Deposit</option>
+                        </select>
+                        <br>
+                        <input id="moneyAmount" style=" width:90%; padding:3px; margin-bottom:8px" type="number" value="" placeholder="Amount of money">
+                        <br>
+                        <button style=" width:60%;" type="submit" onclick="MoneyOper(@customer.Id)">Submit</button>
+                    </div>
+                    if (TempData["transaction"] != null)
+                    {
+                        <h4 style="white-space: pre-line; justify-content:space-around; margin:auto; color:red">
+                            @TempData["transaction"].ToString()
+                        </h4>
+                    }
+                }
+
+            }
+        </div>
+
+
+        <div id="postsDiv" style="display:flex; flex-direction:column">
+            @if (TempData["postStatus"] != null)
+            {
+                <h5 style="color:red">@TempData["postStatus"].ToString()</h5>
+            }
+            @if (Model.Count() == 1 && Model.First().OrderByCustomerModels != null && Model.First().OrderByCustomerModels.Count() > 0)
+            {
+                <div id="" class="container" style="display:flex;">
+                    @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
+                    {
+                        <div>
+                            <div class="item" style="text-align:center; display:flex;flex-direction:column">
+                                <input id="postId" asp-for=@order.Id value="@order.Id" type="hidden" />
+                                <h6>@order.OrderName</h6>
+                                <h6>@order.Description</h6>
+                                <button onclick="DeleteOrder(@order.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete order</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            }
+        </div>
+
+    }
+
+}
+
+<br>
+<br>
+
+<br />

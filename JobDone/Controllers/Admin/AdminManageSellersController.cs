@@ -18,7 +18,6 @@ namespace JobDone.Controllers.Admin
         {
             _sellers = sellers;
             _oldWork = oldWork;
-            // باقي حذف العمل القديم و اختيار نوع العملية و الجزء اليسار كامل
 
         }
 
@@ -48,10 +47,6 @@ namespace JobDone.Controllers.Admin
         public PartialViewResult ShowPosts(int sellerId)
         {
             int id = sellerId;
-          /*  
-            SellerModel seller = _sellers.GetSellerById(id);
-            seller.SellerOldWorkModels = _oldWork.GetSellerOldWork(id).Result;
-            List<SellerModel> sellers = new() { seller };*/
             List<SellerModel> sellers = _sellers.GetSellerWithPosts(id).Result;
 
             return PartialView("_GetSellers", sellers) ;

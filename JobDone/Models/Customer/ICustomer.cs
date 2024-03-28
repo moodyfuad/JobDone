@@ -17,5 +17,10 @@
         public Task<string> GetPictureAsString(short id);
         public CustomerModel GetCustomerById(int id);
 
+        Task<List<CustomerModel>>? GetCustomerWithRequests(int customerId);
+        List<CustomerModel> GetFirst10(string username);
+        Task<bool> DeleteAccount(int customerId);
+        Task<CustomerModel> Withdraw(CustomerModel customer, decimal MoneyAmount);
+        Task<CustomerModel> Diposit(CustomerModel customer, decimal MoneyAmount);
     }
 }
