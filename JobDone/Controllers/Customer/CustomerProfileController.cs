@@ -33,6 +33,17 @@ namespace JobDone.Controllers.Customer
             return View(customer);
         }
 
+        public IActionResult Pull(short amount)
+        {
+            string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CustomerModel customer = _customer.getAllInfo(Convert.ToInt16(customerId));
+            if(customer.Wallet >= amount)
+            {
+
+            }
+            return RedirectToAction("SuccessfullyChange");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([FromForm] CustomerModel vmCustomer, IFormFile profilePictureAsFile, string NewPassword)
@@ -97,6 +108,11 @@ namespace JobDone.Controllers.Customer
         }
 
         public IActionResult SuccessfullyChange()
+        {
+            return View();
+        }
+
+        public IActionResult SuccessfullyPull()
         {
             return View();
         }

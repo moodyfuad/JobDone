@@ -4,6 +4,7 @@ using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 using JobDone.Models.Service;
 using JobDone.Models.Category;
+using JobDone.Models.Withdraw;
 
 namespace JobDone.Models.SellerProfile
 {
