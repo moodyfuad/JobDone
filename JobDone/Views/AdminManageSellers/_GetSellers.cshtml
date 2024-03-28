@@ -99,7 +99,8 @@
     }
     else
     {
-        <div style="max-height:200px; max-width:1200px;margin-bottom:15px;display:flex;overflow:auto; text-align:center">
+        <div style="max-height:200px;margin-bottom:15px;display:flex;overflow:auto; text-align:center;
+            justify-content:center">
          
         @foreach (SellerModel seller in Model)
         {
@@ -120,8 +121,8 @@
                 {
                     <div>
                         <h5 style="margin:0">Choose money operation</h5>
-                        <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0" onchange="checkSelection()">
-                            <option value="option1" active hidden>Choose</option>
+                        <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0;">
+                            <option value="option1" active hidden selected>Choose</option>
                             <option value="W">Withdraw</option>
                             <option value="D">Deposit</option>
                         </select>
@@ -130,38 +131,50 @@
                         <br>
                         <button  style=" width:60%;" type="submit" onclick="MoneyOper(@seller.Id)">Submit</button>
                     </div>
-                    if (TempData["transaction"] != null)
-                    {
-                        <h5 style=" white-space: pre-line; justify-content:space-around; margin:auto; color:red">
-                            @TempData["transaction"]
-                        </h5>
-                    }
+                    
                 }
 
         }
         </div>
+        if (TempData["transaction"] != null)
+        {
+            <h5 style=" white-space: pre-line; justify-content:space-around; margin:auto; color:red">@TempData["transaction"]
 
+            </h5>
+        }
 
-        <div id="postsDiv" style="display:flex; flex-direction:column">
+        <div id="postsDiv" style="display:flex; flex-direction:column; align-items:center; justify-content:center">
         @if (TempData["postStatus"] != null)
         {
             <h5 style="color:red">@TempData["postStatus"].ToString()</h5>
         }
         @if (Model.Count() == 1)
         {
-            <div id="" class="container" style="display:flex;">
-                @foreach (SellerOldWorkModel work in Model.First().SellerOldWorkModels.ToList())
+                <h1 style =" white-space: pre-line; line-height:1; justify-content:space-around;align-items:center; margin:auto; color:black">Posts
+                </h1>
+                if(Model.First().SellerOldWorkModels == null || Model.First().SellerOldWorkModels.Count() == 0)
                 {
-                    <div>
-                        <div class="item" style="text-align:center; display:flex;flex-direction:column">
-                            <input id="postId" asp-for=@work.Id value="@work.Id" type="hidden" />
-                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
-                            <h6>@work.Description</h6>
-                            <button onclick="DeletePost(@work.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete Post</button>
-                        </div>
+                    <h1 style =" white-space: pre-line; justify-content:space-around; margin:auto; color:red">
+                    No Posts To Display
+                    </h1>
+                }
+                else
+                {
+                    <div id="" class="container" style="display:flex; justify-content:center">
+                        @foreach (SellerOldWorkModel work in Model.First().SellerOldWorkModels.ToList())
+                        {
+                            <div>
+                                <div class="item" style="margin:15px 7px; text-align:center; display:flex;flex-direction:column">
+                                    <input id="postId" asp-for=@work.Id value="@work.Id" type="hidden" />
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(work.Picture)" alt="وصف الصورة 2">
+                                    <h6>@work.Description</h6>
+                                    <button onclick="DeletePost(@work.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete Post</button>
+                                </div>
+                            </div>
+                        }
                     </div>
                 }
-            </div>
+                
 
         }
         </div>

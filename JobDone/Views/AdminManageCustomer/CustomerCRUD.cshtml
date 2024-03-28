@@ -2,7 +2,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,30 +99,41 @@
 
 </head>
 <body>
+        <script>
+            function updateName() {
+                var username = document.getElementById("inputUsername").value;
+                $.ajax(
+                    {
+                        url: "/AdminManageCustomer/_GetCustomers",
+                        type: "GET",
+                        data: { username: username },
 
-    <div class="half" id="firstHalf">
-        <h2>Choose money operation</h2>
-        <select id="moneyOperation" onchange="checkSelection()">
-            <option value="option1" active hidden>Choose</option>
-            <option value="option1">Withdraw</option>
-            <option value="option2">Deposit</option>
-            <option value="option3">Transfer</option>
-        </select>
-        <br><br><br><br><br><br>
-        <input type="text" placeholder="Customer Username"><br>
-        <input type="text" id="hiddenInput" placeholder="Seller Username"><br>
 
-        <input type="text" placeholder="Amount of money">
-        <br><br>
-        <input type="submit" value="submit">
-    </div>
 
-    <div class="half">
-        <h2> Customer accounts</h2>
-        <br><br><br><br><br><br><br><br>
-        <input type="text" placeholder="Username">
-        <br><br>
-        <input type="submit" value="Delete">
-    </div>
+                        success: function (result) {
+                            console.log("passed");
+                            $(".customersDiv").html(result);
+
+
+                        },
+                        error: function (result) {
+                            alert("an error accure");
+                        }
+                    }
+                )
+            };
+
+        </script>
+
+        <div style="text-align:center; margin-top:100px">
+
+            <h2>Search For Customer</h2>
+            <input class="input-group-text;" style="max-width:500px; width:400px; text-align:center" id="inputUsername" type="text"
+            onkeyup="updateName()" placeholder="Username">
+        </div>
+        <div class="customersDiv" style="text-align:center">
+            <h1>Welcome Please  Search  To Display The Details</h1>
+        </div>
+
 </body>
 </html>
