@@ -1,0 +1,51 @@
+﻿@using System.Security.Claims
+@model CustomersSellerMessagesViewModel
+
+@{
+    Layout = "~/Views/Shared/_SellerLayout.cshtml";
+    string SellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        @if (Model.Customers.Count() == 0)
+        {
+            <h3 style="color:red">Nothing here</h3>
+        }
+        @foreach (var customer in Model.Customers)
+        {
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.CustomerId == customer.Id && message.SellerId == Model.Seller.Id)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            @{
+                                string base64Image = Convert.ToBase64String(customer.ProfilePicture);
+                            }
+                            <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
+                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="150">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@customer.Username</h5>
+                                <br />
+                                <form asp-controller="SellerOrder" asp-action="Chat" method="get" style="display:contents">
+                                    <input type="hidden" name="customerId" value="@customer.Id" />
+                                    <input type="hidden" name="sellerId" value="@SellerId" />
+                                    <button type="submit" class="btn btn-primary">
+                                        Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    break;
+                }
+            }
+        }
+    </div>
+</div>
+</div>

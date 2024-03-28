@@ -233,5 +233,10 @@ namespace JobDone.Models.Customer
                 return null;
             }
         }
+
+        public async Task<IEnumerable<CustomerModel>> GetAllCustomers()
+        {
+            return await _customer.ToListAsync();
+        }
     }
 }

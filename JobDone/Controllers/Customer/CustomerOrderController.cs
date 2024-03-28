@@ -134,7 +134,7 @@ namespace JobDone.Controllers.Customer
 
             viewModel.Messages = _context.MessageModels.ToList();
 
-            return View(viewModel);
+            return RedirectToAction("Chat", new { customerId = customerId, sellerId = sellerId });
         }
 
         private IFormFile ConvertToImage(byte[] byteImage)
