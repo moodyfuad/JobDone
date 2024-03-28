@@ -184,7 +184,7 @@ namespace JobDone.Controllers.Seller
 
         public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
         {
-            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()));
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
 
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
 
@@ -200,16 +200,16 @@ namespace JobDone.Controllers.Seller
             if(Accept != 0)
             {
                 SellerAcceptRequestModel sellerAcceptRequest = new SellerAcceptRequestModel
-                    {
+                {
                         IsAccepted = 1,
                         SellerIdFk = SellerID(),
                         OrderByCustomerIdFk = Accept,
-                    };
+                };      
 
-                    _seller.SaveSellerAccept(sellerAcceptRequest);
+                _seller.SaveSellerAccept(sellerAcceptRequest);
             }
             viewModel = new();
-            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()));
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()),SellerID());
 
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
 
