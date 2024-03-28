@@ -18,6 +18,8 @@ using JobDone.Models.Order;
 using System.Collections.Generic;
 using JobDone.Models.SellerAcceptRequest;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using JobDone.Models.Banners;
 
 
 namespace JobDone.Controllers.Seller
@@ -28,13 +30,15 @@ namespace JobDone.Controllers.Seller
         private readonly ISecurityQuestion _questions;
         private readonly ICategory _category;
         private readonly IServies _servise;
+        private readonly IBanner _banners;
         private readonly SignUpSellerCatgoreViewModel _SUSCViewModel;
-        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies)
+        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners)
         {
             _seller = seller;
             _questions = questions;
             _category = category;
             _servise = servies;
+            _banners = banners;
         }
 
         [HttpGet]
@@ -50,6 +54,7 @@ namespace JobDone.Controllers.Seller
             };
             return View(viewModel);
         }
+
         [HttpPost]
         public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword,string[] textarea, string[] serviecs)
         {   
@@ -126,8 +131,10 @@ namespace JobDone.Controllers.Seller
         {
             return View();
         }
+
+        [Authorize(Roles = TypesOfUsers.Seller)]
         [HttpGet]
-        public IActionResult Home(SignUpSellerCatgoreViewModel viewModel)
+        public async Task<IActionResult> Home(SignUpSellerCatgoreViewModel viewModel)
         {
             var x = _seller.GetRemainingWork(SellerID()); ;
                 ViewBag.xxx = x.ToString();
@@ -146,10 +153,13 @@ namespace JobDone.Controllers.Seller
 
             viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModelsFiveCustomer(_seller.SellerCatgoreID(SellerID()));
             viewModel.CustomerUsrname = _seller.GetCustomerusername();
+            IEnumerable<BannerModel> listOfBanners = await _banners.GetAllSellerBanners();
+            viewModel.banners = listOfBanners;
 
             return View(viewModel);
         }
 
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult Order(SignUpSellerCatgoreViewModel viewModel)
         {
 
@@ -161,6 +171,8 @@ namespace JobDone.Controllers.Seller
             
             return View(viewModel);
         }
+
+        [Authorize(Roles = TypesOfUsers.Seller)]
         [HttpPost]
         public IActionResult Complet(int orderID)
         {
@@ -171,6 +183,8 @@ namespace JobDone.Controllers.Seller
 
             return RedirectToAction("Order");
         }
+
+        [Authorize(Roles = TypesOfUsers.Seller)]
         [HttpPost]
         public IActionResult DeleteOrder(int orderID)
         {
@@ -181,7 +195,7 @@ namespace JobDone.Controllers.Seller
             return RedirectToAction("Order");
         }
 
-
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
         {
             viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
@@ -194,7 +208,16 @@ namespace JobDone.Controllers.Seller
 
             return View(viewModel);
         }
+
+        [Authorize(Roles = TypesOfUsers.Seller)]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Seller");
+        }
+
         [HttpPost]
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel,int Accept)
         {
             if(Accept != 0)
@@ -218,6 +241,7 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
 
+        [Authorize(Roles = TypesOfUsers.Seller)]
         private int SellerID()
         {
             return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);

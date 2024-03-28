@@ -98,11 +98,10 @@ namespace JobDone.Controllers.Customer
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
 
             viewModel.Customer = new CustomerModel();
-            viewModel.Seller = new SellerModel();
             viewModel.Messages = await _message.GetAllMessages();
 
             viewModel.Customer.Id = customerId;
-            viewModel.Seller.Id = sellerId;
+            viewModel.Seller = _seller.GetSellerById(sellerId);
 
             return View(viewModel);
         }
@@ -116,7 +115,7 @@ namespace JobDone.Controllers.Customer
             viewModel.Seller = new SellerModel();
             viewModel.Messages = _context.MessageModels.ToList();
             viewModel.Customer.Id = customerId;
-            viewModel.Seller.Id = sellerId;
+            viewModel.Seller = _seller.GetSellerById(sellerId);
 
             if (string.IsNullOrEmpty(content))
             {

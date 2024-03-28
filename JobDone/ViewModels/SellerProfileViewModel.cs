@@ -1,6 +1,7 @@
 ﻿using JobDone.Models;
 using JobDone.Models.Category;
 using JobDone.Models.SellerOldWork;
+using JobDone.Models.Withdraw;
 
 namespace JobDone.ViewModels
 {

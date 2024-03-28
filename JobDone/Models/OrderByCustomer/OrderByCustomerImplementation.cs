@@ -1,6 +1,7 @@
 ﻿using JobDone.Data;
 using JobDone.Models.Category;
 using JobDone.Models.Customer;
+using JobDone.Models.SellerOldWork;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
@@ -39,6 +40,14 @@ namespace JobDone.Models.OrderByCustomer
             List<OrderByCustomerModel> orders = await _context.OrderByCustomerModels.Where(order =>
                     order.CustomerIdFk == CustomerId).ToListAsync();
             return orders;
+        }
+        public async Task<OrderByCustomerModel> DeleteOrder(int OrderId)
+        {
+            OrderByCustomerModel? order = _context.OrderByCustomerModels.
+                Include(order => order.SellerAcceptRequestModels).FirstOrDefaultAsync(o => o.Id == OrderId).Result;
+            _context.OrderByCustomerModels.Remove(order);
+            _context.SaveChanges();
+            return order;
         }
     }
 }
