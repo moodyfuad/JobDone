@@ -11,9 +11,15 @@ namespace JobDone.Models.Banners
         {
             _context = context;
         }
-        public async Task<IEnumerable<BannerModel>> getAllBanners()
+
+        public async Task<IEnumerable<BannerModel>> GetAllCustomerBanners()
         {
             return await _context.BannerModels.Where(forWho => forWho.ForWho == 1).ToListAsync();
+        }
+        
+        public async Task<IEnumerable<BannerModel>> GetAllSellerBanners()
+        {
+            return await _context.BannerModels.Where(forWho => forWho.ForWho == 2).ToListAsync();
         }
     }
 }

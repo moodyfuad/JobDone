@@ -8,6 +8,7 @@ using JobDone.Models.Order;
 using JobDone.Models.Customer;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SellerAcceptRequest;
+using JobDone.Models.Banners;
 
 namespace JobDone.ViewModels
 {
@@ -23,6 +24,7 @@ namespace JobDone.ViewModels
         public List<CustomerModel>? CustomerUsrname { get; set; }
         public List<OrderByCustomerModel>? orderByCustomerModels { get; set; }
         public List<CustomerModel> customerReqwest {  get; set; }
+        public IEnumerable<BannerModel> banners {  get; set; }
         public List<SellerAcceptRequestModel> sellerAcceptRequestModels { get; set; }
         internal void CopyTo(MemoryStream memoryStream)
         {

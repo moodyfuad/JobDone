@@ -117,7 +117,7 @@ namespace JobDone.Controllers.Customer
         {
             IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
-            IEnumerable<BannerModel> listOfBanners = await _banner.getAllBanners();
+            IEnumerable<BannerModel> listOfBanners = await _banner.GetAllCustomerBanners();
             HomeViewModel viewModel = new HomeViewModel()
             {
                 Sellers = listOfSellers,
@@ -134,7 +134,7 @@ namespace JobDone.Controllers.Customer
         {
             IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
-            IEnumerable<BannerModel> listOfBanners = await _banner.getAllBanners();
+            IEnumerable<BannerModel> listOfBanners = await _banner.GetAllCustomerBanners();
             HomeViewModel viewModel = new HomeViewModel()
             {
                 Sellers = listOfSellers,
