@@ -101,7 +101,15 @@ namespace JobDone.Models.Seller
         //    todayMoney.Wallet
 
         //}
+        public List<OrderByCustomerModel> getAllOrderByCustomerBasedOnOrdername(string search, int sellerId)
+        {
+            var orders = GetOrderByCustomerModels(SellerCatgoreID(sellerId),sellerId);
+            var filteredSellers = orders
+                .Where(o => o.OrderName.StartsWith(search, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
+            return filteredSellers;
+        }
         public async Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search)
         {
             var sellers = await getAllTheSeller();

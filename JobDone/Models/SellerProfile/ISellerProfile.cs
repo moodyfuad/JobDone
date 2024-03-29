@@ -12,6 +12,7 @@ namespace JobDone.Models.SellerProfile
         List<ServiceModel> GetServiceModels(int sellerID);
         bool IsWithdrawAmountbefore(int sellerID);
         void AddWithdrawMoney(WithdrawModel AWDM);
+        List<WithdrawModel> GetAllwithdrawForOneSeller(int sellerId);
         bool UsernameExist(string username);
         public byte[] ConvertToByteArray(IFormFile image);
         public void ApplyChangesToSeller(ref SellerModel Seller, SellerModel ViewModelSeller);

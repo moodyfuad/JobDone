@@ -111,7 +111,7 @@
     <h1>Search Results</h1>
 
     <div class="row mb-4">
-        <form class="d-flex" method="post" asp-action="Search">
+        <form class="d-flex" method="post" asp-action="RequestedWrok">
             <div class="col-md-7">
                     <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </div>
@@ -150,7 +150,7 @@
                                     <span>Order Date : @item.OrderDate</span>
                                     <p>  delivery date :@item.DeliverDate </p>
 
-                                <form action="RequestedWrok" method="post">
+                                <form action="AcceptRequestedWrok" method="post">
                                     <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2)  <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button></p>
                                 </form>
                             
