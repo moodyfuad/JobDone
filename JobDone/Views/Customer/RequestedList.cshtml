@@ -1,5 +1,255 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
+@model List<RequestListViewModel>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <title>Shop cart - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+        }
+
+        .cart-item-thumb {
+            display: block;
+        }
+
+
+        .container, .container-lg, .container-md, .container-sm {
+            max-width: 2500px;
+        }
+
+        .cart-item-thumb > img {
+            display: block;
+            width: 100%
+        }
+
+        .product-card-title > a {
+            color: #222;
+        }
+
+        .font-weight-semibold {
+            font-weight: 600 !important;
+        }
+
+        .product-card-title {
+            display: block;
+            margin-bottom: .75rem;
+            padding-bottom: .875rem;
+            border-bottom: 1px dashed #e2e2e2;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        .text-muted {
+            color: #888 !important;
+        }
+
+        .bg-secondary {
+            background-color: #f7f7f7 !important;
+        }
+
+        .accordion .accordion-heading {
+            margin-bottom: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .font-weight-semibold {
+            font-weight: 600 !important;
+        }
+
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: rtl;
+            text-align: center;
+        }
+
+            .rating > span {
+                display: inline-block;
+                position: relative;
+                width: 1.1em;
+            }
+
+                .rating > span:hover:before,
+                .rating > span:hover ~ span:before {
+                    content: "\2605";
+                    position: absolute;
+                    color: gold;
+                }
+
+
+
+
+
+
+
+
+        /* Dropdown Button */
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+            /* Dropdown button on hover & focus */
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container pb-5 mt-n2 mt-md-n3">
+        <div class="row">
+            <div @* class="col-xl-9 col-md-8" *@>
+                <br /><br /><br />
+                <div class="h6 d-flex flex-wrap justify-content-between align-items-center px-4 py-3 bg-secondary">
+                    <h3>Category</h3>
+                    <select class="dropdown" style="width:200px;height:30px;">
+                        <option hidden>Category</option>
+                        <option>Programmer</option>
+                        <option>Designer</option>
+                    </select>
+                </div>
+
+                @{
+                    foreach (RequestListViewModel item in Model)
+                    {
+                        <div class="d-sm-flex justify-content-between">
+                            <div class="media d-block d-sm-flex text-center text-sm-left">
+                                <div class="media-body">
+
+                                    <h4 class="font-size-sm"><span class="text-muted mr-2">Project name :</span>@item.orderByCustomer.OrderName</h4>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h6>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Description :</span>@item.orderByCustomer.Description</h6>
+                                    <h6 class="font-size-sm"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h6>
+
+                                </div>
+                            </div>
+
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" style="height:40px;margin-top:68px;" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Show requests
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end" style="height:100px;width:700px;margin-left:100px;">
+                                    <li>
+                                        @foreach (SellerModel seller in item.sellers)
+                                        {
+                                            <div class="d-sm-flex justify-content-between" style="margin-right:50px;margin-left:15px;height:87px;">
+
+                                                <div class="media d-block d-sm-flex text-center text-sm-left">
+                                                    <a class="cart-item-thumb mx-auto mr-sm-4" href="#">
+                                                        <img style="width:70px;" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Product">
+                                                    </a>
+                                                    <div class="media-body pt-3" style="padding-top: 0rem !important;margin-left:10px;">
+                                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
+                                                        <div class="font-size-sm">
+                                                            <span class="text-muted mr-2">
+                                                                Services
+                                                            </span>@string.Join(", ", (seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser => ser.Name).ToList()))
+                                                        </div>
+
+                                                        <div class="rating" style="margin-right:130px; white-space:nowrap; text-align:left">
+                                                            @for (int i = 0; i < seller.Rate; i++)
+                                                            {
+                                                                <span style="color:gold; display:inline-block">&#9733;</span>
+
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
+                                                    @using (Html.BeginForm("AcceptSeller", "CustomerRequestWork", FormMethod.Post))
+                                                    {
+                                                        <button asp-action="AcceptSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="btn btn-outline-success btn-fw" style="margin-bottom:7px; width:120px;" type="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw mr-1">
+                                                                <polyline points="23 4 23 10 17 10"></polyline>
+                                                                <polyline points="1 20 1 14 7 14"></polyline>
+                                                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                                            </svg>Accept
+                                                        </button>
+                                                    }
+                                                    @using (Html.BeginForm("RemoveSeller", "CustomerRequestWork", FormMethod.Post))
+                                                    {
+                                                        <button asp-action="RemoveSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="btn btn-outline-danger btn-sm btn-block mb-2" type="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-1">
+                                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                            </svg>Deny
+                                                        </button>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                    </li>
+                                </ul>
+
+                            </div>
+
+
+                        </div>
+                    }
+
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
