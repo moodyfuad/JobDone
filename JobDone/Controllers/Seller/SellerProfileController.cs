@@ -213,22 +213,22 @@ namespace JobDone.Controllers.Seller
         {
             var seller = _sellerProfile.GetSellerProfile(SellerID());
             service.SellerIdFk = seller.Id;
-            var serviceInfo = _sellerProfile.GetServiceInfo(service);
-            _context.ServiceModels.Remove(serviceInfo);
+            //var serviceInfo = _sellerProfile.GetServiceInfo(service);
+            //_context.ServiceModels.Remove(serviceInfo);
             _context.SaveChanges();
             return RedirectToAction("Profile", "SellerProfile");
         }
 
         [HttpPost]
-        public IActionResult AddOldWork(IFormFile newPhoto, string newDescription)
+        public IActionResult AddOldWork(IFormFile NewWorkPictureAsFile, string newDescription)
         {
-            if (newPhoto == null || newDescription == null)
+            if (NewWorkPictureAsFile == null || newDescription == null)
             {
                 TempData["WarningMessageForNewWork"] = "No new work has been added because some fields are empty";
             }
             else
             {
-                _sellerProfile.AddNewWork(newPhoto, newDescription, SellerID());
+                _sellerProfile.AddNewWork(NewWorkPictureAsFile, newDescription, SellerID());
             }
             return RedirectToAction("Profile", "SellerProfile");
         }
