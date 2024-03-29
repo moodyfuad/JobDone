@@ -12,6 +12,7 @@ namespace JobDone.ViewModels
         public List<CategoryModel>? Category { get; set; }
         public SellerOldWorkModel OneSellerOldWorkModel { get; set; }
         public List<ServiceModel>? serviceModels { get; set; }
+        public ServiceModel service { get; set; }
         public WithdrawModel? withdrawModels { get; set; }
     }
 }

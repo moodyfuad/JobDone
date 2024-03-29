@@ -20,6 +20,7 @@ namespace JobDone.Models.SellerProfile
         void editOldWork(int oldworkId, IFormFile newphoto, string newdescrepion);
         SellerOldWorkModel GetOneSellerOldWorkModel(int oldWorkId);
         void AddNewWork(IFormFile imge, string description, int sellerId);
+        public ServiceModel GetServiceInfo(ServiceModel service);
 
     }
 }

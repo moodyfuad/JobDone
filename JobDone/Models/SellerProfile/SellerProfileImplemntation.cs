@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using JobDone.Models.Service;
 using JobDone.Models.Category;
 using JobDone.Models.Withdraw;
+using JobDone.Models.Seller;
 
 namespace JobDone.Models.SellerProfile
 {
@@ -50,7 +51,10 @@ namespace JobDone.Models.SellerProfile
         }
         public List<ServiceModel> GetServiceModels(int sellerID)
         {
-            return _service.Where(x=>x.SellerIdFk == sellerID).ToList();
+            return _service.Include("SellerIdFkNavigation")
+                    .Where(x => x.SellerIdFk == sellerID)
+                    .ToList();
+
         }
         public bool IsWithdrawAmountbefore(int sellerID)
         {
@@ -121,7 +125,16 @@ namespace JobDone.Models.SellerProfile
                 Seller.BirthDate = ViewModelSeller.BirthDate;
             }
 
+            if (ViewModelSeller.CategoryIdFk != Seller.CategoryIdFk)
+                Seller.CategoryIdFk = ViewModelSeller.CategoryIdFk;
+
         }
+
+        public ServiceModel GetServiceInfo(ServiceModel service)
+        {
+            return _service.FirstOrDefault(x => x.SellerIdFk == service.SellerIdFk && x.Name == service.Name);
+        }
+
         public List<SellerOldWorkModel> GetSellerOldWorkModels(int sellerID) 
         {
             return _sellerOldWork.Where(x=>x.SellerIdFk == sellerID).ToList();

@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_SellerLayout.cshtml";
 }
-@using JobDone.Models.Seller
 
 @model SellerProfileViewModel
 
@@ -230,13 +229,16 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-info" onclick="openPopup3()">Edit</button>
+                                    <button class="btn btn-info" style="color:white" onclick="openPopup3()">Edit Information</button>
+                                    <button class="btn btn-info" style="color:white" onclick="openPopup5()">Edit Services</button>
+                                    <button class="btn btn-info" style="color:white" onclick="openPopup6()">Add Service</button>
+                                    <button class="btn btn-info" style="color:white" onclick="openPopup7()">Delete Service</button>
                                     <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
                                         <input class="btn btn-danger btn-rounded btn-fw" type="submit" value="Logout" style="margin-left:1%; width:100px;" />
                                     </form>
-                                    <form action="Edit" method="post">
-                                        <div id="myPopup3" class="popup">
-                                            <div class="popup-content">
+                                    <div id="myPopup3" class="popup">
+                                        <div class="popup-content">
+                                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
                                                 <span onclick="closePopup3()" style="float:right;">&times;</span>
                                                 <img src="data:image/jpeg;base64,@base64Image" id="myImage" alt="Admin" class="rounded-circle" width="150" style="margin-left:30%;">
                                                 <div>
@@ -245,25 +247,16 @@
                                                     }
                                                     <input onchange="handleFileUpload(event)" name="profilePictureAsFile" type="file" id="imageInput" accept="image/*">
                                                 </div>
-                                            <br /><br /><br /><br />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Username</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
+                                                <br /><br /><br /><br />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Username</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">
                                                         <input type="text" name="Username" asp-for="sellerModels.Username" value="@Model.sellerModels.Username" placeholder="Enter your Username" />
-                                                        <span asp-validation-for="sellerModels.Username" class="text-danger"></span>
+                                                        <span class="text-danger">@Html.ValidationMessageFor(model => model.sellerModels.Username)</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <br /><br />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Full Name</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                   <input type="text" name="name" value="" placeholder="Enter your name" />
-                                                </div>
-                                            </div>
                                                 <br /><br />
                                                 <div class="row">
                                                     <div class="col-sm-3">
@@ -284,36 +277,36 @@
                                                         <span asp-validation-for="sellerModels.LastName" class="text-danger"></span>
                                                     </div>
                                                 </div>
-                                            <br /><br />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Email</h6>
+                                                <br /><br />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Email</h6>
+                                                    </div>
+                                                    <div class="col-sm-9 text-secondary">
+                                                            <input type="email" name="Email" asp-for="sellerModels.Email" value="@Model.sellerModels.Email" placeholder="Enter your Email" />
+                                                            <span asp-validation-for="sellerModels.Email" class="text-danger"></span>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                        <input type="email" name="Email" asp-for="sellerModels.Email" value="@Model.sellerModels.Email" placeholder="Enter your Email" />
-                                                        <span asp-validation-for="sellerModels.Email" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <br /><br />
-                                            <div class="row">
+                                                <br /><br />
+                                                <div class="row">
                                                 <div class="col-sm-3">
                                                     <h6 class="mb-0">Phone</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                        <input type="text" name="PhoneNumber" asp-for="sellerModels.PhoneNumber" value="@Model.sellerModels.PhoneNumber" placeholder="Enter your phone number" />
-                                                        <span asp-validation-for="sellerModels.PhoneNumber" class="text-danger"></span>
+                                                    <input type="text" name="PhoneNumber" asp-for="sellerModels.PhoneNumber" value="@Model.sellerModels.PhoneNumber" placeholder="Enter your phone number" />
+                                                    <span class="text-danger">@Html.ValidationMessageFor(model => model.sellerModels.PhoneNumber)</span>
                                                 </div>
-                                            </div>
-                                            <br /><br />
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">Password</h6>
                                                 </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                        <input type="password" name="Password" asp-for="sellerModels.Password" value="" placeholder="Enter your password" />
-                                                        <span asp-validation-for="sellerModels.Password" class="text-danger"></span>
+                                                <br /><br />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Password</h6>
                                                     </div>
-                                            </div>
+                                                    <div class="col-sm-9 text-secondary">
+                                                            <input type="password" name="Password" asp-for="sellerModels.Password" value="" placeholder="Enter your password" />
+                                                            <span asp-validation-for="sellerModels.Password" class="text-danger"></span>
+                                                        </div>
+                                                </div>
                                                 <br /><br />
                                                 <div class="row">
                                                     <div class="col-sm-3">
@@ -335,18 +328,33 @@
                                                         <input type="date" name="BirthDate" asp-for="sellerModels.BirthDate" value="@Model.sellerModels.BirthDate.ToString("yyyy-MM-dd")" placeholder="Enter your Birthdate" />
                                                     </div>
                                                 </div>
-                                            <br /><br />
+                                                <br /><br />
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <h6 class="mb-0">Category : </h6>
+                                                    </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                        <select name="CategoryIdFk" asp-for="@Model.sellerModels.CategoryIdFk" required>
+                                                        @foreach (var c in Model.Category)
+                                                        {
+                                                            if(c.Name == Model.sellerModels.CategoryIdFkNavigation.Name)
+                                                            {
+                                                                <option value="@c.Id" selected>@c.Name</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@c.Id">@c.Name</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <br /><br />
 
 
                                                 <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
-
-                                            </div>
-                                        </div>
                                         </form>
-                                        
-
-
-                                    
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -357,6 +365,78 @@
             </div>
         </div>
     </div>
+    <div id="myPopup5" class="popup">
+        <div class="popup-content">
+            <form asp-action="EditServices" method="post">
+                <span onclick="closePopup5()" style="float:right;">&times;</span>
+                <h5>Services :</h5>
+                @for (short i = 0; i < Model.serviceModels.Count(); i++)
+                {
+                    <div class="row">
+                        <div class="col-sm-9 text-secondary">
+                            <input type="text" name="serviceModels[@i].Name" value="@Model.serviceModels[@i].Name" placeholder="Enter your services" required />
+                            <span asp-validation-for="serviceModels[@i].Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                }
+                <br />
+                <br />
+                <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+            </form>
+        </div>
+    </div>
+    <div id="myPopup7" class="popup">
+        <div class="popup-content">
+            <form asp-action="DeleteService" method="post">
+                <span onclick="closePopup7()" style="float:right;">&times;</span>
+                <h5>Services :</h5>
+                @for (short i = 0; i < Model.serviceModels.Count(); i++)
+                {
+                    <div class="row">
+                        <div class="col-sm-9 text-secondary">
+                            <input type="text" name="Name" value="@Model.serviceModels[@i].Name" readonly/>
+                            <button type="submit">
+                                <i class="fas fa-times"></i> Delete
+                            </button>
+                            <span asp-validation-for="serviceModels[@i].Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                }
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+    <div id="myPopup6" class="popup">
+        <div class="popup-content">
+            <form asp-action="AddService" method="post">
+                <span onclick="closePopup6()" style="float:right;">&times;</span>
+                <h5>Adding service : </h5>
+                @if(Model.serviceModels.Count() >= 5)
+                {
+                    <h4 class="text-danger">You can't add more services</h4>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-sm-9 text-secondary">
+                            <input type="text" name="Name" value="" placeholder="Enter your service" required />
+                            <span asp-validation-for="service.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+                }
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+                                    
 
     <div class="album py-5 bg-light">
         <div class="container">
@@ -381,6 +461,7 @@
                                             <button type="submit" class="btn btn-sm btn-outline-secondary" name="oldWorkId" value="@item.Id">Delete</button>
                                         </form>
 
+                                        &nbsp
                                        
                                         <form action="EditOldWork" method="get">
                                             <button type="submit" onclick="openPopup()" class="btn btn-sm btn-outline-secondary">Edit</button>
@@ -465,6 +546,46 @@
             
 
         }
+
+        // فتح النافذة المنبثقة
+        function openPopup5() {
+            document.getElementById("myPopup5").style.display = "block";
+
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closePopup5() {
+            document.getElementById("myPopup5").style.display = "none";
+
+
+        }
+
+        // فتح النافذة المنبثقة
+        function openPopup6() {
+            document.getElementById("myPopup6").style.display = "block";
+
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closePopup6() {
+            document.getElementById("myPopup6").style.display = "none";
+
+
+        }
+
+        // فتح النافذة المنبثقة
+        function openPopup7() {
+            document.getElementById("myPopup7").style.display = "block";
+
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closePopup7() {
+            document.getElementById("myPopup7").style.display = "none";
+
+
+        }
+
         function openPopup2() {
             
             document.getElementById("myPopup2").style.display = "block";
@@ -487,6 +608,7 @@
 
 
         }
+
         function hideButton2() {
             const button = document.getElementById("myButton2");
             button.style.display = "none";
@@ -550,13 +672,19 @@
 
             }
         }
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('myImage').src = e.target.result; // Update the preview image with the selected file
+            };
+            reader.readAsDataURL(file);
+        }
     </script>
-    <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="./profile_files/jquery-1.10.2.min.js.تنزيل"></script>
-    <script src="./profile_files/bootstrap.bundle.min.js.تنزيل"></script>
-    <script type="text/javascript">
-
-    </script>
+        <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="./profile_files/jquery-1.10.2.min.js.تنزيل"></script>
+        <script src="./profile_files/bootstrap.bundle.min.js.تنزيل"></script>
+        <script type="text/javascript"> </script>
 
 </body>
 </html>

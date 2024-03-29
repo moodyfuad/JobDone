@@ -62,29 +62,40 @@ namespace JobDone.Controllers.Seller
 
             return RedirectToAction("Profile", "SellerProfile");
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([FromForm] SellerProfileViewModel viewModel, string NewPassword, IFormFile profilePictureAsFile)
+        public async Task<IActionResult> Edit([FromForm] SellerModel vmSeller, string NewPassword, IFormFile profilePictureAsFile)
         {
-            viewModel.sellerModels = _sellerProfile.GetSellerProfile(SellerID());
-
+            vmSeller.Id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
             SellerModel seller = _sellerProfile.GetSellerProfile(SellerID());
+            List<ServiceModel> serviceModels = _sellerProfile.GetServiceModels(SellerID());
+            List<SellerOldWorkModel> sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
+            List<CategoryModel> Category = _sellerProfile.GetCategories();
 
-            if (viewModel.sellerModels.Username != seller.Username)
+            SellerProfileViewModel viewModel = new SellerProfileViewModel() 
             {
-                if (_sellerProfile.UsernameExist(viewModel.sellerModels.Username))
+                sellerModels = seller,
+                serviceModels = serviceModels,
+                sellerOldWorkModels = sellerOldWorkModels,
+                Category = Category
+            };
+
+            if (vmSeller.Username != seller.Username)
+            {
+                if (_sellerProfile.UsernameExist(vmSeller.Username))
                 {
                     ModelState.AddModelError("Username", "\nThis username is Exists.");
-                    return View("Profile", seller);
+                    return View("Profile", viewModel);
                 }
             }
 
             else if (NewPassword != null)
             {
-                if (viewModel.sellerModels.Password != seller.Password || NewPassword.Length < 9)
+                if (vmSeller.Password != seller.Password || NewPassword.Length < 9)
                 {
                     ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 8 digit, try again.");
-                    return View("Profile", seller);
+                    return View("Profile", viewModel);
                 }
                 else
                 {
@@ -92,34 +103,34 @@ namespace JobDone.Controllers.Seller
                 }
             }
 
-            if (string.IsNullOrEmpty(viewModel.sellerModels.PhoneNumber) || viewModel.sellerModels.PhoneNumber.Length < 9 || !viewModel.sellerModels.PhoneNumber.All(char.IsDigit))
+            if (string.IsNullOrEmpty(vmSeller.PhoneNumber) || vmSeller.PhoneNumber.Length < 9 || !vmSeller.PhoneNumber.All(char.IsDigit))
             {
                 ModelState.AddModelError("PhoneNumber", "Phone number must be at least 9 digits long and contain only numbers.");
-                return View("Profile", seller);
+                return View("Profile", viewModel);
             }
 
-            if (!IsValidEmail(viewModel.sellerModels.Email))
+            if (!IsValidEmail(vmSeller.Email))
             {
                 ModelState.AddModelError("Email", "Invalid email format. Please enter a valid email address.");
-                return View("Profile", seller);
+                return View("Profile", viewModel);
             }
 
-            if (viewModel.sellerModels.FirstName.Length < 0)
+            if (vmSeller.FirstName.Length < 0)
             {
                 ModelState.AddModelError("FirstName", "\nEnter your First Name.");
-                return View("Profile", seller);
+                return View("Profile", viewModel);
             }
 
-            if (viewModel.sellerModels.LastName.Length < 0)
+            if (vmSeller.LastName.Length < 0)
             {
                 ModelState.AddModelError("LastName", "\nEnter your Last Name.");
-                return View("Profile", seller);
+                return View("Profile", viewModel);
             }
 
             if (profilePictureAsFile != null)
                 seller.ProfilePicture = _sellerProfile.ConvertToByteArray(profilePictureAsFile);
 
-            _sellerProfile.ApplyChangesToSeller(ref seller, viewModel.sellerModels);
+            _sellerProfile.ApplyChangesToSeller(ref seller, vmSeller);
             _context.SellerModels.Update(seller);
             await _context.SaveChangesAsync();
 
@@ -156,11 +167,50 @@ namespace JobDone.Controllers.Seller
             
             return RedirectToAction("EditOldWork", "SellerProfile");
         }
+
+        [HttpPost]
+        public IActionResult EditServices(SellerProfileViewModel viewModel)
+        {
+            var services = _sellerProfile.GetServiceModels(SellerID());
+            for (short i = 0; i < services.Count(); i++)
+            {
+                services[i].Name = viewModel.serviceModels[i].Name;
+            }
+            _context.ServiceModels.UpdateRange(services);
+            _context.SaveChanges();
+            return RedirectToAction("Profile", "SellerProfile");
+        }
+
+        [HttpPost]
+        public IActionResult AddService(ServiceModel service)
+        {
+            if(!string.IsNullOrEmpty(service.Name))
+            {
+                var seller = _sellerProfile.GetSellerProfile(SellerID());
+                service.SellerIdFk = seller.Id;
+                service.Description = "";
+                _context.ServiceModels.Add(service);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Profile", "SellerProfile");
+        }
+
         [HttpPost]
         public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
         {
             _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
 
+            return RedirectToAction("Profile", "SellerProfile");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteService(ServiceModel service)
+        {
+            var seller = _sellerProfile.GetSellerProfile(SellerID());
+            service.SellerIdFk = seller.Id;
+            var serviceInfo = _sellerProfile.GetServiceInfo(service);
+            _context.ServiceModels.Remove(serviceInfo);
+            _context.SaveChanges();
             return RedirectToAction("Profile", "SellerProfile");
         }
 
