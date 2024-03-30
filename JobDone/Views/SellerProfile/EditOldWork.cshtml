@@ -33,7 +33,7 @@
     }
     else
     {
-            <form action="EditOldWork" method="post">
+            <form action="EditOldWork" method="post" enctype="multipart/form-data">
                 <div class="popup-content">
                     @{
                     string base64ImageForNewOldWork = Convert.ToBase64String(Model.OneSellerOldWorkModel.Picture) ;
@@ -42,31 +42,30 @@
 
                     <div>
                         <input onchange="showButton()" type="file" id="imageInput" name="NewPhoto" accept="image/*">
-                        <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                     </div>
 
                     <textarea style="width:100%; height:200px;margin-top:50px;" name="NewDscrepsion">@Model.OneSellerOldWorkModel.Description</textarea><br /><br />
                     <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit"  value="" placeholder="Edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
 
                 </div>
-
             </form>
     }
    
 }
 </div>
 <script>
-    function showButton2() {
-        const button = document.getElementById("myButton2");
-        button.style.display = "block";
-    }
-    function hideButton2() {
-        const button = document.getElementById("myButton2");
+    function hideButton() {
+        const button = document.getElementById("myButton");
         button.style.display = "none";
     }
-    function replaceImage2() {
-        const input = document.getElementById('imageInput2');
-        const image = document.getElementById('myImage2');
+    function showButton() {
+        const button = document.getElementById("myButton");
+        button.style.display = "block";
+    }
+    function replaceImage() {
+        const input = document.getElementById('imageInput');
+        const image = document.getElementById('myImage');
 
         if (input.files && input.files[0]) {
             const reader = new FileReader();

@@ -143,10 +143,20 @@
                                 <img src="data:image/jpeg;base64,@base64Image" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <div class="rating">
-                                        @for (int i = 0; i < Model.sellerModels.Rate; i++)
-                                        {
-                                            <span>&#9733;</span>
-                                        }
+                                        <div class="rating">
+                                            @{
+                                                short count = 0;
+                                            }
+                                            @for (short i = 0; i < Model.sellerModels.Rate; i++)
+                                            {
+                                                count++;
+                                                <span class="star" style="color:gold">&#9733;</span>
+                                            }
+                                            @for (short i = 0; i < 5 - count; i++)
+                                            {
+                                                <span class="star" style="color:gold">&#9734;</span>
+                                            }
+                                        </div>
                                         
                                         <h2>@(Model.sellerModels.FirstName + " " +Model.sellerModels.LastName)</h2>
                                     </div>
@@ -433,8 +443,8 @@
                     <div class="row">
                         <div class="col-sm-9 text-secondary">
                             <input type="text" name="Name" value="" placeholder="Enter your service" required />
-                            <span asp-validation-for="service.Name" class="text-danger"></span>
-                        </div>
+@*                             <span asp-validation-for="service.Name" class="text-danger"></span>
+ *@                        </div>
                     </div>
                     <br /><br />
                     <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
@@ -496,7 +506,7 @@
 
 
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -508,15 +518,18 @@
                 
 
                 <input class="btn btn-gradient-primary btn-rounded btn-fw" onclick="openPopup2()" type="submit" name="name" value="Add new work" style="margin-top:70px;margin-left:60%; background-color:cornflowerblue;" />
-                <form action="AddOldWork" method="post">
+                <form action="AddOldWork" method="post" enctype="multipart/form-data">
                     <div id="myPopup2" class="popup">
                         <div class="popup-content">
                             <span onclick="closePopup2()" style="float:right;">&times;</span>
 
-                            <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="~/Seller/img/default.jfif" alt="صورة افتراضية" width="100%" height="300px">
+                            @{
+                                IFormFile? NewWorkPictureAsFile = null;
+                            }
+                            <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64" width="100%" height="300px">
                             <div>
-                                <input onchange="showButton2()" type="file" id="imageInput2" name="newPhoto" accept="image/*">
-                                <button class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                                <input onchange="showButton2()" type="file" id="imageInput2" name="NewWorkPictureAsFile" accept="image/*">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
                             </div>
                         <textarea style="width:100%; height:200px;margin-top:50px;" name="newDescription">Add description</textarea><br /><br />
                             <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" name="name" value="Add" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
