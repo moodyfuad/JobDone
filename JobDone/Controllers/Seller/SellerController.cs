@@ -32,7 +32,6 @@ namespace JobDone.Controllers.Seller
         private readonly ICategory _category;
         private readonly IServies _servise;
         private readonly IBanner _banners;
-        private readonly SignUpSellerCatgoreViewModel _SUSCViewModel;
         public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners)
         {
             _seller = seller;
@@ -57,22 +56,37 @@ namespace JobDone.Controllers.Seller
         }
 
         [HttpPost]
-        public IActionResult SignUp(SignUpSellerCatgoreViewModel viewModel,string CoinformPassword,string[] textarea, string[] serviecs)
-        {   
+        public async Task<IActionResult> SignUp(SignUpSellerCatgoreViewModel viewModel, string CoinformPassword, string[] textarea, string[] serviecs)
+        {
             viewModel.SecurityQuestions = _questions.GetQuestions();
             viewModel.Category = _category.GetCategories();
 
-            viewModel.Seller.ProfilePicture =  _seller.ConvertToByte(viewModel.PrfilePicture);
+            viewModel.Seller.ProfilePicture = _seller.ConvertToByte(viewModel.PrfilePicture);
             viewModel.Seller.PersonalPictureId = _seller.ConvertToByte(viewModel.PersonalId);
-            
-            
+
             if (viewModel.Seller.Password == CoinformPassword)
             {
-                if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 && 
-                    viewModel.Seller.Gender !=null&& viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
+                if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 &&
+                    viewModel.Seller.Gender != null && viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
                 {
-                     _seller.SignUp(viewModel.Seller);
-                    for (int i = 0; i < serviecs.Length - 1; i++)
+                    SellerModel seller = new SellerModel();
+                    {
+                        seller.FirstName = viewModel.Seller.FirstName;
+                        seller.LastName = viewModel.Seller.LastName;
+                        seller.Email = viewModel.Seller.Email;
+                        seller.Gender = viewModel.Seller.Gender;
+                        seller.Username = viewModel.Seller.Username;
+                        seller.Password = viewModel.Seller.Password;
+                        seller.PhoneNumber = viewModel.Seller.PhoneNumber;
+                        seller.BirthDate = viewModel.Seller.BirthDate;
+                        seller.PersonalPictureId = viewModel.Seller.PersonalPictureId;
+                        seller.CategoryIdFk = viewModel.Seller.CategoryIdFk;
+                        seller.ProfilePicture = viewModel.Seller.ProfilePicture;
+                        seller.SecurityQuestionIdFk = viewModel.Seller.SecurityQuestionIdFk;
+                        seller.SecurityQuestionAnswer = viewModel.Seller.SecurityQuestionAnswer;
+                    }
+                    _seller.SignUp(seller);
+                    for (int i = 0; i < serviecs.Length ; i++)
                     {
                         ServiceModel service = new ServiceModel
                         {
@@ -82,7 +96,7 @@ namespace JobDone.Controllers.Seller
                         };
                         _servise.AddServies(service);
                     }
-                      return View("Login");
+                    return RedirectToAction("Login", "Seller");
                 }
                 else { TempData["null"] = "Some fields are empty!!"; }
             }
@@ -97,13 +111,26 @@ namespace JobDone.Controllers.Seller
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
                 RedirectToAction("Home", "Seller");
-  
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(SellerModel seller)
-        {            
+        {
+            if (_seller.CheckUsernameAndPasswordExists(seller))
+            {
+                seller.Id = (int)_seller.getId(seller.Username, seller.Password);
+
+                SignInSellerAuthCookie(seller);
+
+                return RedirectToAction("Home", "Seller");
+            }
+            else
+            {
+                ViewData["ValidateMessgae"] = "Invalid username/password";
+                return View();
+            }
             if (_seller.CheckUsernameAndPasswordExists(seller))
             {
                 short Id = _seller.getId(seller.Username, seller.Password);
@@ -120,7 +147,7 @@ namespace JobDone.Controllers.Seller
                 {
                     AllowRefresh = true,
                 };
-                
+
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                 return RedirectToAction("Home", "Seller");
             }
@@ -138,7 +165,7 @@ namespace JobDone.Controllers.Seller
         public async Task<IActionResult> Home(SignUpSellerCatgoreViewModel viewModel)
         {
             var x = _seller.GetRemainingWork(SellerID()); ;
-                ViewBag.xxx = x.ToString();
+            ViewBag.xxx = x.ToString();
 
             var aveilabelReqest = _seller.AveilabelRReqest(SellerID());
             ViewBag.aveilabelReqest = aveilabelReqest;
@@ -150,10 +177,11 @@ namespace JobDone.Controllers.Seller
             ViewBag.AllAcceptrdBySeller = AllAcceptrdBySeller;
 
             viewModel.Order = _seller.orderModels(SellerID());
-            //viewModel.CustomerUsrname = _seller.GetCustomerusername(SellerID());
 
-            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModelsFiveCustomer(_seller.SellerCatgoreID(SellerID()));
-            viewModel.CustomerUsrname = _seller.GetCustomerusername();
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
+            viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
+            viewModel.SellerAcceptedRequestsId = await _seller.GetRequestsThatTheSellerAccept(SellerID());
+
             IEnumerable<BannerModel> listOfBanners = await _banners.GetAllSellerBanners();
             viewModel.banners = listOfBanners;
 
@@ -169,7 +197,7 @@ namespace JobDone.Controllers.Seller
             viewModel.Order = _seller.orderModels(SellerID());
 
             viewModel.CustomerUsrname = _seller.GetCustomerusername();
-            
+
             return View(viewModel);
         }
 
@@ -189,7 +217,7 @@ namespace JobDone.Controllers.Seller
         [HttpPost]
         public IActionResult DeleteOrder(int orderID)
         {
-            if(orderID != 0)
+            if (orderID != 0)
             {
                 _seller.DeleteOrder(orderID);
             }
@@ -197,15 +225,27 @@ namespace JobDone.Controllers.Seller
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]
-        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
+        public async Task<IActionResult> RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
         {
             viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
-
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
+            viewModel.SellerAcceptedRequestsId = await _seller.GetRequestsThatTheSellerAccept(SellerID());
 
-            viewModel.sellerAcceptRequestModels = _seller.GetSellerAcceptRequestModels();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RequestedWrok(SignUpSellerCatgoreViewModel viewModel, string search)
+        {
+            viewModel = new();
 
+            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
+            viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
+            viewModel.SellerAcceptedRequestsId = await _seller.GetRequestsThatTheSellerAccept(SellerID());
 
+            if (!string.IsNullOrEmpty(search))
+            {
+                viewModel.orderByCustomerModels = _seller.getAllOrderByCustomerBasedOnOrdername(search, SellerID());
+            }
 
             return View(viewModel);
         }
@@ -213,34 +253,18 @@ namespace JobDone.Controllers.Seller
         [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult AcceptRequestedWrok(int Accept)
         {
-            if(Accept != 0)
+            if (Accept != 0)
             {
                 SellerAcceptRequestModel sellerAcceptRequest = new SellerAcceptRequestModel
                 {
-                        IsAccepted = 1,
-                        SellerIdFk = SellerID(),
-                        OrderByCustomerIdFk = Accept,
-                };      
+                    IsAccepted = 1,
+                    SellerIdFk = SellerID(),
+                    OrderByCustomerIdFk = Accept,
+                };
 
                 _seller.SaveSellerAccept(sellerAcceptRequest);
             }
             return RedirectToAction("RequestedWrok", "Seller"); ;
-        }
-        [HttpPost]
-        public IActionResult RequestedWrok(SignUpSellerCatgoreViewModel viewModel, string search)
-        {
-            viewModel = new();
-
-            viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
-            viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
-            viewModel.sellerAcceptRequestModels = _seller.GetSellerAcceptRequestModels();
-
-            if (!string.IsNullOrEmpty(search))
-            {                
-                     viewModel.orderByCustomerModels = _seller.getAllOrderByCustomerBasedOnOrdername(search, SellerID());            
-            }        
-
-            return View(viewModel);
         }
         [Authorize(Roles = TypesOfUsers.Seller)]
         public async Task<IActionResult> Logout()
@@ -253,6 +277,31 @@ namespace JobDone.Controllers.Seller
         {
             return Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
-        
+        public async Task SignInSellerAuthCookie(SellerModel model)
+        {
+            if (model.Id != 0)
+            {
+                model = _seller.GetSellerById(short.Parse(model.Id.ToString()));
+            }
+            List<Claim> claims = new List<Claim>()
+                {
+                    new Claim("username", model.Username),
+                    new Claim("WalletAmount", model.Wallet.ToString("0.00")),
+                    new Claim("ProfilePicture", Convert.ToBase64String(model.ProfilePicture)),
+                    new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
+                    new Claim(ClaimTypes.Role, TypesOfUsers.Seller)
+                };
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+                IsPersistent = true,
+            };
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
+        }
     }
 }

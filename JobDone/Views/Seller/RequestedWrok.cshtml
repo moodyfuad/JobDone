@@ -3,108 +3,7 @@
 }
 @using JobDone.Models.SellerAcceptRequest
 @model SignUpSellerCatgoreViewModel;
-@{
-
-}
-@* <form method="post">
-<div class="container-fluid services py-5">
-    <div class="container py-5">
-        <div class="mx-auto text-center mb-5" style="max-width: 800px;">
-            <h1 class="display-3">Orders</h1>
-            <p class="fs-4 text-center text-primary">Accept Our Client Orders</p>
-        </div>
-
-        @foreach (var item in Model.orderByCustomerModels.Select((value, index) => new { Value = value, Index = index }))
-        {
-            string base64Image = Convert.ToBase64String(item.Value.CustomerIdFkNavigation.ProfilePicture);
-
-            <div class="row g-4">
-                <div class="row-lg-6">
-                    @if (item.Index % 2 == 0)
-                    {
-                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <div class="services-content text-end">
-                                        <h1 style="font-size: 50px;">@item.Value.OrderName</h1>
-                                        <h3 style="font-size: 30px;">@(item.Value.CustomerIdFkNavigation.FirstName.ToString()+" "+item.Value.CustomerIdFkNavigation.LastName.ToString())</h3>
-                                        <p style="font-size: 20px;">Order Date : @item.Value.OrderDate</p>
-                                        <p style="font-size: 20px;">@item.Value.Description</p>
-                                        <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
-
-                                            <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="Accept" value="@item.Value.Id">Accept</button>
-
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                        <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <br />
-                    }
-                    else
-                    {
-                        <div class="row-lg-6">
-                            <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                                <div class="row align-items-center">
-                                    <div class="col-4">
-                                        <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                            <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="services-content" style="text-align: left;">
-                                            <h2 style="font-size: 50px;">@item.Value.OrderName</h2>
-                                            <h5 style="font-size: 30px;">@(item.Value.CustomerIdFkNavigation.FirstName.ToString()+" "+item.Value.CustomerIdFkNavigation.LastName.ToString())</h5>
-                                            <p style="font-size: 20px;">Order Date : @item.Value.OrderDate</p>
-                                            <p style="font-size: 20px;">@item.Value.Description</p>
-                                            <p style="color:green; font-size: 20px;">price : @Math.Round(item.Value.Price, 2)$  delivery date :@item.Value.DeliverDate </p>
-                                                <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="Accept" value="@item.Value.Id">Accept</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                    }
-                </div>
-            </div>
-
-
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
-                    $(document).ready(function () {
-                    $(".btn-accept").click(function () {
-                    $(this).hide();
-     
-                    @(ViewBag.isaccepted = 1)
-@*                                 <input name = "" value = "1" />
-                                <input name="orderByCustomerId" value="@item.Value.Id" > *@
-@*                     @{
-                        SellerAcceptRequestModel SARVM = new SellerAcceptRequestModel
-                        {
-                            IsAccepted = 1,
-                            SellerIdFk = 1,
-                            OrderByCustomerIdFk = item.Value.Id
-                        };
-                        Model.sellerAcceptRequestModels.Add(SARVM); 
-                    }
-
-                    });
-                });
-            </script>
-            }
-    </div>
-</div>
-
-</form> *@ 
-
-                     
-
+                    
 
 <div class="container" style="margin-top: 100px;">
     
@@ -125,7 +24,9 @@
         </form>
     </div>
         <div class="row">
-            
+        @{
+            List<int> ids = Model.SellerAcceptedRequestsId.ToList();
+        }
             
                 @if (Model.orderByCustomerModels.Count() == 0)
                 {
@@ -133,34 +34,34 @@
                 }
                 @foreach (var item in Model.orderByCustomerModels)
                 {
-                <div class="col-md-4" style="width:25%;">
-                        <div class="card mb-4">
-                            @{
-                                string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
-                            }
-                            <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
-                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="120">
+                        if(!ids.Contains(item.Id))
+                        {
+                            <div class="col-md-4" style="width:25%;">
+                                <div class="card mb-4">
+                                    @{
+                                        string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
+                                    }
+                                    <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
+                                        <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="120">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="text-center">@item.OrderName</h4>
+
+                                        <spna style=" font-size: 18px;">description : </spna>
+                                        <p>@item.Description </p>
+
+                                        <span>Order Date : @item.OrderDate</span>
+                                        <p>  delivery date :@item.DeliverDate </p>
+
+                                        <form action="AcceptRequestedWrok" method="post">
+                                            <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2)  <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button></p>
+                                        </form>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                              <h4 class="text-center">@item.OrderName</h4>
-
-                                    <spna style=" font-size: 18px;">description : </spna>
-                                    <p>@item.Description </p>
-                                
-                                    <span>Order Date : @item.OrderDate</span>
-                                    <p>  delivery date :@item.DeliverDate </p>
-
-                                <form action="AcceptRequestedWrok" method="post">
-                                    <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2)  <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button></p>
-                                </form>
-                            
-                            </div>
-                        </div>
-                    </div>
-                }
-   
-
-            
+                        }   
+                }         
         </div>
     </div>
 </div>
