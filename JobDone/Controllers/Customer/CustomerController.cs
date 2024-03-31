@@ -77,7 +77,7 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult SignUp(SignUpCustomerViewModel viewModel)
+        public async Task< IActionResult >SignUp(SignUpCustomerViewModel viewModel)
         {
             viewModel.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePictureAsFile);
             
@@ -102,9 +102,9 @@ namespace JobDone.Controllers.Customer
                 };
                 if (!_customer.UsernameExist(customer.Username))
                 {
-                    _customer.SignUp(customer);
-                    SignInCustomerAuthCookie(customer);
-                    return RedirectToAction("Home","Customer");
+                    _customer.SignUp(customer).Wait();//
+                    SignInCustomerAuthCookie(customer).Wait();//
+                    return View("Home");
                 }
             }
             /*TempData["exist"] = $"Username '@{viewModel.Username}' already exist";*/
@@ -195,8 +195,16 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult> IsUsernameExist(string username)
         {
             bool IsExist = (_customer.UsernameExist(username));
-            if (!IsExist) { return Json(true); }
-            return Json($"Username @{username} Already Exist");
+            if (IsExist) 
+            {
+                return Json($"Username @{username} Already Exist");
+            }
+            else if (username.Contains(" "))
+            {
+                return Json($"Username Can not contain spaces");
+            }
+            
+            return Json(true);
         } 
     }
 }
