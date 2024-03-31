@@ -3,7 +3,7 @@
 
 @{
     string username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
-    string WalletAmount = /* User.Claims.FirstOrDefault(c => c.Type == "WalletAmount").Value */ "5000";
+    string WalletAmount = User.Claims.FirstOrDefault(c => c.Type == "WalletAmount").Value ;
     // string ProfilePicture = User.Claims.FirstOrDefault(c => c.Type == "ProfilePicture").Value ;
 }
 

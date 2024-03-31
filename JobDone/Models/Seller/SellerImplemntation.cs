@@ -21,9 +21,8 @@ namespace JobDone.Models.Seller
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<OrderModel> _order;
         private readonly DbSet<OrderByCustomerModel> _orderByCustomers;
-        private readonly DbSet<SellerAcceptRequestModel> _sellerAcceptRequest; 
+        private readonly DbSet<SellerAcceptRequestModel> _sellerAcceptRequest;
         private readonly DbSet<CustomerModel> _customer;
-        private readonly DbSet<CategoryModel> _category;
         private readonly JobDoneContext _Db;
         private readonly DbSet<SellerOldWorkModel> _posts;
 
@@ -61,7 +60,7 @@ namespace JobDone.Models.Seller
             {
                 image.CopyToAsync(memoryStream).Wait();
 
-                return memoryStream.ToArray(); 
+                return memoryStream.ToArray();
             }
         }
 
@@ -75,13 +74,9 @@ namespace JobDone.Models.Seller
             var sel = _seller.FirstOrDefault(c => c.Username == seller.Username && c.Password == seller.Password);
 
             if (sel != null)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public short getId(string username, string password)
@@ -95,21 +90,16 @@ namespace JobDone.Models.Seller
             return Convert.ToDecimal(_Db.SellerModels.SingleOrDefault(x => x.Wallet == id));
         }
 
-        //public decimal GetTodaySale(int id)
-        //{
-        //   var todayMoney = _Db.SellerModels.SingleOrDefault(x => x.Id==id);
-        //    todayMoney.Wallet
-
-        //}
         public List<OrderByCustomerModel> getAllOrderByCustomerBasedOnOrdername(string search, int sellerId)
         {
-            var orders = GetOrderByCustomerModels(SellerCatgoreID(sellerId),sellerId);
+            var orders = GetOrderByCustomerModels(SellerCatgoreID(sellerId), sellerId);
             var filteredSellers = orders
                 .Where(o => o.OrderName.StartsWith(search, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             return filteredSellers;
         }
+
         public async Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search)
         {
             var sellers = await getAllTheSeller();
@@ -125,19 +115,20 @@ namespace JobDone.Models.Seller
             var remainingWork = _Db.OrderModels.Count(x => x.SellerIdFk == id);
             return remainingWork;
         }
+
         public int GetSARMForOneSeller(int sellerId)
         {
-            return _sellerAcceptRequest.Where(x=>x.SellerIdFk == sellerId).Count();
+            return _sellerAcceptRequest.Where(x => x.SellerIdFk == sellerId).Count();
         }
+
         public SellerModel GetSellerById(int id)
         {
             return _seller.Include("CategoryIdFkNavigation").FirstOrDefault(s => s.Id == id);
         }
 
-
         public IFormFile ConvertToImage(byte[] byteImage)
         {
-            using(var memoryStream = new MemoryStream(byteImage))
+            using (var memoryStream = new MemoryStream(byteImage))
             {
                 memoryStream.Position = 0;
                 FormFile image = new FormFile(memoryStream, 0, memoryStream.Length, "picture.jpj", "image/jpeg");
@@ -147,14 +138,14 @@ namespace JobDone.Models.Seller
 
         public int AveilabelRReqest(int sellerId)
         {
-            SellerModel seller = _seller.FirstOrDefault(s => s.Id==sellerId);
-            int categoryfk = seller.CategoryIdFk; 
-           return _Db.OrderByCustomerModels.Where(x => x.CategoryIdKf == categoryfk).Count();
+            SellerModel seller = _seller.FirstOrDefault(s => s.Id == sellerId);
+            int categoryfk = seller.CategoryIdFk;
+            return _Db.OrderByCustomerModels.Where(x => x.CategoryIdKf == categoryfk).Count();
         }
 
         public Decimal Totalgains(int sellerId)
         {
-            return _order.Where(x => x.SellerIdFk == sellerId).Sum(x => x.Price) ;
+            return _order.Where(x => x.SellerIdFk == sellerId).Sum(x => x.Price);
         }
 
         public async Task<IEnumerable<SellerModel>> getAllTheSeller()
@@ -181,26 +172,22 @@ namespace JobDone.Models.Seller
 
         public int OrderCount(int sellerId)
         {
-            return _order.Where(x=>x.SellerIdFk==sellerId).Count();
-        }
-        public string OrderName(int sellerId)
-        {
-            //OrderModel order = _order.FirstOrDefault(x=>x.SellerIdFk==sellerId);
-            //string orderName = order.OrderName;
-            return "orderName";
+            return _order.Where(x => x.SellerIdFk == sellerId).Count();
         }
 
         public List<OrderModel> orderModels(int sellerId)
         {
-           List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
+            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
             return order;
         }
+
         public void ChangeOrderStatus(int orderID)
         {
-            var status = _order.Where(x=>x.Id == orderID).FirstOrDefault();
+            var status = _order.Where(x => x.Id == orderID).FirstOrDefault();
             status.Status = "SellerCompleted";
             _Db.SaveChanges();
         }
+
         public void DeleteOrder(int orderID)
         {
             var result = _order.Where(x => x.Id == orderID).FirstOrDefault();
@@ -208,41 +195,46 @@ namespace JobDone.Models.Seller
             _Db.SaveChanges();
         }
 
-        //public List<int> custemrname(int sellerId)
-        //{
-        //    var x = orderModels(sellerId).include().CustomerIdFk;
-        //   return x;
-        //}
-
         public List<CustomerModel> GetCustomerusername()
         {
             var result = _customer.ToList();
 
             return result;
         }
+
         public List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId, int sellerId)
         {
-            //var res = _sellerAcceptRequest.Where(x=>x.SellerIdFk != sellerId).Select(x=>x.OrderByCustomerIdFkNavigation).ToList();
-            var result = _orderByCustomers.Where(x=>x.CategoryIdKf == sellerCatgoreId).ToList();
+            var result = _orderByCustomers.Where(x => x.CategoryIdKf == sellerCatgoreId).ToList();
             return result;
         }
+
+        public async Task<List<int>> GetRequestsThatTheSellerAccept(int sellerId)
+        {
+            var res = _sellerAcceptRequest.Where(x => x.SellerIdFk == sellerId).Select(x=>x.OrderByCustomerIdFk).ToListAsync();
+            return await res;
+        }
+
         public List<OrderByCustomerModel> GetOrderByCustomerModelsFiveCustomer(int sellerCatgoreId)
         {
             var result = _orderByCustomers.Where(x => x.CategoryIdKf == sellerCatgoreId).Take(5).ToList();
             return result;
         }
+
         public int SellerCatgoreID(int sellerId)
         {
-            return (int)_seller.Where(x => x.Id == sellerId).Select(x=>x.CategoryIdFk).FirstOrDefault();
+            return (int)_seller.Where(x => x.Id == sellerId).Select(x => x.CategoryIdFk).FirstOrDefault();
         }
+
         public List<CustomerModel> CustomerReqwestWork(int sellerID)
         {
-            return _orderByCustomers.Where(x=>x.CategoryIdKf==SellerCatgoreID(sellerID)).Select(x=>x.CustomerIdFkNavigation).ToList();
+            return _orderByCustomers.Where(x => x.CategoryIdKf == SellerCatgoreID(sellerID)).Select(x => x.CustomerIdFkNavigation).ToList();
         }
+
         public List<SellerAcceptRequestModel> GetSellerAcceptRequestModels()
         {
             return _sellerAcceptRequest.ToList();
         }
+
         public void SaveSellerAccept(SellerAcceptRequestModel SAR)
         {
             _sellerAcceptRequest.Add(SAR);
@@ -267,17 +259,17 @@ namespace JobDone.Models.Seller
         public List<SellerModel> GetFirst10(string username)
         {
             List<SellerModel> sellers = _Db.SellerModels.Where(s =>
-                s.Username.ToLower().StartsWith(username.ToLower())|| s.Username.ToLower().EndsWith(username.ToLower())).ToList();
+                s.Username.ToLower().StartsWith(username.ToLower()) || s.Username.ToLower().EndsWith(username.ToLower())).ToList();
             if (sellers.Count == 0)
             {
                 return null;
             }
             else if (sellers.Count == 1)
             {
-                sellers.First().SellerOldWorkModels = _posts.Where(p=> p.SellerIdFk == sellers.First().Id).ToList();
+                sellers.First().SellerOldWorkModels = _posts.Where(p => p.SellerIdFk == sellers.First().Id).ToList();
                 return sellers;
             }
-            else if(sellers.Count < 10)
+            else if (sellers.Count < 10)
             {
                 return sellers;
             }
@@ -286,20 +278,21 @@ namespace JobDone.Models.Seller
                 return sellers.Take(10).ToList();
             }
         }
-        public async Task<bool>DeleteAccount(int sellerId)
+        public async Task<bool> DeleteAccount(int sellerId)
         {
             try
             {
-                SellerModel? seller = _seller.Include(s=>s.ServiceModels).
-                                              Include(s=>s.SellerOldWorkModels).
-                                              Include(s=>s.OrderModels).
-                                              Include(s=>s.WithdrawModels).
-                                              Include(s=>s.SellerAcceptRequestModels).
-                                              Include(s=>s.SecurityQuestionIdFkNavigation).
-                                              Include(s=>s.CategoryIdFkNavigation).
+                SellerModel? seller = _seller.Include(s => s.ServiceModels).
+                                              Include(s => s.SellerOldWorkModels).
+                                              Include(s => s.OrderModels).
+                                              Include(s => s.WithdrawModels).
+                                              Include(s => s.SellerAcceptRequestModels).
+                                              Include(s => s.SecurityQuestionIdFkNavigation).
+                                              Include(s => s.CategoryIdFkNavigation).
                                               FirstOrDefaultAsync(s => s.Id == sellerId).Result;
 
-                try{
+                try
+                {
                     _Db.SellerModels.Remove(seller);
                     await _Db.SaveChangesAsync();
                     return true;
@@ -307,7 +300,7 @@ namespace JobDone.Models.Seller
                 catch
                 {
                     return false;
-                }                
+                }
             }
             catch { return false; }
 
@@ -315,8 +308,8 @@ namespace JobDone.Models.Seller
 
         public async Task<List<SellerModel>>? GetSellerWithPosts(int sellerId)
         {
-            List < SellerModel > sellers = 
-                _seller.Where(seller=> seller.Id == sellerId).Include(s=>s.SellerOldWorkModels).ToList();
+            List<SellerModel> sellers =
+                _seller.Where(seller => seller.Id == sellerId).Include(s => s.SellerOldWorkModels).ToList();
 
             return sellers;
         }

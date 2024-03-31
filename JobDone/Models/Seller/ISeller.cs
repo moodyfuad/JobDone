@@ -16,7 +16,6 @@ namespace JobDone.Models.Seller
         bool CheckUsernameAndPasswordExists(SellerModel seller);
         byte[] ConvertToByte(IFormFile image);
         public IFormFile ConvertToImage(byte[] byteImage);
-
         SellerModel GetSellerById(int id);
         short getId(string username, string password);
         decimal GetWallet(int id);
@@ -24,13 +23,13 @@ namespace JobDone.Models.Seller
         List<SellerModel> GetSellersWhoAcceptedRequest(List<int> sellersId);
         int AveilabelRReqest(int sellerId);
         Decimal Totalgains(int sellerId);
-        string OrderName(int sellerId);
         void ChangeOrderStatus(int orderID);
         void DeleteOrder(int orderID);
         int OrderCount(int sellerId);
         List<OrderModel> orderModels(int sellerId);
         List<CustomerModel> GetCustomerusername();
         List<OrderByCustomerModel> GetOrderByCustomerModels(int sellerCatgoreId, int sellerId);
+        public Task<List<int>> GetRequestsThatTheSellerAccept(int sellerId);
         List<OrderByCustomerModel> GetOrderByCustomerModelsFiveCustomer(int sellerCatgoreId);
         int SellerCatgoreID(int sellerId);
         List<CustomerModel> CustomerReqwestWork(int SellerID);
@@ -42,13 +41,10 @@ namespace JobDone.Models.Seller
         public Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search);
         public Task<IEnumerable<ServiceModel>> GetAllSellersWithService(string search);
         public Task<IEnumerable<SellerModel>> getAllTheSeller();
-
-
         List<SellerModel> GetFirst10();
         List<SellerModel> GetFirst10(string username);
         Task<bool> DeleteAccount(int sellerId);
         public Task<List<SellerModel>>? GetSellerWithPosts(int sellerId);
-
         Task<SellerModel> Withdraw(SellerModel seller ,decimal MoneyAmount);
         Task<SellerModel> Diposit(SellerModel seller ,decimal MoneyAmount);
     }
