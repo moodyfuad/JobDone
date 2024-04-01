@@ -49,7 +49,7 @@
                                 <div class="form-group row">
                                     <label>Order date</label>
                                     <div class="col-sm-9">
-                                        <input asp-for="OrderDate" type="date" value="" class="form-control">
+                                        <input asp-for="OrderDate" type="date" value="@Model.OrderDate.ToString("yyyy-MM-dd")" class="form-control" disabled="true">
                                         <span asp-validation-for="OrderDate" class="text-danger"></span>
 
                                     </div>

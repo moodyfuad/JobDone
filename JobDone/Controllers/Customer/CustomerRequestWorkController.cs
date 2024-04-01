@@ -1,6 +1,7 @@
 ﻿using JobDone.Data;
 using JobDone.Models;
 using JobDone.Models.Category;
+using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.Seller;
 using JobDone.Models.SellerAcceptRequest;
@@ -21,10 +22,10 @@ namespace JobDone.Controllers.Customer
         private readonly ISeller _sellers;
         private readonly ISellerAcceptRequest _sellerAccept;
 
-        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer order, ISeller sellers, ISellerAcceptRequest sellerAccept)
+        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer orderByCustomer, ISeller sellers, ISellerAcceptRequest sellerAccept)
         {
             _categories =  categories;
-            _orderByCustomer = order;
+            _orderByCustomer = orderByCustomer;
             _sellers = sellers;
             _sellerAccept = sellerAccept;
         }
@@ -36,6 +37,7 @@ namespace JobDone.Controllers.Customer
             RequestedWorkViewModel model = new RequestedWorkViewModel();
 
             model.Categories = _categories.GetCategories();
+            model.OrderDate = DateOnly.FromDateTime(DateTime.Now);
             return View(model);
         }
 
@@ -62,7 +64,7 @@ namespace JobDone.Controllers.Customer
             _orderByCustomer.PostRequest(request);
             return RedirectToAction("Home","Customer");
         }
-
+        
 
 
         //[Authorize(Roles = TypesOfUsers.Customer)]

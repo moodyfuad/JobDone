@@ -73,6 +73,8 @@ namespace JobDone.Controllers.Customer
                         DeliverDate = order.DeliverDate,
                         OrderDate = order.OrderDate,
                         ProjectName = order.OrderName,
+                        orderId = order.Id,
+                        OrderStatus = order.Status,
                         SellerPicture = Convert.ToBase64String(seller.ProfilePicture),
                         CategotyName = _categories.GetCategoryById(seller.CategoryIdFk),
                     };
@@ -90,7 +92,14 @@ namespace JobDone.Controllers.Customer
             }
 
         }
-
+        [HttpPost]
+        
+        public IActionResult OrderCompleted(int id)
+        {
+            OrderModel? order = _orders.ChangeStatusToDone(id).Result;
+            if (order == null) { TempData["orderStatus"] = "Something Went Wrong"; }
+            return RedirectToAction("OrderList");
+        }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Chat(short customerId, short sellerId)
