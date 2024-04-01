@@ -347,26 +347,6 @@
                                                     </div>
                                                 </div>
                                                 <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Category : </h6>
-                                                    </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                        <select name="CategoryIdFk" asp-for="@Model.sellerModels.CategoryIdFk" required>
-                                                        @foreach (var c in Model.Category)
-                                                        {
-                                                            if(c.Name == Model.sellerModels.CategoryIdFkNavigation.Name)
-                                                            {
-                                                                <option value="@c.Id" selected>@c.Name</option>
-                                                            }
-                                                            else
-                                                            {
-                                                                <option value="@c.Id">@c.Name</option>
-                                                            }
-                                                        }
-                                                    </select>
-                                                </div>
-                                                <br /><br />
 
 
                                                 <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="submit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />

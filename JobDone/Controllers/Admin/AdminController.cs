@@ -54,9 +54,10 @@ namespace JobDone.Controllers.Admin
             return RedirectToAction("Home", "Admin");
         }
 
-        public IActionResult Home()
+        public async Task<IActionResult> Home()
         {
-            return View();
+            var AdminBanners = await _banner.GetAllAdminBanners();
+            return View(AdminBanners);
         }
 
         [HttpGet]

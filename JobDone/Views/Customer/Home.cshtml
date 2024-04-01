@@ -121,7 +121,11 @@
                         <span>@Service, </span>
                     }
                     <br />
-                    <p><a class="btn btn-secondary" href="#">Visit</a></p>
+                    <br />
+                    <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
+                        <input value="@seller.Id" hidden name="sellerId"/>
+                        <button type="submit" class="btn btn-secondary" style="background-color:darkcyan;color:white">Visit</button>
+                    </form>
                 </div>
             }
     </div>

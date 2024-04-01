@@ -2,9 +2,10 @@
 @using JobDone.Models.Customer
 
 @{
-    string username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
-    string WalletAmount = User.Claims.FirstOrDefault(c => c.Type == "WalletAmount").Value;
-    string ProfilePicture = User.Claims.FirstOrDefault(c => c.Type == "ProfilePicture").Value;
+    string username = Context.Session.GetString("Username");
+    byte[] ProfilePictureByte = Context.Session.Get("ProfilePic") as byte[];
+    string WalletAmount = Context.Session.GetString("WalletAmount");
+    string ProfilePicture = Convert.ToBase64String(ProfilePictureByte);
 }
 
 <!DOCTYPE html>
@@ -49,10 +50,10 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="CustomerOrder" asp-action="OrderList"><h5>Order</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>RequestWork</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>Request Work</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>RequestedList</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>Requested List</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="CustomerSearch" asp-action="Search">
@@ -95,7 +96,11 @@
                         }
                     }
                 </script>
-                
+                <form method="get" asp-action="Logout" asp-controller="Customer" style="display:contents">
+                    <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; margin-left:60px">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
                 <h5 style="color:white;margin-left:70px">Logo</h5>
 
 

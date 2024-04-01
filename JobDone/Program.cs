@@ -17,6 +17,7 @@ using JobDone.Models.SellerAcceptRequest;
 using JobDone.Models.SellerProfile;
 using JobDone.Models.SellerOldWork;
 using JobDone.Models.MessageModel;
+using JobDone.Models.Withdraw;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
          o.LoginPath = "/Customer/LogIn";
          o.Cookie.Name = "JobDoneLogin";
         });
+
+builder.Services.AddSession();
      
 //interface regestration
 builder.Services.AddTransient<IBanner, BannerImplementation>();
@@ -50,6 +53,7 @@ builder.Services.AddTransient<ISellerAcceptRequest, SellerAcceptRequestImp>();
 builder.Services.AddTransient<ISellerProfile, SellerProfileImplemntation>();
 builder.Services.AddTransient<ISellerOldWork, SellerOldWorksImp>();
 builder.Services.AddTransient<IMessage, MessageImplementation>();
+builder.Services.AddTransient<IWithdraw, WithdrawImplementation>();
 
 
 var app = builder.Build();
@@ -60,6 +64,8 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

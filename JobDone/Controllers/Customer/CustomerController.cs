@@ -42,8 +42,18 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult> Login()
         {
             ClaimsPrincipal claims = HttpContext.User;
+
             if (claims.Identity.IsAuthenticated)
+            {
+                string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
+                string username = customer.Username;
+                string walletAmount = customer.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
+
                 return RedirectToAction("Home", "Customer");
+            }
 
             HttpContext.SignOutAsync().Wait();
             return View();
@@ -57,6 +67,8 @@ namespace JobDone.Controllers.Customer
                 customer.Id = (int)_customer.getId(customer.Username, customer.Password);
                 
                 SignInCustomerAuthCookie(customer);
+                CustomerModel model = _customer.GetCustomerById(customer.Id);
+                SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Customer");
             }
@@ -132,7 +144,7 @@ namespace JobDone.Controllers.Customer
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Home(string inputSearch)
         {
-            IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
+            IEnumerable<SellerModel> listOfSellers = _seller.GetFirst10();
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
             IEnumerable<BannerModel> listOfBanners = await _banner.GetAllCustomerBanners();
             HomeViewModel viewModel = new HomeViewModel()
@@ -197,7 +209,7 @@ namespace JobDone.Controllers.Customer
             bool IsExist = (_customer.UsernameExist(username));
             if (!IsExist) { return Json(true); }
             return Json($"Username @{username} Already Exist");
-        } 
+        }
     }
 }
 
