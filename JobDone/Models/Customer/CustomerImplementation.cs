@@ -34,7 +34,7 @@ namespace JobDone.Models.Customer
             _host = hostingEnvironment;
         }
 
-        void SaveCustomerInDB (CustomerModel customer)
+         void SaveCustomerInDB (CustomerModel customer)
         {
             _customer.Add(customer);
             _Db.SaveChanges();
@@ -78,9 +78,10 @@ namespace JobDone.Models.Customer
 
         }
 
-        public void SignUp(CustomerModel customer)
+        public async Task SignUp(CustomerModel customer)
         {
-               SaveCustomerInDB(customer);
+            await _customer.AddAsync(customer);
+            await _Db.SaveChangesAsync();
         }
 
         public byte[] ConvertToByteArray(IFormFile image) 

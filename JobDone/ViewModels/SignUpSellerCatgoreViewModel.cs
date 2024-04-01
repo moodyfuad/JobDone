@@ -26,6 +26,7 @@ namespace JobDone.ViewModels
         public List<CustomerModel> customerReqwest {  get; set; }
         public IEnumerable<BannerModel> banners {  get; set; }
         public List<SellerAcceptRequestModel> sellerAcceptRequestModels { get; set; }
+        public IEnumerable<int> SellerAcceptedRequestsId { get; set; }
         internal void CopyTo(MemoryStream memoryStream)
         {
             throw new NotImplementedException();

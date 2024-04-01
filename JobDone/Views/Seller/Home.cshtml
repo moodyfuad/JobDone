@@ -177,31 +177,37 @@
                             <h4 class="mb-0">aveilabel Reqest</h4>
                             <a asp-controller="Seller" asp-action="RequestedWrok">Show All</a>
                     </div>
-
+                        @{
+                            List<int> ids = Model.SellerAcceptedRequestsId.ToList();
+                        }
                         @foreach (var item in Model.orderByCustomerModels)
                         {
+       
+                            if(!ids.Contains(item.Id))
+                            {
 
-                            <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
-                                <div class="row align-items-center">
-                                    <div class="col-4">
-                                        @{
-                                            string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
-                                        }
-                                        <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                            <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
+                                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-4">
+                                            @{
+                                                string base64Image = Convert.ToBase64String(item.CustomerIdFkNavigation.ProfilePicture);
+                                            }
+                                            <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                                <img src="data:image/jpeg;base64,@base64Image" class="img-fluid rounded" alt="">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="services-content " style="text-align: left;">
-                                            <h3>@item.OrderName</h3>
-                                            <h4 class="text-truncate" style=" color:gray">@@@item.CustomerIdFkNavigation.Username</h4>
-                                            <p style="font-size: 20px;">delivery date :@item.DeliverDate </p>
-                                            <p style="color:green; font-size: 20px;">price:$@Math.Round(item.Price, 2)</p>
+                                        <div class="col-8">
+                                            <div class="services-content " style="text-align: left;">
+                                                <h3>@item.OrderName</h3>
+                                                <h4 class="text-truncate" style=" color:gray">@@@item.CustomerIdFkNavigation.Username</h4>
+                                                <p style="font-size: 20px;">delivery date :@item.DeliverDate </p>
+                                                <p style="color:green; font-size: 20px;">price:$@Math.Round(item.Price, 2)</p>
+                                            </div>
                                         </div>
-                                    </div>
                                     
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         }
                         
                 </div>

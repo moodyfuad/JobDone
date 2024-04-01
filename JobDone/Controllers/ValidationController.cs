@@ -41,5 +41,27 @@ namespace JobDone.Controllers
         {
             return await Task.Run(() => {return ValidateFirstName(LastName); });
         }
+        
+        
+        public async Task<IActionResult> IsFutureDate(DateOnly date)
+        {
+            if(date is DateOnly value)
+            {
+                if (value > DateOnly.FromDateTime(DateTime.Now))
+                {
+                    return Json(true);
+                }
+                else
+                {
+                    return Json("the deliver date must be in future.");
+                }
+            }
+            else
+            {
+                return Json($"invalid input for date field {date.ToString()}");
+            }
+        }
+
+
     }
 }

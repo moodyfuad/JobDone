@@ -2,6 +2,7 @@
 {
     public class CustomerOrdersViewModel
     {
+        public int orderId { get; set; }
         public string SellerName { get; set; }
         
         public string Username { get; set; }
@@ -21,6 +22,8 @@
         public DateOnly DeliverDate{ get; set; }
 
         public string CategotyName { get; set; }
+
+        public string OrderStatus { get; set; }
 
         /*public decimal TotalOrdersPrice { get; set; }
 
