@@ -161,7 +161,13 @@ namespace JobDone.Controllers.Seller
             }
             return View(viewModel);
         }
-        
+        [HttpPost]
+        public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
+        {
+            _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
+
+            return RedirectToAction("Profile", "SellerProfile");
+        }
         [HttpPost]
         public IActionResult ChooseWork(SellerProfileViewModel viewModel, int oldworkId)
         {
@@ -199,15 +205,6 @@ namespace JobDone.Controllers.Seller
             }
             return RedirectToAction("Profile", "SellerProfile");
         }
-
-        [HttpPost]
-        public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
-        {
-            _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
-
-            return RedirectToAction("Profile", "SellerProfile");
-        }
-
         [HttpPost]
         public IActionResult DeleteService(ServiceModel service)
         {
