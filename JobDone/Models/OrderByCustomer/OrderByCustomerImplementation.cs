@@ -49,5 +49,13 @@ namespace JobDone.Models.OrderByCustomer
             _context.SaveChanges();
             return order;
         }
+
+        public async Task<OrderByCustomerModel> GetOrderByCustomerId(int CustomerId)
+        {
+            OrderByCustomerModel order = await _context.OrderByCustomerModels.FirstOrDefaultAsync(order =>
+                order.CustomerIdFk == CustomerId);
+
+            return order;
+        }
     }
 }

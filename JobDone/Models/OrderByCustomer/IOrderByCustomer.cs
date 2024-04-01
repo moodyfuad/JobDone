@@ -7,6 +7,7 @@ namespace JobDone.Models.OrderByCustomer
         void PostRequest(OrderByCustomerModel request);
         int GetCustomerId(string username);
         Task<List<OrderByCustomerModel>?> GetOrdersByCustomerId(int CustomerId);
+        Task<OrderByCustomerModel> GetOrderByCustomerId(int CustomerId);
         Task<OrderByCustomerModel> DeleteOrder(int OrderId);
     }
 }

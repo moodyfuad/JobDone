@@ -1,6 +1,7 @@
 ﻿using JobDone.Data;
 using JobDone.Models;
 using JobDone.Models.Category;
+using JobDone.Models.Customer;
 using JobDone.Models.Order;
 using JobDone.Models.OrderByCustomer;
 using JobDone.Models.Seller;
@@ -21,13 +22,15 @@ namespace JobDone.Controllers.Customer
         private readonly IOrderByCustomer _orderByCustomer;
         private readonly ISeller _sellers;
         private readonly ISellerAcceptRequest _sellerAccept;
+        private readonly ICustomer _customer;
 
-        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer orderByCustomer, ISeller sellers, ISellerAcceptRequest sellerAccept)
+        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer orderByCustomer, ISeller sellers, ISellerAcceptRequest sellerAccept, ICustomer customer)
         {
             _categories =  categories;
             _orderByCustomer = orderByCustomer;
             _sellers = sellers;
             _sellerAccept = sellerAccept;
+            _customer = customer;
         }
 
 
@@ -107,6 +110,9 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult> AcceptSeller(int SellerId, int OrderByCustomerId)
         {
             _sellerAccept.AcceptSeller(SellerId, OrderByCustomerId);
+            OrderByCustomerModel? orderByCustomer = await _orderByCustomer.GetOrderByCustomerId(OrderByCustomerId);
+            CustomerModel? customer = _customer.GetCustomerById(orderByCustomer.CustomerIdFk);
+            SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
             return RedirectToAction("RequestedList","CustomerRequestWork");
         }
         
