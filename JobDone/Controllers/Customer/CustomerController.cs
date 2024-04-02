@@ -16,6 +16,10 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using JobDone.Models.Service;
 using JobDone.Models.Admin;
 using JobDone.Models.Banners;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore;
+using JobDone.Models.ForgetAndChangePassword;
 
 
 namespace JobDone.Controllers.Customer
@@ -28,6 +32,7 @@ namespace JobDone.Controllers.Customer
         private readonly ISeller _seller;
         private readonly IServies _services;
         private readonly IBanner _banner;
+        private readonly IForgetAndChanePassword _forgetAndChanePassword;
 
         public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner)
         {
@@ -37,7 +42,31 @@ namespace JobDone.Controllers.Customer
             _services = services;
             _banner = banner;
         }
-
+        [HttpGet]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel, string username, int questionId, string answer)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            if (_customer.UsernameExist(username))
+            {
+                var test = _forgetAndChanePassword.ConfirmTheAnswerForTheCustomer(username, questionId, answer);
+                if (test)
+                {
+                    return RedirectToAction("ChangePassword", "Customer");
+                }
+                else return View(viewModel);
+            }
+            else return View(viewModel);
+        }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> Login()
         {
