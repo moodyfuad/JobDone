@@ -12,6 +12,11 @@ namespace JobDone.Models.Admin
         private readonly DbSet<AdminWalletModel> _wallet;
         private readonly JobDoneContext _db;
 
+        public decimal GetAdminsWalletAmounts()
+        {
+            return _wallet.Sum(w => w.Balance);
+        }
+
         public AdminImplementation(JobDoneContext jobDone) 
         {
             _db = jobDone;

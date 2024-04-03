@@ -36,10 +36,10 @@
                                         <input type="submit" name="name" class="btn btn-dark btn-lg btn-block" value="Login" />
                                        
                                     </div>
-                                    @if(ViewData["ErrorMessage"] != null)
+                                    @if (ViewData["ValidateMessgae"] != null)
                                     {
                                         <div>
-                                            <label class="text-danger">@ViewData["ErrorMessage"]</label>
+                                            <label class="text-danger">@ViewData["ValidateMessgae"]</label>
                                         </div>
                                     }
 

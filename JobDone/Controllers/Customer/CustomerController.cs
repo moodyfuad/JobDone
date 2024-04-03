@@ -51,7 +51,7 @@ namespace JobDone.Controllers.Customer
                 string walletAmount = customer.Wallet.ToString();
 
                 SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
-
+                SignInCustomerAuthCookie(customer);
                 return RedirectToAction("Home", "Customer");
             }
 
@@ -89,7 +89,7 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
         [HttpPost]
-        public async Task< IActionResult >SignUp(SignUpCustomerViewModel viewModel)
+        public async Task <IActionResult> SignUp(SignUpCustomerViewModel viewModel)
         {
             viewModel.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePictureAsFile);
             
@@ -116,6 +116,8 @@ namespace JobDone.Controllers.Customer
                 {
                     _customer.SignUp(customer).Wait();//
                     SignInCustomerAuthCookie(customer).Wait();//
+                    CustomerModel model = _customer.GetCustomerById(customer.Id);
+                    SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
                     return View("Home");
                 }
             }
@@ -157,7 +159,6 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
 
-
         [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Order()
         {
@@ -168,6 +169,7 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult>Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            SessionInfo.ClearSessionInfo(HttpContext);
             return RedirectToAction("Login");
         }
 

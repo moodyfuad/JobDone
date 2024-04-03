@@ -104,6 +104,21 @@ namespace JobDone.Controllers.Customer
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Chat(short customerId, short sellerId)
         {
+            CustomerModel customer = _customer.GetCustomerById(customerId);
+            SellerModel seller = _seller.GetSellerById(sellerId);
+
+            if(customer == null)
+            {
+                Response.StatusCode = 404;
+                return View("CustomerNotFound", customerId);
+            }
+
+            if (seller == null)
+            {
+                Response.StatusCode = 404;
+                return View("CustomerNotFound", sellerId);
+            }
+
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
 
             viewModel.Customer = new CustomerModel();

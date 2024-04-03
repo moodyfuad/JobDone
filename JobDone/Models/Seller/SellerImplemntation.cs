@@ -177,7 +177,13 @@ namespace JobDone.Models.Seller
 
         public List<OrderModel> orderModels(int sellerId)
         {
-            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
+            List<OrderModel> order = _order
+                .Include(o => o.CategoryIdKfNavigation)
+                .Include(o => o.CustomerIdFkNavigation)
+                .Include(o => o.SellerIdFkNavigation)
+                .Where(s => s.SellerIdFk == sellerId)
+                .ToList();
+
             return order;
         }
 

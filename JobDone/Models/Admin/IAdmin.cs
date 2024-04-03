@@ -9,5 +9,6 @@ namespace JobDone.Models.Admin
         bool IsAdminExist(string username);
         void SignUp(AdminModel admin);
 
+        decimal GetAdminsWalletAmounts();
     }
 }

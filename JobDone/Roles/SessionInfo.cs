@@ -10,5 +10,12 @@ namespace JobDone.Roles
             httpContext.Session.SetString("WalletAmount", walletAmount);
             httpContext.Session.Set("ProfilePic", profilePicture);
         }
+
+        public static void ClearSessionInfo(HttpContext httpContext)
+        {
+            httpContext.Session.Remove("Username");
+            httpContext.Session.Remove("WalletAmount");
+            httpContext.Session.Remove("ProfilePic");
+        }
     }
 }

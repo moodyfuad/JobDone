@@ -1,7 +1,4 @@
-﻿@using System.Security.Claims
-@using JobDone.Models.Customer
-
-@{
+﻿@{
     string username = Context.Session.GetString("Username");
     byte[] ProfilePictureByte = Context.Session.Get("ProfilePic") as byte[];
     string WalletAmount = Context.Session.GetString("WalletAmount");

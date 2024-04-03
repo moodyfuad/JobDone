@@ -21,6 +21,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using JobDone.Models.Banners;
 using JobDone.Models.OrderByCustomer;
+using NuGet.Protocol.Plugins;
 
 
 namespace JobDone.Controllers.Seller
@@ -110,7 +111,16 @@ namespace JobDone.Controllers.Seller
             // Check if the user is logged in
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
+            {
+                string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
+                string username = seller.Username;
+                string walletAmount = seller.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, seller.ProfilePicture, HttpContext);
+                SignInSellerAuthCookie(seller);
                 RedirectToAction("Home", "Seller");
+            }
 
             return View();
         }
@@ -121,8 +131,10 @@ namespace JobDone.Controllers.Seller
             if (_seller.CheckUsernameAndPasswordExists(seller))
             {
                 seller.Id = (int)_seller.getId(seller.Username, seller.Password);
-
+                    
                 SignInSellerAuthCookie(seller);
+                SellerModel model = _seller.GetSellerById(seller.Id);
+                SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Seller");
             }
@@ -131,29 +143,29 @@ namespace JobDone.Controllers.Seller
                 ViewData["ValidateMessgae"] = "Invalid username/password";
                 return View();
             }
-            if (_seller.CheckUsernameAndPasswordExists(seller))
-            {
-                short Id = _seller.getId(seller.Username, seller.Password);
-                List<Claim> claims = new List<Claim>()
-                {
-                    new Claim("username",seller.Username),
-                    new Claim(ClaimTypes.NameIdentifier,Id.ToString()),
-                    new Claim(ClaimTypes.Role,TypesOfUsers.Seller)
-                };
+            //if (_seller.CheckUsernameAndPasswordExists(seller))
+            //{
+            //    short Id = _seller.getId(seller.Username, seller.Password);
+            //    List<Claim> claims = new List<Claim>()
+            //    {
+            //        new Claim("username",seller.Username),
+            //        new Claim(ClaimTypes.NameIdentifier,Id.ToString()),
+            //        new Claim(ClaimTypes.Role,TypesOfUsers.Seller)
+            //    };
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            //    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                AuthenticationProperties properties = new AuthenticationProperties()
-                {
-                    AllowRefresh = true,
-                };
+            //    AuthenticationProperties properties = new AuthenticationProperties()
+            //    {
+            //        AllowRefresh = true,
+            //    };
 
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
-                return RedirectToAction("Home", "Seller");
-            }
-            ViewData["ErrorMessage"] = "Invalid: User Not Found";
+            //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
+            //    return RedirectToAction("Home", "Seller");
+            //}
+            //ViewData["ErrorMessage"] = "Invalid: User Not Found";
 
-            return View();
+            //return View();
         }
         public IActionResult PrivacyPolicy()
         {
@@ -270,6 +282,7 @@ namespace JobDone.Controllers.Seller
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            SessionInfo.ClearSessionInfo(HttpContext);
             return RedirectToAction("Login", "Seller");
         }
         [Authorize(Roles = TypesOfUsers.Seller)]
