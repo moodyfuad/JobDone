@@ -7,30 +7,30 @@ namespace JobDone.Models.ForgetAndChangePassword
 {
     public class ForgetAndChangePasswordImplementaion : IForgetAndChanePassword
     {
+        private readonly JobDoneContext _context;
         private readonly DbSet<SellerModel> _seller;
         private readonly DbSet<CustomerModel> _customer;
         private readonly DbSet<SecurityQuestionModel> _questions;
-        private readonly JobDoneContext _context;
 
         public ForgetAndChangePasswordImplementaion(JobDoneContext context)
         {
+            _context = context;
             _seller = context.SellerModels;
             _customer = context.CustomerModels;
             _questions = context.SecurityQuestionModels;
-            _context = context;
         }
 
-        public bool ConfirmTheAnswerForTheCustomer(string username, int questionId, string answer)
+        public int ConfirmTheAnswerForTheCustomer(string username, int questionId, string answer)
         {
             if (answer != null && username != null && questionId != 0)
             {
                 var result = _customer
-                   .Where(x => x.Username == username || x.SecurityQuestionIdFk == questionId || x.SecurityQuestionAnswer == answer);
+                   .FirstOrDefault(x => x.Username == username && x.SecurityQuestionIdFk == questionId && x.SecurityQuestionAnswer == answer);
                    
-                if (result != null) { return true; }
-                else { return false; }
+                if (result != null) { return result.Id; }
+                else { return 0; }
             }
-            else return false;
+            else return 0;
         }
         public void ChangeToNawPassword(int sellerId, string newPassword)
         {
