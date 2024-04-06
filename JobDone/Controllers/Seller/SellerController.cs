@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Authorization;
 using JobDone.Models.Banners;
 using JobDone.Models.OrderByCustomer;
 using NuGet.Protocol.Plugins;
+using JobDone.Models.ForgetAndChangePassword;
 
 
 namespace JobDone.Controllers.Seller
@@ -33,15 +34,68 @@ namespace JobDone.Controllers.Seller
         private readonly ICategory _category;
         private readonly IServies _servise;
         private readonly IBanner _banners;
-        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners)
+        private readonly IForgetAndChanePassword _forgetAndChanePassword;
+        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners, IForgetAndChanePassword FACPssword)
         {
             _seller = seller;
             _questions = questions;
             _category = category;
             _servise = servies;
             _banners = banners;
+            _forgetAndChanePassword = FACPssword;
         }
+        [HttpGet]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel, string username, int questionId, string answer)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            if (_seller.UsernameExist(username))
+            {
+                var sellerId = _forgetAndChanePassword.ConfirmTheAnswerForTheSeller(username, questionId, answer);
+                if (sellerId != 0)
+                {
+                    SellerModel seller = _seller.GetSellerById(sellerId);
+                    string usernameCok = seller.Username;
+                    string walletAmount = seller.Wallet.ToString();
 
+                    SessionInfo.UpdateSessionInfo(usernameCok, walletAmount, seller.ProfilePicture, HttpContext);
+                    SignInSellerAuthCookie(seller);
+                    return RedirectToAction("ChangePassword", "Seller");
+                }
+                else return View(viewModel);
+            }
+            else return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        {
+            if (passWord == conformPassWord)
+            {
+                string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(sellerId), passWord);
+
+                SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
+                string username = seller.Username;
+                string walletAmount = seller.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, seller.ProfilePicture, HttpContext);
+                SignInSellerAuthCookie(seller);
+                return RedirectToAction("Home", "Seller");
+            }
+            ViewBag.Error = "The password does not match";
+            return View();
+        }
         [HttpGet]
         public IActionResult SignUp()
         {
@@ -68,7 +122,7 @@ namespace JobDone.Controllers.Seller
             if (viewModel.Seller.Password == CoinformPassword)
             {
                 if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 &&
-                    viewModel.Seller.Gender != null && viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
+                    viewModel.Seller.Gender != null && viewModel.Seller != null && _seller.UsernameExist(viewModel.Seller.Username))
                 {
                     SellerModel seller = new SellerModel();
                     {

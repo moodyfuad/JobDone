@@ -38,5 +38,23 @@ namespace JobDone.Models.ForgetAndChangePassword
             res.Password = newPassword;
             _context.SaveChanges();
         }
+        public int ConfirmTheAnswerForTheSeller(string username, int questionId, string answer)
+        {
+            if (answer != null && username != null && questionId != 0)
+            {
+                var result = _seller
+                   .FirstOrDefault(x => x.Username == username && x.SecurityQuestionIdFk == questionId && x.SecurityQuestionAnswer == answer);
+
+                if (result != null) { return result.Id; }
+                else { return 0; }
+            }
+            else return 0;
+        }
+        public void ChangeToNawPasswordSeller(int sellerId, string newPassword)
+        {
+            var res = _seller.Where(x => x.Id == sellerId).FirstOrDefault();
+            res.Password = newPassword;
+            _context.SaveChanges();
+        }
     }
 }

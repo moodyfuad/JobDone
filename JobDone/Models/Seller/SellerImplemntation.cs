@@ -43,10 +43,10 @@ namespace JobDone.Models.Seller
             _Db.SaveChanges();
         }
 
-        public bool UsernameExist(SellerModel seller)
+        public bool UsernameExist(string username)
         {
-            var sel = _seller.Where(c => c.Username == seller.Username);
-            if (sel == null)
+            var sel = _seller.Where(s => s.Username == username);
+            if (sel != null)
             {
                 return true;
             }

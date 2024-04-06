@@ -4,6 +4,9 @@
     {
         public int ConfirmTheAnswerForTheCustomer(string username, int questionId, string answer);
         public void ChangeToNawPassword(int sellerId, string newPassword);
+        public int ConfirmTheAnswerForTheSeller(string username, int questionId, string answer);
+        public void ChangeToNawPasswordSeller(int sellerId, string newPassword);
+
 
     }
 }
