@@ -50,12 +50,12 @@ namespace JobDone.Models.OrderByCustomer
             return order;
         }
 
-        public async Task<OrderByCustomerModel> GetOrderByCustomerId(int CustomerId)
-        {
-            OrderByCustomerModel order = await _context.OrderByCustomerModels.FirstOrDefaultAsync(order =>
-                order.CustomerIdFk == CustomerId);
+        //public async Task<OrderByCustomerModel> GetOrderByCustomerId(int orderByCustomerId)
+        //{
+        //    OrderByCustomerModel order = await _context.OrderByCustomerModels.FirstOrDefaultAsync(o =>
+        //    o.Id == orderByCustomerId);
 
-            return order;
-        }
+        //    return order;
+        //}
     }
 }

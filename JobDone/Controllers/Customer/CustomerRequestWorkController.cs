@@ -23,14 +23,16 @@ namespace JobDone.Controllers.Customer
         private readonly ISeller _sellers;
         private readonly ISellerAcceptRequest _sellerAccept;
         private readonly ICustomer _customer;
+        private readonly IOrder _order;
 
-        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer orderByCustomer, ISeller sellers, ISellerAcceptRequest sellerAccept, ICustomer customer)
+        public CustomerRequestWorkController(ICategory categories, IOrderByCustomer orderByCustomer, ISeller sellers, ISellerAcceptRequest sellerAccept, ICustomer customer, IOrder order)
         {
             _categories =  categories;
             _orderByCustomer = orderByCustomer;
             _sellers = sellers;
             _sellerAccept = sellerAccept;
             _customer = customer;
+            _order = order;
         }
 
 
@@ -109,10 +111,12 @@ namespace JobDone.Controllers.Customer
         [AcceptVerbs("Get","Post")]
         public async Task<IActionResult> AcceptSeller(int SellerId, int OrderByCustomerId)
         {
-            _sellerAccept.AcceptSeller(SellerId, OrderByCustomerId);
-            OrderByCustomerModel? orderByCustomer = await _orderByCustomer.GetOrderByCustomerId(OrderByCustomerId);
-            CustomerModel? customer = _customer.GetCustomerById(orderByCustomer.CustomerIdFk);
-            SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
+            if(await _sellerAccept.AcceptSeller(SellerId, OrderByCustomerId) == true)
+            {
+                string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                CustomerModel? customer = _customer.GetCustomerById(Convert.ToInt32(customerId));
+                SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
+            }
             return RedirectToAction("RequestedList","CustomerRequestWork");
         }
         

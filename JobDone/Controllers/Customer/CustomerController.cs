@@ -93,10 +93,10 @@ namespace JobDone.Controllers.Customer
         {
             if (_customer.UsernameAndPasswordExists(customer))
             {
-                customer.Id = (int)_customer.getId(customer.Username, customer.Password);
-                
-                SignInCustomerAuthCookie(customer);
+                customer.Id = Convert.ToInt32(_customer.getId(customer.Username, customer.Password));
+
                 CustomerModel model = _customer.GetCustomerById(customer.Id);
+                SignInCustomerAuthCookie(model);
                 SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Customer");

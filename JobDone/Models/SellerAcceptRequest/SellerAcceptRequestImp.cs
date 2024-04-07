@@ -65,71 +65,77 @@ namespace JobDone.Models.SellerAcceptRequest
             }
 
         }
-        
+
         public async Task<bool> AcceptSeller(int sellerId, int OrderByCustomerId)
         {
-            //website taxes percentage
-            decimal taxPercentage = 5m / 100m;
-            //get the sellers from specific request who accepted the order except the seller that the customer accepts
-
-            List<SellerAcceptRequestModel> requests = _db.SellerAcceptRequestModels.Where(
-                SAM => SAM.SellerIdFk != sellerId && SAM.OrderByCustomerIdFk == OrderByCustomerId).ToList();
-
-            OrderByCustomerModel? orderByCustomer = _db.OrderByCustomerModels.FirstOrDefault(o => o.Id == OrderByCustomerId);
-
-            CustomerModel? customer = _db.CustomerModels.FirstOrDefault(c => c.Id == orderByCustomer.CustomerIdFk);
-
-            SellerModel? seller = _sellers.FirstOrDefault(s => s.Id == sellerId);
-
-            AdminWalletModel adminWallet =  _adminWallet.FirstAsync().Result;
-            if (customer.Wallet >= orderByCustomer.Price)
+            using (var transaction = _db.Database.BeginTransaction())
             {
-                // take the order price from the customer
-                 customer.Wallet -= orderByCustomer.Price;
-
-                // transfer the money of the order to the seller and take 5% for the website
-                 seller.Wallet += (orderByCustomer.Price - (taxPercentage * orderByCustomer.Price));
-
-                // transfer 5% of the order money to the admin wallet
-                adminWallet.Balance += (taxPercentage * orderByCustomer.Price);
-                _db.CustomerModels.Update(customer);
-                _adminWallet.Update(adminWallet);
-                _sellers.Update(seller);
                 try
                 {
-                    //remove the seller that the customer accepts from the request list
-                    SellerAcceptRequestModel request = RemoveSeller(sellerId, OrderByCustomerId).Result;
+                    // Website taxes percentage
+                    decimal taxPercentage = 5m / 100m;
 
+                    // Get the sellers from specific request who accepted the order except the seller that the customer accepts
+                    List<SellerAcceptRequestModel> requests = _db.SellerAcceptRequestModels
+                        .Where(SAM => SAM.SellerIdFk != sellerId && SAM.OrderByCustomerIdFk == OrderByCustomerId)
+                        .ToList();
 
-                    //get the category related to the request
-                    CategoryModel? category = _db.CategoryModels.FirstOrDefault(c => c.Id == orderByCustomer.CategoryIdKf);
+                    OrderByCustomerModel? orderByCustomer = _db.OrderByCustomerModels.FirstOrDefault(o => o.Id == OrderByCustomerId);
+                    CustomerModel? customer = _db.CustomerModels.FirstOrDefault(c => c.Id == orderByCustomer.CustomerIdFk);
+                    SellerModel? seller = _sellers.FirstOrDefault(s => s.Id == sellerId);
+                    AdminWalletModel adminWallet = await _adminWallet.FirstAsync();
 
+                    if (customer.Wallet >= orderByCustomer.Price)
+                    {
+                        // Take the order price from the customer
+                        customer.Wallet -= orderByCustomer.Price;
 
-                OrderModel orderModel = new OrderModel()
-                {
-                    SellerIdFk = sellerId,
-                    CustomerIdFk = orderByCustomer.CustomerIdFk,
-                    CategoryIdKf = category.Id,
-                    DeliverDate = orderByCustomer.DeliverDate,
-                    Description = orderByCustomer.Description,
-                    OrderDate = orderByCustomer.OrderDate,
-                    OrderName = orderByCustomer.OrderName,
-                    Price = orderByCustomer.Price,
-                    Status = "working",
-                    CategoryIdKfNavigation = category,
-                };
+                        // Transfer the money of the order to the seller and take 5% for the website
+                        seller.Wallet += (orderByCustomer.Price - (taxPercentage * orderByCustomer.Price));
 
-                _db.OrderModels.Add(orderModel);
+                        // Transfer 5% of the order money to the admin wallet
+                        adminWallet.Balance += (taxPercentage * orderByCustomer.Price);
 
-                    _db.SellerAcceptRequestModels.RemoveRange(requests);
-                    _db.OrderByCustomerModels.Remove(orderByCustomer);
-                    _db.SaveChanges();
+                        _db.CustomerModels.Update(customer);
+                        _adminWallet.Update(adminWallet);
+                        _sellers.Update(seller);
+
+                        // Remove the seller that the customer accepts from the request list
+                        SellerAcceptRequestModel request = await RemoveSeller(sellerId, OrderByCustomerId);
+
+                        // Get the category related to the request
+                        CategoryModel? category = _db.CategoryModels.FirstOrDefault(c => c.Id == orderByCustomer.CategoryIdKf);
+
+                        OrderModel orderModel = new OrderModel()
+                        {
+                            SellerIdFk = sellerId,
+                            CustomerIdFk = orderByCustomer.CustomerIdFk,
+                            CategoryIdKf = category.Id,
+                            DeliverDate = orderByCustomer.DeliverDate,
+                            Description = orderByCustomer.Description,
+                            OrderDate = orderByCustomer.OrderDate,
+                            OrderName = orderByCustomer.OrderName,
+                            Price = orderByCustomer.Price,
+                            Status = "working",
+                            CategoryIdKfNavigation = category,
+                        };
+
+                        _db.OrderModels.Add(orderModel);
+                        _db.SellerAcceptRequestModels.RemoveRange(requests);
+                        _db.OrderByCustomerModels.Remove(orderByCustomer);
+                        _db.SaveChanges();
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    return false;
                 }
-                catch (Exception ex) { }
-                return true;
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
             }
-            return false;
-
         }
     }
 }
