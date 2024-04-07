@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Authorization;
 using JobDone.Models.Banners;
 using JobDone.Models.OrderByCustomer;
 using NuGet.Protocol.Plugins;
+using JobDone.Models.ForgetAndChangePassword;
 
 
 namespace JobDone.Controllers.Seller
@@ -33,75 +34,126 @@ namespace JobDone.Controllers.Seller
         private readonly ICategory _category;
         private readonly IServies _servise;
         private readonly IBanner _banners;
-        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners)
+        private readonly IForgetAndChanePassword _forgetAndChanePassword;
+        public SellerController(ISeller seller, ISecurityQuestion questions, ICategory category, IServies servies, IBanner banners, IForgetAndChanePassword FACPssword)
         {
             _seller = seller;
             _questions = questions;
             _category = category;
             _servise = servies;
             _banners = banners;
+            _forgetAndChanePassword = FACPssword;
         }
+        [HttpGet]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel, string username, int questionId, string answer)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            if (_seller.UsernameExist(username))
+            {
+                var sellerId = _forgetAndChanePassword.ConfirmTheAnswerForTheSeller(username, questionId, answer);
+                if (sellerId != 0)
+                {
+                    SellerModel seller = _seller.GetSellerById(sellerId);
+                    string usernameCok = seller.Username;
+                    string walletAmount = seller.Wallet.ToString();
 
+                    SessionInfo.UpdateSessionInfo(usernameCok, walletAmount, seller.ProfilePicture, HttpContext);
+                    SignInSellerAuthCookie(seller);
+                    return RedirectToAction("ChangePassword", "Seller");
+                }
+                else return View(viewModel);
+            }
+            else return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        {
+            if (passWord == conformPassWord)
+            {
+                string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(sellerId), passWord);
+
+                SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
+                string username = seller.Username;
+                string walletAmount = seller.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, seller.ProfilePicture, HttpContext);
+                SignInSellerAuthCookie(seller);
+                return RedirectToAction("Home", "Seller");
+            }
+            ViewBag.Error = "The password does not match";
+            return View();
+        }
         [HttpGet]
         public IActionResult SignUp()
         {
-            SignUpSellerCatgoreViewModel viewModel = new SignUpSellerCatgoreViewModel()
+            SignUpSellerViewModel viewModel = new SignUpSellerViewModel()
             {
                 SecurityQuestions = _questions.GetQuestions(),
-                Category = _category.GetCategories(),
+                categories = _category.GetCategories(),
                 Service = new(),
-                Seller = new(),
-                sellerAcceptRequestModels = new()
             };
             return View(viewModel);
         }
-
         [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpSellerCatgoreViewModel viewModel, string CoinformPassword, string[] textarea, string[] serviecs)
+        public async Task<IActionResult> SignUp(SignUpSellerViewModel viewModel, string[] textarea, string[] serviecs)
         {
             viewModel.SecurityQuestions = _questions.GetQuestions();
-            viewModel.Category = _category.GetCategories();
+            viewModel.categories = _category.GetCategories();
 
-            viewModel.Seller.ProfilePicture = _seller.ConvertToByte(viewModel.PrfilePicture);
-            viewModel.Seller.PersonalPictureId = _seller.ConvertToByte(viewModel.PersonalId);
+            viewModel.ProfilePicture = _seller.ConvertToByte(viewModel.profilePictureAsFile);
+            viewModel.IdPicture = _seller.ConvertToByte(viewModel.IdPictureAsFile);
 
-            if (viewModel.Seller.Password == CoinformPassword)
+            if (ModelState.IsValid)
             {
-                if (viewModel.Seller.SecurityQuestionIdFk != 0 && viewModel.Seller.CategoryIdFk != 0 &&
-                    viewModel.Seller.Gender != null && viewModel.Seller != null && !_seller.UsernameExist(viewModel.Seller))
+                SellerModel seller = new SellerModel();
                 {
-                    SellerModel seller = new SellerModel();
-                    {
-                        seller.FirstName = viewModel.Seller.FirstName;
-                        seller.LastName = viewModel.Seller.LastName;
-                        seller.Email = viewModel.Seller.Email;
-                        seller.Gender = viewModel.Seller.Gender;
-                        seller.Username = viewModel.Seller.Username;
-                        seller.Password = viewModel.Seller.Password;
-                        seller.PhoneNumber = viewModel.Seller.PhoneNumber;
-                        seller.BirthDate = viewModel.Seller.BirthDate;
-                        seller.PersonalPictureId = viewModel.Seller.PersonalPictureId;
-                        seller.CategoryIdFk = viewModel.Seller.CategoryIdFk;
-                        seller.ProfilePicture = viewModel.Seller.ProfilePicture;
-                        seller.SecurityQuestionIdFk = viewModel.Seller.SecurityQuestionIdFk;
-                        seller.SecurityQuestionAnswer = viewModel.Seller.SecurityQuestionAnswer;
-                    }
-                    _seller.SignUp(seller);
-                    for (int i = 0; i < serviecs.Length ; i++)
-                    {
-                        ServiceModel service = new ServiceModel
-                        {
-                            Name = serviecs[i],
-                            Description = textarea[i],
-                            SellerIdFk = _servise.GetSellerID()
-                        };
-                        _servise.AddServies(service);
-                    }
-                    return RedirectToAction("Login", "Seller");
+                    seller.FirstName = viewModel.FirstName;
+                    seller.LastName = viewModel.LastName;
+                    seller.Email = viewModel.Email;
+                    seller.Gender = viewModel.Gender;
+                    seller.Username = viewModel.Username;
+                    seller.Password = viewModel.Password;
+                    seller.PhoneNumber = viewModel.PhoneNumber;
+                    seller.BirthDate = viewModel.BirthDate;
+                    seller.PersonalPictureId = viewModel.IdPicture;
+                    seller.CategoryIdFk = viewModel.CategoryIdFk;
+                    seller.ProfilePicture = viewModel.ProfilePicture;
+                    seller.SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk;
+                    seller.SecurityQuestionAnswer = viewModel.SecurityQuestionAnswer;
                 }
-                else { TempData["null"] = "Some fields are empty!!"; }
-            }
-            else { TempData["SuccessMessage"] = "The password does not match"; }
+                for (int i = 0; i < serviecs.Length ; i++)
+                {
+                    ServiceModel service = new ServiceModel
+                    {
+                        Name = serviecs[i],
+                        Description = textarea[i],
+                        SellerIdFk = _servise.GetSellerID()
+                    };
+                    _servise.AddServies(service);
+                }
+                if (!_seller.UsernameExist(seller.Username))
+                {
+                    _seller.SignUp(seller);
+                    SignInSellerAuthCookie(seller).Wait();
+                    SellerModel model = _seller.GetSellerById(seller.Id);
+                    SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
+                    return View("Home");
+                };
+            }    
+            
             return View(viewModel);
         }
 
@@ -143,29 +195,6 @@ namespace JobDone.Controllers.Seller
                 ViewData["ValidateMessgae"] = "Invalid username/password";
                 return View();
             }
-            //if (_seller.CheckUsernameAndPasswordExists(seller))
-            //{
-            //    short Id = _seller.getId(seller.Username, seller.Password);
-            //    List<Claim> claims = new List<Claim>()
-            //    {
-            //        new Claim("username",seller.Username),
-            //        new Claim(ClaimTypes.NameIdentifier,Id.ToString()),
-            //        new Claim(ClaimTypes.Role,TypesOfUsers.Seller)
-            //    };
-
-            //    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            //    AuthenticationProperties properties = new AuthenticationProperties()
-            //    {
-            //        AllowRefresh = true,
-            //    };
-
-            //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
-            //    return RedirectToAction("Home", "Seller");
-            //}
-            //ViewData["ErrorMessage"] = "Invalid: User Not Found";
-
-            //return View();
         }
         public IActionResult PrivacyPolicy()
         {
@@ -174,7 +203,7 @@ namespace JobDone.Controllers.Seller
 
         [Authorize(Roles = TypesOfUsers.Seller)]
         [HttpGet]
-        public async Task<IActionResult> Home(SignUpSellerCatgoreViewModel viewModel)
+        public async Task<IActionResult> Home(SellerViewModel viewModel)
         {
             var x = _seller.GetRemainingWork(SellerID()); ;
             ViewBag.xxx = x.ToString();
@@ -201,7 +230,7 @@ namespace JobDone.Controllers.Seller
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]
-        public IActionResult Order(SignUpSellerCatgoreViewModel viewModel)
+        public IActionResult Order(SellerViewModel viewModel)
         {
 
             ViewBag.OrderCount = _seller.OrderCount(SellerID());
@@ -237,7 +266,7 @@ namespace JobDone.Controllers.Seller
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]
-        public async Task<IActionResult> RequestedWrok(SignUpSellerCatgoreViewModel viewModel)
+        public async Task<IActionResult> RequestedWrok(SellerViewModel viewModel)
         {
             viewModel.orderByCustomerModels = _seller.GetOrderByCustomerModels(_seller.SellerCatgoreID(SellerID()), SellerID());
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
@@ -246,7 +275,7 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> RequestedWrok(SignUpSellerCatgoreViewModel viewModel, string search)
+        public async Task<IActionResult> RequestedWrok(SellerViewModel viewModel, string search)
         {
             viewModel = new();
 

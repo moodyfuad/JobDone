@@ -12,7 +12,7 @@ namespace JobDone.Models.Seller
     public interface ISeller
     {
         void SignUp(SellerModel seller);
-        bool UsernameExist(SellerModel seller);
+        bool UsernameExist(string username);
         bool CheckUsernameAndPasswordExists(SellerModel seller);
         byte[] ConvertToByte(IFormFile image);
         public IFormFile ConvertToImage(byte[] byteImage);

@@ -18,6 +18,7 @@ using JobDone.Models.SellerProfile;
 using JobDone.Models.SellerOldWork;
 using JobDone.Models.MessageModel;
 using JobDone.Models.Withdraw;
+using JobDone.Models.ForgetAndChangePassword;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,6 +55,7 @@ builder.Services.AddTransient<ISellerProfile, SellerProfileImplemntation>();
 builder.Services.AddTransient<ISellerOldWork, SellerOldWorksImp>();
 builder.Services.AddTransient<IMessage, MessageImplementation>();
 builder.Services.AddTransient<IWithdraw, WithdrawImplementation>();
+builder.Services.AddTransient<IForgetAndChanePassword, ForgetAndChangePasswordImplementaion>();
 
 
 var app = builder.Build();

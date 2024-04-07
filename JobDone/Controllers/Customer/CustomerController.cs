@@ -34,13 +34,14 @@ namespace JobDone.Controllers.Customer
         private readonly IBanner _banner;
         private readonly IForgetAndChanePassword _forgetAndChanePassword;
 
-        public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner)
+        public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner, IForgetAndChanePassword FACPssword)
         {
             _customer = customer;
             _questions = questions;
             _seller = seller;
             _services = services;
             _banner = banner;
+            _forgetAndChanePassword = FACPssword;
         }
         [HttpGet]
         public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel)
@@ -54,17 +55,44 @@ namespace JobDone.Controllers.Customer
             viewModel.SecurityQuestions = _questions.GetQuestions();
             if (_customer.UsernameExist(username))
             {
-                var test = _forgetAndChanePassword.ConfirmTheAnswerForTheCustomer(username, questionId, answer);
-                if (test)
+                var customerId = _forgetAndChanePassword.ConfirmTheAnswerForTheCustomer(username, questionId, answer);
+                if (customerId != 0)
                 {
+                    CustomerModel customer = _customer.GetCustomerById(customerId);
+                    string usernameCok = customer.Username;
+                    string walletAmount = customer.Wallet.ToString();
+
+                    SessionInfo.UpdateSessionInfo(usernameCok, walletAmount, customer.ProfilePicture, HttpContext);
+                    SignInCustomerAuthCookie(customer);
                     return RedirectToAction("ChangePassword", "Customer");
                 }
                 else return View(viewModel);
             }
             else return View(viewModel);
         }
+        [HttpGet]
         public IActionResult ChangePassword()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        {
+            if(passWord == conformPassWord)
+            {
+                string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(customerId), passWord);
+
+                CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
+                string username = customer.Username;
+                string walletAmount = customer.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
+                SignInCustomerAuthCookie(customer);
+                return RedirectToAction("Home", "Customer");
+            }
+            ViewBag.Error = "The password does not match";
             return View();
         }
         [HttpGet]
