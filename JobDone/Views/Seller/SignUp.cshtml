@@ -1,17 +1,11 @@
 ﻿@using Azure.Core
 @using System.IO
 <link rel="stylesheet" href="~/SignUp/css/style.css" />
-@model SignUpSellerCatgoreViewModel
+@model SignUpSellerViewModel
 
 <section class="container">
     <header>Registration Form</header>
-    <form action="#" class="form" method="post" enctype="multipart/form-data">
-        @if (TempData["null"] != null)
-        {
-            <div class="alert alert-danger">
-                @TempData["null"]
-            </div>
-        }
+    <form action="SignUp" class="form" method="post" enctype="multipart/form-data">
         <div class="input-box">
 
             <div></div>
@@ -20,36 +14,36 @@
             <div class="input-box">
 
                 <label>First Name</label>
-                <input asp-for="@Model.Seller.FirstName" type="text" placeholder="Enter First name" required />
-                <span asp-validation-for="Seller.FirstName" class="text-danger"></span>
+                <input asp-for="@Model.FirstName" type="text" placeholder="Enter First name" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
 
             </div>
             <div class="input-box">
                 <label>Last Name</label>
-                <input asp-for="@Model.Seller.LastName" type="text" placeholder="Enter Last name" required />
-                <span asp-validation-for="Seller.LastName" class="text-danger"></span>
+                <input asp-for="@Model.LastName" type="text" placeholder="Enter Last name" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
 
             </div>
         </div>
 
         <div class="input-box">
             <label>Email Address</label>
-            <input asp-for="@Model.Seller.Email" type="text" placeholder="Enter email address" required />
-            <span asp-validation-for="Seller.Email" class="text-danger"></span>
+            <input asp-for="@Model.Email" type="text" placeholder="Enter email address" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
 
         </div>
 
         <div class="column">
             <div class="input-box">
                 <label>Phone Number</label>
-                <input asp-for="@Model.Seller.PhoneNumber" type="number" placeholder="Enter phone number" required />
-                <span asp-validation-for="Seller.PhoneNumber" class="text-danger"></span>
+                <input asp-for="@Model.PhoneNumber" type="number" placeholder="Enter phone number" required />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
             </div>
             <div class="input-box">
                 <label>Birth Date</label>
-                <input asp-for="@Model.Seller.BirthDate" type="date" value="@DateTime.Now" required />
-                <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
+                <input asp-for="@Model.BirthDate" type="date" value="@DateTime.Now" required />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
 
             </div>
         </div>
@@ -57,54 +51,50 @@
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Seller.Gender, "Male")
+                    @Html.RadioButtonFor(m => m.Gender, "Male", new { id = "Gender_Male" })
                     <label for="check-male">male</label>
                 </div>
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Seller.Gender, "Female")
+                    @Html.RadioButtonFor(m => m.Gender, "Female", new { id = "Gender_Female" })
                     <label for="check-female">Female</label>
                 </div>
                 <div class="gender">
-                    @Html.RadioButtonFor(m => m.Seller.Gender, "Other")
+                    @Html.RadioButtonFor(m => m.Gender, "Other", new { id = "Gender_other" })
                     <label for="check-other">prefer not to say</label>
                 </div>
             </div>
-            <span asp-validation-for="Seller.Gender" class="text-danger"></span>
+            <span asp-validation-for="Gender" class="text-danger"></span>
         </div>
         <div class="input-box">
             <label>User name</label>
-            <input asp-for="@Model.Seller.Username" type="text" placeholder="Enter User name" required />
-            <span asp-validation-for="Seller.Username" class="text-danger"></span>
+            <input asp-for="@Model.Username" type="text" placeholder="Enter User name" required />
+            <span asp-validation-for="Username" class="text-danger"></span>
         </div>
         <div class="input-box">
             <label>Password</label>
-            <input asp-for="@Model.Seller.Password" type="password" placeholder="Enter your Password" required />
-            <span asp-validation-for="Seller.Password" class="text-danger"></span>
+            <input asp-for="@Model.Password" type="password" placeholder="Enter your Password" required />
+            <span asp-validation-for="Password" class="text-danger"></span>
 
             <label>Confirom</label>
-            <input type="password" name="CoinformPassword" placeholder="Confirom the password" required />
-            @if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-danger">
-                    @TempData["SuccessMessage"]
-                </div>
-            }
+            <input asp-for="@Model.ConfirmPassword" type="password" placeholder="Confirom the password" required />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
             <label>Upload your ID</label>
-            <input asp-for="@Model.PersonalId" type="file" required />
+            <input asp-for="@Model.IdPicture" type="file" required />
             <label>Choose your specialty</label>
             <div class="column">
 
                 <div class="select-box">
-                    <select asp-for="@Model.Seller.CategoryIdFk" required>
+                    <select asp-for="@Model.CategoryIdFk" required>
 
                         <option hidden>Category</option>
-                        @foreach (var c in Model.Category)
+                        @foreach (var c in Model.categories)
                         {
                             <option value="@c.Id">@c.Name</option>
                         }
                     </select>
                 </div>
-                <span asp-validation-for="Seller.CategoryIdFk" class="text-danger"></span>
+                <span asp-validation-for="CategoryIdFk" class="text-danger"></span>
 
             </div>
             <br />
@@ -164,15 +154,15 @@
             <div id="inputContainer"></div>
             <br />
             <label>Upload your Photo</label>
-            <input asp-for="@Model.PrfilePicture" type="file" required />
-            <span asp-validation-for="PrfilePicture" asp class="text-danger"></span>
+            <input asp-for="@Model.profilePictureAsFile" type="file" required />
+            <span asp-validation-for="profilePictureAsFile" asp class="text-danger"></span>
 
             <br />
 
             <label>Security question</label>
             <div class="column">
                 <div class="select-box">
-                    <select asp-for="@Model.Seller.SecurityQuestionIdFk" required>
+                    <select asp-for="@Model.SecurityQuestionIdFk" required>
                         <option hidden>Choes Security Question</option>
                         @foreach (var q in Model.SecurityQuestions)
                         {
@@ -180,10 +170,10 @@
                         }
                     </select>
                 </div>
-                <span asp-validation-for="Seller.CategoryIdFk" asp class="text-danger"></span>
+                <span asp-validation-for="CategoryIdFk" asp class="text-danger"></span>
 
-                <input asp-for="@Model.Seller.SecurityQuestionAnswer" type="text" placeholder="Answer" required />
-                <span asp-validation-for="Seller.SecurityQuestionAnswer" asp class="text-danger"></span>
+                <input asp-for="@Model.SecurityQuestionAnswer" type="text" placeholder="Answer" required />
+                <span asp-validation-for="SecurityQuestionAnswer" asp class="text-danger"></span>
 
             </div>
         </div>
@@ -191,7 +181,7 @@
         <input type="checkbox" name="name" value="" style="margin-left:32%;" required />Accept <a asp-controller="Seller" asp-action="PrivacyPolicy">Privacy Policy</a>
         <br /><br />
         <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
-
-
+   
     </form>
+    
 </section>

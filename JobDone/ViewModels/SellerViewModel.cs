@@ -12,7 +12,7 @@ using JobDone.Models.Banners;
 
 namespace JobDone.ViewModels
 {
-    public class SignUpSellerCatgoreViewModel
+    public class SellerViewModel
     {
         public IFormFile PrfilePicture { get; set; }
         public IFormFile PersonalId { get; set; }
