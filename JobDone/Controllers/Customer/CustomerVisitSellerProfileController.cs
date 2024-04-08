@@ -34,6 +34,13 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult> Profile(short sellerId)
         {
             SellerModel seller = _seller.GetSellerById(sellerId);
+
+            if (seller == null)
+            {
+                Response.StatusCode = 404;
+                return View("CustomerNotFound", sellerId);
+            }
+
             IEnumerable<ServiceModel> services = await _services.GetAllServicesBasedOnSellerId(sellerId);
             IEnumerable<SellerOldWorkModel> sellerOldWorks = await _sellerOldWork.GetSellerOldWork(sellerId);
             string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -1,0 +1,54 @@
+﻿@model short;
+
+<style>
+    body {
+        background-color: #f1f1f1;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    h1 {
+        font-size: 6rem;
+        color: #555;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: #555;
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #777;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>Sorry, but customer or seller with id @Model can not be found</p>
+        <a asp-action="Home" asp-controller="Seller" class="btn btn-outline-success">Go to Home</a>
+    </div>
+</body>
+</html>

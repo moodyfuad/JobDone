@@ -131,11 +131,14 @@
 
                                                 </div>
                                                 <h2 class="text-truncate font-size-18"><a href="#" style="color:gray">@@@order.Username</a></h2>
-                                                <div class="rating" style="margin-right:590px; margin-left:70px; display:flex; gap:4px">
-                                                    @for(int i = 0; i < @order.Rate;i++){
-                                                                <span>&#9733;</span>
-                                                    }
-                                                </div>
+                                                @for (int i = 0; i < @order.Rate; i++)
+                                                {
+                                                    <span style="color:gold">&#9733;</span>
+                                                }
+                                                @for (int i = 0; i < 5 - @order.Rate; i++)
+                                                {
+                                                    <span style="color:gold">&#9734;</span>
+                                                }
                                                 <h5 class="mb-0 mt-1">Order description : <h6  class="fw-medium">@order.OrderDescription</h6></h5>
                                                 <br />
 

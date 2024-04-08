@@ -5,7 +5,6 @@
 }
 
 
-    <link href="./profile_files/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             margin-top: 20px;
@@ -145,33 +144,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card mt-3">
-                        <h4 style="text-align:center;padding-top:20px;padding-bottom:30px;">Withdrow money from balance</h4>
-
-                    <form asp-action="Pull" method="post" onsubmit="return validateForm(event)">
-                        <input type="text" name="amount" id="amountInput" placeholder="Enter the amount to pull" style="opacity:30%; width:50%;margin-left:25%;padding-top:10px" />
-                        <input class="btn btn-info" type="submit" value="Pull" style="margin-top:25px;margin-left:37%;margin-bottom:20px; width:100px; background-color:deepskyblue" />
-                    </form>
-                    <p id="errorText" style="color: red;"></p>
-
-                    <script>
-                        function validateForm(event) {
-                            var input = document.getElementById('amountInput').value;
-                            var regex = /^[0-9]+$/;
-
-                            if (!regex.test(input)) {
-                                var errorText = document.getElementById('errorText');
-                                errorText.textContent = 'Please input numbers only.';
-                                errorText.style.display = 'inline';
-                                event.preventDefault();
-                                return false;
-                            }
-
-                            return true;
-                        }
-                    </script>
-
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -353,13 +325,6 @@
         reader.readAsDataURL(file);
     }
 </script>
-
-    <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="./profile_files/jquery-1.10.2.min.js.تنزيل"></script>
-    <script src="./profile_files/bootstrap.bundle.min.js.تنزيل"></script>
-    <script type="text/javascript">
-
-    </script>
 
 
 

@@ -1,10 +1,10 @@
 ﻿@using System.Security.Claims
-@using JobDone.Models.Seller
 
 @{
-    string username = User.Claims.FirstOrDefault(c => c.Type == "username").Value;
-    string WalletAmount = User.Claims.FirstOrDefault(c => c.Type == "WalletAmount").Value ;
-    // string ProfilePicture = User.Claims.FirstOrDefault(c => c.Type == "ProfilePicture").Value ;
+    string username = Context.Session.GetString("Username");
+    byte[] ProfilePictureByte = Context.Session.Get("ProfilePic") as byte[];
+    string WalletAmount = Context.Session.GetString("WalletAmount");
+    string ProfilePicture = Convert.ToBase64String(ProfilePictureByte);
 }
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-controller="SellerProfile" asp-action="Profile">
-                    <img class="rounded-circle" src="~/Customer/Picture/صوره.jpg" alt="Alternate Text" style="width:50px; height:50px;" />
+                    <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
                             <a class="nav-link text-light pl-0" asp-area="" asp-controller="SellerProfile" asp-action="Profile">
-                                <h5 style="color:gray; margin:0;padding-left:0">@@@username</h5>
+                                <h5 style="color:gray; margin:0;padding-left:0">@username</h5>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -52,7 +52,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="Order"><h5>Order</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="RequestedWrok"><h5>RequestServices</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Seller" asp-action="RequestedWrok"><h5>Request Services</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="SellerOrder" asp-action="Messages">
@@ -64,7 +64,6 @@
                     </ul>
 
                 </div>
-                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" />
                 <span id="walletAmount" style="color:white;margin-left:10px;">
                     @WalletAmount
                 </span>
@@ -88,12 +87,7 @@
                     }
                 </script>
                 
-                @{
-                    if (ViewBag.username != null)
-                    {
-                        <h5 style="color:white;margin-left:70px">Hello : @ViewBag.username </h5>
-                    }
-                }
+                <h5 style="color:white;margin-left:70px">Hello : @username </h5>
                 <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
                     <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; margin-left:60px">
                         <i class="fas fa-sign-out-alt"></i>

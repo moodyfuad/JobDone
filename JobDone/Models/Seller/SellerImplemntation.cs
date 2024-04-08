@@ -43,10 +43,10 @@ namespace JobDone.Models.Seller
             _Db.SaveChanges();
         }
 
-        public bool UsernameExist(SellerModel seller)
+        public bool UsernameExist(string username)
         {
-            var sel = _seller.Where(c => c.Username == seller.Username);
-            if (sel == null)
+            var sel = _seller.Where(s => s.Username == username);
+            if (sel != null)
             {
                 return true;
             }
@@ -177,7 +177,13 @@ namespace JobDone.Models.Seller
 
         public List<OrderModel> orderModels(int sellerId)
         {
-            List<OrderModel> order = _order.Where(s => s.SellerIdFk == sellerId).ToList();
+            List<OrderModel> order = _order
+                .Include(o => o.CategoryIdKfNavigation)
+                .Include(o => o.CustomerIdFkNavigation)
+                .Include(o => o.SellerIdFkNavigation)
+                .Where(s => s.SellerIdFk == sellerId)
+                .ToList();
+
             return order;
         }
 

@@ -40,13 +40,28 @@ namespace JobDone.Controllers.Seller
         [Authorize(Roles = TypesOfUsers.Seller)]
         public async Task<IActionResult> Chat(short customerId, short sellerId)
         {
+            CustomerModel customer = _customer.GetCustomerById(customerId);
+            SellerModel seller = _seller.GetSellerById(sellerId);
+
+            if (customer == null)
+            {
+                Response.StatusCode = 404;
+                return View("SellerNotFound", customerId);
+            }
+
+            if (seller == null)
+            {
+                Response.StatusCode = 404;
+                return View("SellerNotFound", sellerId);
+            }
+
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
 
-            viewModel.Seller = new SellerModel();
+            viewModel.Seller = seller;
             viewModel.Messages = await _message.GetAllMessages();
 
-            viewModel.Customer = _customer.GetCustomerById(customerId);
-            viewModel.Seller.Id = sellerId; 
+            viewModel.Customer = customer;
+            viewModel.Seller = seller;
 
             return View(viewModel);
         }

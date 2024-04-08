@@ -103,6 +103,7 @@ namespace JobDone.Controllers.Customer
             _customer.ApplyChangesToCustomer(ref customer, vmCustomer);
             _context.CustomerModels.Update(customer);
             await _context.SaveChangesAsync();
+            SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
 
             return RedirectToAction("SuccessfullyChange", "CustomerProfile");
         }
@@ -122,6 +123,5 @@ namespace JobDone.Controllers.Customer
             string emailRegexPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
             return Regex.IsMatch(email, emailRegexPattern);
         }
-
     }
 }

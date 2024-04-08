@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
+@model IEnumerable<JobDone.Models.Banners.BannerModel>
 
 
 <!DOCTYPE html>
@@ -59,18 +59,15 @@
 <body>
     <div class="container-fluid">
     <div class="slideshow-container" >
-        <div class="slide active" >
-            <img src="/Adminn/Panners/b1.jpg" alt="Image 1" style="width:134%;height: 500px;">
-    </div>
-    <div class="slide">
-            <img src="/Adminn/Panners/b2.jpg" alt="Image 2" style="width: 134%;height: 500px;">
-    </div>
-    <div class="slide">
-            <img src="/Adminn/Panners/b3.jpg" alt="Image 3" style="width: 134%;height: 500px;">
-    </div>
-        </div>
-    <!-- يمكنك إضافة المزيد من الشرائح هنا -->
+        @foreach(var banner in Model)
+            {
+                string base64Image = Convert.ToBase64String(banner.Picture);
+                <div class="slide active">
+                    <img src="data:image/jpeg;base64,@base64Image" style="width:100%; height:600px;" class="img-fluid" alt="Image">
+                </div>
+            }
 </div>
+
 <br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br>
 <div id="container" class="container">
@@ -82,22 +79,24 @@
         <a asp-controller="AdminManageSellers" asp-action="SellerCRUD"><div class="block"><span class="icon"><img src="/adminn/img/555.png" alt="" style="width: 200px;"></span><br></div></a>
         <a asp-controller="AdminManageCustomer" asp-action="CustomerCRUD"><div class="block"><span class="icon"><img src="/adminn/img/666.png" alt="" style="width: 200px;"></span><br></div></a>
 </div>
-<script>
-    var slideIndex = 0;
-    showSlides();
+        <script>
+            var slideIndex = 0;
+            showSlides();
 
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("slide");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        slides[slideIndex-1].style.display = "block";  
-        setTimeout(showSlides, 2000); // تغيير الشرائح كل 2 ثانية
-    }
-</script>
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("slide");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1;
+                }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000);
+            }
+        </script>
 
 </body>
 </html>

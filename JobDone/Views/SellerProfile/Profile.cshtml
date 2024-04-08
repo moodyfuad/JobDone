@@ -5,7 +5,6 @@
 @model SellerProfileViewModel
 
 <!DOCTYPE html>
-<!-- saved from url=(0082)file:///C:/Users/Computer%20Repair2023/Downloads/profile_with_data_and_skills.html -->
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,7 +13,6 @@
 
     <title>profile with data and skills - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./profile_files/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             margin-top: 20px;
@@ -144,17 +142,13 @@
                                 <div class="mt-3">
                                     <div class="rating">
                                         <div class="rating">
-                                            @{
-                                                short count = 0;
+                                            @for (short i = 0; i < 5 - Model.sellerModels.Rate; i++)
+                                            {
+                                                <span class="star" style="color:gold">&#9734;</span>
                                             }
                                             @for (short i = 0; i < Model.sellerModels.Rate; i++)
                                             {
-                                                count++;
                                                 <span class="star" style="color:gold">&#9733;</span>
-                                            }
-                                            @for (short i = 0; i < 5 - count; i++)
-                                            {
-                                                <span class="star" style="color:gold">&#9734;</span>
                                             }
                                         </div>
                                         
@@ -345,26 +339,6 @@
                                                     <div class="col-sm-9 text-secondary">
                                                         <input type="date" name="BirthDate" asp-for="sellerModels.BirthDate" value="@Model.sellerModels.BirthDate.ToString("yyyy-MM-dd")" placeholder="Enter your Birthdate" />
                                                     </div>
-                                                </div>
-                                                <br /><br />
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <h6 class="mb-0">Category : </h6>
-                                                    </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                        <select name="CategoryIdFk" asp-for="@Model.sellerModels.CategoryIdFk" required>
-                                                        @foreach (var c in Model.Category)
-                                                        {
-                                                            if(c.Name == Model.sellerModels.CategoryIdFkNavigation.Name)
-                                                            {
-                                                                <option value="@c.Id" selected>@c.Name</option>
-                                                            }
-                                                            else
-                                                            {
-                                                                <option value="@c.Id">@c.Name</option>
-                                                            }
-                                                        }
-                                                    </select>
                                                 </div>
                                                 <br /><br />
 
@@ -702,10 +676,5 @@
             reader.readAsDataURL(file);
         }
     </script>
-        <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script src="./profile_files/jquery-1.10.2.min.js.تنزيل"></script>
-        <script src="./profile_files/bootstrap.bundle.min.js.تنزيل"></script>
-        <script type="text/javascript"> </script>
-
 </body>
 </html>

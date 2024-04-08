@@ -129,9 +129,6 @@ namespace JobDone.Models.SellerProfile
                 Seller.BirthDate = ViewModelSeller.BirthDate;
             }
 
-            if (ViewModelSeller.CategoryIdFk != Seller.CategoryIdFk)
-                Seller.CategoryIdFk = ViewModelSeller.CategoryIdFk;
-
         }
 
         public ServiceModel GetServiceInfo(ServiceModel service)

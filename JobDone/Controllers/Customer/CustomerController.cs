@@ -16,6 +16,10 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using JobDone.Models.Service;
 using JobDone.Models.Admin;
 using JobDone.Models.Banners;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore;
+using JobDone.Models.ForgetAndChangePassword;
 
 
 namespace JobDone.Controllers.Customer
@@ -28,22 +32,85 @@ namespace JobDone.Controllers.Customer
         private readonly ISeller _seller;
         private readonly IServies _services;
         private readonly IBanner _banner;
+        private readonly IForgetAndChanePassword _forgetAndChanePassword;
 
-        public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner)
+        public CustomerController(ICustomer customer, ISecurityQuestion questions, ISeller seller, IServies services, IBanner banner, IForgetAndChanePassword FACPssword)
         {
             _customer = customer;
             _questions = questions;
             _seller = seller;
             _services = services;
             _banner = banner;
+            _forgetAndChanePassword = FACPssword;
         }
+        [HttpGet]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel viewModel, string username, int questionId, string answer)
+        {
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            if (_customer.UsernameExist(username))
+            {
+                var customerId = _forgetAndChanePassword.ConfirmTheAnswerForTheCustomer(username, questionId, answer);
+                if (customerId != 0)
+                {
+                    CustomerModel customer = _customer.GetCustomerById(customerId);
+                    string usernameCok = customer.Username;
+                    string walletAmount = customer.Wallet.ToString();
 
+                    SessionInfo.UpdateSessionInfo(usernameCok, walletAmount, customer.ProfilePicture, HttpContext);
+                    SignInCustomerAuthCookie(customer);
+                    return RedirectToAction("ChangePassword", "Customer");
+                }
+                else return View(viewModel);
+            }
+            else return View(viewModel);
+        }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        {
+            if(passWord == conformPassWord)
+            {
+                string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(customerId), passWord);
+
+                CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
+                string username = customer.Username;
+                string walletAmount = customer.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
+                SignInCustomerAuthCookie(customer);
+                return RedirectToAction("Home", "Customer");
+            }
+            ViewBag.Error = "The password does not match";
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> Login()
         {
             ClaimsPrincipal claims = HttpContext.User;
+
             if (claims.Identity.IsAuthenticated)
+            {
+                string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
+                string username = customer.Username;
+                string walletAmount = customer.Wallet.ToString();
+
+                SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
+                SignInCustomerAuthCookie(customer);
                 return RedirectToAction("Home", "Customer");
+            }
 
             HttpContext.SignOutAsync().Wait();
             return View();
@@ -54,9 +121,11 @@ namespace JobDone.Controllers.Customer
         {
             if (_customer.UsernameAndPasswordExists(customer))
             {
-                customer.Id = (int)_customer.getId(customer.Username, customer.Password);
-                
-                SignInCustomerAuthCookie(customer);
+                customer.Id = Convert.ToInt32(_customer.getId(customer.Username, customer.Password));
+
+                CustomerModel model = _customer.GetCustomerById(customer.Id);
+                SignInCustomerAuthCookie(model);
+                SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Customer");
             }
@@ -77,7 +146,7 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
         [HttpPost]
-        public async Task< IActionResult >SignUp(SignUpCustomerViewModel viewModel)
+        public async Task <IActionResult> SignUp(SignUpCustomerViewModel viewModel)
         {
             viewModel.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePictureAsFile);
             
@@ -104,6 +173,8 @@ namespace JobDone.Controllers.Customer
                 {
                     _customer.SignUp(customer).Wait();//
                     SignInCustomerAuthCookie(customer).Wait();//
+                    CustomerModel model = _customer.GetCustomerById(customer.Id);
+                    SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
                     return View("Home");
                 }
             }
@@ -132,7 +203,7 @@ namespace JobDone.Controllers.Customer
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Home(string inputSearch)
         {
-            IEnumerable<SellerModel> listOfSellers = await _seller.getAllTheSeller();
+            IEnumerable<SellerModel> listOfSellers = _seller.GetFirst10();
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
             IEnumerable<BannerModel> listOfBanners = await _banner.GetAllCustomerBanners();
             HomeViewModel viewModel = new HomeViewModel()
@@ -145,7 +216,6 @@ namespace JobDone.Controllers.Customer
             return View(viewModel);
         }
 
-
         [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult Order()
         {
@@ -156,6 +226,7 @@ namespace JobDone.Controllers.Customer
         public async Task<IActionResult>Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            SessionInfo.ClearSessionInfo(HttpContext);
             return RedirectToAction("Login");
         }
 

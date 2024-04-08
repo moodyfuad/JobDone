@@ -12,18 +12,23 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using JobDone.Models.Seller;
 using JobDone.Models.Withdraw;
+using JobDone.Roles;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobDone.Controllers.Seller
 {
+    [Authorize(Roles = TypesOfUsers.Seller)]
     public class SellerProfileController : Controller
     {
         private readonly JobDoneContext _context;
         private readonly ISellerProfile _sellerProfile;
+        private readonly ISeller _seller;
         static int OldWorkID;
-        public SellerProfileController(JobDoneContext context, ISellerProfile sellerProfile)
+        public SellerProfileController(JobDoneContext context, ISellerProfile sellerProfile, ISeller seller)
         {
             _context = context;
             _sellerProfile = sellerProfile;
+            _seller = seller;
         }
         [HttpGet]
         public IActionResult Profile(SellerProfileViewModel viewModel)
@@ -68,7 +73,7 @@ namespace JobDone.Controllers.Seller
         public async Task<IActionResult> Edit([FromForm] SellerModel vmSeller, string NewPassword, IFormFile profilePictureAsFile)
         {
             vmSeller.Id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            SellerModel seller = _sellerProfile.GetSellerProfile(SellerID());
+            SellerModel seller = _seller.GetSellerById(SellerID());
             List<ServiceModel> serviceModels = _sellerProfile.GetServiceModels(SellerID());
             List<SellerOldWorkModel> sellerOldWorkModels = _sellerProfile.GetSellerOldWorkModels(SellerID());
             List<CategoryModel> Category = _sellerProfile.GetCategories();
@@ -132,7 +137,8 @@ namespace JobDone.Controllers.Seller
 
             _sellerProfile.ApplyChangesToSeller(ref seller, vmSeller);
             _context.SellerModels.Update(seller);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
+            SessionInfo.UpdateSessionInfo(seller.Username, seller.Wallet.ToString(), seller.ProfilePicture, HttpContext);
 
             return RedirectToAction("SuccessfullyChange", "SellerProfile");
         }
@@ -161,7 +167,13 @@ namespace JobDone.Controllers.Seller
             }
             return View(viewModel);
         }
-        
+        [HttpPost]
+        public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
+        {
+            _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
+
+            return RedirectToAction("Profile", "SellerProfile");
+        }
         [HttpPost]
         public IActionResult ChooseWork(SellerProfileViewModel viewModel, int oldworkId)
         {
@@ -199,15 +211,6 @@ namespace JobDone.Controllers.Seller
             }
             return RedirectToAction("Profile", "SellerProfile");
         }
-
-        [HttpPost]
-        public IActionResult EditOldWork(IFormFile NewPhoto, string NewDscrepsion)
-        {
-            _sellerProfile.editOldWork(OldWorkID,NewPhoto,NewDscrepsion);
-
-            return RedirectToAction("Profile", "SellerProfile");
-        }
-
         [HttpPost]
         public IActionResult DeleteService(ServiceModel service)
         {
