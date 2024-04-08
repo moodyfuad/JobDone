@@ -7,136 +7,134 @@
 <!-- Custom styles for this template -->
 <link href="~/Customer/cus.css" rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            }
 
        
-        .rating {
-            unicode-bidi: bidi-override;
-            direction: rtl;
-            text-align: center;
-        }
-
-        .rating > span {
-            display: inline-block;
-            position: relative;
-            width: 1.1em;
-        }
-
-            .rating > span:hover:before,
-            .rating > span:hover ~ span:before {
-                content: "\2605";
-                position: absolute;
-                color: gold;
+            .rating {
+                unicode-bidi: bidi-override;
+                direction: rtl;
+                text-align: center;
             }
+
+            .rating > span {
+                display: inline-block;
+                position: relative;
+                width: 1.1em;
+            }
+
+                .rating > span:hover:before,
+                .rating > span:hover ~ span:before {
+                    content: "\2605";
+                    position: absolute;
+                    color: gold;
+                }
    
-    </style>
+        </style>
 
-    
-    
-<main>
+    </head>
+    <body>
+    <main>
 
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
-            {
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@banner.index" @(banner.index == 0 ? "class=active" : "") aria-current="true" aria-label="Slide @(banner.index + 1)"></button>
-            }
-        </div>
-        <div class="carousel-inner">
-            @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
-            {
-                <div class="carousel-item @(banner.index == 0 ? "active" : "")">
-                    <img class="bd-placeholder-img" src="data:image/jpeg;base64,@(Convert.ToBase64String(banner.banner.Picture))" alt="Alternate Text" width="100%" height="100%" />
-                    <div class="container">
-                        <div class="carousel-caption @(banner.index == 2 ? "text-end" : "text-start")">
-                            <h1>As</h1>
-                            <p>SS</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">@(banner.index == 0 ? "Sign up today" : (banner.index == 1 ? "Learn more" : "Browse gallery"))</a></p>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
+                {
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@banner.index" @(banner.index == 0 ? "class=active" : "") aria-current="true" aria-label="Slide @(banner.index + 1)"></button>
+                }
+            </div>
+            <div class="carousel-inner">
+                @foreach (var banner in Model.Bans.Select((banner, index) => new { banner, index }))
+                {
+                    <div class="carousel-item @(banner.index == 0 ? "active" : "")">
+                        <img class="bd-placeholder-img" src="data:image/jpeg;base64,@(Convert.ToBase64String(banner.banner.Picture))" alt="Alternate Text" width="100%" height="100%" />
+                        <div class="container">
+                            <div class="carousel-caption @(banner.index == 2 ? "text-end" : "text-start")">
+                                <h1>As</h1>
+                                <p>SS</p>
+                                <p><a class="btn btn-lg btn-primary" href="#">@(banner.index == 0 ? "Sign up today" : (banner.index == 1 ? "Learn more" : "Browse gallery"))</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
 
-    <div class="text-center">
-        <h4>Want to search about a specific sellers?</h4>
-        <form method="post" asp-controller="CustomerSearch" asp-action="Search">
-            <button class="btn btn-primary btn-lg btn-long" type="submit">
-                <i class="fas fa-search"></i> Search
-            </button>
-        </form>
-    </div>
+        <div class="text-center">
+            <h4>Want to search about a specific sellers?</h4>
+            <form method="post" asp-controller="CustomerSearch" asp-action="Search">
+                <button class="btn btn-primary btn-lg btn-long" type="submit">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </form>
+        </div>
 
-    <br /><br /><br />
+        <br /><br /><br />
 
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <div class="container marketing">
+        <div class="container marketing">
 
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-            @foreach (var seller in Model.Sellers)
-            {
-                <div class="col-lg-4">
-                    @{
-                        string base64Image = Convert.ToBase64String(seller.ProfilePicture);
-                    }
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="data:image/png;base64,@base64Image" alt="Profile image" />
-                    <div class="rating">
-                        @for(short i = 0; i < seller.Rate; i++)
-                        {
-                            <span>&#9733;</span>
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                @foreach (var seller in Model.Sellers)
+                {
+                    <div class="col-lg-4">
+                        @{
+                            string base64Image = Convert.ToBase64String(seller.ProfilePicture);
                         }
+                        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="data:image/png;base64,@base64Image" alt="Profile image" />
+                        <div class="rating">
+                            @for (short i = 0; i < seller.Rate; i++)
+                            {
+                                <span>&#9733;</span>
+                            }
+                        </div>
+                        @{
+                            string FullName = seller.FirstName + " " + seller.LastName;
+                        }
+                        <h2>@FullName</h2>
+                        <h5>@seller.CategoryIdFkNavigation.Name</h5>
+                        @{
+                            List<string> services = Model.Services.Where(x => x.SellerIdFk == seller.Id).Select(x => x.Name).ToList();
+                        }
+                        @foreach (var Service in services)
+                        {
+                            <span>@Service, </span>
+                        }
+                        <br />
+                        <br />
+                        <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
+                            <input value="@seller.Id" hidden name="sellerId" />
+                            <button type="submit" class="btn btn-secondary" style="background-color:darkcyan;color:white">Visit</button>
+                        </form>
                     </div>
-                    @{
-                        string FullName = seller.FirstName + " " + seller.LastName;
-                    }
-                    <h2>@FullName</h2>
-                    <h5>@seller.CategoryIdFkNavigation.Name</h5>
-                    @{
-                        List<string> services = Model.Services.Where(x => x.SellerIdFk == seller.Id).Select(x => x.Name).ToList();
-                    }
-                    @foreach (var Service in services)
-                    {
-                        <span>@Service, </span>
-                    }
-                    <br />
-                    <br />
-                    <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
-                        <input value="@seller.Id" hidden name="sellerId"/>
-                        <button type="submit" class="btn btn-secondary" style="background-color:darkcyan;color:white">Visit</button>
-                    </form>
-                </div>
-            }
-    </div>
+                }
+            </div>
 
-</div>
-    
-
-
-  
-</main>
-
-
-
+        </div>
+    </main>
+    </body>
+</html>
 
