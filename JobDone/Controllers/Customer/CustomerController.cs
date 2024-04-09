@@ -107,6 +107,7 @@ namespace JobDone.Controllers.Customer
                 string username = customer.Username;
                 string walletAmount = customer.Wallet.ToString();
 
+                SessionInfo.ClearSessionInfo(HttpContext);
                 SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
                 SignInCustomerAuthCookie(customer);
                 return RedirectToAction("Home", "Customer");
@@ -125,6 +126,7 @@ namespace JobDone.Controllers.Customer
 
                 CustomerModel model = _customer.GetCustomerById(customer.Id);
                 SignInCustomerAuthCookie(model);
+                SessionInfo.ClearSessionInfo(HttpContext);
                 SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Customer");
@@ -174,6 +176,7 @@ namespace JobDone.Controllers.Customer
                     _customer.SignUp(customer).Wait();//
                     SignInCustomerAuthCookie(customer).Wait();//
                     CustomerModel model = _customer.GetCustomerById(customer.Id);
+                    SessionInfo.ClearSessionInfo(HttpContext);
                     SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
                     return View("Home");
                 }
@@ -238,10 +241,6 @@ namespace JobDone.Controllers.Customer
             }
             List<Claim> claims = new List<Claim>()
                 {
-                    //
-                    new Claim("username", model.Username),
-                    new Claim("WalletAmount", model.Wallet.ToString("0.00")),
-                    new Claim("ProfilePicture", Convert.ToBase64String(model.ProfilePicture)),
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
                     //

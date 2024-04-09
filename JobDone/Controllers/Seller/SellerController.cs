@@ -328,8 +328,6 @@ namespace JobDone.Controllers.Seller
             List<Claim> claims = new List<Claim>()
                 {
                     new Claim("username", model.Username),
-                    new Claim("WalletAmount", model.Wallet.ToString("0.00")),
-                    new Claim("ProfilePicture", Convert.ToBase64String(model.ProfilePicture)),
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Seller)
                 };
