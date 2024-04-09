@@ -13,7 +13,6 @@
 
     <title>shopping cart with selected products order summary and checkout button - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="Customer/stylee.css" rel="stylesheet">
     <style type="text/css">
         body {
             margin-top: 20px;
@@ -110,11 +109,17 @@
                                         <div class="flex-grow-1 align-self-center overflow-hidden">
                                             <div>
                                                 <div style="display:flex; flex-direction:row; justify-content:center; align-items:start">
-                                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">@item.CustomerIdFkNavigation.FullName().ToString()</a></h2>
+                                                    <h2 class="text-truncate font-size-40">@item.CustomerIdFkNavigation.FullName().ToString()</h2>
                                                     <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : <span class="fw-medium">@item.OrderName</span></h5>
                                                 </div>
                                                 <div style="display:flex; flex-direction:row; justify-content:center; align-items:start">
-                                                    <h2 class="text-truncate font-size-18"><a href="#" style="color:gray">@@@item.CustomerIdFkNavigation.Username</a></h2>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <h2 class="text-truncate font-size-18">@@@item.CustomerIdFkNavigation.Username</h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                     @if (item.Status == "Working")
                                                     {

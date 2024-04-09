@@ -77,6 +77,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=AdminManageSellers}/{action=SellerCRUD}/{id?}/{username?}");
+    pattern: "{controller=Customer}/{action=login}/{id?}/{username?}");
 
 app.Run();

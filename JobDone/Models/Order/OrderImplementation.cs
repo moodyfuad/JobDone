@@ -13,6 +13,11 @@ namespace JobDone.Models.Order
             _db = context;
             _orders = _db.OrderModels;
         }
+
+        public int GetCustomerIdFromOrder(int orderByCustomerId)
+        {
+            return _orders.FirstOrDefault(x => x.Id == orderByCustomerId).CustomerIdFk;
+        }
         
         public List<OrderModel>? GetCustomerOrders(int Id)
         {
