@@ -46,7 +46,7 @@ namespace JobDone.Models.Seller
         public bool UsernameExist(string username)
         {
             var sel = _seller.Where(s => s.Username == username);
-            if (sel != null)
+            if (sel.Count() != 0)
             {
                 return true;
             }
