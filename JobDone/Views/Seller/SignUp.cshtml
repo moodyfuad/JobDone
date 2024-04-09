@@ -1,6 +1,4 @@
-﻿@using Azure.Core
-@using System.IO
-<link rel="stylesheet" href="~/SignUp/css/style.css" />
+﻿<link rel="stylesheet" href="~/SignUp/css/style.css" />
 @model SignUpSellerViewModel
 
 <section class="container">
@@ -40,13 +38,15 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
             </div>
-            <div class="input-box">
-                <label>Birth Date</label>
-                <input asp-for="@Model.BirthDate" type="date" value="@DateTime.Now" required />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-
-            </div>
         </div>
+
+        <div class="input-box">
+            <label>Birth Date</label>
+            <input asp-for="@Model.BirthDate" type="date" value="2024-12-12" required />
+            <span asp-validation-for="BirthDate" class="text-danger"></span>
+
+        </div>
+
         <div class="gender-box">
             <h3>Gender</h3>
             <div class="gender-option">
@@ -80,7 +80,9 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 
             <label>Upload your ID</label>
-            <input asp-for="@Model.IdPicture" type="file" required />
+            <input asp-for="@Model.IdPictureAsFile" type="file" required />
+            <span asp-validation-for="IdPictureAsFile" asp class="text-danger"></span>
+
             <label>Choose your specialty</label>
             <div class="column">
 
@@ -180,7 +182,7 @@
         <br /><br />
         <input type="checkbox" name="name" value="" style="margin-left:32%;" required />Accept <a asp-controller="Seller" asp-action="PrivacyPolicy">Privacy Policy</a>
         <br /><br />
-        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
+        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="submit" />
    
     </form>
     
