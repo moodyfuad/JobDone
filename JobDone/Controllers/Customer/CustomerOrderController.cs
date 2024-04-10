@@ -50,7 +50,8 @@ namespace JobDone.Controllers.Customer
             List<OrderModel>? customerOrders = _orders.GetCustomerOrders(customerId);
             if (customerOrders.Count == 0 || customerOrders == null)
             {
-                return RedirectToAction("Home","Customer");
+                //return RedirectToAction("Home","Customer");
+                return View();
             }
             else
             {

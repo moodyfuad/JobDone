@@ -54,6 +54,7 @@ namespace JobDone.ViewModels
         public IFormFile? IdPictureAsFile { get; set; }
         public byte[]? ProfilePicture { get; set; } = null!;
         public IFormFile? profilePictureAsFile { get; set; }
+
         [StringLength(100)]
         [Required(ErrorMessage = "Please answer the security question")]
         public string SecurityQuestionAnswer { get; set; } = null!;

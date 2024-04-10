@@ -36,7 +36,7 @@ namespace JobDone.Controllers.Customer
         }
 
 
-        //[Authorize(Roles = TypesOfUsers.Customer)]
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult RequestWork()
         {
             RequestedWorkViewModel model = new RequestedWorkViewModel();
@@ -59,7 +59,7 @@ namespace JobDone.Controllers.Customer
             OrderByCustomerModel request = new OrderByCustomerModel()
             {
                 OrderName = model.OrderName,
-                OrderDate = model.OrderDate,
+                OrderDate = DateOnly.FromDateTime(DateTime.Now),
                 DeliverDate = model.DeliverDate,
                 CategoryIdKf = model.CategoryIdKf,
                 Description = model.Description,

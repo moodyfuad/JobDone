@@ -116,7 +116,7 @@ namespace JobDone.Models.SellerAcceptRequest
                             OrderDate = orderByCustomer.OrderDate,
                             OrderName = orderByCustomer.OrderName,
                             Price = orderByCustomer.Price,
-                            Status = "working",
+                            Status = "Working",
                             CategoryIdKfNavigation = category,
                         };
 

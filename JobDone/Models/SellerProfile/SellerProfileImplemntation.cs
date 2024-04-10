@@ -58,7 +58,7 @@ namespace JobDone.Models.SellerProfile
         }
         public bool IsWithdrawAmountbefore(int sellerID)
         {
-            var result = _withdrawModels.Where(x => x.SellerIdFk == sellerID).FirstOrDefault();
+            var result = _withdrawModels.Where(x => x.SellerIdFk == sellerID && x.Status == 0).FirstOrDefault();
             if (result == null)
                 return false;
             else return true;

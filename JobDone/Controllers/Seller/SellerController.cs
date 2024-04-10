@@ -134,22 +134,24 @@ namespace JobDone.Controllers.Seller
                     seller.SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk;
                     seller.SecurityQuestionAnswer = viewModel.SecurityQuestionAnswer;
                 }
-                for (int i = 0; i < serviecs.Length ; i++)
-                {
-                    ServiceModel service = new ServiceModel
-                    {
-                        Name = serviecs[i],
-                        Description = textarea[i],
-                        SellerIdFk = _servise.GetSellerID()
-                    };
-                    _servise.AddServies(service);
-                }
                 if (!_seller.UsernameExist(seller.Username))
                 {
                     _seller.SignUp(seller);
                     SignInSellerAuthCookie(seller).Wait();
                     SellerModel model = _seller.GetSellerById(seller.Id);
                     SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
+
+                    for (int i = 0; i < serviecs.Length ; i++)
+                    {
+                        ServiceModel service = new ServiceModel
+                        {
+                            Name = serviecs[i],
+                            Description = textarea[i],
+                            SellerIdFk = _servise.GetSellerID()
+                        };
+                        _servise.AddServies(service);
+                    }
+
                     return View("Home");
                 };
             }    
@@ -328,8 +330,6 @@ namespace JobDone.Controllers.Seller
             List<Claim> claims = new List<Claim>()
                 {
                     new Claim("username", model.Username),
-                    new Claim("WalletAmount", model.Wallet.ToString("0.00")),
-                    new Claim("ProfilePicture", Convert.ToBase64String(model.ProfilePicture)),
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
                     new Claim(ClaimTypes.Role, TypesOfUsers.Seller)
                 };
@@ -344,6 +344,21 @@ namespace JobDone.Controllers.Seller
             };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
+        }
+        [HttpGet]
+        public async Task<IActionResult> IsUsernameExist(string username)
+        {
+            bool IsExist = _seller.UsernameExist(username);
+            if (IsExist)
+            {
+                return Json($"Username @{username} Already Exist");
+            }
+            else if (username.Contains(" "))
+            {
+                return Json($"Username Can not contain spaces");
+            }
+
+            return Json(true);
         }
     }
 }
