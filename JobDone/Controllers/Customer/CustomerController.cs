@@ -174,8 +174,8 @@ namespace JobDone.Controllers.Customer
                     _customer.SignUp(customer).Wait();//
                     SignInCustomerAuthCookie(customer).Wait();//
                     CustomerModel model = _customer.GetCustomerById(customer.Id);
-                    SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
-                    return View("Home");
+                    SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture.ToArray(), HttpContext);
+                    return RedirectToAction("Home", "Customer");
                 }
             }
             /*TempData["exist"] = $"Username '@{viewModel.Username}' already exist";*/
