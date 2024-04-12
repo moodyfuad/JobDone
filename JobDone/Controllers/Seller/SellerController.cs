@@ -134,7 +134,7 @@ namespace JobDone.Controllers.Seller
                     seller.SecurityQuestionIdFk = viewModel.SecurityQuestionIdFk;
                     seller.SecurityQuestionAnswer = viewModel.SecurityQuestionAnswer;
                 }
-                if (_seller.UsernameExist(seller.Username))
+                if (!_seller.UsernameExist(seller.Username))
                 {
                     _seller.SignUp(seller);
                     SignInSellerAuthCookie(seller).Wait();

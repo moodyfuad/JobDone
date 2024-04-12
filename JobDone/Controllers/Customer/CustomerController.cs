@@ -178,7 +178,7 @@ namespace JobDone.Controllers.Customer
                     CustomerModel model = _customer.GetCustomerById(customer.Id);
                     SessionInfo.ClearSessionInfo(HttpContext);
                     SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
-                    return View("Home");
+                    return RedirectToAction("Home", "Customer");
                 }
             }
             /*TempData["exist"] = $"Username '@{viewModel.Username}' already exist";*/
@@ -242,7 +242,8 @@ namespace JobDone.Controllers.Customer
             List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),
-                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer)
+                    new Claim(ClaimTypes.Role, TypesOfUsers.Customer),
+                    new Claim("username", model.Username)
                     //
                     /*new Claim("username", model.Username),
                     new Claim(ClaimTypes.NameIdentifier, model.Id.ToString()),

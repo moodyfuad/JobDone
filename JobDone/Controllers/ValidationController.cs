@@ -43,9 +43,9 @@ namespace JobDone.Controllers
         }
         
         
-        public async Task<IActionResult> IsFutureDate(DateOnly date)
+        public async Task<IActionResult> IsFutureDate(DateOnly DeliverDate)
         {
-            if(date is DateOnly value)
+            if(DeliverDate is DateOnly value)
             {
                 if (value > DateOnly.FromDateTime(DateTime.Now))
                 {
@@ -58,7 +58,7 @@ namespace JobDone.Controllers
             }
             else
             {
-                return Json($"invalid input for date field {date.ToString()}");
+                return Json($"invalid input for date field {DeliverDate.ToString()}");
             }
         }
 

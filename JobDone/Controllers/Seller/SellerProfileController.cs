@@ -54,7 +54,7 @@ namespace JobDone.Controllers.Seller
                 WithdrawModel withdrawModel = new WithdrawModel
                 {
                     AmountOfMoney = Convert.ToDecimal(amuontOfMoney),
-                    Status = 1,
+                    Status = 0,
                     SellerIdFk = SellerID()
                 };
                 _sellerProfile.AddWithdrawMoney(withdrawModel);
