@@ -15,6 +15,7 @@ using System.Security.Claims;
 
 namespace JobDone.Controllers.Seller
 {
+    [Authorize(Roles = TypesOfUsers.Seller)]
     public class SellerOrderController : Controller
     {
         private readonly ISeller _seller;
@@ -108,6 +109,18 @@ namespace JobDone.Controllers.Seller
                 Messages = await _message.GetAllMessages()
             };
             return View(viewModel);
+        }
+
+        public IActionResult GetAllMessages(short customerId, short sellerId)
+        {
+            CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
+            viewModel.Customer = new CustomerModel();
+            viewModel.Seller = new SellerModel();
+            viewModel.Customer.Id = customerId;
+            viewModel.Seller = _seller.GetSellerById(sellerId);
+            viewModel.Messages = _context.MessageModels.ToList();
+
+            return PartialView("_SellerChatPartial", viewModel);
         }
     }
 }

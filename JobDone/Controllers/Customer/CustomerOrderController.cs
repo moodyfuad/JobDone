@@ -161,6 +161,19 @@ namespace JobDone.Controllers.Customer
             return RedirectToAction("Chat", new { customerId = customerId, sellerId = sellerId });
         }
 
+        [Authorize(Roles = TypesOfUsers.Customer)]
+        public IActionResult GetAllMessages(short customerId, short sellerId)
+        {
+            CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
+            viewModel.Customer = new CustomerModel();
+            viewModel.Seller = new SellerModel();
+            viewModel.Customer.Id = customerId;
+            viewModel.Seller = _seller.GetSellerById(sellerId);
+            viewModel.Messages = _context.MessageModels.ToList();
+
+            return PartialView("_CustomerChatPartial", viewModel);
+        }
+
         private IFormFile ConvertToImage(byte[] byteImage)
         {
             using (var memoryStream = new MemoryStream(byteImage))
