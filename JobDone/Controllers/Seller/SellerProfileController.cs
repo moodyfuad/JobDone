@@ -216,8 +216,8 @@ namespace JobDone.Controllers.Seller
         {
             var seller = _sellerProfile.GetSellerProfile(SellerID());
             service.SellerIdFk = seller.Id;
-            //var serviceInfo = _sellerProfile.GetServiceInfo(service);
-            //_context.ServiceModels.Remove(serviceInfo);
+            var serviceInfo = _sellerProfile.GetServiceInfo(service);
+            _context.ServiceModels.Remove(serviceInfo);
             _context.SaveChanges();
             return RedirectToAction("Profile", "SellerProfile");
         }
