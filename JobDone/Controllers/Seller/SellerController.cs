@@ -277,6 +277,7 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
         [HttpPost]
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public async Task<IActionResult> RequestedWrok(SellerViewModel viewModel, string search)
         {
             viewModel = new();
