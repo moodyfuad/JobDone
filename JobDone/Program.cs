@@ -39,7 +39,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         });
 
 builder.Services.AddSession();
-     
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(30);
+    options.Cookie.IsEssential = true;
+});
+
 //interface regestration
 builder.Services.AddTransient<IBanner, BannerImplementation>();
 builder.Services.AddTransient<IAdmin, AdminImplementation>();

@@ -100,14 +100,12 @@ namespace JobDone.Controllers.Customer
         {
             ClaimsPrincipal claims = HttpContext.User;
 
-            if (claims.Identity.IsAuthenticated)
+            if (claims.Identity.IsAuthenticated && claims.FindFirstValue(ClaimTypes.Role) == TypesOfUsers.Customer)
             {
                 string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
                 string username = customer.Username;
                 string walletAmount = customer.Wallet.ToString();
-
-                SessionInfo.ClearSessionInfo(HttpContext);
                 SessionInfo.UpdateSessionInfo(username, walletAmount, customer.ProfilePicture, HttpContext);
                 SignInCustomerAuthCookie(customer);
                 return RedirectToAction("Home", "Customer");
