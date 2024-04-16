@@ -152,7 +152,7 @@ namespace JobDone.Controllers.Seller
                         _servise.AddServies(service);
                     }
 
-                    return View("Home");
+                    return RedirectToAction("Home");
                 };
             }    
             
