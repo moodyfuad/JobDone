@@ -229,6 +229,11 @@ namespace JobDone.Controllers.Seller
             IEnumerable<BannerModel> listOfBanners = await _banners.GetAllSellerBanners();
             viewModel.banners = listOfBanners;
 
+
+            SellerModel seller = _seller.GetSellerById(SellerID());
+
+            SessionInfo.UpdateSessionInfo(seller.Username, seller.Wallet.ToString(), seller.ProfilePicture, HttpContext);
+
             return View(viewModel);
         }
 
@@ -278,6 +283,7 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
         [HttpPost]
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public async Task<IActionResult> RequestedWrok(SellerViewModel viewModel, string search)
         {
             viewModel = new();
