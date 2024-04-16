@@ -198,6 +198,9 @@ namespace JobDone.Controllers.Customer
                 Services = listOfServices,
                 Bans = listOfBanners
             };
+            string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            CustomerModel customer = _customer.getAllInfo(Convert.ToInt16(customerId));
+            SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
 
             return View(viewModel);
         }

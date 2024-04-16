@@ -228,6 +228,11 @@ namespace JobDone.Controllers.Seller
             IEnumerable<BannerModel> listOfBanners = await _banners.GetAllSellerBanners();
             viewModel.banners = listOfBanners;
 
+
+            SellerModel seller = _seller.GetSellerById(SellerID());
+
+            SessionInfo.UpdateSessionInfo(seller.Username, seller.Wallet.ToString(), seller.ProfilePicture, HttpContext);
+
             return View(viewModel);
         }
 
