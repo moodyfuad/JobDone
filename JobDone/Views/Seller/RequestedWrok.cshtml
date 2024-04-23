@@ -55,7 +55,12 @@
                                         <p>  delivery date :@item.DeliverDate </p>
 
                                         <form action="AcceptRequestedWrok" method="post">
-                                            <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2)  <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button></p>
+                                            <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2) 
+                                                <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button>
+                                                <form action="/" method="post">
+                                                    <button type="submit" class="btn " style="float:right; background-color: lightgray">Massege</button>
+                                                </form>
+                                            </p>
                                         </form>
 
                                     </div>
