@@ -14,9 +14,9 @@
     <div class="chat" style="width: 100%">
         <div class="contact bar" style="margin-left: -40px; margin-top:30px;">
             <a href="/SellerOrder/Messages" style="margin-left:-10px;"><i class="fas fa-arrow-left"></i></a>
-            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Seller.ProfilePicture)" alt="Admin" class="rounded-circle" width="60">
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Customer.ProfilePicture)" alt="Admin" class="rounded-circle" width="60">
             @{
-                string FullName = Model.Seller.FirstName + " " + Model.Seller.LastName;
+                string FullName = Model.Customer.FirstName + " " + Model.Customer.LastName;
             }
             <div class="name" style="margin-top:10px; margin-left:-10px; margin-bottom:10px;">
                 @FullName

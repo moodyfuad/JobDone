@@ -111,13 +111,14 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
 
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult GetAllMessages(short customerId, short sellerId)
         {
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
             viewModel.Customer = new CustomerModel();
             viewModel.Seller = new SellerModel();
-            viewModel.Customer.Id = customerId;
-            viewModel.Seller = _seller.GetSellerById(sellerId);
+            viewModel.Customer = _customer.GetCustomerById(customerId);
+            viewModel.Seller.Id = sellerId;
             viewModel.Messages = _context.MessageModels.ToList();
 
             return PartialView("_SellerChatPartial", viewModel);

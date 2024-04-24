@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="/CustomerChat/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-@{
-    string base64Image = Convert.ToBase64String(Model.Seller.ProfilePicture);
-}
 <body>
     <div class="chat" id="chatContainer" style="width: 100%;">
         @Html.Partial("_SellerChatPartial", Model)
@@ -33,7 +30,6 @@
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./script.js"></script>
     <script>
         // Function to save the current scroll position of the 'chat' div
         function saveScrollPosition() {
