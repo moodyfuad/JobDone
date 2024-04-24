@@ -192,7 +192,6 @@ namespace JobDone.Controllers.Customer
                     return RedirectToAction("Home", "Customer");
                 }
             }
-            /*TempData["exist"] = $"Username '@{viewModel.Username}' already exist";*/
             return View(viewModel);
         }
 
