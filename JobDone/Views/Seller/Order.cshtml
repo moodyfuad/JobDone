@@ -147,7 +147,9 @@
                                                     <pre> </pre>
                                                     @if (item.Status == "Working")
                                                     {
+                                                        <form action="Complet" method="post">
                                                         <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="orderID" value="@item.Id">Complete</button>
+                                                        </form>
                                                     }
                                                     else if (item.Status == "SellerCompleted")
                                                     {
@@ -155,7 +157,9 @@
                                                     }
                                                     else if (item.Status == "Done")
                                                     {
+                                                        <form action="DeleteOrder" method="post">
                                                         <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: red" name="orderID" value="@item.Id">Delete</button>
+                                                        </form>
                                                     }
                                                 </div>
 

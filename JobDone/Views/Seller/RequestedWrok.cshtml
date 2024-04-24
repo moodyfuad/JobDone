@@ -54,14 +54,18 @@
                                         <span>Order Date : @item.OrderDate</span>
                                         <p>  delivery date :@item.DeliverDate </p>
 
-                                        <form action="AcceptRequestedWrok" method="post">
-                                            <p style="color:green; font-size: 18px;">$@Math.Round(item.Price, 2) 
+                                        <p style="color:green; font-size: 18px;">
+                                            <form action="AcceptRequestedWrok" method="post">$@Math.Round(item.Price, 2)
                                                 <button type="submit" class="btn btn-primary" style="float: right" name="Accept" value="@item.Id">Accept</button>
-                                                <form action="/" method="post">
-                                                    <button type="submit" class="btn " style="float:right; background-color: lightgray">Massege</button>
-                                                </form>
-                                            </p>
-                                        </form>
+                                            </form>
+                                                
+                                            <form asp-controller="SellerOrder" asp-action="Chat" method="get" style="display:contents">
+                                                <input type="hidden" name="customerId" value="@item.CustomerIdFk" />
+                                                <input type="hidden" name="sellerId" value="@ViewBag.sellerId" />
+                                                <button type="submit" class="btn " style="float:right; background-color: lightgray">Massege </button>
+                                            </form>   
+                                        </p>
+                                        
 
                                     </div>
                                 </div>
