@@ -137,44 +137,27 @@
                                                 </div>
                                               
                                                 <h5 class="mb-0 mt-1">Order description : <h6 class="fw-medium">@item.Description</h6></h5>
-                                                @if (item.Status == "Working")
-                                                {
-                                                    <form action="Complet" method="post">
-                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
-                                                            <form action="/" method="post">
-                                                                <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
-                                                            </form>
-                                                            <pre> </pre>
-                                                            <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="orderID" value="@item.Id">Complet</button>
-                                                        </div>
+
+                                                <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
+                                                    <form asp-controller="SellerOrder" asp-action="Chat" method="get" style="display:contents">
+                                                        <input type="hidden" name="customerId" value="@item.CustomerIdFk" />
+                                                        <input type="hidden" name="sellerId" value="@item.SellerIdFk" />
+                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">message</button>
                                                     </form>
-                                                    
-                                                        
-                                                    
-                                                }
-                                                @if (item.Status == "SellerCompleted")
-                                                {
-                                                    <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
-                                                        <form action="/" method="post">
-                                                            <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
-                                                        </form>
-                                                        <pre> </pre>
-                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: gray" name="Complet" value="" disabled>Complet</button>
-                                                    </div>
-                                                }
-                                                @if (item.Status == "Done")
-                                                {
-                                                    <form action="DeleteOrder" method="post">
-                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
-                                                            <form action="/" method="post">
-                                                                <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
-                                                            </form>
-                                                            <pre> </pre>
-                                                            <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: red" name="orderID" value="@item.Id">Delete</button>
-                                                        </div>
-                                                    </form>
-                                                }
-                                                
+                                                    <pre> </pre>
+                                                    @if (item.Status == "Working")
+                                                    {
+                                                        <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="orderID" value="@item.Id">Complete</button>
+                                                    }
+                                                    else if (item.Status == "SellerCompleted")
+                                                    {
+                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: gray" name="Complet" value="" disabled>Complete</button>
+                                                    }
+                                                    else if (item.Status == "Done")
+                                                    {
+                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: red" name="orderID" value="@item.Id">Delete</button>
+                                                    }
+                                                </div>
 
                                             </div>
                                         </div>
