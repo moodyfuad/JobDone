@@ -140,21 +140,36 @@
                                                 @if (item.Status == "Working")
                                                 {
                                                     <form action="Complet" method="post">
-                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
+                                                            <form action="/" method="post">
+                                                                <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
+                                                            </form>
+                                                            <pre> </pre>
                                                             <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" name="orderID" value="@item.Id">Complet</button>
                                                         </div>
                                                     </form>
+                                                    
+                                                        
+                                                    
                                                 }
                                                 @if (item.Status == "SellerCompleted")
                                                 {
-                                                    <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                    <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
+                                                        <form action="/" method="post">
+                                                            <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
+                                                        </form>
+                                                        <pre> </pre>
                                                         <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: gray" name="Complet" value="" disabled>Complet</button>
                                                     </div>
                                                 }
                                                 @if (item.Status == "Done")
                                                 {
                                                     <form action="DeleteOrder" method="post">
-                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start">
+                                                        <div style="display:flex; flex-direction:row; justify-content:right; align-items:start; padding:5px">
+                                                            <form action="/" method="post">
+                                                                <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray">messge</button>
+                                                            </form>
+                                                            <pre> </pre>
                                                             <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: red" name="orderID" value="@item.Id">Delete</button>
                                                         </div>
                                                     </form>

@@ -152,7 +152,7 @@ namespace JobDone.Controllers.Seller
                         _servise.AddServies(service);
                     }
 
-                    return View("Home");
+                    return RedirectToAction("Home");
                 };
             }    
             
@@ -163,8 +163,9 @@ namespace JobDone.Controllers.Seller
         public IActionResult Login()
         {
             // Check if the user is logged in
+
             ClaimsPrincipal claimuser = HttpContext.User;
-            if (claimuser.Identity.IsAuthenticated)
+            if (claimuser.Identity.IsAuthenticated && claimuser.FindFirstValue(ClaimTypes.Role) == TypesOfUsers.Seller)
             {
                 string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
@@ -175,7 +176,7 @@ namespace JobDone.Controllers.Seller
                 SignInSellerAuthCookie(seller);
                 RedirectToAction("Home", "Seller");
             }
-
+            //SessionInfo.ClearSessionInfo(HttpContext);
             return View();
         }
 
