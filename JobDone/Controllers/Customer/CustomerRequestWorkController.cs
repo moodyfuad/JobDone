@@ -67,12 +67,13 @@ namespace JobDone.Controllers.Customer
                 CustomerIdFk = customerId
             };
             _orderByCustomer.PostRequest(request);
+            TempData["posted"] = "Your Request is posted successfully";
             return RedirectToAction("Home","Customer");
         }
         
 
 
-        //[Authorize(Roles = TypesOfUsers.Customer)]
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> RequestedList()
         {
             List<RequestListViewModel> ViewModel = new List<RequestListViewModel>();

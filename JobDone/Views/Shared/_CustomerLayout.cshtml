@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/JobDone.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...your-integrity-hash-here..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-...your-integrity-hash-here..." crossorigin="anonymous" />
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
@@ -71,7 +72,8 @@
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" onclick="toggleWalletAmount()" />
                 <span id="walletAmount" style="color:white; margin-left:10px;">
-                    @Math.Round(decimal.Parse(WalletAmount), 2)
+                    @(Math.Round(decimal.Parse(WalletAmount), 2) + " $")
+                    
                 </span>
 
                 <script>
@@ -79,7 +81,7 @@
 
                     function toggleWalletAmount() {
                         if (walletAmountElement.innerHTML === "****") {
-                            walletAmountElement.innerHTML = @Math.Round(decimal.Parse(WalletAmount), 2);
+                            walletAmountElement.innerHTML = @Math.Round(decimal.Parse(WalletAmount), 2) + " $";
                         } else {
                             walletAmountElement.innerHTML = "****";
                         }
@@ -100,6 +102,7 @@
 
     <div class="container-fluid" style="margin-top:29px;">
         <main role="main" class="pb-3">
+            <partial name="_Notification" />
             @RenderBody()
         </main>
     </div>
