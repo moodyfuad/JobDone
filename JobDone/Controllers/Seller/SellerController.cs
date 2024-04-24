@@ -112,10 +112,16 @@ namespace JobDone.Controllers.Seller
         {
             viewModel.SecurityQuestions = _questions.GetQuestions();
             viewModel.categories = _category.GetCategories();
-
             viewModel.ProfilePicture = _seller.ConvertToByte(viewModel.profilePictureAsFile);
             viewModel.IdPicture = _seller.ConvertToByte(viewModel.IdPictureAsFile);
 
+            string? extension = Path.GetExtension(viewModel.profilePictureAsFile.FileName);
+            string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+            if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+            {
+                ViewBag.imageError = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+                return View(viewModel);
+            }
             if (ModelState.IsValid)
             {
                 SellerModel seller = new SellerModel();

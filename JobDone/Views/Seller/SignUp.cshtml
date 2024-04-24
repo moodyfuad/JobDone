@@ -158,6 +158,10 @@
             <label>Upload your Photo</label>
             <input asp-for="@Model.profilePictureAsFile" type="file" required />
             <span asp-validation-for="profilePictureAsFile" asp class="text-danger"></span>
+            @if (ViewBag.imageError != null)
+            {
+                <span class="text-danger">@ViewBag.imageError</span>
+            }
 
             <br />
 

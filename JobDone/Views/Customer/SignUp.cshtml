@@ -88,11 +88,19 @@
                     <div class="select-box">
                         <select asp-for="@Model.SecurityQuestionIdFk">
                             <option hidden value=0>Security question</option>
-
-                            @foreach (var q in Model.SecurityQuestions)
-                            {
-                                <option value="@q.Id">@q.SecurityQuestion</option>
+                            @{
+                                
+                                try{
+                                    foreach (var q in Model.SecurityQuestions)
+                                    {
+                                        <option value="@q.Id">@q.SecurityQuestion</option>
+                                    }
+                                }
+                                catch{
+                                    
+                                }
                             }
+                            
                         </select>
                     </div>
                     <span asp-validation-for="SecurityQuestionIdFk" class="text-danger"></span>
@@ -108,7 +116,11 @@
             <br />
             <div class="custom-border bxs-file-image">
                     <label class="custome-file-label">Profile Image</label>
-                    <input class="form-control bi-file" asp-for="@Model.profilePictureAsFile"/>
+                <input class="form-control bi-file" accept="image/*" asp-for="@Model.profilePictureAsFile" />
+                @if(ViewBag.imageError != null)
+                {
+                    <span class="text-danger" >@ViewBag.imageError</span>
+                }
             </div>
         </div>
         <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
