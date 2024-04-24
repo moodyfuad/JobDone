@@ -148,9 +148,22 @@ namespace JobDone.Controllers.Customer
         [HttpPost]
         public async Task <IActionResult> SignUp(SignUpCustomerViewModel viewModel)
         {
+            
+            if(viewModel.profilePictureAsFile != null)
+            viewModel.SecurityQuestions = _questions.GetQuestions();
+            {
+                string? extension = Path.GetExtension(viewModel.profilePictureAsFile.FileName);
+                string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                {
+
+                    ViewBag.imageError = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+                    return View(viewModel);
+                }
+
+            }
             viewModel.ProfilePicture = _customer.ConvertToByteArray(viewModel.profilePictureAsFile);
             
-            viewModel.SecurityQuestions = _questions.GetQuestions();
 
             if (ModelState.IsValid)
             {
