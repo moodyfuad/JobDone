@@ -77,13 +77,13 @@ namespace JobDone.Controllers.Seller
             return View();
         }
         [HttpPost]
-        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        public IActionResult ChangePassword(ForgotPasswordViewModel viweModel)
         {
-            if (passWord == conformPassWord)
+            if (viweModel.Password == viweModel.ConfirmPassword)
             {
                 string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(sellerId), passWord);
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(sellerId), viweModel.Password);
 
                 SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
                 string username = seller.Username;

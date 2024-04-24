@@ -76,13 +76,13 @@ namespace JobDone.Controllers.Customer
             return View();
         }
         [HttpPost]
-        public IActionResult ChangePassword(string passWord, string conformPassWord)
+        public IActionResult ChangePassword(ForgotPasswordViewModel viewModel)
         {
-            if(passWord == conformPassWord)
+            if(viewModel.Password == viewModel.ConfirmPassword)
             {
                 string customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(customerId), passWord);
+                _forgetAndChanePassword.ChangeToNawPassword(Convert.ToInt16(customerId), viewModel.Password);
 
                 CustomerModel customer = _customer.GetCustomerById(Convert.ToInt16(customerId));
                 string username = customer.Username;
