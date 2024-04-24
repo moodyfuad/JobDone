@@ -34,6 +34,8 @@
                 }
                 @foreach (var item in Model.orderByCustomerModels)
                 {
+                    if((item.DeliverDate) > DateOnly.FromDateTime(DateTime.Now.AddDays(1)))
+                    {
                         if(!ids.Contains(item.Id))
                         {
                             <div class="col-md-4" style="width:25%;">
@@ -70,7 +72,10 @@
                                     </div>
                                 </div>
                             </div>
-                        }   
+                        }
+                
+                    }
+               
                 }         
         </div>
     </div>
