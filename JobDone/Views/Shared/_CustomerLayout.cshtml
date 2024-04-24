@@ -71,7 +71,7 @@
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" onclick="toggleWalletAmount()" />
                 <span id="walletAmount" style="color:white; margin-left:10px;">
-                    @WalletAmount
+                    @Math.Round(decimal.Parse(WalletAmount), 2)
                 </span>
 
                 <script>
@@ -79,7 +79,7 @@
 
                     function toggleWalletAmount() {
                         if (walletAmountElement.innerHTML === "****") {
-                            walletAmountElement.innerHTML = "@WalletAmount";
+                            walletAmountElement.innerHTML = @Math.Round(decimal.Parse(WalletAmount), 2);
                         } else {
                             walletAmountElement.innerHTML = "****";
                         }
