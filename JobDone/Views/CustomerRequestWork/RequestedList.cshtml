@@ -37,7 +37,7 @@
 
 .product-card-title {
     display: block;
-    margin-bottom: .75rem;
+    margin-bottom: .20rem;
     padding-bottom: .875rem;
     border-bottom: 1px dashed #e2e2e2;
     font-size: 1rem;
@@ -175,20 +175,25 @@ width: 1.1em;
                                         <div class="d-sm-flex justify-content-between" style="margin-right:50px;margin-left:15px;height:87px;">
 
                                         <div class="media d-block d-sm-flex text-center text-sm-left">
-                                            <a class="cart-item-thumb mx-auto mr-sm-4" href="#">
-                                                        <img style="width:70px;" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Product">
+                                                            <a class="cart-item-thumb mx-auto mr-sm-4" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
+                                                        <img style="width:70px;" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Profile picture">
                                                     </a>
                                                     <div class="media-body pt-3" style="padding-top: 0rem !important;margin-left:10px;">
-                                                <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
-                                                <div class="font-size-sm"><span class="text-muted mr-2">Services
-                                                </span>@string.Join(", ",(seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser=> ser.Name).ToList()))</div>
-                                                
-                                                <div class="rating" style="margin-right:130px; white-space:nowrap; text-align:left">
-                                                    @for(int i=0;i < seller.Rate; i++)
-                                                    {
-                                                        <span style="color:gold; display:inline-block">&#9733;</span>
+                                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
+                                                    <a style="color:black; text-decoration:none" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
+                                                       <h3 class="product-card-title font-weight-semibold border-0 pb-0 ">
+                                                                        @@@seller.Username
+                                                       </h3>
+                                                    </a>
+                                                <div class="font-size-sm">
+                                                <span class="text-muted mr-2">Services:
+                                                </span>
+                                                @string.Join(", ",(seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser=> ser.Name).ToList()))
+                                                    <div >
+                                                        <span>@seller.Rate</span>
+                                                        <span>&#9733;</span>
 
-                                                    }
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

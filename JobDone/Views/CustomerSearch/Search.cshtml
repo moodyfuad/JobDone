@@ -49,19 +49,10 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">@Seller.Username</h5>
-                                    <div class="rating">
-                                        @{
-                                            short count = 0;
-                                        }
-                                        @for (short i = 0; i < Seller.Rate; i++)
-                                        {
-                                            count++;
-                                            <span class="star" style="color:gold">&#9733;</span>
-                                        }
-                                        @for (short i = 0; i < 5 - count; i++)
-                                        {
-                                            <span class="star" style="color:gold">&#9734;</span>
-                                        }
+                                    <div class="">
+                                        <span>@Seller.Rate</span>
+                                        <span>&#9733;</span>
+
                                     </div>
                                     @{
                                         List<string> services = Model.Services.Where(x => x.SellerIdFk == Seller.Id).Select(x => x.Name).ToList();
@@ -109,20 +100,11 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">@Seller.Username</h5>
-                                <div class="rating">
-                                    @{
-                                        short count = 0;
-                                    }
-                                    @for (short i = 0; i < Seller.Rate; i++)
-                                    {
-                                        count++;
-                                    <span class="star" style="color:gold">&#9733;</span>
-                                    }
-                                    @for (short i = 0; i < 5 - count; i++)
-                                    {
-                                    <span class="star" style="color:gold">&#9734;</span>
-                                    }
-                                </div>
+                            <div class="rating">
+                                <span>@Seller.Rate</span>
+                                <span>&#9733;</span>
+
+                            </div>
                                 @{
                                     List<string> services = Model.Services.Where(x => x.SellerIdFk == Seller.Id).Select(x => x.Name).ToList();
                                 }

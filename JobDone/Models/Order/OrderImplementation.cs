@@ -1,5 +1,6 @@
 ﻿using JobDone.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace JobDone.Models.Order
 {
@@ -22,7 +23,11 @@ namespace JobDone.Models.Order
         public List<OrderModel>? GetCustomerOrders(int Id)
         {
             List<OrderModel>? orders = _orders.Where(o => o.CustomerIdFk == Id).ToList() ?? null;
-            
+            if (orders != null)
+            {
+                orders = orders.OrderByDescending(o => o.Status == "SellerCompleted").
+                    ThenBy(o => o.Status == "Done").ToList();
+            }
             return orders;
         }
         public async Task<OrderModel> ChangeStatusToDone(int Id)
