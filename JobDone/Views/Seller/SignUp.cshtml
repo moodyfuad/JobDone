@@ -82,6 +82,10 @@
             <label>Upload your ID</label>
             <input asp-for="@Model.IdPictureAsFile" type="file" required />
             <span asp-validation-for="IdPictureAsFile" asp class="text-danger"></span>
+            @if (ViewBag.imageError != null)
+            {
+                <span class="text-danger">@ViewBag.imageError</span>
+            }
 
             <label>Choose your specialty</label>
             <div class="column">
