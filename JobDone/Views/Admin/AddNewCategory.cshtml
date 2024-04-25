@@ -1,8 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<CategoryModel>
+
 <br />
 <br />
 
@@ -74,56 +71,45 @@
 </style>
 
 
-<h2>enter New catogrie</h2>
-<input id="typehere" style=" width:50%; padding:3px; margin-bottom:8px;radius:1px" value="" placeholder="type here">
-<br />
-    <button class="my-button">Add</button>
+<h2>Enter New categorie</h2>
+<form asp-controller="AdminModifyCategory" asp-action="AddNewCategory" method="post">
+    <input id="typehere" style=" width:50%; padding:3px; margin-bottom:8px;radius:1px" value="" name="categorieName" placeholder="type here">
+    <br />
+    <button type="submit" class="my-button">Add</button>
+</form>
+@if (ViewBag.CategoryName != null)
+{
+    <span style="color:red">
+        @ViewBag.CategoryName
+    </span>
+}
     <br /><br />
     <hr />
-<div class="d-sm-flex justify-content-between">
-                            
-    
-                            <div class="media d-block d-sm-flex text-center text-sm-left">
-                                <div class="media-body">
-                                    <br /><br />
-                                    <h1 class="font-size-sm">Programmer</h1>
-                                   
-                                </div>
-                            </div>
 
-                            <div>
-                                <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
-                                    Add
-                                </button>
-                                <button type="button" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
-                                    Delete
-                                </button>
-                                
-                            </div>
-</div>
-<hr />
+@foreach(var category in Model)
+{
+    <hr />
+    <div class="d-sm-flex justify-content-between">
+        <div class="media d-block d-sm-flex text-center text-sm-left">
+            <div class="media-body">
+                <br /><br />
+                <h1 class="font-size-sm">@category.Name</h1>
 
-<div class="d-sm-flex justify-content-between">
-
-
-    <div class="media d-block d-sm-flex text-center text-sm-left">
-        <div class="media-body">
-            <br /><br />
-            <h1 class="font-size-sm">Deigner</h1>
-
+            </div>
+        </div>
+        <div>
+            <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
+                Add
+            </button>
+            <form asp-controller="AdminModifyCategory" asp-action="DeleteCategory" method="post">
+                <input value="@category.Id" name="id" hidden />
+                <button type="submit" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
+                    Delete
+                </button>
+            </form>
         </div>
     </div>
-
-    <div>
-        <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
-            Add
-        </button>
-        <button type="button" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
-            Delete
-        </button>
-
-    </div>
-</div>
-<hr />
+    <hr />
+}
 
 
