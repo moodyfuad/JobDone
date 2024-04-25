@@ -135,17 +135,45 @@
                                                     </h2>
                                                     <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : 
                                                         <span class="fw-medium">@order.ProjectName</span> <br />
-                                                        
                                                     </h5>
+                                                   
                                                 </div>
-                                                <h2 class="text-truncate font-size-18"><a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" style="color:gray">@@@order.SellerName</a></h2>
-                                                <div>
-                                                    <span>@order.Rate</span>
-                                                    <span>&#9733;</span>
+                                               <div style="display:flex;justify-content:space-between">
+                                                    <div style="display:inline-block;">
+                                                        <h2 class="text-truncate font-size-18"><a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" style="color:gray">@@@order.SellerName</a></h2>
+                                                        <div>
+                                                            <span>@order.Rate</span>
+                                                            <span>&#9733;</span>
 
-                                                </div>
-                                                <h5 class="mb-0 mt-1">Order description : <h6  class="fw-medium">@order.OrderDescription</h6></h5>
-                                                <br />
+                                                        </div>
+                                                        <h5 class="mb-0 mt-1">Order description : <h6 class="fw-medium" style="font-size:small">@order.OrderDescription</h6></h5>
+                                                        <br />
+                                                    </div>
+                                                    @{
+                                                        <div style="display:inline-block;color:green;text-align:center;justify-content:flex-start">
+                                                            @if (order.OrderStatus == "SellerCompleted")
+                                                            {
+                                                                <h6>Your order is completed.</h6>
+                                                                <h6>Please Press 'Complete' to Agree,</h6>
+                                                                <h6>to Agree, that the order is</h6>
+                                                                <h6> Completed Successfully</h6>
+
+                                                            }
+                                                            else if (order.OrderStatus == "Working")
+                                                            {
+                                                                <h6>The service Provider is.</h6>
+                                                                <h6>working in your order ,</h6>
+                                                                <h6>Please wait</h6>
+                                                            }
+                                                            else
+                                                            {
+                                                                <h6>Your order is Done.</h6>
+                                                                <h6>With JobDone!</h6>
+                                                            }
+                                                        </div>
+                                                    }
+                                               
+                                               </div>
                                                 @{
                                                     if (order.OrderStatus == "SellerCompleted")
                                                     {
@@ -163,6 +191,7 @@
                                                     }
 
                                                     <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents;">
+                                                       
                                                         <input type="hidden" name="sellerId" value="@order.SellerId" />
                                                         <input type="hidden" name="customerId" value="@order.CustomerId" />
                                                         <button type="submit" class="get-started-btn" style="float:right;margin-right:12px">message</button>
@@ -212,8 +241,8 @@
                     
                 </div>
             </div>
-            <div class="col-xl-4">
-                <div class="mt-5 mt-lg-0">
+            <div class="col-xl-4" >
+                <div class="mt-5 mt-lg-0" style="position:sticky;top:100px">
                     <div class="card border shadow-none">
                         <div class="card-header bg-transparent border-bottom py-3 px-4">
                             <h5 class="font-size-16 mb-0">Order Summary </h5>

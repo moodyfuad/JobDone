@@ -1,6 +1,7 @@
 ﻿using JobDone.Data;
 using JobDone.Models.Admin;
 using JobDone.Models.Banners;
+using JobDone.Models.Category;
 using JobDone.Models.Customer;
 using JobDone.Roles;
 using JobDone.ViewModels;
@@ -19,11 +20,13 @@ namespace JobDone.Controllers.Admin
     {
         private readonly IAdmin _admin;
         private readonly IBanner _banner;
+        private readonly ICategory _category;
 
-        public AdminController(IAdmin admin, IBanner banner) 
+        public AdminController(IAdmin admin, IBanner banner, ICategory category) 
         {
             _admin = admin;
             _banner = banner;
+            _category = category;
         }
 
 
@@ -91,7 +94,10 @@ namespace JobDone.Controllers.Admin
         
         public IActionResult AddNewCategory()
         {
-            return View();
+            string categoryName = TempData["CategoryName"] as string;
+            ViewBag.CategoryName = categoryName;
+            List<CategoryModel> categories = _category.GetCategories();   
+            return View(categories);
         }
 
         [HttpPost]

@@ -7,9 +7,11 @@ namespace JobDone.Models.Category
     public class CatgegoryImplementation : ICategory
     {
         private readonly DbSet<CategoryModel> _category;
+        private readonly JobDoneContext _context;
 
         public CatgegoryImplementation(JobDoneContext context)
         {
+            _context = context;
             _category = context.CategoryModels;
         }
 
@@ -28,6 +30,26 @@ namespace JobDone.Models.Category
                 (c => c.Id == categoryId);
 
             return category;
+        }
+
+        public void AddNewCategory(string CategoryName)
+        {
+            CategoryModel category = new CategoryModel() 
+            {
+                Name = CategoryName,
+            };
+            _category.Add(category);
+            _context.SaveChanges();
+        }
+
+        public void DeleteCategory(short CategoryId)
+        {
+            CategoryModel category = new CategoryModel()
+            {
+                Id = CategoryId,
+            };
+            _category.Remove(category);
+            _context.SaveChanges();
         }
     }
 }
