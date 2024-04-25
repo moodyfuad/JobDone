@@ -114,10 +114,11 @@ namespace JobDone.Controllers.Seller
             viewModel.categories = _category.GetCategories();
             viewModel.ProfilePicture = _seller.ConvertToByte(viewModel.profilePictureAsFile);
             viewModel.IdPicture = _seller.ConvertToByte(viewModel.IdPictureAsFile);
-
-            string? extension = Path.GetExtension(viewModel.profilePictureAsFile.FileName);
+            string? ProfileExtension = Path.GetExtension(viewModel.profilePictureAsFile.FileName);
+            string? IdExtension = Path.GetExtension(viewModel.IdPictureAsFile.FileName);
             string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
-            if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+            if (!imageExtensions.Contains(ProfileExtension, StringComparer.OrdinalIgnoreCase) &&
+                !imageExtensions.Contains(IdExtension, StringComparer.OrdinalIgnoreCase))
             {
                 ViewBag.imageError = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
                 return View(viewModel);
