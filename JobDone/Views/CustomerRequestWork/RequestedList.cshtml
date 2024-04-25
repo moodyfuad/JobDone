@@ -180,9 +180,10 @@ width: 1.1em;
                                 <div class="media-body">
 
                                         <h2 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Project name :</span>@item.orderByCustomer.OrderName</h2>
-                                        <h4 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h4>
-                                        <h4 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Description :</span>@item.orderByCustomer.Description</h4>
-                                        <h4 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h4>
+                                        <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h5>
+                                        <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Description :</span></h5>
+                                        <h5 class="font-size-sm" style="margin:10px;">@item.orderByCustomer.Description</h5>
+                                        <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h5>
 
                                 </div>
                             </div>
