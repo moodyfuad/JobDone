@@ -90,16 +90,22 @@ namespace JobDone.Controllers.Seller
             {
                 if (_sellerProfile.UsernameExist(vmSeller.Username))
                 {
-                    ModelState.AddModelError("Username", "\nThis username is Exists.");
+                    ModelState.AddModelError("sellerModels.Username", "\nThis username is Exists.");
                     return View("Profile", viewModel);
                 }
+            }
+
+            if (vmSeller.Password != seller.Password)
+            {
+                ModelState.AddModelError("sellerModels.Password", "\nIncorrect Password");
+                return View("Profile", viewModel);
             }
 
             else if (NewPassword != null)
             {
                 if (vmSeller.Password != seller.Password || NewPassword.Length < 9)
                 {
-                    ModelState.AddModelError("Password", "\nYou may have incorrect old password or the new password must be more than 8 digit, try again.");
+                    ModelState.AddModelError("sellerModels.Password", "\nYou may have incorrect old password or the new password must be more than 8 digit, try again.");
                     return View("Profile", viewModel);
                 }
                 else
@@ -110,25 +116,25 @@ namespace JobDone.Controllers.Seller
 
             if (string.IsNullOrEmpty(vmSeller.PhoneNumber) || vmSeller.PhoneNumber.Length < 9 || !vmSeller.PhoneNumber.All(char.IsDigit))
             {
-                ModelState.AddModelError("PhoneNumber", "Phone number must be at least 9 digits long and contain only numbers.");
+                ModelState.AddModelError("sellerModels.PhoneNumber", "Phone number must be at least 9 digits long and contain only numbers.");
                 return View("Profile", viewModel);
             }
 
             if (!IsValidEmail(vmSeller.Email))
             {
-                ModelState.AddModelError("Email", "Invalid email format. Please enter a valid email address.");
+                ModelState.AddModelError("sellerModels.Email", "Invalid email format, Please enter a valid email address.");
                 return View("Profile", viewModel);
             }
 
-            if (vmSeller.FirstName.Length < 0)
+            if (string.IsNullOrEmpty(vmSeller.FirstName))
             {
-                ModelState.AddModelError("FirstName", "\nEnter your First Name.");
+                ModelState.AddModelError("sellerModels.FirstName", "\nEnter your First Name.");
                 return View("Profile", viewModel);
             }
 
-            if (vmSeller.LastName.Length < 0)
+            if (string.IsNullOrEmpty(vmSeller.LastName))
             {
-                ModelState.AddModelError("LastName", "\nEnter your Last Name.");
+                ModelState.AddModelError("sellerModels.LastName", "\nEnter your Last Name.");
                 return View("Profile", viewModel);
             }
 
