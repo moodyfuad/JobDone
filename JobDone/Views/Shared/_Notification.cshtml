@@ -52,7 +52,7 @@
             "hideMethod": "fadeOut",
             "toastClass": 'custom-toast-height',
             onclick: function AddLike(sellerUsername) {
-                sellerUsername = @TempData["username"];
+                sellerUsername = "@TempData["username"].ToString()";
                 $.ajax(
                     {
                         url: "/CustomerOrder/LikeSeller",
@@ -70,7 +70,7 @@
                 )
             }
         }
-        toastr.success('TempData["Order Completed"]','Service Provider')
+        toastr.success('@TempData["Order Completed"]','Service Provider')
         
     </script>
 }

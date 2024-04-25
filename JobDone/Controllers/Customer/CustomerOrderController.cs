@@ -10,6 +10,7 @@ using JobDone.Models.Seller;
 using JobDone.Roles;
 using JobDone.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -94,10 +95,10 @@ namespace JobDone.Controllers.Customer
 
         }
         [HttpPost]
-        
-        public IActionResult OrderCompleted(int id)
+        [ValidateAntiForgeryToken]
+        public async Task <IActionResult> OrderCompleted(int id)
         {
-            OrderModel? order = _orders.ChangeStatusToDone(id).Result;
+            OrderModel? order =  _orders.ChangeStatusToDone(id).Result;
             if (order == null) { TempData["orderStatus"] = "Something Went Wrong"; }
             else
             {
@@ -189,12 +190,12 @@ namespace JobDone.Controllers.Customer
                 return image;
             }
         }
-
+        [AcceptVerbs("Get","Post")]
         public async Task<IActionResult> LikeSeller(string sellerUsername)
         {
             SellerModel seller = _seller.LikeSellerByUsername(sellerUsername).Result;
             
-                return RedirectToAction("OrderList", "CustomerOrder");
+            return RedirectToAction("OrderList", "CustomerOrder");
             
         } 
     }
