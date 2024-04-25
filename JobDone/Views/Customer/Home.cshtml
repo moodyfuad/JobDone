@@ -52,9 +52,31 @@
                     color: gold;
                 }
 
-                
-   
-        </style>
+
+        .get-started-btn {
+            color: black;
+            border-radius: 4px;
+            padding: 7px 25px 8px 25px;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-block;
+            border: 2px solid #ffc451;
+        }
+
+            .get-started-btn:hover {
+                background: #ffbb38;
+                color: #343a40;
+            }
+
+        @@media (max-width: 992px) {
+            .get-started-btn {
+                padding: 7px 20px 8px 20px;
+                margin-right: 15px;
+            }
+        }
+
+    </style>
 
     </head>
     <body>
@@ -94,7 +116,7 @@
         <div class="text-center">
             <h4>Want to search about a specific sellers?</h4>
             <form method="post" asp-controller="CustomerSearch" asp-action="Search">
-                <button class="btn btn-primary btn-lg btn-long" type="submit">
+                <button class="get-started-btn" type="submit">
                     <i class="fas fa-search"></i> Search
                 </button>
             </form>
@@ -142,7 +164,7 @@
                         <br />
                         <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
                             <input value="@seller.Id" hidden name="sellerId" />
-                            <button type="submit" class="btn-btn-secondary" style="background-color:darkcyan;transition:0.5s,color:white">Visit</button> 
+                            <button type="submit" class="get-started-btn" style="transition:0.5s,color:white">Visit</button>
                         </form>
                     </div>
                 }
