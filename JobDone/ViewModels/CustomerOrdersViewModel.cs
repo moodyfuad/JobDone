@@ -27,6 +27,8 @@
 
         public short SellerId { get; set; }
 
+        public short CustomerId { get; set; }
+
         /*public decimal TotalOrdersPrice { get; set; }
 
         public decimal TotalTaxes { get; set; }

@@ -111,23 +111,7 @@
                                                     </h2>
                                                     <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : 
                                                         <span class="fw-medium">@order.ProjectName</span> <br />
-                                                        @{
-                                                            if (order.OrderStatus == "SellerCompleted")
-                                                            {
-                                                                <form method="post" asp-action="OrderCompleted" asp-route-id="@order.orderId">
-                                                                    <button type="submit" class="btn btn-primary" class="fw-medium">Completed</button>
-                                                                
-                                                                </form>
-                                                            }
-                                                            else if(order.OrderStatus == "Working")
-                                                            {
-                                                                <button disabled class="btn btn-secondary">Working on</button>
-                                                            }
-                                                            else
-                                                            {
-                                                                <button disabled class="btn btn-secondary">@order.OrderStatus</button>
-                                                            }
-                                                        }
+                                                        
                                                     </h5>
                                                 </div>
                                                 <h2 class="text-truncate font-size-18"><a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" style="color:gray">@@@order.SellerName</a></h2>
@@ -138,7 +122,28 @@
                                                 </div>
                                                 <h5 class="mb-0 mt-1">Order description : <h6  class="fw-medium">@order.OrderDescription</h6></h5>
                                                 <br />
+                                                @{
+                                                    if (order.OrderStatus == "SellerCompleted")
+                                                    {
+                                                        <form method="post" asp-action="OrderCompleted" asp-route-id="@order.orderId">
+                                                            <button type="submit" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="float:right; padding:5px" class="fw-medium">Completed</button>
+                                                        </form>
+                                                    }
+                                                    else if (order.OrderStatus == "Working")
+                                                    {
+                                                        <button disabled class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="float:right; background-color:gray">Working on</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button disabled class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="float:right;background-color:gray">@order.OrderStatus</button>
+                                                    }
 
+                                                    <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents;">
+                                                        <input type="hidden" name="sellerId" value="@order.SellerId" />
+                                                        <input type="hidden" name="customerId" value="@order.CustomerId" />
+                                                        <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray; float:right;margin-right:12px">message</button>
+                                                    </form>
+                                                }
                                             </div>
                                         </div>
 

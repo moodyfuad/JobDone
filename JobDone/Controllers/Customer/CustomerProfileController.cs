@@ -98,7 +98,23 @@ namespace JobDone.Controllers.Customer
             }
 
             if (profilePictureAsFile != null)
-                customer.ProfilePicture = _customer.ConvertToByteArray(profilePictureAsFile);
+            {
+                string? extension = Path.GetExtension(profilePictureAsFile.FileName);
+                string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                {
+
+                    TempData["imageError"]= $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+                    return RedirectToAction("Profile","CustomerProfile");
+                }
+                else
+                {
+                    customer.ProfilePicture = _customer.ConvertToByteArray(profilePictureAsFile);
+                }
+
+            }
+
+               
 
             _customer.ApplyChangesToCustomer(ref customer, vmCustomer);
             _context.CustomerModels.Update(customer);

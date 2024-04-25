@@ -139,8 +139,22 @@ namespace JobDone.Controllers.Seller
             }
 
             if (profilePictureAsFile != null)
-                seller.ProfilePicture = _sellerProfile.ConvertToByteArray(profilePictureAsFile);
+            {
+                string? extension = Path.GetExtension(profilePictureAsFile.FileName);
+                string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                {
 
+                    TempData["imageError"] = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+                    return RedirectToAction("Profile", "SellerProfile");
+                }
+                else
+                {
+                    seller.ProfilePicture = _sellerProfile.ConvertToByteArray(profilePictureAsFile);
+                }
+
+            }
+           
             _sellerProfile.ApplyChangesToSeller(ref seller, vmSeller);
             _context.SellerModels.Update(seller);
             _context.SaveChanges();
