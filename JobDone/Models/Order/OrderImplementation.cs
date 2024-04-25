@@ -27,7 +27,8 @@ namespace JobDone.Models.Order
         }
         public async Task<OrderModel> ChangeStatusToDone(int Id)
         {
-            OrderModel? order = _orders.FirstOrDefaultAsync(order => order.Id == Id).Result;
+            OrderModel? order = _orders.Include(o => _db.SellerModels).FirstOrDefaultAsync(order => order.Id == Id).Result;
+
 
             if (order == null)
             {

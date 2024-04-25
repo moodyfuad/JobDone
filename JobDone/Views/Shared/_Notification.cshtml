@@ -1,8 +1,15 @@
-﻿
-    @if (TempData["posted"] != null){
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script type="text/javascript">
+﻿<style>
+    .custom-toast-height {
+        height: 150px !important; /* Adjust the height value as needed */
+        margin-top: 200px !important;
+    }
+</style>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@if (TempData["posted"] != null)
+{
+    <script type="text/javascript">
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -22,4 +29,48 @@
         }
         toastr.success('@TempData["posted"]', '"Success"');
     </script>
-    }
+}
+    
+@if(TempData["Order Completed"] != null)
+{
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "5000",
+            "hideDuration": "5000",
+            "timeOut": "5000",
+            "extendedTimeOut": "5000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "toastClass": 'custom-toast-height',
+            onclick: function AddLike(sellerUsername) {
+                sellerUsername = @TempData["username"];
+                $.ajax(
+                    {
+                        url: "/CustomerOrder/LikeSeller",
+                        type: "POST",
+                        data: { sellerUsername: sellerUsername },
+
+                        success: function (result) {
+                            console.log("passed - show posts");
+                        },
+                        error: function (result) {
+                            console.log("an error accure at showPosts function");
+                            alert("an error accure please try again");
+                        }
+                    }
+                )
+            }
+        }
+        toastr.success('TempData["Order Completed"]','Service Provider')
+        
+    </script>
+}

@@ -99,6 +99,11 @@ namespace JobDone.Controllers.Customer
         {
             OrderModel? order = _orders.ChangeStatusToDone(id).Result;
             if (order == null) { TempData["orderStatus"] = "Something Went Wrong"; }
+            else
+            {
+                TempData["Order Completed"] = "Congratulations Your order is completed successfully\nClick to Like the Service Provider";
+                TempData["username"] = order.SellerIdFkNavigation.Username;
+            }
             return RedirectToAction("OrderList");
         }
 
@@ -184,5 +189,13 @@ namespace JobDone.Controllers.Customer
                 return image;
             }
         }
+
+        public async Task<IActionResult> LikeSeller(string sellerUsername)
+        {
+            SellerModel seller = _seller.LikeSellerByUsername(sellerUsername).Result;
+            
+                return RedirectToAction("OrderList", "CustomerOrder");
+            
+        } 
     }
 }

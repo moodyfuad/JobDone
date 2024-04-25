@@ -45,18 +45,18 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="Home"><h5>Home</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerOrder" asp-action="OrderList"><h5>Order</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerOrder" asp-action="OrderList"><h5>Orders</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>Request Work</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>Post Job</h5></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>Requested List</h5></a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>Requests</h5></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="CustomerSearch" asp-action="Search">
                                 <h5>
-                                    <i class="fas fa-search"></i> Search For Sellers
+                                    <i class="fas fa-search"></i> Search
                                 </h5>
                             </a>
                         </li>
@@ -72,7 +72,7 @@
                 </div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style="width:30px; height:27px;" onclick="toggleWalletAmount()" />
                 <span id="walletAmount" style="color:white; margin-left:10px;">
-                    @(Math.Round(decimal.Parse(WalletAmount), 2) + " $")
+                    @(decimal.Parse(WalletAmount).ToString("0.00") + " $")
                     
                 </span>
 
@@ -80,10 +80,13 @@
                     var walletAmountElement = document.getElementById("walletAmount");
 
                     function toggleWalletAmount() {
-                        if (walletAmountElement.innerHTML === "****") {
-                            walletAmountElement.innerHTML = @Math.Round(decimal.Parse(WalletAmount), 2) + " $";
-                        } else {
-                            walletAmountElement.innerHTML = "****";
+                        var stars = '*'.repeat(document.getElementById("walletAmount").innerText.length);
+
+                        if(document.getElementById("walletAmount").innerHTML === stars) {
+                            document.getElementById("walletAmount").innerText = "@(decimal.Parse(Context.Session.GetString("WalletAmount")).ToString("0.00")) $"
+                        }
+                        else{
+                            document.getElementById("walletAmount").innerHTML = stars;
                         }
                     }
                 </script>

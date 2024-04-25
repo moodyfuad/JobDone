@@ -73,10 +73,13 @@
                     var walletAmountElement = document.getElementById("walletAmount");
 
                     function toggleWalletAmount() {
-                        if (walletAmountElement.innerHTML === "****") {
-                            walletAmountElement.innerHTML = @Math.Round(decimal.Parse(WalletAmount), 2)+ " $");
-                        } else {
-                            walletAmountElement.innerHTML = "****";
+                        var stars = '*'.repeat(document.getElementById("walletAmount").innerText.length);
+
+                        if (document.getElementById("walletAmount").innerHTML === stars) {
+                            document.getElementById("walletAmount").innerText = "@(decimal.Parse(Context.Session.GetString("WalletAmount")).ToString("0.00")) $"
+                        }
+                        else {
+                            document.getElementById("walletAmount").innerHTML = stars;
                         }
                     }
                 </script>

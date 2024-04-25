@@ -152,6 +152,10 @@ namespace JobDone.Models.Seller
         {
             return await _seller.Include("CategoryIdFkNavigation").ToListAsync();
         }
+        public async Task<IEnumerable<SellerModel>> GetSellers(int number)
+        {
+            return await _seller.Include("CategoryIdFkNavigation").Take(number).ToListAsync();
+        }
 
         public async Task<IEnumerable<SellerModel>> GetAllSellersWithCategory(string search)
         {
@@ -352,6 +356,24 @@ namespace JobDone.Models.Seller
                 return null;
             }
         }
+
+        public async Task<SellerModel> LikeSellerByUsername(string sellerUsername)
+        {
+            SellerModel? seller = _seller.FirstOrDefaultAsync(s => s.Username == sellerUsername).Result;
+            if (seller == null)
+            {
+                return seller;
+            }
+            else
+            {
+                seller.Rate += 1;
+                _seller.Update(seller); 
+                _Db.SaveChanges();
+                return seller;
+            }
+
+        }
+
 
     }
 }

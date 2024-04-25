@@ -41,11 +41,14 @@ namespace JobDone.Models.Seller
         public Task<IEnumerable<SellerModel>> getAllSelersBasedOnUsername(string search);
         public Task<IEnumerable<ServiceModel>> GetAllSellersWithService(string search);
         public Task<IEnumerable<SellerModel>> getAllTheSeller();
+        public Task<IEnumerable<SellerModel>> GetSellers(int number);
+
         List<SellerModel> GetFirst10();
         List<SellerModel> GetFirst10(string username);
         Task<bool> DeleteAccount(int sellerId);
         public Task<List<SellerModel>>? GetSellerWithPosts(int sellerId);
         Task<SellerModel> Withdraw(SellerModel seller ,decimal MoneyAmount);
         Task<SellerModel> Diposit(SellerModel seller ,decimal MoneyAmount);
+        Task<SellerModel> LikeSellerByUsername(string sellerUsername);
     }
 }

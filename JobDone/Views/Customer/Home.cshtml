@@ -105,12 +105,7 @@
                             string base64Image = Convert.ToBase64String(seller.ProfilePicture);
                         }
                         <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="data:image/png;base64,@base64Image" alt="Profile image" />
-                        <div class="rating">
-                            @for (short i = 0; i < seller.Rate; i++)
-                            {
-                                <span>&#9733;</span>
-                            }
-                        </div>
+                        
                         @{
                             string FullName = seller.FirstName + " " + seller.LastName;
                         }
@@ -122,7 +117,14 @@
                         @foreach (var Service in services)
                         {
                             <span>@Service, </span>
+
                         }
+                        <div class="rating">
+                            <span>@seller.Rate</span>
+                            <span>&#9733;</span>
+
+                        </div>
+
                         <br />
                         <br />
                         <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
