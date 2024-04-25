@@ -19,6 +19,19 @@
             user-select: none;
             }
 
+
+        .btn-btn-secondary{
+
+
+        }
+
+        .btn-btn-secondary:hover {
+            letter-spacing:0.25em
+
+           
+
+        }
+
        
             .rating {
                 unicode-bidi: bidi-override;
@@ -38,6 +51,8 @@
                     position: absolute;
                     color: gold;
                 }
+
+                
    
         </style>
 
@@ -59,9 +74,7 @@
                         <img class="bd-placeholder-img" src="data:image/jpeg;base64,@(Convert.ToBase64String(banner.banner.Picture))" alt="Alternate Text" width="100%" height="100%" />
                         <div class="container">
                             <div class="carousel-caption @(banner.index == 2 ? "text-end" : "text-start")">
-                                <h1>As</h1>
-                                <p>SS</p>
-                                <p><a class="btn btn-lg btn-primary" href="#">@(banner.index == 0 ? "Sign up today" : (banner.index == 1 ? "Learn more" : "Browse gallery"))</a></p>
+                              
                             </div>
                         </div>
                     </div>
@@ -129,7 +142,7 @@
                         <br />
                         <form method="get" asp-controller="CustomerVisitSellerProfile" asp-action="Profile">
                             <input value="@seller.Id" hidden name="sellerId" />
-                            <button type="submit" class="btn btn-secondary" style="background-color:darkcyan;color:white">Visit</button>
+                            <button type="submit" class="btn-btn-secondary" style="background-color:darkcyan;transition:0.5s,color:white">Visit</button> 
                         </form>
                     </div>
                 }

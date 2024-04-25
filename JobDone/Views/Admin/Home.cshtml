@@ -37,7 +37,7 @@
             width: 300px ;
             height: 300px;
             margin: 20px;
-            background-color:cornflowerblue;
+            background-color: #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -45,9 +45,11 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeIn 2s forwards;
+            border-radius:1em;
+            
         }
         .block:hover {
-            background-color: #ccc;
+            background-color:deepskyblue;
             transform: scale(1.1);
 
         }
@@ -68,8 +70,7 @@
             }
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
+
 <div id="container" class="container">
         <a asp-controller="Admin" asp-action="EditBanners"><div class="block"><span class="icon"><img src="/Adminn/img/111.png" alt="" style="width: 200px;"></span><br></div></a>
         <a asp-controller="Admin" asp-action="AddNewCategory"><div class="block"><span><img src="/adminn/img/222.png" alt="" style="width: 200px;"></span><br /></div></a>

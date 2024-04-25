@@ -3,3 +3,127 @@
 *@
 @{
 }
+<br />
+<br />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <style >
+    /* تخصيص الزر */
+    .my-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #ffffff;
+        border: 1px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* تأثير hover */
+    .my-button:hover {
+        background-color: #2980b9;
+        transform: scale(1.05); /* تكبير الزر عند المرور بالماوس */
+    }
+
+    /* تأثير animation عند النقر */
+    .my-button:active {
+        transform: scale(0.95);
+    }
+
+    /* تأثير ظل الزر */
+    .my-button::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+    }
+
+    /* تأثير ظل الزر عند النقر */
+    .my-button:active::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* تأثير تغيير اللون */
+    .my-button::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* تأثير تغيير اللون عند النقر */
+    .my-button:active::after {
+        opacity: 1;
+    }
+</style>
+
+
+<h2>enter New catogrie</h2>
+<input id="typehere" style=" width:50%; padding:3px; margin-bottom:8px;radius:1px" value="" placeholder="type here">
+<br />
+    <button class="my-button">Add</button>
+    <br /><br />
+    <hr />
+<div class="d-sm-flex justify-content-between">
+                            
+    
+                            <div class="media d-block d-sm-flex text-center text-sm-left">
+                                <div class="media-body">
+                                    <br /><br />
+                                    <h1 class="font-size-sm">Programmer</h1>
+                                   
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
+                                    Add
+                                </button>
+                                <button type="button" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
+                                    Delete
+                                </button>
+                                
+                            </div>
+</div>
+<hr />
+
+<div class="d-sm-flex justify-content-between">
+
+
+    <div class="media d-block d-sm-flex text-center text-sm-left">
+        <div class="media-body">
+            <br /><br />
+            <h1 class="font-size-sm">Deigner</h1>
+
+        </div>
+    </div>
+
+    <div>
+        <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
+            Add
+        </button>
+        <button type="button" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
+            Delete
+        </button>
+
+    </div>
+</div>
+<hr />
+
+
