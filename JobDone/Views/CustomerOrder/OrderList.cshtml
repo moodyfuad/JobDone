@@ -101,12 +101,14 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-start border-bottom pb-3">
                                         <div class="me-4">
-                                            <img src="data:image/jpeg;base64,@order.SellerPicture" alt="Image" class="avatar-lg rounded; rounded-circle">
+                                            <a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" class="text-dark"><img src="data:image/jpeg;base64,@order.SellerPicture" alt="Image" class="avatar-lg rounded; rounded-circle"></a>
                                         </div>
                                         <div class="flex-grow-1 align-self-center overflow-hidden">
                                             <div>
                                                 <div style ="display:flex; flex-direction:row; justify-content:center; align-items:start">
-                                                    <h2 class="text-truncate font-size-40"><a href="#" class="text-dark">@order.SellerName</a></h2>
+                                                    <h2 class="text-truncate font-size-40">
+                                                        <a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" class="text-dark">@order.SellerName</a>
+                                                    </h2>
                                                     <h5 style="margin-left:auto; color:black; font-size:x-large" class="mb-0 mt-1">Project Name : 
                                                         <span class="fw-medium">@order.ProjectName</span> <br />
                                                         @{
@@ -126,11 +128,9 @@
                                                                 <button disabled class="btn btn-secondary">@order.OrderStatus</button>
                                                             }
                                                         }
-
                                                     </h5>
-
                                                 </div>
-                                                <h2 class="text-truncate font-size-18"><a href="#" style="color:gray">@@@order.Username</a></h2>
+                                                <h2 class="text-truncate font-size-18"><a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" style="color:gray">@@@order.SellerName</a></h2>
                                                 <div>
                                                     <span>@order.Rate</span>
                                                     <span>&#9733;</span>

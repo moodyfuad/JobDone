@@ -25,6 +25,8 @@
 
         public string OrderStatus { get; set; }
 
+        public short SellerId { get; set; }
+
         /*public decimal TotalOrdersPrice { get; set; }
 
         public decimal TotalTaxes { get; set; }

@@ -76,6 +76,7 @@ namespace JobDone.Controllers.Customer
                         OrderDate = order.OrderDate,
                         ProjectName = order.OrderName,
                         orderId = order.Id,
+                        SellerId = Convert.ToInt16(order.SellerIdFk),
                         OrderStatus = order.Status,
                         SellerPicture = Convert.ToBase64String(seller.ProfilePicture),
                         CategotyName = _categories.GetCategoryById(seller.CategoryIdFk),
