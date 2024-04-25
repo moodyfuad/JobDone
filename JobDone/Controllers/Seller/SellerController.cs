@@ -286,6 +286,8 @@ namespace JobDone.Controllers.Seller
             viewModel.customerReqwest = _seller.CustomerReqwestWork(SellerID());
             viewModel.SellerAcceptedRequestsId = await _seller.GetRequestsThatTheSellerAccept(SellerID());
 
+            ViewBag.sellerId = SellerID();
+
             return View(viewModel);
         }
         [HttpPost]
