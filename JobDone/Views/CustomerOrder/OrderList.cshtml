@@ -139,8 +139,8 @@
                                                     }
 
                                                     <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents;">
-                                                        <input type="hidden" name="customerId" value="@order.CustomerId" />
                                                         <input type="hidden" name="sellerId" value="@order.SellerId" />
+                                                        <input type="hidden" name="customerId" value="@order.CustomerId" />
                                                         <button type="submit" class="btn btn-primary-outline-0 rounded-pill py-2 px-4 btn-accept" style="background-color: lightgray; float:right;margin-right:12px">message</button>
                                                     </form>
                                                 }
