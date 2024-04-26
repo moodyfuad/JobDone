@@ -92,6 +92,80 @@
         }
     }
 
+    $primary: #11998e;
+    $secondary: #38ef7d;
+    $white: #fff;
+    $gray: #9b9b9b;
+    .form__group {
+        position: relative;
+        padding: 15px 0 0;
+        margin-top: 10px;
+        width: 50%;
+    }
+
+    .form__field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid $gray;
+        outline: 0;
+        font-size: 1.3rem;
+        color: $white;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+        &::placeholder
+
+    {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+
+    }
+
+    .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: $gray;
+    }
+
+    .form__field:focus {
+        ~ .form__label
+
+    {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: $primary;
+        font-weight: 700;
+    }
+
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $primary,$secondary);
+    border-image-slice: 1;
+    }
+    /* reset input */
+    .form__field {
+        &:required,&:invalid
+
+    {
+        box-shadow: none;
+    }
+
+    }
+
 </style>
 
 
@@ -111,26 +185,33 @@
 @foreach(var category in Model)
 {
     <div class="card">
-    <div class="row d-sm-flex justify-content-between">
-        
-        <div class="col media d-block d-sm-flex text-center text-sm-left">
-            <div class="media-body">
-                <br /><br />
-                <h1 class="font-size-sm">@category.Name</h1>
-
-            </div>
-        </div>
-        <div class="col" style="display:flex">
-
-            <form asp-controller="AdminModifyCategory" asp-action="DeleteCategory" method="post">
-                <input value="@category.Id" name="id" hidden />
-                <button type="submit" class="my-button" style="height:40px;background:red" aria-expanded="false">
-                    Delete
-                </button>
+        <div class="row d-sm-flex justify-content-between">
+            <form asp-controller="AdminModifyCategory" asp-action="EditCategory" method="post">
+                <div class="col media d-block d-sm-flex text-center text-sm-left">
+                    <div class="media-body">
+                        <div class="form__group field">
+                            <input type="input" class="form__field" placeholder="Name" value="@category.Name" name="categorieName" id="categoryName_@category.Id" disabled required />
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="display:flex">
+                    <input value="@category.Id" name="id" hidden />
+                    <br />
+                    <button type="button" style="background-color:#ffbb38" class="get-started-btn" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" aria-expanded="false" onclick="enableEdit('@category.Id')">
+                        Edit
+                    </button>
+                    <script>
+                        function enableEdit(categoryId) {
+                            document.getElementById("categoryName_" + categoryId).disabled = false;
+                            document.getElementById("saveButton_" + categoryId).disabled = false;
+                        }
+                    </script>
+                    <button id="saveButton_@category.Id" type="submit" class="my-button" style="height:40px;background:green" aria-expanded="false" disabled>
+                        Save
+                    </button>
+                </div>
             </form>
-              
         </div>
-    </div>
     </div>
     <br />
 }
