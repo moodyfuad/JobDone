@@ -9,6 +9,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    <style>
+    .block {
+       
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+        border-radius: 1em;
+    }
+
+        .block:hover {
+            background-color: deepskyblue;
+            transform: scale(1.1);
+        
+    }
+
+    .icon {
+        font-size: 50px;
+    }
+    </style>
 <head>
     <meta charset="utf-8">
     <title>Sparlex - Spa Website Template</title>
@@ -63,8 +82,8 @@
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-6 col-xl-3">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-line fa-3x text-primary"></i>
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4  ">
+                    <i class="fa fa-chart-line fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Requests accepted</p>
                         <h6 class="mb-0">@ViewBag.AllAcceptrdBySeller</h6>
@@ -73,7 +92,7 @@
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                    <i class="fa fa-chart-bar fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Remining Work</p>
                         <h6 class="mb-0">@ViewBag.xxx</h6>
@@ -82,7 +101,7 @@
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-area fa-3x text-primary"></i>
+                    <i class="fa fa-chart-area fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Available Reqest</p>
                         <h6 class="mb-0">@ViewBag.aveilabelReqest</h6>
@@ -91,7 +110,7 @@
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                    <i class="fa fa-chart-pie fa-3x text-warning"></i>
                     <div class="ms-3">
                         <p class="mb-2">Total Revenue</p>
                         <h6 class="mb-0">@Math.Round(ViewBag.Totalgains,2)$</h6>
@@ -108,14 +127,14 @@
         <div class="row g-4">
                 <div class="col-sm-12 col-xl-6" style="height: 300px; overflow-y: scroll;">
                 <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4 text-warning">
                             <h6 class="mb-0">Remining Work</h6>
-                            <a asp-controller="Seller" asp-action="Order">Show All</a>
+                            <a asp-controller="Seller" asp-action="Order" class="text-warning" > Show All</a>
                     </div>
                         @foreach (var item in Model.Order)
                         {
 
-                            <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                            <div class="services-item bg-light border-4 border-start border-warning rounded p-4">
                                 <div class="row align-items-center">
                                     <div class="col-4">
                                         @{
@@ -130,7 +149,7 @@
                                             <h3>@item.OrderName</h3>
                                             <h4 class="text-truncate" style=" color:gray">@@@item.CustomerIdFkNavigation.Username</h4>
                                             <p style="font-size: 20px;">delivery date :@item.DeliverDate </p>
-                                            <p style="color:cornflowerblue; font-size: 20px;">Status:@item.Status</p>
+                                            <p class="text-warning "style=" font-size: 20px;">Status:@item.Status</p>
                                         </div>
                                     </div>
 
@@ -143,9 +162,9 @@
 
                 <div class="col-sm-12 col-xl-6" style="height: 300px; overflow-y: scroll;">
                 <div class="bg-light text-center rounded p-4" >
-                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4 text-warning">
                             <h4 class="mb-0">Available Reqests</h4>
-                            <a asp-controller="Seller" asp-action="RequestedWrok">Show All</a>
+                            <a asp-controller="Seller" asp-action="RequestedWrok" class="text-warning">Show All</a>
                     </div>
                         @{
                             List<int> ids = Model.SellerAcceptedRequestsId.ToList();
@@ -156,7 +175,7 @@
                             if(!ids.Contains(item.Id))
                             {
 
-                                <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                                <div class="services-item bg-light border-4 border-start border-warning rounded p-4">
                                     <div class="row align-items-center">
                                         <div class="col-4">
                                             @{
