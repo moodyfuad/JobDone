@@ -15,7 +15,7 @@
                     <div class="input">
                         <input hidden name="customerId" value="@Model.Customer.Id" />
                         <input hidden name="sellerId" value="@Model.Seller.Id" />
-                        <input name="content" placeholder="Type your message here!" type="text" />
+                        <input id="content" name="content" placeholder="Type your message here!" type="text" />
                         <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
                     </div>
                 </form>
@@ -65,11 +65,11 @@
                 $(function () {
                     $('form#sendMessageForm').submit(function (event) {
                         event.preventDefault(); // Prevent the default form submission
-
+                        
                         var form = $(this);
                         var url = form.attr('action');
                         var formData = form.serialize(); // Serialize the form data
-
+                        
                         $.ajax({
                             url: url,
                             type: 'POST',
@@ -83,6 +83,8 @@
                                 console.log(error);
                             }
                         });
+                        document.getElementById("content").value = "";
+
                     });
                 });
             </script>
