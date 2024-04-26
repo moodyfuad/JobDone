@@ -105,6 +105,8 @@
             top: 0;
             width: 40%;
             height: 100%;
+            overflow:auto;
+
             
         }
         /* النمط لمحتوى النافذة المنبثقة */
@@ -114,6 +116,7 @@
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
+            
             border-radius: 15px;
         }
 
@@ -429,7 +432,7 @@
                                 <input type="text" name="Name" value="@Model.serviceModels[@i].Name" readonly />
                                 <input name="Id" value="@Model.serviceModels[i].Id" hidden />
                                 <button type="submit" class="get-started-btn" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" style="background-color:#ffbb38">
-                                    <i class="btn btn-danger btn-rounded btn-fw"></i> Delete
+                                    <i ></i> Delete
                                 </button>
                                 <span asp-validation-for="serviceModels[@i].Name" class="text-danger"></span>
                             </div>
@@ -468,10 +471,51 @@
             </form>
         </div>
     </div>
-                                    
+                           
+    
 
     <div class="album py-5 bg-light">
+
         <div class="container">
+            <div>
+            <form action="EditOldWork" method="get">
+
+                    <input class="get-started-btn" type="submit" value="Edit" style="width:100px; margin:5px" />
+
+                
+            </form>
+            </div>
+            <div>
+            <input class="get-started-btn" onclick="openPopup2()" type="submit" name="name" value="Add Post" style=" width:100px;margin:5px" />
+            </div>
+            <form action="AddOldWork" method="post" enctype="multipart/form-data">
+                <div id="myPopup2" class="popup">
+                    <div class="popup-content">
+                        <span onclick="closePopup2()" style="float:right;">&times;</span>
+
+                        @{
+                            IFormFile? NewWorkPictureAsFile = null;
+                        }
+                        <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64" width="100%" height="300px">
+                        <div>
+                            <input onchange="showButton2()" type="file" id="imageInput2" name="NewWorkPictureAsFile" accept="image/*">
+                            <button type="button" class="get-started-btn" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="margin-left:43%; margin-top:20px;">Sure</button>
+                        </div>
+                        <textarea style="width:100%; height:200px;margin-top:50px;" name="newDescription">Add description</textarea><br /><br />
+                        <input class="get-started-btn" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" type="submit" name="name" value="Add" style="margin-left:35%;width:200px; background-color:#ffbb38" />
+
+                    </div>
+                </div>
+
+
+                @if (TempData["WarningMessageForNewWork"] != null)
+                {
+                    <div class="alert alert-warning">
+                        @TempData["WarningMessageForNewWork"]
+                    </div>
+                }
+
+            </form>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 
                 @foreach (var item in Model.sellerOldWorkModels)
@@ -504,38 +548,7 @@
 
                     
                 
-                <form action="EditOldWork" method="get"><br /><br />
-                    <input class="get-started-btn" type="submit" value="Edit" style="margin-top:300px;margin-left:205.5%; width:100px;" />
-                </form>
-                <input class="get-started-btn" onclick="openPopup2()" type="submit" name="name" value="Add Post" style="margin-left:100%; width:100px;" />
-                <form action="AddOldWork" method="post" enctype="multipart/form-data">
-                    <div id="myPopup2" class="popup">
-                        <div class="popup-content">
-                            <span onclick="closePopup2()" style="float:right;">&times;</span>
-
-                            @{
-                                IFormFile? NewWorkPictureAsFile = null;
-                            }
-                            <img class="bd-placeholder-img card-img-top" id="myImage2" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64" width="100%" height="300px">
-                            <div>
-                                <input onchange="showButton2()" type="file" id="imageInput2" name="NewWorkPictureAsFile" accept="image/*">
-                                <button type="button" class="get-started-btn" class="hidden-button" id="myButton2" onclick="hideButton2(),replaceImage2()" style="margin-left:43%; margin-top:20px;">Sure</button>
-                            </div>
-                        <textarea style="width:100%; height:200px;margin-top:50px;" name="newDescription">Add description</textarea><br /><br />
-                            <input class="get-started-btn" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" type="submit" name="name" value="Add" style="margin-left:35%;width:200px; background-color:#ffbb38" />
-                            
-                        </div>
-                    </div>
-                    
-                    
-                    @if (TempData["WarningMessageForNewWork"] != null)
-                    {
-                        <div class="alert alert-warning">
-                            @TempData["WarningMessageForNewWork"]
-                        </div>
-                    }
-                    
-                </form>
+  
         </div>
     </div>
 
