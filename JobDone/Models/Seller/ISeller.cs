@@ -5,6 +5,7 @@ using JobDone.Models.OrderByCustomer;
 using JobDone.Models.SellerAcceptRequest;
 using JobDone.Models.SellerOldWork;
 using JobDone.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Drawing;
 
 namespace JobDone.Models.Seller
@@ -47,8 +48,10 @@ namespace JobDone.Models.Seller
         List<SellerModel> GetFirst10(string username);
         Task<bool> DeleteAccount(int sellerId);
         public Task<List<SellerModel>>? GetSellerWithPosts(int sellerId);
-        Task<SellerModel> Withdraw(SellerModel seller ,decimal MoneyAmount);
-        Task<SellerModel> Diposit(SellerModel seller ,decimal MoneyAmount);
+        Task<SellerModel> Withdraw(SellerModel seller, decimal MoneyAmount);
+        Task<SellerModel> Diposit(SellerModel seller, decimal MoneyAmount);
         Task<SellerModel> LikeSellerByUsername(string sellerUsername);
+        Task<List<SellerModel>> GetSellersByRate(int number);
+        Task<List<SellerModel>> GetSellersByRate();
     }
 }

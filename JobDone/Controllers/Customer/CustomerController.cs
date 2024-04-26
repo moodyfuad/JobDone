@@ -199,7 +199,7 @@ namespace JobDone.Controllers.Customer
         [Authorize(Roles = TypesOfUsers.Customer)]
         public async Task<IActionResult> Home()
         {
-            IEnumerable<SellerModel> listOfSellers = await _seller.GetSellers(8);
+            IEnumerable<SellerModel> listOfSellers = await _seller.GetSellersByRate(12);
             IEnumerable<ServiceModel> listOfServices = await _services.getAllServices();
             IEnumerable<BannerModel> listOfBanners = await _banner.GetAllCustomerBanners();
             HomeViewModel viewModel = new HomeViewModel()

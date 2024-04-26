@@ -30,10 +30,10 @@ namespace JobDone.Controllers.Customer
         [HttpGet]
         public async Task<IActionResult> Search()
         {
-            
+
             SellersServicesCategoriesViewModel sellers = new SellersServicesCategoriesViewModel()
             {
-                Sellers = await _seller.getAllTheSeller(),
+                Sellers = await _seller.GetSellersByRate(12),
                 Services = await _services.getAllServices()
             };
             return View(sellers);
@@ -82,13 +82,13 @@ namespace JobDone.Controllers.Customer
                 if (option == "service")
                 {
                     sellers.Option = option;
-                    sellers.Sellers = await _seller.getAllTheSeller();
+                    sellers.Sellers = await _seller.GetSellersByRate();
                     sellers.Services = await _seller.GetAllSellersWithService(search);
                 }
             }
             else
             {
-                sellers.Sellers = await _seller.getAllTheSeller();
+                sellers.Sellers = await _seller.GetSellersByRate(12);
                 sellers.Services = await _services.getAllServices();
             }
 
