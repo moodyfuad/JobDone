@@ -104,8 +104,8 @@
             <div class="col-md-7">
                 <input name="search" class="get-started-btn" style="width:750px;" type="search" placeholder="Search" aria-label="Search">
             </div>
-            
-                <button class="get-started-btn"  type="submit">
+
+            <button class="get-started-btn" style="background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" type="submit">
                 <h7>
                     <i class="fas fa-search"></i> Search
                 </h7>
@@ -148,7 +148,9 @@
                                         <p style="color:green; font-size: 18px;">
                                             <form action="AcceptRequestedWrok" method="post">$@Math.Round(item.Price, 2)
                                                <br />
-                                             <button type="submit" class="get-started-btn" style="float: right ; margin-left:12px;" name="Accept" value="@item.Id">Accept</button>
+                                        <button type="submit" class="get-started-btn" style="background-color:#ffbb38 ; float: right ; margin-left:12px;" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" name="Accept" value="@item.Id">
+                                            Accept
+                                            </button>
                                             </form>
                                                 
                                             <form asp-controller="SellerOrder" asp-action="Chat" method="get" style="display:contents">
