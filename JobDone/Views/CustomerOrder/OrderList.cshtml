@@ -178,16 +178,16 @@
                                                     if (order.OrderStatus == "SellerCompleted")
                                                     {
                                                         <form method="post" asp-action="OrderCompleted" asp-route-id="@order.orderId">
-                                                            <button type="submit" class="get-started-btn" style="float:right; padding:5px" class="fw-medium">Completed</button>
+                                                            <button type="submit" class="get-started-btn" style="float:right; background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">Completed</button>
                                                         </form>
                                                     }
                                                     else if (order.OrderStatus == "Working")
                                                     {
-                                                        <button disabled class="get-started-btn" style="float:right; background-color:gray">Completed</button>
+                                                        <button disabled class="get-started-btn" style="float:right; border: 2px solid gray; background-color:gray">Completed</button>
                                                     }
                                                     else
                                                     {
-                                                        <button disabled class="get-started-btn" style="float:right;background-color:gray">@order.OrderStatus</button>
+                                                        <button disabled class="get-started-btn" style="float:right;border: 2px solid gray;background-color:gray">@order.OrderStatus</button>
                                                     }
 
                                                     <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents;">

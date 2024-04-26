@@ -38,7 +38,7 @@
                                 <div class="form-group row">
                                     <label>Order date</label>
                                     <div class="col-sm-9">
-                                        <input asp-for="OrderDate" type="date" value="@DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd")" class="form-control" disabled="true">
+                                        <input asp-for="OrderDate" type="date" value="@DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)" class="form-control" disabled="true">
                                         <span asp-validation-for="OrderDate" class="text-danger"></span>
 
                                     </div>
@@ -48,7 +48,7 @@
                                 <div class="form-group row">
                                     <label>Delivery date</label>
                                     <div class="col-sm-9">
-                                        <input asp-for="DeliverDate" type="date" value="@Model.DeliverDate" class="form-control">
+                                        <input asp-for="DeliverDate" type="date" value="@Model.DeliverDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)" class="form-control">
                                         <span asp-validation-for="DeliverDate" class="text-danger"></span>
                                     </div>
                                 </div>
