@@ -35,20 +35,20 @@ namespace JobDone.Models.Banners
             return _banner.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Delete(BannerModel banner)
+        public async Task Delete(BannerModel banner)
         {
             _banner.Remove(banner);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
-        public void AddNewBannerInCustomer(IFormFile banner)
+        public async Task AddNewBannerInCustomer(IFormFile banner)
         {
-            if(banner != null)
+            if (banner != null)
             {
                 byte[] pictureBytes;
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
-                    banner.CopyTo(memoryStream);
+                    await banner.CopyToAsync(memoryStream);
                     pictureBytes = memoryStream.ToArray();
                 }
 
@@ -59,18 +59,18 @@ namespace JobDone.Models.Banners
                 };
 
                 _banner.Add(bannerModel);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 
-        public void AddNewBannerInSeller(IFormFile banner)
+        public async Task AddNewBannerInSeller(IFormFile banner)
         {
             byte[] pictureBytes;
-            if(banner != null)
+            if (banner != null)
             {
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
-                    banner.CopyTo(memoryStream);
+                    await banner.CopyToAsync(memoryStream);
                     pictureBytes = memoryStream.ToArray();
                 }
 
@@ -81,22 +81,22 @@ namespace JobDone.Models.Banners
                 };
 
                 _banner.Add(bannerModel);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 
-        public void ModeifyBanner(BannerModel banner, IFormFile picFile)
+        public async Task ModeifyBanner(BannerModel banner, IFormFile picFile)
         {
             if (banner != null && picFile != null)
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    picFile.CopyTo(memoryStream);
+                    await picFile.CopyToAsync(memoryStream);
                     banner.Picture = memoryStream.ToArray();
                 }
 
                 _context.Update(banner);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }

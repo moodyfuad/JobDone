@@ -68,14 +68,38 @@
     .my-button:active::after {
         opacity: 1;
     }
+
+    .get-started-btn {
+        color: black;
+        border-radius: 4px;
+        padding: 7px 25px 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border: 2px solid #ffc451;
+    }
+
+        .get-started-btn:hover {
+            background: #ffbb38;
+            color: #343a40;
+        }
+
+    @@media (max-width: 992px) {
+        .get-started-btn {
+            padding: 7px 20px 8px 20px;
+            margin-right: 15px;
+        }
+    }
+
 </style>
 
 
 <h2>Enter New categorie</h2>
 <form asp-controller="AdminModifyCategory" asp-action="AddNewCategory" method="post">
-    <input id="typehere" style=" width:50%; padding:3px; margin-bottom:8px;radius:1px" value="" name="categorieName" placeholder="type here">
+    <p><input id="typehere" style=" width:50%; padding:3px; margin-bottom:8px;radius:1px" value="" name="categorieName" placeholder="type here"><br /><button type="submit" style=" background-color:#ffbb38" class="get-started-btn" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">Add</button></p>
     <br />
-    <button type="submit" class="my-button">Add</button>
+    
 </form>
 @if (ViewBag.CategoryName != null)
 {
@@ -83,33 +107,32 @@
         @ViewBag.CategoryName
     </span>
 }
-    <br /><br />
-    <hr />
 
 @foreach(var category in Model)
 {
-    <hr />
-    <div class="d-sm-flex justify-content-between">
-        <div class="media d-block d-sm-flex text-center text-sm-left">
+    <div class="card">
+    <div class="row d-sm-flex justify-content-between">
+        
+        <div class="col media d-block d-sm-flex text-center text-sm-left">
             <div class="media-body">
                 <br /><br />
                 <h1 class="font-size-sm">@category.Name</h1>
 
             </div>
         </div>
-        <div>
-            <button type="button" class="my-button" style="height:40px;margin-top:68px;" aria-expanded="false">
-                Add
-            </button>
+        <div class="col" style="display:flex">
+
             <form asp-controller="AdminModifyCategory" asp-action="DeleteCategory" method="post">
                 <input value="@category.Id" name="id" hidden />
-                <button type="submit" class="my-button" style="height:40px;margin-top:68px;background:red" aria-expanded="false">
+                <button type="submit" class="my-button" style="height:40px;background:red" aria-expanded="false">
                     Delete
                 </button>
             </form>
+              
         </div>
     </div>
-    <hr />
+    </div>
+    <br />
 }
 
 
