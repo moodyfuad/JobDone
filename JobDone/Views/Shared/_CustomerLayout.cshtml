@@ -42,31 +42,31 @@
 </head>
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
+    <header id="header" class="fixed-top" style="background-color:black; opacity:93%;">
         <div class="container-fluid d-flex align-items-center justify-content-lg-between" style="height:30px">
 
-            <h1 class="logo me-auto me-lg-0"><img src="~/logogray.png" style="height:100px;" /></h1>
+            <h1 class="logo me-auto me-lg-0"><img src="~/Untitled-1-Recovered copy.png" style="height:100px;" /></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active"  asp-controller="Customer" asp-action="Home"><h5>Home</h5></a></li>
-                    <li><a class="nav-link scrollto" style="color:gray;" asp-controller="CustomerOrder" asp-action="OrderList"><h5>Orders</h5></a></li>
-                    <li><a class="nav-link scrollto" style="color:gray;" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>Post Job</h5></a></li>
-                    <li><a class="nav-link scrollto" style="color:gray;" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>Requests</h5></a></li>
+                    <li><a class="nav-link scrollto"  asp-controller="CustomerOrder" asp-action="OrderList"><h5>Orders</h5></a></li>
+                    <li><a class="nav-link scrollto" asp-controller="CustomerRequestWork" asp-action="RequestWork"><h5>Post Job</h5></a></li>
+                    <li><a class="nav-link scrollto" asp-controller="CustomerRequestWork" asp-action="RequestedList"><h5>Requests</h5></a></li>
 
                     <li>
-                        <a class="nav-link scrollto" style="color:gray;" asp-controller="CustomerSearch" asp-action="Search">
+                        <a class="nav-link scrollto" asp-controller="CustomerSearch" asp-action="Search">
                             <h5>
-                                <i class="fas fa-search"></i> Search
+                                Search
                             </h5>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link scrollto" style="color:gray;" asp-controller="CustomerSearch" asp-action="Messages">
+                        <a class="nav-link scrollto" asp-controller="CustomerSearch" asp-action="Messages">
                             <h5>
-                                <i class="fas fa-envelope"></i> Messages
+                                Messages
                             </h5>
                         </a>
                     </li>
@@ -75,13 +75,14 @@
             </nav><!-- .navbar -->
             <pre>    </pre>
             <div>
-                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style=" color:gray; width:30px; height:27px;" onclick="toggleWalletAmount()" />
+                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style=" width:30px; height:27px;" onclick="toggleWalletAmount()" />
                 <span id="walletAmount" style="color:#ffbb38; margin-left:10px;">
                 @(decimal.Parse(WalletAmount).ToString("0.00") + " $")
 
             </span>
             </div>
             <script>
+              
                 var walletAmountElement = document.getElementById("walletAmount");
 
                 function toggleWalletAmount() {
@@ -95,9 +96,9 @@
                     }
                 }
             </script>
-            <pre>               </pre>
-            <a  asp-area="" asp-controller="CustomerProfile" asp-action="Profile">
-                <h5 style="color:gray;">@username</h5>
+            <pre>       </pre>
+            <a asp-area="" asp-controller="CustomerProfile" asp-action="Profile">
+                <h5 style="color:white;">@username</h5>
             </a>
             <a  asp-controller="CustomerProfile" asp-action="Profile">
                 <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />

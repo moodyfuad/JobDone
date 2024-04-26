@@ -44,7 +44,7 @@
 </head>
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top ">
+    <header id="header" class="fixed-top" style="background-color:black; opacity:93%;">
         <div class="container-fluid d-flex align-items-center justify-content-lg-between">
 
             <h1 class="logo me-auto me-lg-0"><img src="~/logogray.png" style="height:100px;" /></h1>
@@ -54,19 +54,19 @@
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link scrollto active" asp-controller="Seller" asp-action="Home"><h5>Home</h5></a></li>
-                    <li><a class="nav-link scrollto" style="color:gray;" asp-controller="Seller" asp-action="Order"><h5>Orders</h5></a></li>
-                    <li><a class="nav-link scrollto" style="color:gray;" asp-controller="Seller" asp-action="RequestedWrok"><h5>Requests</h5></a></li>
+                    <li><a class="nav-link scrollto"sp-controller="Seller" asp-action="Order"><h5>Orders</h5></a></li>
+                    <li><a class="nav-link scrollto"sp-controller="Seller" asp-action="RequestedWrok"><h5>Requests</h5></a></li>
                     <li>
-                        <a class="nav-link scrollto" style="color:gray;" asp-controller="SellerOrder" asp-action="Messages">
+                        <a class="nav-link scrollto"sp-controller="SellerOrder" asp-action="Messages">
                             <h5>
-                                <i class="fas fa-envelope"></i> Messages
+                                Messages
                             </h5>
                         </a>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-            <pre>    </pre>
+            <pre>                                                                          </pre>
             <div>
                 <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style=" color:gray; width:30px; height:27px;" onclick="toggleWalletAmount()" />
                 <span id="walletAmount" style="color:#ffbb38; margin-left:10px;">
@@ -88,9 +88,9 @@
                     }
                 }
             </script>
-            <pre>               </pre>
+            <pre>      </pre>
             <a asp-area="" asp-controller="SellerProfile" asp-action="Profile">
-                <h5 style="color:gray;">@username</h5>
+                <h5 style="color:white;">@username</h5>
             </a>
             <a asp-controller="SellerProfile" asp-action="Profile">
                 <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />

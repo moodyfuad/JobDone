@@ -31,9 +31,9 @@ namespace JobDone.Controllers.Admin
         }
 
         [HttpPost]
-        public IActionResult DeleteCategory(short id)
+        public IActionResult EditCategory(short id, string categorieName)
         {
-            _category.DeleteCategory(id);
+            _category.EditCategory(id, categorieName);
             return RedirectToAction("AddNewCategory", "Admin");
         }
     }
