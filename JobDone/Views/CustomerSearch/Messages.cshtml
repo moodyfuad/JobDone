@@ -27,23 +27,16 @@
                                 string base64Image = Convert.ToBase64String(seller.ProfilePicture);
                             }
                             <div class="image-container d-flex align-items-center justify-content-center" style="margin-top:5px">
-                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" width="150">
+                                <img src="data:image/jpeg;base64,@base64Image" alt="Profile Picture" class="rounded-circle" height="150" width="150">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">@seller.Username</h5>
                                 <div class="rating">
-                                    @{
-                                        short count = 0;
-                                    }
-                                    @for (short i = 0; i < seller.Rate; i++)
-                                    {
-                                        count++;
-                                        <span class="star" style="color:gold">&#9733;</span>
-                                    }
-                                    @for (short i = 0; i < 5 - count; i++)
-                                    {
-                                        <span class="star" style="color:gold">&#9734;</span>
-                                    }
+                                    <div class="rating">
+                                        <span>@seller.Rate</span>
+                                        <span>&#9733;</span>
+
+                                    </div>
                                 </div>
                                 @{
                                     List<string> services = Model.Services.Where(x => x.SellerIdFk == seller.Id).Select(x => x.Name).ToList();
