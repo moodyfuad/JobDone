@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.IO.Compression;
 using System.Security.Claims;
 
 namespace JobDone.Controllers.Admin
@@ -118,17 +119,34 @@ namespace JobDone.Controllers.Admin
         [HttpPost]
         public async Task<IActionResult> AddBanner(string option, IFormFile banner)
         {
-            IEnumerable<BannerModel> banners;
-            if (option == "Customer")
+            IEnumerable<BannerModel> banners = new List<BannerModel>();
+
+            if (banner != null)
             {
-                _banner.AddNewBannerInCustomer(banner);
-                banners = await _banner.GetAllCustomerBanners();
+                string? extension = Path.GetExtension(banner.FileName);
+                string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                {
+
+                    TempData["imageError"] = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+                    return RedirectToAction("EditBanners", "Admin");
+                }
+                else
+                {
+                    if (option == "Customer")
+                    {
+                        _banner.AddNewBannerInCustomer(banner);
+                        banners = await _banner.GetAllCustomerBanners();
+                    }
+                    else
+                    {
+                        _banner.AddNewBannerInSeller(banner);
+                        banners = await _banner.GetAllSellerBanners();
+                    }
+                }
+
             }
-            else
-            {
-                _banner.AddNewBannerInSeller(banner);
-                banners = await _banner.GetAllSellerBanners();
-            }
+            
 
             ViewBag.option = option;
             return View("EditBanners", banners);
@@ -138,8 +156,25 @@ namespace JobDone.Controllers.Admin
         public async Task<IActionResult> Edit(short picId, IFormFile picFile)
         {
             var banner = _banner.GetBannerById(picId);
-            _banner.ModeifyBanner(banner, picFile);
+            if (picFile != null)
+            {
+                string? extension = Path.GetExtension(picFile.FileName);
+                string[] imageExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                if (!imageExtensions.Contains(extension, StringComparer.OrdinalIgnoreCase))
+                {
+
+                    TempData["imageError"] = $"Please choose an image to upload.(.jpg | .jpeg | .png | .gif)";
+
+                }
+                else
+                {
+                    _banner.ModeifyBanner(banner, picFile);
+                }
+
+            }
             return RedirectToAction("EditBanners", ViewBag.option);
+
+
         }
 
         [HttpPost]
