@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JobDone.Models.Seller
 {
@@ -104,8 +105,8 @@ namespace JobDone.Models.Seller
         {
             var sellers = await getAllTheSeller();
             var filteredSellers = sellers
-                .Where(s => s.Username.StartsWith(search, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+                .Where(s => s.Username.StartsWith(search, StringComparison.OrdinalIgnoreCase)).
+                OrderBy(s => s.Rate).Reverse().ToList();
 
             return filteredSellers;
         }
@@ -160,7 +161,8 @@ namespace JobDone.Models.Seller
         public async Task<IEnumerable<SellerModel>> GetAllSellersWithCategory(string search)
         {
             var sellers = await getAllTheSeller();
-            var filteredSellers = sellers.Where(s => s.CategoryIdFkNavigation.Name.StartsWith(search, StringComparison.OrdinalIgnoreCase)).ToList();
+            var filteredSellers = sellers.Where(s => s.CategoryIdFkNavigation.Name.StartsWith(search, StringComparison.OrdinalIgnoreCase)).
+                OrderBy(s=> s.Rate).Reverse().ToList();
             return filteredSellers;
         }
 
@@ -373,6 +375,22 @@ namespace JobDone.Models.Seller
             }
 
         }
+
+        public async Task<List<SellerModel>> GetSellersByRate(int number)
+        {
+            List<SellerModel>? sellers = await _seller
+                .Include(s => s.CategoryIdFkNavigation).OrderBy(s => s.Rate)
+                .Reverse().Take(number).ToListAsync();
+            return sellers;
+        }
+         public async Task<List<SellerModel>> GetSellersByRate()
+        {
+            List<SellerModel>? sellers = await _seller
+                .Include(s => s.CategoryIdFkNavigation).OrderBy(s => s.Rate)
+                .Reverse().ToListAsync();
+            return sellers;
+        }
+
 
 
     }

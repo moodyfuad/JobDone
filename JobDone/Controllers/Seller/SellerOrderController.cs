@@ -111,6 +111,13 @@ namespace JobDone.Controllers.Seller
             return View(viewModel);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DeleteMessages(short customerId, short sellerId)
+        {
+            await _message.DeleteAllMessagesBetweenCustomerAndSeller(customerId, sellerId);
+            return RedirectToAction("Messages");
+        }
+
         [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult GetAllMessages(short customerId, short sellerId)
         {

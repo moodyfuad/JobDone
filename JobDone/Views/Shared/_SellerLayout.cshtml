@@ -89,14 +89,14 @@
                 }
             </script>
             <pre>               </pre>
-            <a asp-area="" asp-controller="CustomerProfile" asp-action="Profile">
+            <a asp-area="" asp-controller="SellerProfile" asp-action="Profile">
                 <h5 style="color:gray;">@username</h5>
             </a>
-            <a asp-controller="CustomerProfile" asp-action="Profile">
+            <a asp-controller="SellerProfile" asp-action="Profile">
                 <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />
             </a>
 
-            <form method="get" asp-action="Logout" asp-controller="Customer" style="display:contents">
+            <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
                 <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; right:0;">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
