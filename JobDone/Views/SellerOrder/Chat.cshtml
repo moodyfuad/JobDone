@@ -25,7 +25,7 @@
                 <div class="input">
                     <input hidden name="customerId" value="@Model.Customer.Id" />
                     <input hidden name="sellerId" value="@Model.Seller.Id" />
-                    <input name="content" placeholder="Type your message here!" type="text" />
+                    <input id="content" name="content" placeholder="Type your message here!" type="text" />
                     <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
                 </div>
             </form>
@@ -76,6 +76,7 @@
                     $('form#sendMessageForm').submit(function (event) {
                         event.preventDefault(); // Prevent the default form submission
 
+                        var savedScrollPosition = saveScrollPosition();
                         var form = $(this);
                         var url = form.attr('action');
                         var formData = form.serialize(); // Serialize the form data
@@ -87,12 +88,15 @@
                             success: function (result) {
                                 // Update the chat container with the updated partial view
                                 $('#chatContainer').html(result);
+                                restoreScrollPosition(savedScrollPosition);
                             },
                             error: function (xhr, status, error) {
                                 // Handle any errors
                                 console.log(error);
                             }
                         });
+                        document.getElementById("content").value = "";
+
                     });
                 });
             </script>

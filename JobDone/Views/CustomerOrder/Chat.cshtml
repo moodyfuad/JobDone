@@ -65,7 +65,8 @@
                 $(function () {
                     $('form#sendMessageForm').submit(function (event) {
                         event.preventDefault(); // Prevent the default form submission
-                        
+
+                        var savedScrollPosition = saveScrollPosition();
                         var form = $(this);
                         var url = form.attr('action');
                         var formData = form.serialize(); // Serialize the form data
@@ -77,6 +78,7 @@
                             success: function (result) {
                                 // Update the chat container with the updated partial view
                                 $('#chatContainer').html(result);
+                                restoreScrollPosition(savedScrollPosition);
                             },
                             error: function (xhr, status, error) {
                                 // Handle any errors
