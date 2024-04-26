@@ -9,10 +9,36 @@
     int oldworkId = 0;
 }
 
+<style>
+    
+    .get-started-btn {
+        color: black;
+        border-radius: 4px;
+        padding: 7px 25px 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border: 2px solid #ffc451;
+    }
+
+        .get-started-btn:hover {
+            background: #ffbb38;
+            color: #343a40;
+        }
+
+    @@media (max-width: 992px) {
+        .get-started-btn {
+            padding: 7px 20px 8px 20px;
+            margin-right: 15px;
+        }
+    }
+</style>
+
 <div class="container" style="margin-top:120px;">
     <div class="select-box">
         <form action="ChooseWork" method="post">
-    <select style="width:500px" name="oldworkId" required>
+            <select class="get-started-btn" style="width:500px; margin-left:25%;" name="oldworkId" required>
             
         <option hidden>Post</option>
         @foreach (var work in Model.sellerOldWorkModels)
@@ -21,14 +47,14 @@
         }
 
     </select>
-    <button type="submit" name="oldworkId" value="@oldworkId" >Select</button>
+            <button class="get-started-btn" type="submit" name="oldworkId" value="@oldworkId">Select</button>
         </form>
 </div>
 @{
     if(Model.OneSellerOldWorkModel == null)
     {
         <div class="container" style="margin-top:120px; margin-bottom:400px">
-                <h1 class=" text-center">Select Post To Edit it</h1>
+                <h1 class=" get-started-btn">Select Post To Edit it</h1>
         </div>
     }
     else
@@ -37,27 +63,28 @@
             <form action="EditOldWork" method="post" enctype="multipart/form-data">
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
+                        
                         <div class="col-sm-12 col-xl-6">
-                            <div class="bg-light text-center rounded p-4">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="col-8">
-                                        <textarea style="width:100%; height:200px;margin-top:50px;" name="NewDscrepsion">@Model.OneSellerOldWorkModel.Description</textarea><br /><br />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-xl-6">
-                            <div class="bg-light text-center rounded p-4">
+                            <div>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="col-8">
                                         @{
                                             string base64ImageForNewOldWork = Convert.ToBase64String(Model.OneSellerOldWorkModel.Picture);
                                         }
-                                        <img class="bd-placeholder-img card-img-top" id="myImage" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64,@base64ImageForNewOldWork" width="100%" height="300px">
+                                        <img class="bd-placeholder-img card-img-top" id="myImage" style="border-radius:0.5em;margin-left:95%; margin-top:20px;" aria-label="Placeholder: Thumbnail" src="data:image/jpeg;base64,@base64ImageForNewOldWork" width="200%" height="300px">
 
                                         <div>
-                                            <input onchange="showButton()" type="file" id="imageInput" name="NewPhoto" accept="image/*">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" id="myButton" onclick="hideButton(),replaceImage()" style="background-color:cornflowerblue;color:white; margin-left:45%; margin-top:20px;">Sure</button>
+                                            <input onchange="showButton()" style="margin-left:120%;margin-top:10px;" type="file" id="imageInput" name="NewPhoto" accept="image/*">
+                                            <button type="button" class="get-started-btn" id="myButton" onclick="hideButton(),replaceImage()" style="margin-left:135%; margin-top:20px;">Sure</button>
+                                        </div>
+                                        <div >
+                                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                                <div class="col-8">
+                                                    <textarea style="width:200%; height:200px;margin-top:10px;margin-left:120%;" name="NewDscrepsion">@Model.OneSellerOldWorkModel.Description</textarea><br /><br />
+                                                    <input class="get-started-btn" type="submit" value="Edit The Post" placeholder="Edit" style="margin-left:180%;width:200px;" />
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,9 +92,10 @@
                         </div>
                     </div>
                 </div>
-
-                <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="Edit The Post" placeholder="Edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
-               
+                <br />
+                <br />
+                <br />
+                
             </form>
     }
    
