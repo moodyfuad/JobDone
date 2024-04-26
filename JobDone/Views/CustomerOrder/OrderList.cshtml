@@ -178,7 +178,7 @@
                                                     if (order.OrderStatus == "SellerCompleted")
                                                     {
                                                         <form method="post" asp-action="OrderCompleted" asp-route-id="@order.orderId">
-                                                            <button type="submit" class="get-started-btn" style="float:right; padding:5px" class="fw-medium">Completed</button>
+                                                            <button type="submit" class="get-started-btn" style="float:right; background-color:orange" class="fw-medium">Completed</button>
                                                         </form>
                                                     }
                                                     else if (order.OrderStatus == "Working")
