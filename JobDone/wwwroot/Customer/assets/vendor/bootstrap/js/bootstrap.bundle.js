@@ -1158,7 +1158,6 @@
       this.touchTimeout = null;
       this._swipeHelper = null;
       this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element);
-      this._addEventListeners();
       if (this._config.ride === CLASS_NAME_CAROUSEL) {
         this.cycle();
       }
