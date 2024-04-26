@@ -99,8 +99,6 @@
         width: 50%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
     }
     /* النمط لمحتوى النافذة المنبثقة */
     .popup-content {
@@ -109,6 +107,29 @@
         padding: 20px;
         border: 1px solid #888;
         width: 80%;
+    }
+
+    .get-started-btn {
+        color: black;
+        border-radius: 4px;
+        padding: 7px 25px 8px 25px;
+        white-space: nowrap;
+        transition: 0.3s;
+        font-size: 14px;
+        display: inline-block;
+        border: 2px solid #ffc451;
+    }
+
+        .get-started-btn:hover {
+            background: #ffbb38;
+            color: #343a40;
+        }
+
+    @@media (max-width: 992px) {
+        .get-started-btn {
+            padding: 7px 20px 8px 20px;
+            margin-right: 15px;
+        }
     }
 
     </style>
@@ -129,7 +150,7 @@
                                 <div class="mt-3">
                                    
                                      <h2>@Model.Username</h2>
-                                    
+                                    <h4 style="color:gray">@Model.FullName().ToString()</h4>
 
                                   
                                 </div>
@@ -171,7 +192,7 @@
                                 <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-info" style="color:white" onclick="openPopup()">Edit</button>
+                                        <button class="get-started-btn" style="" onclick="openPopup()">Edit</button>
                                         <form method="get" asp-action="Logout" asp-controller="Customer" style="display:contents">
                                             <input class="btn btn-danger btn-rounded btn-fw" type="submit" value="Logout" style="margin-left:1%; width:100px;" />
                                         </form>
@@ -184,7 +205,10 @@
                                                         @{
                                                             IFormFile? profilePictureAsFile = null;
                                                         }
-                                                        <input onchange="handleFileUpload(event)" name="profilePictureAsFile" type="file" id="imageInput" accept="image/*">
+                                                        <br />
+                                                        <div class ="text-center">
+                                                        <input  onchange="handleFileUpload(event)" name="profilePictureAsFile" type="file" id="imageInput" accept="image/*">
+                                                        </div>
                                                     </div>
                                                     <br /><br /><br /><br />
                                                     <div class="row">
@@ -267,7 +291,7 @@
                                                     </div>
                                                     <br /><br />
 
-                                                    <input class="btn btn-gradient-primary btn-rounded btn-fw" type="submit" value="edit" style="margin-left:30%;width:200px; background-color:cornflowerblue;" />
+                                                    <input class="get-started-btn" type="submit" value="edit" style="margin-left:30%;width:200px; background-color:#ffbb38;" />
                                                 </form>
                                             </div>
                                         </div>
