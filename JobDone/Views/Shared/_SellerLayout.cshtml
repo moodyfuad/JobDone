@@ -44,9 +44,9 @@
 </head>
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top" style="background-color:black; opacity:93%;">
+    <header id="header" class="fixed-top" style="background-color:black; opacity:93%; height:contain; padding:10px">
         <div class="container-fluid d-flex align-items-center justify-content-lg-between">
-            <div style="display:flex">
+            <div style="display:flex;">
                 <h1 class="logo me-auto me-lg-0"><img src="~/logogray.png" style="height:100px;" /></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -179,9 +179,10 @@
     </header> *@
 
 
-    <div class="container-fluid" style="margin-top:29px;--bs-gutter-x:0">
+    <div class="container-fluid" style="margin-top:0;--bs-gutter-x:0">
         <main role="main" class="pb-3">
-            <partial name="_Notification" />
+            <partial name="_Notification"/>
+
             @RenderBody()
         </main>
     </div>
