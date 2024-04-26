@@ -36,6 +36,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
          o.ExpireTimeSpan = TimeSpan.FromDays(364);
          o.LoginPath = "/Customer/LogIn";
          o.Cookie.Name = "JobDoneLogin";
+         o.AccessDeniedPath= "/Home/Index";
         });
 
 builder.Services.AddSession();
@@ -82,6 +83,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Customer}/{action=login}/{id?}/{username?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}/{username?}");
 
 app.Run();

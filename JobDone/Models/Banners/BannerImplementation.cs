@@ -59,7 +59,7 @@ namespace JobDone.Models.Banners
                 };
 
                 _banner.Add(bannerModel);
-                await _context.SaveChangesAsync();
+                _context.SaveChangesAsync().Wait();
             }
         }
 
@@ -96,7 +96,7 @@ namespace JobDone.Models.Banners
                 }
 
                 _context.Update(banner);
-                await _context.SaveChangesAsync();
+                _context.SaveChangesAsync().Wait();
             }
         }
     }
