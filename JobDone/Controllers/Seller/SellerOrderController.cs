@@ -95,7 +95,7 @@ namespace JobDone.Controllers.Seller
 
             viewModel.Messages = _context.MessageModels.ToList();
 
-            return RedirectToAction("Chat", new { customerId = customerId, sellerId = sellerId });
+            return PartialView("Chat", new { customerId = customerId, sellerId = sellerId });
         }
 
         [HttpGet]

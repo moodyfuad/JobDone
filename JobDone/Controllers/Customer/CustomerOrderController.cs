@@ -167,7 +167,7 @@ namespace JobDone.Controllers.Customer
 
             viewModel.Messages = _context.MessageModels.ToList();
 
-            return RedirectToAction("Chat", new { customerId = customerId, sellerId = sellerId });
+            return PartialView("_CustomerChatPartial", new { customerId = customerId, sellerId = sellerId });
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]

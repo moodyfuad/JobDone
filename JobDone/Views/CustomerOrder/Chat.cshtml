@@ -2,71 +2,91 @@
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/CustomerChat/stylee.css">
-    <link rel='stylesheet' href='/CustomerChat/styleee.css'>
-    <link rel="stylesheet" href="/CustomerChat/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
 <body>
     <div class="container" style="margin-top:100px;">
-    <div class="chat" id="chatContainer" style="width: 100%;">
-        @Html.Partial("_CustomerChatPartial", Model)
-    </div>
-    <div class="chat" style="height:70px;width:100%;">
-        <div class="messages" id="chat">
-            <form method="post" asp-action="Chat">
-                <div class="input">
-                    <input hidden name="customerId" value="@Model.Customer.Id" />
-                    <input hidden name="sellerId" value="@Model.Seller.Id" />
-                    <input name="content" placeholder="Type your message here!" type="text" />
-                    <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
-                </div>
-            </form>
+        <div id="chatContainerContainer">
+            <div class="chat" id="chatContainer" style="width: 100%;">
+                @Html.Partial("_CustomerChatPartial", Model)
+            </div>
         </div>
-    </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Function to save the current scroll position of the 'chat' div
-        function saveScrollPosition() {
-            return $('#chat').scrollTop();
-        }
+        <div class="chat" style="height:70px;width:100%;">
+            <div class="messages" id="chat">
+                <form method="post" asp-action="Chat" id="sendMessageForm">
+                    <div class="input">
+                        <input hidden name="customerId" value="@Model.Customer.Id" />
+                        <input hidden name="sellerId" value="@Model.Seller.Id" />
+                        <input name="content" placeholder="Type your message here!" type="text" />
+                        <input type="submit" value="send" style="width: 50px;background-color:forestgreen; color:white; padding: 5px 10px;" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+        <script>
+            // Function to save the current scroll position of the 'chat' div
+            function saveScrollPosition() {
+                return $('#chat').scrollTop();
+            }
 
-        // Function to restore the scroll position of the 'chat' div
-        function restoreScrollPosition(scrollPosition) {
-            $('#chat').scrollTop(scrollPosition);
-        }
+            // Function to restore the scroll position of the 'chat' div
+            function restoreScrollPosition(scrollPosition) {
+                $('#chat').scrollTop(scrollPosition);
+            }
 
-        function updateChatContent() {
-            var customerId = @Model.Customer.Id;
-            var sellerId = @Model.Seller.Id;
-            // Save the current scroll position of the 'chat' div before the update
-            var savedScrollPosition = saveScrollPosition();
+            function updateChatContent() {
+                var customerId = @Model.Customer.Id;
+                var sellerId = @Model.Seller.Id;
+                // Save the current scroll position of the 'chat' div before the update
+                var savedScrollPosition = saveScrollPosition();
 
-            $.ajax({
-                url: "/CustomerOrder/GetAllMessages",
-                type: "GET",
-                data: { customerId: customerId, sellerId: sellerId }
-            })
-                .done(function (data) {
-                    $('#chatContainer').html(data);
-                    // Restore the scroll position of the 'chat' div after the content update
-                    restoreScrollPosition(savedScrollPosition);
+                $.ajax({
+                    url: "/CustomerOrder/GetAllMessages",
+                    type: "GET",
+                    data: { customerId: customerId, sellerId: sellerId }
                 })
-                .fail(function () {
-                    console.log('Error occurred while updating chat content.');
+                    .done(function (data) {
+                        $('#chatContainer').html(data);
+                        // Restore the scroll position of the 'chat' div after the content update
+                        restoreScrollPosition(savedScrollPosition);
+                    })
+                    .fail(function () {
+                        console.log('Error occurred while updating chat content.');
+                    });
+            }
+
+            updateChatContent();
+
+            // Continue to update chat every 4 second
+            setInterval(updateChatContent, 5000);
+        </script>
+        @section scripts {
+            <script>
+                $(function () {
+                    $('form#sendMessageForm').submit(function (event) {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        var form = $(this);
+                        var url = form.attr('action');
+                        var formData = form.serialize(); // Serialize the form data
+
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: formData,
+                            success: function (result) {
+                                // Update the chat container with the updated partial view
+                                $('#chatContainer').html(result);
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle any errors
+                                console.log(error);
+                            }
+                        });
+                    });
                 });
+            </script>
         }
-
-        updateChatContent();
-
-        // Continue to update chat every 4 second
-        setInterval(updateChatContent, 5000);
-    </script>
     </div>
 </body>
 </html>
