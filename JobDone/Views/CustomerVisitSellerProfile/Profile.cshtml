@@ -123,6 +123,30 @@
         .hidden-button {
             display: none;
         }
+
+        .get-started-btn {
+            color: black;
+            border-radius: 4px;
+            padding: 7px 25px 8px 25px;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-block;
+            border: 2px solid #ffc451;
+        }
+
+            .get-started-btn:hover {
+                background: #ffbb38;
+                color: #343a40;
+            }
+
+        @@media (max-width: 992px) {
+            .get-started-btn {
+                padding: 7px 20px 8px 20px;
+                margin-right: 15px;
+            }
+        }
+
     </style>
 </head>
 <body style="">
@@ -187,7 +211,7 @@
                                 <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
                                     <input type="hidden" name="customerId" value="@Model.customerId" />
                                     <input type="hidden" name="sellerId" value="@Model.Seller.Id" />
-                                        <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="get-started-btn" style="background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">
                                             Message
                                         </button>
                                 </form>
