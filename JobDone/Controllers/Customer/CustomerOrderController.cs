@@ -146,7 +146,7 @@ namespace JobDone.Controllers.Customer
             viewModel.Customer = new CustomerModel();
             viewModel.Seller = new SellerModel();
             viewModel.Messages = _context.MessageModels.ToList();
-            viewModel.Customer.Id = customerId;
+            viewModel.Customer = _customer.GetCustomerById(customerId);
             viewModel.Seller = _seller.GetSellerById(sellerId);
 
             if (string.IsNullOrEmpty(content))
@@ -166,7 +166,7 @@ namespace JobDone.Controllers.Customer
 
             viewModel.Messages = _context.MessageModels.ToList();
 
-            return PartialView("_CustomerChatPartial", new { customerId = customerId, sellerId = sellerId });
+            return PartialView("_CustomerChatPartial", viewModel);
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]

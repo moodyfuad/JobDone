@@ -76,7 +76,7 @@ namespace JobDone.Controllers.Seller
             viewModel.Seller = new SellerModel();
             viewModel.Messages = _context.MessageModels.ToList();
             viewModel.Customer = _customer.GetCustomerById(customerId);
-            viewModel.Seller.Id = sellerId;
+            viewModel.Seller = _seller.GetSellerById(sellerId);
 
             if (string.IsNullOrEmpty(content))
             {
@@ -95,7 +95,7 @@ namespace JobDone.Controllers.Seller
 
             viewModel.Messages = _context.MessageModels.ToList();
 
-            return PartialView("Chat", new { customerId = customerId, sellerId = sellerId });
+            return PartialView("_SellerChatPartial", viewModel);
         }
 
         [HttpGet]
@@ -109,6 +109,13 @@ namespace JobDone.Controllers.Seller
                 Messages = await _message.GetAllMessages()
             };
             return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteMessages(short customerId, short sellerId)
+        {
+            await _message.DeleteAllMessagesBetweenCustomerAndSeller(customerId, sellerId);
+            return RedirectToAction("Messages");
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]

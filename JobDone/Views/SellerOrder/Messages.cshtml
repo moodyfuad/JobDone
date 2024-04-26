@@ -65,6 +65,13 @@
                                         Message
                                     </button>
                                 </form>
+                                <form id="deleteMessagesForm" asp-controller="SellerOrder" asp-action="DeleteMessages" method="get" style="display:contents">
+                                    <input type="hidden" name="customerId" value="@customer.Id" />
+                                    <input type="hidden" name="sellerId" value="@SellerId" />
+                                    <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event)">
+                                        <i class="bi bi-trash-fill"></i> Delete Messages
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
