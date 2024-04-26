@@ -24,6 +24,12 @@ namespace JobDone.Models.Category
         {
             return _category.FirstOrDefault(c => c.Id == id).Name ?? "Category Not Specified";
         }
+
+        public CategoryModel GetCategoryModelById(int id)
+        {
+            return _category.FirstOrDefault(c => c.Id == id);
+        }
+
         public async Task< CategoryModel > GetCategoryByIdAsync(int categoryId)
         {
             CategoryModel category = await _category.FirstOrDefaultAsync
@@ -42,13 +48,11 @@ namespace JobDone.Models.Category
             _context.SaveChanges();
         }
 
-        public void DeleteCategory(short CategoryId)
+        public void EditCategory(short cId, string CategoryName)
         {
-            CategoryModel category = new CategoryModel()
-            {
-                Id = CategoryId,
-            };
-            _category.Remove(category);
+            CategoryModel categoryModel = GetCategoryModelById(cId);
+            categoryModel.Name = CategoryName;
+            _category.Update(categoryModel);
             _context.SaveChanges();
         }
     }
