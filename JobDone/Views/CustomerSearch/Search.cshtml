@@ -51,7 +51,7 @@
                 </select>
             </div>
             &nbsp;
-                <button class="get-started-btn" type="submit">
+                <button class="get-started-btn" style="background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" type="submit">
                 <h7>
                     <i class="fas fa-search"></i> Search
                 </h7>
@@ -96,7 +96,7 @@
                                     <form asp-controller="CustomerOrder" asp-action="Chat" method="get">
                                         <input type="hidden" name="customerId" value="@CustomerId" />
                                         <input type="hidden" name="sellerId" value="@Seller.Id" />
-                                            <button type="submit" class="get-started-btn">
+                                            <button type="submit" class="get-started-btn" style="background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">
                                             Message
                                         </button>
                                     </form>
@@ -147,7 +147,9 @@
                             <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents">
                                 <input type="hidden" name="customerId" value="@CustomerId" />
                                 <input type="hidden" name="sellerId" value="@Seller.Id" />
-                                    <button type="submit" class="get-started-btn">Message</button>
+                                    <button type="submit" class="get-started-btn" style="background-color:#ffbb38" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">
+                                        Message
+                                        </button>
                             </form>
                             <form asp-controller="CustomerVisitSellerProfile" asp-action="Profile" method="get" style="display:contents">
                                 <input type="hidden" name="sellerId" value="@Seller.Id" />

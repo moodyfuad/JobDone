@@ -5,6 +5,35 @@
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
     string CustomerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 }
+<haed>
+    <style>
+        .get-started-btn {
+            color: black;
+            border-radius: 4px;
+            padding: 7px 25px 8px 25px;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-block;
+            border: 2px solid #ffc451;
+        }
+
+            .get-started-btn:hover {
+                background: #ffbb38;
+                color: #343a40;
+            }
+
+        @@media (max-width: 992px) {
+            .get-started-btn {
+                padding: 7px 20px 8px 20px;
+                margin-right: 15px;
+            }
+        }
+
+    </style>
+</haed>
+<body>
+
 
 <div class="container">
     <br />
@@ -51,20 +80,20 @@
                                 <form asp-controller="CustomerOrder" asp-action="Chat" method="get" style="display:contents">
                                         <input type="hidden" name="customerId" value="@CustomerId" />
                                         <input type="hidden" name="sellerId" value="@seller.Id" />
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="get-started-btn" style="background-color:#ffc451" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';">
                                             Message
                                         </button>
                                     </form>
                                 <form id="deleteMessagesForm" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get" style="display:contents">
                                         <input type="hidden" name="customerId" value="@CustomerId" />
                                         <input type="hidden" name="sellerId" value="@seller.Id" />
-                                        <button type="submit" class="btn btn-primary btn-danger" onclick="confirmDeleteMessages(event)">
+                                        <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event)">
                                             <i class="bi bi-trash-fill"></i> Delete Messages
                                         </button>
                                 </form>
                                 <form asp-controller="CustomerVisitSellerProfile" asp-action="Profile" method="get" style="display:contents">
                                     <input type="hidden" name="sellerId" value="@seller.Id" />
-                                    <button type="submit" class="btn btn-success">Visit</button>
+                                        <button type="submit" class="get-started-btn">Visit</button>
                                 </form>
 
                                         <script>
@@ -87,4 +116,5 @@
         }
     </div>
 </div>
-</div>
+    </div>
+</body>

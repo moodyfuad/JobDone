@@ -76,6 +76,11 @@
             }
         }
 
+
+        .hover-for-primary:hover {
+            background: #ffbb15;
+            color: #343a40;
+        }
     </style>
 
     </head>
@@ -116,7 +121,7 @@
         <div class="text-center">
             <h4>Want to search about a specific sellers?</h4>
             <form method="post" asp-controller="CustomerSearch" asp-action="Search">
-                <button class="get-started-btn" type="submit">
+                <button class="get-started-btn hover-for-primary:hover" style="background-color:#ffbb38;" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" type="submit">
                     <i class="fas fa-search"></i> Search
                 </button>
             </form>
