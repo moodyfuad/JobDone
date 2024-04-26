@@ -182,7 +182,7 @@ width: 1.1em;
                                         <h2 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Project name :</span>@item.orderByCustomer.OrderName</h2>
                                         <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Category :</span>@item.orderByCustomer.CategoryIdKfNavigation.Name</h5>
                                         <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Description :</span></h5>
-                                        <h5 class="font-size-sm" style="margin:10px;">@item.orderByCustomer.Description</h5>
+                                        <h6 class="font-size-sm" style="margin:10px;">@item.orderByCustomer.Description</h6>
                                         <h5 class="font-size-sm" style="margin:10px;"><span class="text-muted mr-2">Price :</span>$@item.orderByCustomer.Price.ToString("0.00")</h5>
 
                                 </div>
@@ -193,60 +193,76 @@ width: 1.1em;
                                     Show requests
                                 </button>
                             
-                                <ul class="dropdown-menu dropdown-menu-end" style="height:100px;width:700px;margin-left:100px;">
-                                    <li>
-                            @foreach(SellerModel seller in item.sellers){
-                                        <div class="d-sm-flex justify-content-between" style="margin-right:50px;margin-left:15px;height:87px;">
+                                <ul class="dropdown-menu dropdown-menu-end" style="height:contain;width:700px;margin-left:100px;">
+                                            @if(item.sellers != null && item.sellers.Count > 0)
+                                            {
+                                                @foreach (SellerModel seller in item.sellers)
+                                                {
+                                                    <li>
+                                                        <div class="d-sm-flex justify-content-between" style="height:87px; margin:10px 50px 20px 15px; padding-bottom:25px">
 
-                                        <div class="media d-block d-sm-flex text-center text-sm-left">
-                                                            <a class="cart-item-thumb mx-auto mr-sm-4" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
-                                                        <img style="width:70px;" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Profile picture">
-                                                    </a>
-                                                    <div class="media-body pt-3" style="padding-top: 0rem !important;margin-left:10px;">
-                                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
-                                                    <a style="color:black; text-decoration:none" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
-                                                       <h3 class="product-card-title font-weight-semibold border-0 pb-0 ">
-                                                                        @@@seller.Username
-                                                       </h3>
-                                                    </a>
-                                                <div class="font-size-sm">
-                                                <span class="text-muted mr-2">Services:
-                                                </span>
-                                                @string.Join(", ",(seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser=> ser.Name).ToList()))
-                                                    <div >
-                                                        <span>@seller.Rate</span>
-                                                        <span>&#9733;</span>
+                                                            <div class="media d-block d-sm-flex text-center text-sm-left">
+                                                                <a class="cart-item-thumb mx-auto mr-sm-4" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
+                                                                    <img style="width:70px;" height="70px" src="data:image/jpeg;base64,@Convert.ToBase64String(seller.ProfilePicture)" class="rounded-circle" alt="Profile picture">
+                                                                </a>
+                                                                <div class="media-body pt-3" style="padding-top: 0rem !important;margin-left:10px;">
+                                                                    <h3 class="product-card-title font-weight-semibold border-0 pb-0">@seller.FirstName @seller.LastName</h3>
+                                                                    <a style="color:black; text-decoration:none" href="/CustomerVisitSellerProfile/Profile?sellerId=@seller.Id">
+                                                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0 ">
+                                                                            @@@seller.Username
+                                                                        </h3>
+                                                                    </a>
+                                                                    <div class="font-size-sm">
+                                                                        <span class="text-muted mr-2">
+                                                                            Services:
+                                                                        </span>
+                                                                        @string.Join(", ", (seller.ServiceModels.Where(ser => ser.SellerIdFk == seller.Id).Select(ser => ser.Name).ToList()))
+                                                                        <div>
+                                                                            <span>@seller.Rate</span>
+                                                                            <span>&#9733;</span>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
-                                                    @using (Html.BeginForm("AcceptSeller", "CustomerRequestWork", FormMethod.Post))
-                                                    {
-                                                                <button asp-action="AcceptSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="get-started-btn" style="margin-bottom:7px;background-color:#ffbb38; width:120px;" type="submit">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw mr-1">
-                                                            <polyline points="23 4 23 10 17 10"></polyline>
-                                                            <polyline points="1 20 1 14 7 14"></polyline>
-                                                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                                                            </svg>Accept
-                                                        </button>
-                                                    }
-                                                    @using (Html.BeginForm("RemoveSeller", "CustomerRequestWork", FormMethod.Post))
-                                                    {
-                                                                <button asp-action="RemoveSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="get-started-btn" type="submit">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-1">
-                                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                                                            </svg>Deny
-                                                        </button>
-                                                    }
-                                            </div>
-                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
+                                                                @using (Html.BeginForm("AcceptSeller", "CustomerRequestWork", FormMethod.Post))
+                                                                {
+                                                                    <button asp-action="AcceptSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="get-started-btn" style="margin-bottom:7px;background-color:#ffbb38; width:120px;" type="submit">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw mr-1">
+                                                                            <polyline points="23 4 23 10 17 10"></polyline>
+                                                                            <polyline points="1 20 1 14 7 14"></polyline>
+                                                                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                                                        </svg>Accept
+                                                                    </button>
+                                                                }
+                                                                @using (Html.BeginForm("RemoveSeller", "CustomerRequestWork", FormMethod.Post))
+                                                                {
+                                                                    <button asp-action="RemoveSeller" asp-controller="CustomerRequestWork" asp-route-SellerId="@seller.Id" asp-route-OrderByCustomerId="@item.orderByCustomer.Id" class="get-started-btn" style="width:120px;" type="submit">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-1">
+                                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                                        </svg>Deny
+                                                                    </button>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <hr style="width:90%; margin:auto" />
+                                                    </li>
+                                                }
                                             }
-                                    </li>
+                                            else
+                                            {
+                                                <li>
+                                                    <h4 style="margin:auto;padding:30px; text-align:center">
+                                                    No Requests Yet
+                                                    </h4>
+                                                </li>
+                                            }
+
+                                            
                                 </ul>
                             
                             </div>
