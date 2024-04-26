@@ -1,5 +1,6 @@
 ﻿using JobDone.Data;
 using Microsoft.EntityFrameworkCore;
+using System.IO.Compression;
 
 namespace JobDone.Models.Banners
 {
@@ -32,6 +33,56 @@ namespace JobDone.Models.Banners
         public BannerModel GetBannerById(int id)
         {
             return _banner.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void Delete(BannerModel banner)
+        {
+            _banner.Remove(banner);
+            _context.SaveChanges();
+        }
+
+        public void AddNewBannerInCustomer(IFormFile banner)
+        {
+            if(banner != null)
+            {
+                byte[] pictureBytes;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    banner.CopyTo(memoryStream);
+                    pictureBytes = memoryStream.ToArray();
+                }
+
+                BannerModel bannerModel = new BannerModel()
+                {
+                    Picture = pictureBytes,
+                    ForWho = 1,
+                };
+
+                _banner.Add(bannerModel);
+                _context.SaveChanges();
+            }
+        }
+
+        public void AddNewBannerInSeller(IFormFile banner)
+        {
+            byte[] pictureBytes;
+            if(banner != null)
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    banner.CopyTo(memoryStream);
+                    pictureBytes = memoryStream.ToArray();
+                }
+
+                BannerModel bannerModel = new BannerModel()
+                {
+                    Picture = pictureBytes,
+                    ForWho = 2,
+                };
+
+                _banner.Add(bannerModel);
+                _context.SaveChanges();
+            }
         }
 
         public void ModeifyBanner(BannerModel banner, IFormFile picFile)

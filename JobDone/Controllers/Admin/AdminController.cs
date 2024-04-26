@@ -116,11 +116,39 @@ namespace JobDone.Controllers.Admin
         }
 
         [HttpPost]
+        public async Task<IActionResult> AddBanner(string option, IFormFile banner)
+        {
+            IEnumerable<BannerModel> banners;
+            if (option == "Customer")
+            {
+                _banner.AddNewBannerInCustomer(banner);
+                banners = await _banner.GetAllCustomerBanners();
+            }
+            else
+            {
+                _banner.AddNewBannerInSeller(banner);
+                banners = await _banner.GetAllSellerBanners();
+            }
+
+            ViewBag.option = option;
+            return View("EditBanners", banners);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Edit(short picId, IFormFile picFile)
         {
             var banner = _banner.GetBannerById(picId);
             _banner.ModeifyBanner(banner, picFile);
             return RedirectToAction("EditBanners", ViewBag.option);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string option, short picId)
+        {
+            var banner = _banner.GetBannerById(picId);
+            _banner.Delete(banner);
+            ViewBag.option = option;
+            return RedirectToAction("EditBanners", "Admin", ViewBag.option);
         }
 
         public async Task<IActionResult> EditBanners()

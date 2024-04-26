@@ -8,5 +8,8 @@
 
         public void ModeifyBanner(BannerModel banner, IFormFile picFile);
         public BannerModel GetBannerById(int id);
+        public void AddNewBannerInCustomer(IFormFile banner);
+        public void AddNewBannerInSeller(IFormFile banner);
+        public void Delete(BannerModel banner);
     }
 }

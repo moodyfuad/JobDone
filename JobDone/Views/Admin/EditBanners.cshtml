@@ -16,19 +16,11 @@
                     {
                         <option selected value="Customer">Customer</option>
                         <option value="Seller">Seller</option>
-                        <option value="Admin">Admin</option>
                     }
                     else if (ViewBag.option == "Seller")
                     {
                         <option value="Customer">Customer</option>
                         <option selected value="Seller">Seller</option>
-                        <option value="Admin">Admin</option>
-                    }
-                    else
-                    {
-                        <option value="Customer">Customer</option>
-                        <option value="Seller">Seller</option>
-                        <option selected value="Admin">Admin</option>
                     }
                 </select>
             </div>
@@ -68,6 +60,15 @@
                                     <input class="form-control-file pic-file-input" style="margin-left:10px" placeholder="Select image" name="picFile" type="file" accept="image/*" data-index="@index" onchange="enableButton(event)" />
                                 </div>
                             </form>
+                            <form asp-controller="Admin" method="post" asp-action="Delete">
+                                <input type="hidden" name="picId" value="@pic.Id" />
+                                <input type="hidden" name="option" value="@ViewBag.option" />
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-secondary mr-2 edit-button" style="width:150px;background-color:gray" type="submit">
+                                        Delete banner
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -98,3 +99,8 @@
         </div>
     </div>
 <br /><br /><br />
+<form asp-action="AddBanner" asp-controller="Admin" enctype="multipart/form-data">
+    <input type="file" name="banner" accept="image/*" />
+    <input type="text" name="option" value="@ViewBag.option" hidden/>
+    <button type="submit">Ok</button>
+</form>
