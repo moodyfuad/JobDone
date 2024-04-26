@@ -14,12 +14,14 @@
 </head>
 <body>
     <div class="container" style="margin-top:100px;">
-    <div class="chat" id="chatContainer" style="width: 100%;">
-        @Html.Partial("_SellerChatPartial", Model)
-    </div>
+        <div id="chatContainerContainer">
+            <div class="chat" id="chatContainer" style="width: 100%;">
+                @Html.Partial("_SellerChatPartial", Model)
+            </div>
+        </div>
     <div class="chat" style="height:70px;width:100%;">
         <div class="messages" id="chat">
-            <form method="post" asp-action="Chat">
+                <form method="post" asp-action="Chat" id="sendMessageForm">
                 <div class="input">
                     <input hidden name="customerId" value="@Model.Customer.Id" />
                     <input hidden name="sellerId" value="@Model.Seller.Id" />
@@ -68,7 +70,33 @@
         // Continue to update chat every 4 second
         setInterval(updateChatContent, 5000);
     </script>
+        @section scripts {
+            <script>
+                $(function () {
+                    $('form#sendMessageForm').submit(function (event) {
+                        event.preventDefault(); // Prevent the default form submission
 
+                        var form = $(this);
+                        var url = form.attr('action');
+                        var formData = form.serialize(); // Serialize the form data
+
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: formData,
+                            success: function (result) {
+                                // Update the chat container with the updated partial view
+                                $('#chatContainer').html(result);
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle any errors
+                                console.log(error);
+                            }
+                        });
+                    });
+                });
+            </script>
+        }
     </div>
 </body>
 </html>
