@@ -97,6 +97,16 @@ namespace JobDone.Controllers.Customer
                 return View("Profile", customer);
             }
 
+            DateOnly birthDate = vmCustomer.BirthDate;
+            DateTime currentDate = DateTime.Now;
+            byte age = (byte)(currentDate.Year - birthDate.Year);
+
+            if (age < 18)
+            {
+                ModelState.AddModelError("BirthDate", "Your Age Is Against Our Policy");
+                return View("Profile", customer);
+            }
+
             if (profilePictureAsFile != null)
             {
                 string? extension = Path.GetExtension(profilePictureAsFile.FileName);

@@ -84,40 +84,49 @@
 
             updateChatContent();
 
-            // Continue to update chat every 4 second
-            setInterval(updateChatContent, 5000);
-        </script>
-        @section scripts {
-            <script>
-                $(function () {
-                    $('form#sendMessageForm').submit(function (event) {
-                        event.preventDefault(); // Prevent the default form submission
+            $(function () {
+                $('form#sendMessageForm').submit(function (event) {
+                    event.preventDefault(); // Prevent the default form submission
 
+                    var contentInput = $('#content');
+                    var content = contentInput.val().trim(); // Get the value of the content input field and trim any leading/trailing whitespace
+
+                    if (content !== '') {
                         var savedScrollPosition = saveScrollPosition();
-                        var form = $(this);
-                        var url = form.attr('action');
-                        var formData = form.serialize(); // Serialize the form data
-                        
+                        var formData = $(this).serialize(); // Serialize the form data
+
                         $.ajax({
-                            url: url,
+                            url: $(this).attr('action'),
                             type: 'POST',
                             data: formData,
+                            beforeSend: function () {
+                                // Disable the send button before sending the message
+                                $('input[type="submit"]').prop('disabled', true);
+                            },
                             success: function (result) {
-                                // Update the chat container with the updated partial view
-                                $('#chatContainer').html(result);
+                                // Restore the scroll position of the 'chat' div after sending the message
                                 restoreScrollPosition(savedScrollPosition);
+                                // Update the chat content after sending the message
+                                updateChatContent();
                             },
                             error: function (xhr, status, error) {
                                 // Handle any errors
                                 console.log(error);
+                            },
+                            complete: function () {
+                                // Enable the send button after the request is complete
+                                $('input[type="submit"]').prop('disabled', false);
                             }
                         });
-                        document.getElementById("content").value = "";
 
-                    });
+                        contentInput.val(''); // Clear the content input field
+                    }
                 });
-            </script>
-        }
+            });
+
+            // Update chat content every 5 seconds
+            setInterval(updateChatContent, 5000);
+        </script>
     </div>
 </body>
 </html>

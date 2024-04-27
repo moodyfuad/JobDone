@@ -364,6 +364,7 @@
                                                     </div>
                                                     <div class="col-sm-9 text-secondary">
                                                         <input type="date" name="BirthDate" asp-for="sellerModels.BirthDate" value="@Model.sellerModels.BirthDate.ToString("yyyy-MM-dd")" placeholder="Enter your Birthdate" />
+                                                        <span asp-validation-for="sellerModels.BirthDate" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                                 <br /><br />
