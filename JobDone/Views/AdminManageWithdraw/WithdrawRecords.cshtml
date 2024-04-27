@@ -85,6 +85,30 @@
                     position: absolute;
                     color: gold;
                 }
+
+        .get-started-btn {
+            color: black;
+            border-radius: 4px;
+            padding: 7px 25px 8px 25px;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-block;
+            border: 2px solid #ffc451;
+        }
+
+            .get-started-btn:hover {
+                background: #ffbb38;
+                color: #343a40;
+            }
+
+        @@media (max-width: 992px) {
+            .get-started-btn {
+                padding: 7px 20px 8px 20px;
+                margin-right: 15px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -120,7 +144,7 @@
                                     <div class="me-4">
                                         <br />
                                         <form method="post" asp-action="Done">
-                                            <input class="btn btn-primary" type="submit" value="Done" />
+                                            <input class="btn btn-warning" type="submit" value="Done" />
                                             <input class="btn btn-primary" name="id" value="@request.Id" hidden/>
                                         </form>
                                     </div>
@@ -163,7 +187,7 @@
                     {
                         <form method="post" asp-action="WithdrawRecords">
                             <div style="text-align: right;">
-                                <input class="btn btn-primary" name="Option" type="submit" value="Next" />
+                                <input class="btn btn-warning" name="Option" type="submit" value="Next" />
                             </div>
                             @{
                                 var withdrawModels = Model.Withdraws.ToList();
@@ -200,7 +224,7 @@
                 </div>
             </div>
             <div class="col-xl-4">
-                <div class="mt-5 mt-lg-0">
+                <div class="mt-5 mt-lg-0" style="position:sticky;top:100px">
                     <div class="card border shadow-none">
                         <div class="card-header bg-transparent border-bottom py-3 px-4">
                             <h5 class="font-size-16 mb-0">Order Summary </h5>

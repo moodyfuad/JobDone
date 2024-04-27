@@ -71,6 +71,7 @@ namespace JobDone.Controllers.Customer
             else return View(viewModel);
         }
         [HttpGet]
+        [Authorize(Roles = TypesOfUsers.Customer)]
         public IActionResult ChangePassword()
         {
             return View();

@@ -4,7 +4,10 @@
 
 <link rel="stylesheet" href="~/SignUp/css/style.css" />
 
-<section class="container">
+
+<body>
+
+    <section class="container" style="max-width: 700px;background-color:white;margin-top:80px;">
     <header>Registration Form</header>
     <form class="form" method="post" enctype="multipart/form-data">
         <div class="input-box">
@@ -123,11 +126,12 @@
                 }
             </div>
         </div>
-        <input type="checkbox" name="name" value="" required style="margin-left:32%;" />Accept <a href="#">Privacy Policy</a>
+            <input type="checkbox" name="name" value="" required style="margin-left:32%;" />Accept <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
 
-        <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" style="background-color:blueviolet; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
+        <input type="submit" class="btn btn-gradient-warning btn-rounded btn-fw" style="background-color:#ffbb38; margin-left:30%; margin-top:5%; color:white; padding-left:15%;padding-right:15%;" value="Submit" />
         <br />
         <p class="text-center"><a class="large " asp-action="Login" style="">Do you have account? Login</a></p>
         
     </form>
-</section>
+    </section>
+</body>

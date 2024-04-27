@@ -22,12 +22,6 @@ namespace JobDone.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Privacy(int id) 
-        {
-            
-            return View(); 
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
