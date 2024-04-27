@@ -65,10 +65,10 @@
                                         Message
                                     </button>
                                 </form>
-                                <form id="deleteMessagesForm" asp-controller="SellerOrder" asp-action="DeleteMessages" method="get" style="display:contents">
+                                <form id="@customer.Id" asp-controller="SellerOrder" asp-action="DeleteMessages" method="get" style="display:contents">
                                     <input type="hidden" name="customerId" value="@customer.Id" />
                                     <input type="hidden" name="sellerId" value="@SellerId" />
-                                    <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event)">
+                                    <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event,@customer.Id)">
                                         <i class="bi bi-trash-fill"></i> Delete Messages
                                     </button>
                                 </form>
@@ -82,3 +82,15 @@
     </div>
 </div>
 </div>
+
+<script>
+    function confirmDeleteMessages(event, formId) {
+        event.preventDefault();
+
+        var confirmation = confirm("Are you sure you want to delete the messages?");
+
+        if (confirmation) {
+            document.getElementById(formId).submit();
+        }
+    }
+</script>

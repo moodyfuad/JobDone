@@ -84,10 +84,10 @@
                                             Message
                                         </button>
                                     </form>
-                                <form id="deleteMessagesForm" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get" style="display:contents">
+                                    <form id="@seller.Id" asp-controller="CustomerSearch" asp-action="DeleteMessages" method="get" style="display:contents">
                                         <input type="hidden" name="customerId" value="@CustomerId" />
                                         <input type="hidden" name="sellerId" value="@seller.Id" />
-                                        <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event)">
+                                        <button type="submit" class="get-started-btn" onclick="confirmDeleteMessages(event,@seller.Id)">
                                             <i class="bi bi-trash-fill"></i> Delete Messages
                                         </button>
                                 </form>
@@ -97,13 +97,13 @@
                                 </form>
 
                                         <script>
-                                            function confirmDeleteMessages(event) {
+                                            function confirmDeleteMessages(event,formId) {
                                                 event.preventDefault();
 
                                                 var confirmation = confirm("Are you sure you want to delete the messages?");
 
                                                 if (confirmation) {
-                                                    document.getElementById("deleteMessagesForm").submit();
+                                                    document.getElementById(formId).submit();
                                                 }
                                             }
                                         </script>

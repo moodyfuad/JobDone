@@ -118,7 +118,7 @@ namespace JobDone.Controllers.Admin
 
         [HttpPost]
         public async Task<IActionResult> AddBanner(string option, IFormFile banner)
-        {
+        {            
             IEnumerable<BannerModel> banners = new List<BannerModel>();
 
             if (banner != null)
