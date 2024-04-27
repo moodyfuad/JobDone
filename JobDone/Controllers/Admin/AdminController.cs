@@ -106,11 +106,11 @@ namespace JobDone.Controllers.Admin
         {
             IEnumerable<BannerModel> banners;
             if (option == "Customer")
-                banners =  _banner.GetAllCustomerBanners().Result;
+                banners =  await _banner.GetAllCustomerBanners();
             else if (option == "Seller")
-                banners =  _banner.GetAllSellerBanners().Result;
+                banners =  await _banner.GetAllSellerBanners();
             else
-                banners = _banner.GetAllAdminBanners().Result;
+                banners = await _banner.GetAllAdminBanners();
 
             ViewBag.option = option;
             return View(banners);
@@ -136,12 +136,12 @@ namespace JobDone.Controllers.Admin
                     if (option == "Customer")
                     {
                         _banner.AddNewBannerInCustomer(banner);
-                        banners = _banner.GetAllCustomerBanners().Result;
+                        banners = await _banner.GetAllCustomerBanners();
                     }
                     else
                     {
                         _banner.AddNewBannerInSeller(banner);
-                        banners = _banner.GetAllSellerBanners().Result;
+                        banners = await _banner.GetAllSellerBanners();
                     }
                 }
 
