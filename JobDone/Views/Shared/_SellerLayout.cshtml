@@ -44,63 +44,69 @@
 </head>
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top" style="background-color:black; opacity:93%;">
+    <header id="header" class="fixed-top" style="background-color:black; opacity:93%; height:contain; padding:10px">
         <div class="container-fluid d-flex align-items-center justify-content-lg-between">
+            <div style="display:flex;">
+                <h1 class="logo me-auto me-lg-0"><img src="~/logogray.png" style="height:100px;" /></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-            <h1 class="logo me-auto me-lg-0"><img src="~/logogray.png" style="height:100px;" /></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+                <nav id="navbar" class="navbar order-last order-lg-0">
+                    <ul>
+                        <li><a class="nav-link scrollto active" asp-controller="Seller" asp-action="Home"><h5>Home</h5></a></li>
+                        <li><a class="nav-link scrollto" sp-controller="Seller" asp-action="Order"><h5>Orders</h5></a></li>
+                        <li><a class="nav-link scrollto" sp-controller="Seller" asp-action="RequestedWrok"><h5>Requests</h5></a></li>
+                        <li>
+                            <a class="nav-link scrollto" sp-controller="SellerOrder" asp-action="Messages">
+                                <h5>
+                                    Messages
+                                </h5>
+                            </a>
+                        </li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" asp-controller="Seller" asp-action="Home"><h5>Home</h5></a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Seller" asp-action="Order"><h5>Orders</h5></a></li>
-                    <li><a class="nav-link scrollto" asp-controller="Seller" asp-action="RequestedWrok"><h5>Requests</h5></a></li>
-                    <li>
-                        <a class="nav-link scrollto" asp-controller="SellerOrder" asp-action="Messages">
-                            <h5>
-                                Messages
-                            </h5>
-                        </a>
-                    </li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-            <pre>                                                                          </pre>
-            <div>
-                <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style=" color:gray; width:30px; height:27px;" onclick="toggleWalletAmount()" />
-                <span id="walletAmount" style="color:#ffbb38; margin-left:10px;">
-                    @(decimal.Parse(WalletAmount).ToString("0.00") + " $")
-
-                </span>
             </div>
-            <script>
-                var walletAmountElement = document.getElementById("walletAmount");
+            
+            <div style="display:flex;align-items:center; justify-content:center; gap:15px">
+                <div>
+                    <div>
+                        <img src="~/Customer/Picture/pngwing.com.png" alt="Alternate Text" style=" color:gray; width:30px; height:27px;" onclick="toggleWalletAmount()" />
+                        <span id="walletAmount" style="color:#ffbb38; margin-left:10px;">
+                            @(decimal.Parse(WalletAmount).ToString("0.00") + " $")
 
-                function toggleWalletAmount() {
-                    var stars = '*'.repeat(document.getElementById("walletAmount").innerText.length);
+                        </span>
+                    </div>
+                    <script>
+                        var walletAmountElement = document.getElementById("walletAmount");
 
-                    if (document.getElementById("walletAmount").innerHTML === stars) {
-                        document.getElementById("walletAmount").innerText = "@(decimal.Parse(Context.Session.GetString("WalletAmount")).ToString("0.00")) $"
-                    }
-                    else {
-                        document.getElementById("walletAmount").innerHTML = stars;
-                    }
-                }
-            </script>
-            <pre>      </pre>
-            <a asp-area="" asp-controller="SellerProfile" asp-action="Profile">
-                <h5 style="color:white;">@username</h5>
-            </a>
-            <a asp-controller="SellerProfile" asp-action="Profile">
-                <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />
-            </a>
+                        function toggleWalletAmount() {
+                            var stars = '*'.repeat(document.getElementById("walletAmount").innerText.length);
 
-            <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
-                <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; right:0;">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </form>
+                            if (document.getElementById("walletAmount").innerHTML === stars) {
+                                document.getElementById("walletAmount").innerText = "@(decimal.Parse(Context.Session.GetString("WalletAmount")).ToString("0.00")) $"
+                            }
+                            else {
+                                document.getElementById("walletAmount").innerHTML = stars;
+                            }
+                        }
+                    </script>
+                </div>
+                
+                <a asp-area="" asp-controller="SellerProfile" asp-action="Profile">
+                    <h5 style="color:white;">@username</h5>
+                </a>
+                <a asp-controller="SellerProfile" asp-action="Profile">
+                    <img class="rounded-circle" src="data:image/jpeg;base64,@ProfilePicture" alt="Profile Picture" style="width:50px; height:50px;" />
+                </a>
+
+                <form method="get" asp-action="Logout" asp-controller="Seller" style="display:contents">
+                    <button class="btn btn-danger btn-circle btn-fw" type="submit" style="width: 40px; height: 40px; right:0;">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
 
         </div>
     </header><!-- End Header -->
@@ -173,9 +179,10 @@
     </header> *@
 
 
-    <div class="container-fluid" style="margin-top:29px;">
+    <div class="container-fluid" style="margin-top:0;--bs-gutter-x:0">
         <main role="main" class="pb-3">
-            <partial name="_Notification" />
+            <partial name="_Notification"/>
+
             @RenderBody()
         </main>
     </div>
