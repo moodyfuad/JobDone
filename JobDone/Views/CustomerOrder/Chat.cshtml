@@ -2,131 +2,138 @@
 @{
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
-<haed>
-    <style>
-        .get-started-btn {
-            color: black;
-            border-radius: 4px;
-            padding: 7px 25px 8px 25px;
-            white-space: nowrap;
-            transition: 0.3s;
-            font-size: 14px;
-            display: inline-block;
-            border: 2px solid #ffc451;
-        }
-
-            .get-started-btn:hover {
-                background: #ffbb38;
-                color: #343a40;
-            }
-
-        @@media (max-width: 992px) {
+<!DOCTYPE html>
+<html lang="en">
+    <haed>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/CustomerChat/stylee.css">
+    <link rel='stylesheet' href='/CustomerChat/styleee.css'>
+    <link rel="stylesheet" href="/CustomerChat/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <style>
             .get-started-btn {
-                padding: 7px 20px 8px 20px;
-                margin-right: 15px;
+                color: black;
+                border-radius: 4px;
+                padding: 7px 25px 8px 25px;
+                white-space: nowrap;
+                transition: 0.3s;
+                font-size: 14px;
+                display: inline-block;
+                border: 2px solid #ffc451;
             }
-        }
 
-    </style>
-</haed>
-<body>
-    <div class="container" style="margin-top:100px;">
-        <div id="chatContainerContainer">
-            <div class="chat" id="chatContainer" style="width: 100%;">
-                @Html.Partial("_CustomerChatPartial", Model)
+                .get-started-btn:hover {
+                    background: #ffbb38;
+                    color: #343a40;
+                }
+
+            @@media (max-width: 992px) {
+                .get-started-btn {
+                    padding: 7px 20px 8px 20px;
+                    margin-right: 15px;
+                }
+            }
+
+        </style>
+    </haed>
+    <body>
+        <div class="container" style="margin-top:100px;">
+            <div id="chatContainerContainer">
+                <div class="chat" id="chatContainer" style="width: 100%;">
+                    @Html.Partial("_CustomerChatPartial", Model)
+                </div>
             </div>
-        </div>
-        <div class="chat" style="height:70px;width:100%;">
-            <div class="messages" id="chat">
-                <form method="post" asp-action="Chat" id="sendMessageForm">
-                    <div class="input">
-                        <input hidden name="customerId" value="@Model.Customer.Id" />
-                        <input hidden name="sellerId" value="@Model.Seller.Id" />
-                        <input id="content" name="content" placeholder="Type your message here!" type="text" />
-                        <input type="submit" value="send" class="get-started-btn" style="width: 50px;background-color:#ffbb38; color:white; padding: 5px 10px;" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='#ffbb38';" />
-                    </div>
-                </form>
+            <div class="chat" style="height:70px;width:100%;">
+                <div class="messages" id="chat">
+                    <form method="post" asp-action="Chat" id="sendMessageForm">
+                        <div class="input">
+                            <input hidden name="customerId" value="@Model.Customer.Id" />
+                            <input hidden name="sellerId" value="@Model.Seller.Id" />
+                            <input id="content" name="content" placeholder="Type your message here!" type="text" />
+                        <input type="submit" value="send" style="width: 50px;background-color:#ffbb38; color:white; padding: 5px 10px;" />
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
-        <script>
-            // Function to save the current scroll position of the 'chat' div
-            function saveScrollPosition() {
-                return $('#chat').scrollTop();
-            }
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+            <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+            <script>
+                // Function to save the current scroll position of the 'chat' div
+                function saveScrollPosition() {
+                    return $('#chat').scrollTop();
+                }
 
-            // Function to restore the scroll position of the 'chat' div
-            function restoreScrollPosition(scrollPosition) {
-                $('#chat').scrollTop(scrollPosition);
-            }
+                // Function to restore the scroll position of the 'chat' div
+                function restoreScrollPosition(scrollPosition) {
+                    $('#chat').scrollTop(scrollPosition);
+                }
 
-            function updateChatContent() {
-                var customerId = @Model.Customer.Id;
-                var sellerId = @Model.Seller.Id;
-                // Save the current scroll position of the 'chat' div before the update
-                var savedScrollPosition = saveScrollPosition();
+                function updateChatContent() {
+                    var customerId = @Model.Customer.Id;
+                    var sellerId = @Model.Seller.Id;
+                    // Save the current scroll position of the 'chat' div before the update
+                    var savedScrollPosition = saveScrollPosition();
 
-                $.ajax({
-                    url: "/CustomerOrder/GetAllMessages",
-                    type: "GET",
-                    data: { customerId: customerId, sellerId: sellerId }
-                })
-                    .done(function (data) {
-                        $('#chatContainer').html(data);
-                        // Restore the scroll position of the 'chat' div after the content update
-                        restoreScrollPosition(savedScrollPosition);
+                    $.ajax({
+                        url: "/CustomerOrder/GetAllMessages",
+                        type: "GET",
+                        data: { customerId: customerId, sellerId: sellerId }
                     })
-                    .fail(function () {
-                        console.log('Error occurred while updating chat content.');
-                    });
-            }
-
-            updateChatContent();
-
-            $(function () {
-                $('form#sendMessageForm').submit(function (event) {
-                    event.preventDefault(); // Prevent the default form submission
-
-                    var contentInput = $('#content');
-                    var content = contentInput.val().trim(); // Get the value of the content input field and trim any leading/trailing whitespace
-
-                    if (content !== '') {
-                        var savedScrollPosition = saveScrollPosition();
-                        var formData = $(this).serialize(); // Serialize the form data
-
-                        $.ajax({
-                            url: $(this).attr('action'),
-                            type: 'POST',
-                            data: formData,
-                            beforeSend: function () {
-                                // Disable the send button before sending the message
-                                $('input[type="submit"]').prop('disabled', true);
-                            },
-                            success: function (result) {
-                                // Restore the scroll position of the 'chat' div after sending the message
-                                restoreScrollPosition(savedScrollPosition);
-                                // Update the chat content after sending the message
-                                updateChatContent();
-                            },
-                            error: function (xhr, status, error) {
-                                // Handle any errors
-                                console.log(error);
-                            },
-                            complete: function () {
-                                // Enable the send button after the request is complete
-                                $('input[type="submit"]').prop('disabled', false);
-                            }
+                        .done(function (data) {
+                            $('#chatContainer').html(data);
+                            // Restore the scroll position of the 'chat' div after the content update
+                            restoreScrollPosition(savedScrollPosition);
+                        })
+                        .fail(function () {
+                            console.log('Error occurred while updating chat content.');
                         });
+                }
 
-                        contentInput.val(''); // Clear the content input field
-                    }
+                updateChatContent();
+
+                $(function () {
+                    $('form#sendMessageForm').submit(function (event) {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        var contentInput = $('#content');
+                        var content = contentInput.val().trim(); // Get the value of the content input field and trim any leading/trailing whitespace
+
+                        if (content !== '') {
+                            var savedScrollPosition = saveScrollPosition();
+                            var formData = $(this).serialize(); // Serialize the form data
+
+                            $.ajax({
+                                url: $(this).attr('action'),
+                                type: 'POST',
+                                data: formData,
+                                beforeSend: function () {
+                                    // Disable the send button before sending the message
+                                    $('input[type="submit"]').prop('disabled', true);
+                                },
+                                success: function (result) {
+                                    // Restore the scroll position of the 'chat' div after sending the message
+                                    restoreScrollPosition(savedScrollPosition);
+                                    // Update the chat content after sending the message
+                                    updateChatContent();
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle any errors
+                                    console.log(error);
+                                },
+                                complete: function () {
+                                    // Enable the send button after the request is complete
+                                    $('input[type="submit"]').prop('disabled', false);
+                                }
+                            });
+
+                            contentInput.val(''); // Clear the content input field
+                        }
+                    });
                 });
-            });
 
-            // Update chat content every 5 seconds
-            setInterval(updateChatContent, 5000);
-        </script>
-    </div>
-</body>
+                // Update chat content every 5 seconds
+                setInterval(updateChatContent, 5000);
+            </script>
+        </div>
+    </body>
 </html>
