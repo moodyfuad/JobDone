@@ -112,7 +112,6 @@ namespace JobDone.Controllers.Customer
                 return RedirectToAction("Home", "Customer");
             }
 
-            HttpContext.SignOutAsync().Wait();
             return View();
         }
 
@@ -122,7 +121,6 @@ namespace JobDone.Controllers.Customer
             if (_customer.UsernameAndPasswordExists(customer))
             {
                 customer.Id = Convert.ToInt32(_customer.getId(customer.Username, customer.Password));
-
                 CustomerModel model = _customer.GetCustomerById(customer.Id);
                 SignInCustomerAuthCookie(model);
                 SessionInfo.ClearSessionInfo(HttpContext);

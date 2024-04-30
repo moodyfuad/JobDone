@@ -34,17 +34,17 @@ builder.Services.AddDbContext<JobDoneContext>(options =>
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
      o => {
          o.ExpireTimeSpan = TimeSpan.FromDays(364);
-         o.LoginPath = "/Customer/LogIn";
          o.Cookie.Name = "JobDoneLogin";
          o.AccessDeniedPath= "/Home/Index";
         });
 
-builder.Services.AddSession();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromDays(30);
     options.Cookie.IsEssential = true;
 });
+
+builder.Services.AddResponseCompression();
 
 //interface regestration
 builder.Services.AddTransient<IBanner, BannerImplementation>();
@@ -71,6 +71,15 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+//This middleware enables response caching in the application.
+//Caching allows the server to store the response of a request and reuse it for subsequent identical requests,
+//reducing the processing time and improving performance.
+app.UseResponseCaching();
+//This middleware enables response compression in the application.
+//Response compression reduces the size of the HTTP response by compressing the content,
+//which can significantly improve the network transfer time and reduce bandwidth usage. 
+app.UseResponseCompression();
 app.UseStaticFiles();
 
 app.UseSession();

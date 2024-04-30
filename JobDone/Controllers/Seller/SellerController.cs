@@ -78,6 +78,7 @@ namespace JobDone.Controllers.Seller
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = TypesOfUsers.Seller)]
         public IActionResult ChangePassword(ForgotPasswordViewModel viweModel)
         {
             if (viweModel.Password == viweModel.ConfirmPassword)
@@ -168,7 +169,7 @@ namespace JobDone.Controllers.Seller
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
             // Check if the user is logged in
 
@@ -182,9 +183,9 @@ namespace JobDone.Controllers.Seller
 
                 SessionInfo.UpdateSessionInfo(username, walletAmount, seller.ProfilePicture, HttpContext);
                 SignInSellerAuthCookie(seller);
-                RedirectToAction("Home", "Seller");
+                return RedirectToAction("Home", "Seller");
             }
-            //SessionInfo.ClearSessionInfo(HttpContext);
+
             return View();
         }
 
@@ -193,10 +194,10 @@ namespace JobDone.Controllers.Seller
         {
             if (_seller.CheckUsernameAndPasswordExists(seller))
             {
-                seller.Id = (int)_seller.getId(seller.Username, seller.Password);
-                    
-                SignInSellerAuthCookie(seller);
+                seller.Id = Convert.ToInt32(_seller.getId(seller.Username, seller.Password));
                 SellerModel model = _seller.GetSellerById(seller.Id);
+                SignInSellerAuthCookie(model);
+                SessionInfo.ClearSessionInfo(HttpContext);
                 SessionInfo.UpdateSessionInfo(model.Username, model.Wallet.ToString(), model.ProfilePicture, HttpContext);
 
                 return RedirectToAction("Home", "Seller");
