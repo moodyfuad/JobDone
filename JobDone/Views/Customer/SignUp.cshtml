@@ -119,7 +119,7 @@
             <br />
             <div class="custom-border bxs-file-image">
                     <label class="custome-file-label">Profile Image</label>
-                <input class="form-control bi-file" accept="image/*" asp-for="@Model.profilePictureAsFile" />
+                <input class="form-control bi-file" accept="image/*" asp-for="@Model.profilePictureAsFile" required/>
                 @if(ViewBag.imageError != null)
                 {
                     <span class="text-danger" >@ViewBag.imageError</span>
