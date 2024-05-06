@@ -57,24 +57,18 @@ namespace JobDone.Controllers.Seller
             }
 
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
-
-            viewModel.Seller = seller;
-            viewModel.Messages = await _message.GetAllMessages();
-
             viewModel.Customer = customer;
             viewModel.Seller = seller;
+            viewModel.Messages = await _message.GetAllMessages(Convert.ToInt16(customer.Id), Convert.ToInt16(seller.Id));
 
             return View(viewModel);
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]
         [HttpPost]
-        public IActionResult Chat(short customerId, short sellerId, string content)
+        public async Task<IActionResult> Chat(short customerId, short sellerId, string content)
         {
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
-            viewModel.Customer = new CustomerModel();
-            viewModel.Seller = new SellerModel();
-            viewModel.Messages = _context.MessageModels.ToList();
             viewModel.Customer = _customer.GetCustomerById(customerId);
             viewModel.Seller = _seller.GetSellerById(sellerId);
 
@@ -91,9 +85,9 @@ namespace JobDone.Controllers.Seller
             message.MessageDateTime = DateTime.Now;
 
             _context.MessageModels.Add(message);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            viewModel.Messages = _context.MessageModels.ToList();
+            viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 
             return PartialView("_SellerChatPartial", viewModel);
         }
@@ -119,14 +113,14 @@ namespace JobDone.Controllers.Seller
         }
 
         [Authorize(Roles = TypesOfUsers.Seller)]
-        public IActionResult GetAllMessages(short customerId, short sellerId)
+        public async Task<IActionResult> GetAllMessages(short customerId, short sellerId)
         {
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
             viewModel.Customer = new CustomerModel();
             viewModel.Seller = new SellerModel();
             viewModel.Customer = _customer.GetCustomerById(customerId);
             viewModel.Seller.Id = sellerId;
-            viewModel.Messages = _context.MessageModels.ToList();
+            viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 
             return PartialView("_SellerChatPartial", viewModel);
         }
