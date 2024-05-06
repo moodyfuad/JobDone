@@ -1,26 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\",
+  "WorkspaceRootPath": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\controllers\\customer\\customerprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerprofilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\views\\sellerorder\\_sellerchatpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerorder\\_sellerchatpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\data\\jobdonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\data\\jobdonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\views\\sellerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\views\\customerrequestwork\\requestwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerrequestwork\\requestwork.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\controllers\\seller\\sellerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\seller\\sellerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\viewmodels\\requestedworkviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\viewmodels\\requestedworkviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\controllers\\customer\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\mohof\\desktop\\files\\it\\level 3\\second term\\software design \u0026 development\\lab\\jobdone project\\the project\\jobdone\\controllers\\customer\\customerrequestworkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customerrequestworkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\views\\sellerorder\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\sellerorder\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\models\\messagemodel\\messageimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\models\\messagemodel\\messageimplementation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\models\\messagemodel\\imessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\models\\messagemodel\\imessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\views\\customerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerorder\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\views\\customerorder\\_customerchatpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\views\\customerorder\\_customerchatpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|c:\\users\\faisal\\documents\\asp_project_bm\\jobdone\\controllers\\customer\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A00D5693-7ED3-445E-8807-0A68D449FF34}|JobDone\\JobDone.csproj|solutionrelative:jobdone\\controllers\\customer\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,169 +50,172 @@
       "DocumentGroups": [
         {
           "DockedWidth": 142,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 16,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CustomerRequestWorkController.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerRequestWorkController.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAACUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T03:10:47.636Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RequestedWorkViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "RelativeDocumentMoniker": "JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "RelativeToolTip": "JobDone\\ViewModels\\RequestedWorkViewModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAABUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T03:16:20.609Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RequestWork.cshtml",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerRequestWork\\RequestWork.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T03:54:41.946Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:141:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RequestWork.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Customer\\RequestWork.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "Messages.cshtml",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\Messages.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\SellerOrder\\Messages.cshtml",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\Messages.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\SellerOrder\\Messages.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-18T12:41:00.967Z",
+              "WhenOpened": "2024-05-06T17:57:13.6Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PrivacyPolicy.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\PrivacyPolicy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:11:53.809Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Seller\\Login.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Seller\\Login.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Seller\\Login.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:12:17.322Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "_SellerLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_SellerLayout.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_SellerLayout.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_SellerLayout.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Shared\\_SellerLayout.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAB4AAAB4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-20T18:11:13.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAgwBwAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:57:26.865Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "OrderList.cshtml",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\OrderList.cshtml",
-              "ViewState": "AQIAAAgBAAAAAAAAAAAgwCoBAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-13T23:00:26.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "ToolTip": "C:\\Users\\aomar\\source\\repos\\ITG-G3-Bamatraf\\JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerController.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAEwGIAAAAUAAAA",
+              "DocumentIndex": 2,
+              "Title": "SellerOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Seller\\SellerOrderController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Seller\\SellerOrderController.cs",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Seller\\SellerOrderController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Seller\\SellerOrderController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwHMAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-13T20:40:35.513Z",
+              "WhenOpened": "2024-05-06T17:51:25.736Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CustomerProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerProfileController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABPAAAA",
+              "DocumentIndex": 3,
+              "Title": "CustomerOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerOrderController.cs",
+              "ViewState": "AQIAAKUAAAAAAAAAAADwv64AAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T06:28:54.513Z",
+              "WhenOpened": "2024-05-06T15:15:01.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Chat.cshtml",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\Chat.cshtml",
+              "ViewState": "AQIAAG4AAAAAAAAAAAAAAHoAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-06T15:17:03.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IMessage.cs",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Models\\MessageModel\\IMessage.cs",
+              "RelativeDocumentMoniker": "JobDone\\Models\\MessageModel\\IMessage.cs",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Models\\MessageModel\\IMessage.cs",
+              "RelativeToolTip": "JobDone\\Models\\MessageModel\\IMessage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T17:23:18.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MessageImplementation.cs",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Models\\MessageModel\\MessageImplementation.cs",
+              "RelativeDocumentMoniker": "JobDone\\Models\\MessageModel\\MessageImplementation.cs",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Models\\MessageModel\\MessageImplementation.cs",
+              "RelativeToolTip": "JobDone\\Models\\MessageModel\\MessageImplementation.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwB4AAABXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T17:21:20.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "JobDoneContext.cs",
-              "DocumentMoniker": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Data\\JobDoneContext.cs",
-              "RelativeDocumentMoniker": "JobDone\\Data\\JobDoneContext.cs",
-              "ToolTip": "C:\\Users\\mohof\\Desktop\\Files\\IT\\level 3\\Second Term\\Software Design \u0026 Development\\lab\\JobDone project\\The Project\\JobDone\\Data\\JobDoneContext.cs",
-              "RelativeToolTip": "JobDone\\Data\\JobDoneContext.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAC8AAABEAAAA",
+              "Title": "Chat.cshtml",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\Chat.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\SellerOrder\\Chat.cshtml",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\Chat.cshtml*",
+              "RelativeToolTip": "JobDone\\Views\\SellerOrder\\Chat.cshtml*",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-06T17:32:01.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_SellerChatPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\_SellerChatPartial.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\SellerOrder\\_SellerChatPartial.cshtml",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\SellerOrder\\_SellerChatPartial.cshtml*",
+              "RelativeToolTip": "JobDone\\Views\\SellerOrder\\_SellerChatPartial.cshtml*",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-06T17:31:46.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_CustomerChatPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\CustomerOrder\\_CustomerChatPartial.cshtml",
+              "RelativeDocumentMoniker": "JobDone\\Views\\CustomerOrder\\_CustomerChatPartial.cshtml",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Views\\CustomerOrder\\_CustomerChatPartial.cshtml",
+              "RelativeToolTip": "JobDone\\Views\\CustomerOrder\\_CustomerChatPartial.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-06T17:31:10.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeDocumentMoniker": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ToolTip": "C:\\Users\\Faisal\\Documents\\Asp_Project_bm\\JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "RelativeToolTip": "JobDone\\Controllers\\Customer\\CustomerController.cs",
+              "ViewState": "AQIAAPUAAAAAAAAAAAAswP8AAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T06:22:24.775Z",
+              "WhenOpened": "2024-05-06T13:45:51.457Z",
               "EditorCaption": ""
             }
           ]
