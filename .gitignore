@@ -8,3 +8,4 @@
 *.vsidx
 /.vs/JobDoneProject/v17/.wsuo
 /.vs/JobDoneProject/v17/DocumentLayout.json
+/JobDone/obj/Debug/net8.0
