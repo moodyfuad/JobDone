@@ -25,8 +25,6 @@ namespace JobDone.Controllers.Customer
         private readonly ICategory _categories;
         private readonly ICustomer _customer;
         private readonly IMessage _message;
-        private readonly JobDoneContext _context;
-        private readonly DbSet<MessageModel> _messageDbSet;
 
         public CustomerOrderController(IOrder orders, ISeller seller, ICategory categories, ICustomer customer, IMessage message, JobDoneContext context)
         {
@@ -35,8 +33,6 @@ namespace JobDone.Controllers.Customer
             _categories = categories;
             _customer = customer;
             _message = message;
-            _context = context;
-            _messageDbSet = context.MessageModels;
         }
 
         public IActionResult OrderList()
@@ -156,8 +152,7 @@ namespace JobDone.Controllers.Customer
             message.WhoSendMessage = customerId;
             message.MessageDateTime = DateTime.Now;
 
-            _context.MessageModels.Add(message);
-            await _context.SaveChangesAsync();
+            _message.AddMessage(message);
 
             viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 
