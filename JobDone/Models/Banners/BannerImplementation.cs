@@ -22,12 +22,12 @@ namespace JobDone.Models.Banners
 
         public async Task<IEnumerable<BannerModel>> GetAllCustomerBanners()
         {
-            return await _banner.Where(forWho => forWho.ForWho == 1).ToListAsync();
+            return _banner.Where(forWho => forWho.ForWho == 1).ToListAsync().Result;
         }
         
         public async Task<IEnumerable<BannerModel>> GetAllSellerBanners()
         {
-            return await _banner.Where(forWho => forWho.ForWho == 2).ToListAsync();
+            return _banner.Where(forWho => forWho.ForWho == 2).ToListAsync().Result;
         }
 
         public BannerModel GetBannerById(int id)

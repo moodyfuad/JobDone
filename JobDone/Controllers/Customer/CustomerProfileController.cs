@@ -16,12 +16,10 @@ namespace JobDone.Controllers.Customer
     [Authorize(Roles = TypesOfUsers.Customer)]
     public class CustomerProfileController : Controller
     {
-        private readonly JobDoneContext _context;
         private readonly ICustomer _customer;
 
-        public CustomerProfileController(JobDoneContext context, ICustomer customer)
+        public CustomerProfileController(ICustomer customer)
         {
-            _context = context;
             _customer = customer;
         }
 
@@ -127,8 +125,7 @@ namespace JobDone.Controllers.Customer
                
 
             _customer.ApplyChangesToCustomer(ref customer, vmCustomer);
-            _context.CustomerModels.Update(customer);
-            await _context.SaveChangesAsync();
+            await _customer.UpdateTheInfo(customer);
             SessionInfo.UpdateSessionInfo(customer.Username, customer.Wallet.ToString(), customer.ProfilePicture, HttpContext);
 
             return RedirectToAction("SuccessfullyChange", "CustomerProfile");

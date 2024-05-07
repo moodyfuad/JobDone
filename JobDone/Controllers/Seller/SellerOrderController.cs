@@ -22,7 +22,7 @@ namespace JobDone.Controllers.Seller
         private readonly ICustomer _customer;
         private readonly IMessage _message;
 
-        public SellerOrderController(ISeller seller, ICustomer customer, IMessage message, JobDoneContext context)
+        public SellerOrderController(ISeller seller, ICustomer customer, IMessage message)
         {
             _seller = seller;
             _customer = customer;
@@ -80,7 +80,7 @@ namespace JobDone.Controllers.Seller
             message.WhoSendMessage = sellerId;
             message.MessageDateTime = DateTime.Now;
 
-            _message.AddMessage(message);
+            await _message.AddMessage(message);
 
             viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 

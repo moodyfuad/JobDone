@@ -135,12 +135,12 @@ namespace JobDone.Controllers.Admin
                 {
                     if (option == "Customer")
                     {
-                        _banner.AddNewBannerInCustomer(banner);
+                        await _banner.AddNewBannerInCustomer(banner);
                         banners = await _banner.GetAllCustomerBanners();
                     }
                     else
                     {
-                        _banner.AddNewBannerInSeller(banner);
+                        await _banner.AddNewBannerInSeller(banner);
                         banners = await _banner.GetAllSellerBanners();
                     }
                 }

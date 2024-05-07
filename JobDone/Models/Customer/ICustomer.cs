@@ -24,5 +24,6 @@
         Task<CustomerModel> Diposit(CustomerModel customer, decimal MoneyAmount);
 
         public Task<IEnumerable<CustomerModel>> GetAllCustomers();
+        public Task UpdateTheInfo(CustomerModel customer);
     }
 }

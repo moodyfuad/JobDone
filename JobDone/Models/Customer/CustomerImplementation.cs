@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using System.Security.Claims;
 using JobDone.Models.Seller;
+using SQLitePCL;
 namespace JobDone.Models.Customer
 {
     public class CustomerImplementation: ICustomer
@@ -236,6 +237,12 @@ namespace JobDone.Models.Customer
         public async Task<IEnumerable<CustomerModel>> GetAllCustomers()
         {
             return await _customer.ToListAsync();
+        }
+
+        public async Task UpdateTheInfo(CustomerModel customer)
+        {
+            _customer.Update(customer);
+            await _Db.SaveChangesAsync();
         }
     }
 }
