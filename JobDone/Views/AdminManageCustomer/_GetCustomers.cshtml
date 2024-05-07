@@ -98,42 +98,98 @@
     }
     else
     {
-        <div style="max-height:200px;margin-bottom:15px;justify-content:center; display:flex;overflow:auto; text-align:center">
+        <div class="container-fluid fruite py-5">
+            <div class="container-fluid py-5">
+                <div class="tab-class text-center">
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade p-0 active show">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
 
-            @foreach (CustomerModel customer in Model)
-            {
-                <div style="text-align:center;margin:8px; margin-bottom:0">
-                    <input asp-for="@customer.Id" type="hidden" name="name" value="@customer.Id" />
-                    <div style="height:150px; width:200px;margin:0px; margin-bottom:0;text-align:center; display:flex;flex-direction:column">
-                        <button onclick="showOrders(@customer.Id)" type="button" style="margin:0px;margin-bottom:0;border:none;padding-top:15px; width:inherit ">
-                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(customer.ProfilePicture)" alt="Alternate Text"
-                                 style="border-radius:50%; width:40px;height:40px" />
-                            <h5>@@@customer.Username</h5>
-                            <h6>@customer.FirstName  @customer.LastName</h6>
-                        </button>
-                        <button onclick="DeleteAccount(@customer.Id)" style="font-size:small;width:inherit">Delete Account</button>
+                                        @foreach (CustomerModel customer in Model)
+                                        {
+                                            <div class="col-md-6 col-lg-4 col-xl-3">
+                                                <input asp-for="@customer.Id" type="hidden" name="name" value="@customer.Id" />
+                                                <div class="rounded position-relative fruite-item">
+                                                    <div class="fruite-img">
+                                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(customer.ProfilePicture)" alt="Alternate Text" style="border-radius:50%; width:80px;height:80px" />
+                                                    </div>
+                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                        <h5>@@@customer.Username</h5>
+                                                        <h6>@customer.FirstName  @customer.LastName</h6>
+                                                        <div>
+                                                            <button class="btn border border-secondary rounded-pill px-3" onclick="showOrders(@customer.Id)" type="button">Modify</button>
+                                                            <button class="btn border border-secondary rounded-pill px-3" onclick="DeleteAccount(@customer.Id)">Delete Account</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @if (Model.Count == 1)
+                                            {
+                                                <div class="col-md-6 col-lg-4 col-xl-3" style="margin-left:30%;">
+                                                    <h2>Choose money operation</h2>
+                                                    <select class="btn border border-secondary rounded-pill px-3 text-primary" id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0;">
+                                                        <option value="option1" active hidden selected>Choose</option>
+                                                        <option value="W">Withdraw</option>
+                                                        <option value="D">Deposit</option>
+                                                    </select>
+                                                    <br>
+                                                    <input class="btn border border rounded-pill px-3 text-primary" id="moneyAmount" style=" width:90%; padding:3px; margin-bottom:8px" type="number" value="" placeholder="Amount of money">
+                                                    <br>
+                                                    <button class="btn border border-secondary rounded-pill px-3 " type="submit" onclick="MoneyOper(@customer.Id)">Submit</button>
+                                                </div>
+
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                @if (Model.Count == 1)
-                {
-                    <div>
-                        <h5 style="margin:0">Choose money operation</h5>
-                        <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0">
-                            <option value="option1" active hidden>Choose</option>
-                            <option value="W">Withdraw</option>
-                            <option value="D">Deposit</option>
-                        </select>
-                        <br>
-                        <input id="moneyAmount" style=" width:90%; padding:3px; margin-bottom:8px" type="number" value="" placeholder="Amount of money">
-                        <br>
-                        <button style=" width:60%;" type="submit" onclick="MoneyOper(@customer.Id)">Submit</button>
-                    </div>
-                    
-                }
-
-            }
+            </div>
         </div>
+        // <div style="max-height:200px;margin-bottom:15px;justify-content:center; display:flex;overflow:auto; text-align:center">
+
+        //     @foreach (CustomerModel customer in Model)
+        //     {
+        //         <div style="text-align:center;margin:8px; margin-bottom:0">
+        //             <input asp-for="@customer.Id" type="hidden" name="name" value="@customer.Id" />
+        //             <div style="height:150px; width:200px;margin:0px; margin-bottom:0;text-align:center; display:flex;flex-direction:column">
+        //                 <button onclick="showOrders(@customer.Id)" type="button" style="margin:0px;margin-bottom:0;border:none;padding-top:15px; width:inherit ">
+        //                     <img src="data:image/jpeg;base64,@Convert.ToBase64String(customer.ProfilePicture)" alt="Alternate Text"
+        //                          style="border-radius:50%; width:40px;height:40px" />
+        //                     <h5>@@@customer.Username</h5>
+        //                     <h6>@customer.FirstName  @customer.LastName</h6>
+        //                 </button>
+        //                 <button onclick="DeleteAccount(@customer.Id)" style="font-size:small;width:inherit">Delete Account</button>
+        //             </div>
+        //         </div>
+
+        //         @if (Model.Count == 1)
+        //         {
+        //             <div>
+        //                 <h5 style="margin:0">Choose money operation</h5>
+        //                 <select id="SeletedOption" style="font-size:14px; height: 30px; width:90%; padding:0">
+        //                     <option value="option1" active hidden>Choose</option>
+        //                     <option value="W">Withdraw</option>
+        //                     <option value="D">Deposit</option>
+        //                 </select>
+        //                 <br>
+        //                 <input id="moneyAmount" style=" width:90%; padding:3px; margin-bottom:8px" type="number" value="" placeholder="Amount of money">
+        //                 <br>
+        //                 <button style=" width:60%;" type="submit" onclick="MoneyOper(@customer.Id)">Submit</button>
+        //             </div>
+                    
+        //         }
+
+        //     }
+        // </div>
         if (TempData["transaction"] != null)
         {
             <h4 style="white-space: pre-line; justify-content:space-around; margin:auto; color:red">@TempData["transaction"].ToString()
@@ -152,30 +208,74 @@
             {
                 <h1 style=" white-space: pre-line; line-height:1;
                     justify-content:space-around;align-items:center;
-                     margin:auto; color:black">Posts
+                     margin:auto; color:black">Orders
 
                 </h1>
                 if(Model.First().OrderByCustomerModels == null || Model.First().OrderByCustomerModels.Count() == 0)
                 {
                     <h1 style=" white-space: pre-line; justify-content:space-around; margin:auto; color:red">
-                        No Posts To Display
+                        No Orders To Display
                     </h1>
                 }
                 else
                 {
-                    <div id="" class="container" style="display:flex; justify-content:center">
-                        @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
-                        {
-                            <div>
-                                <div class="item" style="text-align:center; display:flex;flex-direction:column">
-                                    <input id="postId" asp-for=@order.Id value="@order.Id" type="hidden" />
-                                    <h6>@order.OrderName</h6>
-                                    <h6>@order.Description</h6>
-                                    <button onclick="DeleteOrder(@order.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete order</button>
+                    <div class="container-fluid fruite py-5">
+                        <div class="container py-5">
+                            <div class="tab-class text-center">
+                                <div class="tab-content">
+                                    <div id="tab-1" class="tab-pane fade p-0 active show">
+                                        <div class="row g-4">
+                                            <div class="col-lg-12">
+                                                <div class="row g-4">
+
+                                                    @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
+                                                    {
+                                                        <div class="col-md-6 col-lg-4 col-xl-3">
+
+                                                            <div class="rounded position-relative fruite-item">
+                                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom" style="height:100%; display:flex;flex-direction:column;justify-content:space-between">
+                                                                    <h6>@order.OrderName</h6>
+                                                                    <div>
+                                                                        <h6 style="white-space: pre-wrap;">@order.Description</h6>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn border border-secondary rounded-pill px-3" onclick="DeleteOrder(@order.Id)">Delete Order</button>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                        }
+                        </div>
                     </div>
+                    
+                    
+                    
+                    
+                    // <div id="" class="container" style="display:flex; justify-content:center">
+                    //     @foreach (OrderByCustomerModel order in Model.First().OrderByCustomerModels.ToList())
+                    //     {
+                    //         <div>
+                    //             <div class="item" style="text-align:center; display:flex;flex-direction:column">
+                    //                 <input id="postId" asp-for=@order.Id value="@order.Id" type="hidden" />
+                    //                 <h6>@order.OrderName</h6>
+                    //                 <h6>@order.Description</h6>
+                    //                 <button onclick="DeleteOrder(@order.Id)" style="font-size:small;width:inherit;margin-top:auto">Delete order</button>
+                    //             </div>
+                    //         </div>
+                    //     }
+                    // </div>
                 }
                 
 
