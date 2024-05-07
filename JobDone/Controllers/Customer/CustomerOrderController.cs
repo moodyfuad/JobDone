@@ -124,28 +124,23 @@ namespace JobDone.Controllers.Customer
             if (seller == null)
             {
                 Response.StatusCode = 404;
-                return View("CustomerNotFound", sellerId);
+                return View("SellerNotFound", sellerId);
             }
 
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
 
-            viewModel.Customer = new CustomerModel();
-            viewModel.Messages = await _message.GetAllMessages();
-
-            viewModel.Customer.Id = customerId;
-            viewModel.Seller = _seller.GetSellerById(sellerId);
+            viewModel.Customer = customer;
+            viewModel.Seller = seller;
+            viewModel.Messages = await _message.GetAllMessages(Convert.ToInt16(customer.Id), Convert.ToInt16(seller.Id));
 
             return View(viewModel);
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
         [HttpPost]
-        public IActionResult Chat(short customerId, short sellerId, string content)
+        public async Task<IActionResult> Chat(short customerId, short sellerId, string content)
         {
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
-            viewModel.Customer = new CustomerModel();
-            viewModel.Seller = new SellerModel();
-            viewModel.Messages = _context.MessageModels.ToList();
             viewModel.Customer = _customer.GetCustomerById(customerId);
             viewModel.Seller = _seller.GetSellerById(sellerId);
 
@@ -162,22 +157,22 @@ namespace JobDone.Controllers.Customer
             message.MessageDateTime = DateTime.Now;
 
             _context.MessageModels.Add(message);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            viewModel.Messages = _context.MessageModels.ToList();
+            viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 
             return PartialView("_CustomerChatPartial", viewModel);
         }
 
         [Authorize(Roles = TypesOfUsers.Customer)]
-        public IActionResult GetAllMessages(short customerId, short sellerId)
+        public async Task<IActionResult> GetAllMessages(short customerId, short sellerId)
         {
             CustomerSellerMessageViewModel viewModel = new CustomerSellerMessageViewModel();
             viewModel.Customer = new CustomerModel();
             viewModel.Seller = new SellerModel();
             viewModel.Customer.Id = customerId;
             viewModel.Seller = _seller.GetSellerById(sellerId);
-            viewModel.Messages = _context.MessageModels.ToList();
+            viewModel.Messages = await _message.GetAllMessages(customerId, sellerId);
 
             return PartialView("_CustomerChatPartial", viewModel);
         }

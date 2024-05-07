@@ -60,12 +60,10 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            // Function to save the current scroll position of the 'chat' div
             function saveScrollPosition() {
                 return $('#chat').scrollTop();
             }
 
-            // Function to restore the scroll position of the 'chat' div
             function restoreScrollPosition(scrollPosition) {
                 $('#chat').scrollTop(scrollPosition);
             }
@@ -73,7 +71,6 @@
             function updateChatContent() {
                 var customerId = @Model.Customer.Id;
                 var sellerId = @Model.Seller.Id;
-                // Save the current scroll position of the 'chat' div before the update
                 var savedScrollPosition = saveScrollPosition();
 
                 $.ajax({
@@ -83,7 +80,6 @@
                 })
                     .done(function (data) {
                         $('#chatContainer').html(data);
-                        // Restore the scroll position of the 'chat' div after the content update
                         restoreScrollPosition(savedScrollPosition);
                     })
                     .fail(function () {
@@ -95,45 +91,38 @@
 
             $(function () {
                 $('form#sendMessageForm').submit(function (event) {
-                    event.preventDefault(); // Prevent the default form submission
+                    event.preventDefault();
 
                     var contentInput = $('#content');
-                    var content = contentInput.val().trim(); // Get the value of the content input field and trim any leading/trailing whitespace
+                    var content = contentInput.val().trim();
 
                     if (content !== '') {
                         var savedScrollPosition = saveScrollPosition();
-                        var formData = $(this).serialize(); // Serialize the form data
+                        var formData = $(this).serialize();
 
                         $.ajax({
                             url: $(this).attr('action'),
                             type: 'POST',
                             data: formData,
                             beforeSend: function () {
-                                // Disable the send button before sending the message
                                 $('input[type="submit"]').prop('disabled', true);
                             },
                             success: function (result) {
-                                // Restore the scroll position of the 'chat' div after sending the message
                                 restoreScrollPosition(savedScrollPosition);
-                                // Update the chat content after sending the message
                                 updateChatContent();
                             },
                             error: function (xhr, status, error) {
-                                // Handle any errors
                                 console.log(error);
                             },
                             complete: function () {
-                                // Enable the send button after the request is complete
                                 $('input[type="submit"]').prop('disabled', false);
                             }
                         });
 
-                        contentInput.val(''); // Clear the content input field
+                        contentInput.val('');
                     }
                 });
             });
-
-            // Update chat content every 5 seconds
             setInterval(updateChatContent, 5000);
         </script>
     </div>

@@ -26,6 +26,8 @@ namespace JobDone.Models.MessageModel
             await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<MessageModel>> GetAllMessages(short customerId, short sellerId) => await _message.Where(m => m.CustomerId == customerId && m.SellerId == sellerId).ToListAsync();
+
         public async Task<IEnumerable<MessageModel>> GetAllMessages() => await _message.ToListAsync();
     }
 }
