@@ -1,81 +1,4 @@
-﻿@* <!DOCTYPE html>
-<html lang="en">
-<head>
-
-
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - JobDone</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/JobDone.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha512-...your-integrity-hash-here..." crossorigin="anonymous" />
-
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-
-   
-
-</head>
-<body>
-    <div class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-    <a  href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        
-        <span style="margin-right:700px;" class="fs-4">JobDone</span>
-    </a>
-
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" asp-area="" asp-controller="Admin" asp-action="Home">Home</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNewCategory">Category</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="AdminManageSellers" asp-action="SellerCRUD">Seller</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="AdminManageCustomer" asp-action="CustomerCRUD">Customer</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Logout"><i class="fas fa-sign-out-alt"></i></a>
-    </li>
-    </ul>
-    </div>
-            </nav>
-        </header>
-    </div>
-    
-     
-    </div>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            <partial name="_Notification" />
-            @RenderBody()
-        </main>
-    </div>
-    <!-- FOOTER -->
-    <footer class="container-fluid">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>Copyright to Jabdone <a href="~/PrivacyPolicy.html">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-   
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-
-
-
-
-</body> *@
-</html>
+﻿</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,7 +74,7 @@
         </div>
     </header><!-- End Header -->
     <!-- ======= Hero Section ======= -->
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
