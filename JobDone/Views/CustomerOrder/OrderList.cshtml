@@ -139,7 +139,7 @@
                                                    
                                                 </div>
                                                <div style="display:flex;justify-content:space-between">
-                                                    <div style="display:inline-block;">
+                                                    <div style="display:inline-block; max-width:70%">
                                                         <h2 class="text-truncate font-size-18"><a href="/CustomerVisitSellerProfile/Profile?sellerId=@order.SellerId" style="color:gray">@@@order.SellerName</a></h2>
                                                         <div>
                                                             <span>@order.Rate</span>
@@ -150,12 +150,12 @@
                                                         <br />
                                                     </div>
                                                     @{
-                                                        <div style="display:inline-block;color:green;text-align:center;justify-content:flex-start">
+                                                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: green; text-align: center;">
                                                             @if (order.OrderStatus == "SellerCompleted")
                                                             {
                                                                 <h6>Your order is completed.</h6>
                                                                 <h6>Please Press 'Complete' to Agree,</h6>
-                                                                <h6>to Agree, that the order is</h6>
+                                                                <h6>that the order is</h6>
                                                                 <h6> Completed Successfully</h6>
 
                                                             }

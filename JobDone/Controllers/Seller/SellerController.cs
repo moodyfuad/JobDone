@@ -174,8 +174,8 @@ namespace JobDone.Controllers.Seller
             // Check if the user is logged in
 
             ClaimsPrincipal claimuser = HttpContext.User;
-            if (claimuser.Identity.IsAuthenticated && claimuser.FindFirstValue(ClaimTypes.Role) == TypesOfUsers.Seller)
-            {
+            if (claimuser.Identity.IsAuthenticated && claimuser.FindFirstValue(ClaimTypes.Role) == TypesOfUsers.Seller && _seller.GetSellerById(Convert.ToInt16(User.FindFirstValue(ClaimTypes.NameIdentifier))) != null)
+            { 
                 string sellerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 SellerModel seller = _seller.GetSellerById(Convert.ToInt16(sellerId));
                 string username = seller.Username;
