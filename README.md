@@ -1,6 +1,6 @@
-# Project Name
+# JobDone
 
-JobDone Application
+web-based app to post hiring opportunities as required services, making freelancers of all kinds applies for the related posted jobs
 
 ## Table of Contents
 
